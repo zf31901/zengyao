@@ -44,6 +44,7 @@
 		1615F96B1B4BC9C700B236B7 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1615F96A1B4BC9C700B236B7 /* NewsModel.m */; };
 		1615F9701B4BCC8800B236B7 /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1615F96E1B4BCC8800B236B7 /* NewsTableViewCell.m */; };
 		1615F9711B4BCC8800B236B7 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1615F96F1B4BCC8800B236B7 /* NewsTableViewCell.xib */; };
+		161E7F181B721B6E0067635E /* MyTSMSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161E7F171B721B6E0067635E /* MyTSMSetViewController.xib */; };
 		162597C61B68E2AD00E3FA95 /* MyTSMHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162597C11B68E2AD00E3FA95 /* MyTSMHeaderCell.m */; };
 		162597C71B68E2AD00E3FA95 /* MyTSMHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162597C21B68E2AD00E3FA95 /* MyTSMHeaderCell.xib */; };
 		162597C81B68E2AD00E3FA95 /* MyTSMListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162597C41B68E2AD00E3FA95 /* MyTSMListCell.m */; };
@@ -203,22 +204,22 @@
 		10694DB41B72053100CE2504 /* YYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTabBarViewController.m; sourceTree = "<group>"; };
 		10694DB61B72059000CE2504 /* MyApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyApplication.h; sourceTree = "<group>"; };
 		10694DB71B72059000CE2504 /* MyApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyApplication.m; sourceTree = "<group>"; };
-		10694DBE1B72066800CE2504 /* MyTSMUserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMUserInfoViewController.xib; sourceTree = "<group>"; };
-		10694DBF1B72066800CE2504 /* MyTSMUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMUserInfoViewController.h; sourceTree = "<group>"; };
-		10694DC01B72066800CE2504 /* MyTSMUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMUserInfoViewController.m; sourceTree = "<group>"; };
-		10694DC31B7206B600CE2504 /* MyTSMNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMNoticeViewController.h; sourceTree = "<group>"; };
-		10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMNoticeViewController.m; sourceTree = "<group>"; };
-		10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMNoticeViewController.xib; sourceTree = "<group>"; };
-		10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMSetViewController.h; sourceTree = "<group>"; };
-		10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMSetViewController.m; sourceTree = "<group>"; };
-		10694DCB1B72074000CE2504 /* MyUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUserInfoView.h; sourceTree = "<group>"; };
-		10694DCC1B72074000CE2504 /* MyUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUserInfoView.m; sourceTree = "<group>"; };
-		10694DCD1B72074000CE2504 /* MyUserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUserInfoView.xib; sourceTree = "<group>"; };
-		10694DD01B7207B100CE2504 /* MyAppCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppCellTableViewCell.h; sourceTree = "<group>"; };
-		10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppCellTableViewCell.m; sourceTree = "<group>"; };
-		10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAppCellTableViewCell.xib; sourceTree = "<group>"; };
-		10694DD51B7207DB00CE2504 /* MyAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppModel.h; sourceTree = "<group>"; };
-		10694DD61B7207DB00CE2504 /* MyAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppModel.m; sourceTree = "<group>"; };
+		10694DBE1B72066800CE2504 /* MyTSMUserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTSMUserInfoViewController.xib; path = ../../SetMyTSM/MyTSMUserInfoViewController.xib; sourceTree = "<group>"; };
+		10694DBF1B72066800CE2504 /* MyTSMUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTSMUserInfoViewController.h; path = ../../SetMyTSM/MyTSMUserInfoViewController.h; sourceTree = "<group>"; };
+		10694DC01B72066800CE2504 /* MyTSMUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTSMUserInfoViewController.m; path = ../../SetMyTSM/MyTSMUserInfoViewController.m; sourceTree = "<group>"; };
+		10694DC31B7206B600CE2504 /* MyTSMNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTSMNoticeViewController.h; path = ../../SetMyTSM/MyTSMNoticeViewController.h; sourceTree = "<group>"; };
+		10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTSMNoticeViewController.m; path = ../../SetMyTSM/MyTSMNoticeViewController.m; sourceTree = "<group>"; };
+		10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTSMNoticeViewController.xib; path = ../../SetMyTSM/MyTSMNoticeViewController.xib; sourceTree = "<group>"; };
+		10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTSMSetViewController.h; path = ../../SetMyTSM/MyTSMSetViewController.h; sourceTree = "<group>"; };
+		10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTSMSetViewController.m; path = ../../SetMyTSM/MyTSMSetViewController.m; sourceTree = "<group>"; };
+		10694DCB1B72074000CE2504 /* MyUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyUserInfoView.h; path = ../../SetMyTSM/MyUserInfoView.h; sourceTree = "<group>"; };
+		10694DCC1B72074000CE2504 /* MyUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyUserInfoView.m; path = ../../SetMyTSM/MyUserInfoView.m; sourceTree = "<group>"; };
+		10694DCD1B72074000CE2504 /* MyUserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyUserInfoView.xib; path = ../../SetMyTSM/MyUserInfoView.xib; sourceTree = "<group>"; };
+		10694DD01B7207B100CE2504 /* MyAppCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAppCellTableViewCell.h; path = ../../SetMyTSM/MyAppCellTableViewCell.h; sourceTree = "<group>"; };
+		10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAppCellTableViewCell.m; path = ../../SetMyTSM/MyAppCellTableViewCell.m; sourceTree = "<group>"; };
+		10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyAppCellTableViewCell.xib; path = ../../SetMyTSM/MyAppCellTableViewCell.xib; sourceTree = "<group>"; };
+		10694DD51B7207DB00CE2504 /* MyAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAppModel.h; path = ../../SetMyTSM/MyAppModel.h; sourceTree = "<group>"; };
+		10694DD61B7207DB00CE2504 /* MyAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAppModel.m; path = ../../SetMyTSM/MyAppModel.m; sourceTree = "<group>"; };
 		10694DD81B72096900CE2504 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		16034AB01B6F0D510063EFD7 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		16034AB11B6F0D510063EFD7 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 		1615F96D1B4BCC8800B236B7 /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
 		1615F96E1B4BCC8800B236B7 /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		1615F96F1B4BCC8800B236B7 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		161E7F171B721B6E0067635E /* MyTSMSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMSetViewController.xib; sourceTree = "<group>"; };
 		162597C01B68E2AD00E3FA95 /* MyTSMHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMHeaderCell.h; sourceTree = "<group>"; };
 		162597C11B68E2AD00E3FA95 /* MyTSMHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMHeaderCell.m; sourceTree = "<group>"; };
 		162597C21B68E2AD00E3FA95 /* MyTSMHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMHeaderCell.xib; sourceTree = "<group>"; };
@@ -487,11 +489,17 @@
 		16034ABC1B6F43DB0063EFD7 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				10694DD01B7207B100CE2504 /* MyAppCellTableViewCell.h */,
+				10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */,
+				10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */,
 				16034ABF1B6F45390063EFD7 /* MyHeaderView.h */,
 				16034AC01B6F45390063EFD7 /* MyHeaderView.m */,
 				164C0F431B6F77D00040321E /* MyProTableViewCell.h */,
 				164C0F441B6F77D00040321E /* MyProTableViewCell.m */,
 				164C0F451B6F77D00040321E /* MyProTableViewCell.xib */,
+				10694DCB1B72074000CE2504 /* MyUserInfoView.h */,
+				10694DCC1B72074000CE2504 /* MyUserInfoView.m */,
+				10694DCD1B72074000CE2504 /* MyUserInfoView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -501,6 +509,8 @@
 			children = (
 				164C0F401B6F72610040321E /* MyProModel.h */,
 				164C0F411B6F72610040321E /* MyProModel.m */,
+				10694DD51B7207DB00CE2504 /* MyAppModel.h */,
+				10694DD61B7207DB00CE2504 /* MyAppModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -511,6 +521,15 @@
 				16B909961B281F6E00211892 /* MyTSMViewController.h */,
 				16B909971B281F6E00211892 /* MyTSMViewController.m */,
 				16B909981B281F6E00211892 /* MyTSMViewController.xib */,
+				10694DBF1B72066800CE2504 /* MyTSMUserInfoViewController.h */,
+				10694DC01B72066800CE2504 /* MyTSMUserInfoViewController.m */,
+				10694DBE1B72066800CE2504 /* MyTSMUserInfoViewController.xib */,
+				10694DC31B7206B600CE2504 /* MyTSMNoticeViewController.h */,
+				10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */,
+				10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */,
+				10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */,
+				10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */,
+				161E7F171B721B6E0067635E /* MyTSMSetViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -767,22 +786,6 @@
 				168369431B2AB1B800A78898 /* SetMyTSMViewController.h */,
 				168369441B2AB1B800A78898 /* SetMyTSMViewController.m */,
 				168369451B2AB1B800A78898 /* SetMyTSMViewController.xib */,
-				10694DBF1B72066800CE2504 /* MyTSMUserInfoViewController.h */,
-				10694DC01B72066800CE2504 /* MyTSMUserInfoViewController.m */,
-				10694DBE1B72066800CE2504 /* MyTSMUserInfoViewController.xib */,
-				10694DC31B7206B600CE2504 /* MyTSMNoticeViewController.h */,
-				10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */,
-				10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */,
-				10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */,
-				10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */,
-				10694DCB1B72074000CE2504 /* MyUserInfoView.h */,
-				10694DCC1B72074000CE2504 /* MyUserInfoView.m */,
-				10694DCD1B72074000CE2504 /* MyUserInfoView.xib */,
-				10694DD01B7207B100CE2504 /* MyAppCellTableViewCell.h */,
-				10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */,
-				10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */,
-				10694DD51B7207DB00CE2504 /* MyAppModel.h */,
-				10694DD61B7207DB00CE2504 /* MyAppModel.m */,
 			);
 			path = SetMyTSM;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				16C3F9A21B25711C0040D80C /* notice40@2x.png in Resources */,
 				16C3F9C01B25711C0040D80C /* 默认头像120.png in Resources */,
 				16C3F9BC1B25711C0040D80C /* User50_nomal@3x.png in Resources */,
+				161E7F181B721B6E0067635E /* MyTSMSetViewController.xib in Resources */,
 				162597C91B68E2AD00E3FA95 /* MyTSMListCell.xib in Resources */,
 				16C3F98C1B25711C0040D80C /* arrow-fight16x25_gray@1.5x.png in Resources */,
 				16C3F9A11B25711C0040D80C /* News50_press@3x.png in Resources */,

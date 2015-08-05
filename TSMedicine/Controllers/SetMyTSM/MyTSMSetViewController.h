@@ -10,4 +10,6 @@
 
 @interface MyTSMSetViewController : BaseViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
