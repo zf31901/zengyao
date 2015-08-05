@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网通" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CP1-W2-CjU">
-                        <rect key="frame" x="8" y="8" width="383" height="29"/>
+                        <rect key="frame" x="8" y="8" width="383" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default.png" id="RrA-Lk-fNC">
-                        <rect key="frame" x="22" y="45" width="295" height="90"/>
+                        <rect key="frame" x="8" y="58" width="295" height="75"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
@@ -47,7 +47,7 @@
                 <outlet property="iamgeView" destination="RrA-Lk-fNC" id="urX-3o-eFn"/>
                 <outlet property="newlabel" destination="5LV-JI-CCz" id="Pb4-X2-r9D"/>
             </connections>
-            <point key="canvasLocation" x="-258.5" y="321.5"/>
+            <point key="canvasLocation" x="-144.5" y="267.5"/>
         </tableViewCell>
     </objects>
     <resources>
