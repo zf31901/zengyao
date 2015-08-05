@@ -136,40 +136,49 @@
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
         cell.fromeLable.text=model.a_Title;
+        cell.fromeLable.numberOfLines=0;
+        CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
+
+        cell.fromeLable.frame = CGRectMake(0, 0, 320, rect.size.height);
         
         cell.newlabel.text=model.a_From;
         cell.dataTimew.text=model.a_AddDate;
-       // [cell.iamge setImageWithURL:[NSURL URLWithString:model.a_SmallImg] ];
+      
        
         
         [cell.iamgeView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
-      //  NSLog(@"model.a_SmallImg------%@",model.a_SmallImg);
-       
-                // }
-    return cell;
+          return cell;
     }
 
     else{
       
         NewsTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-          //  cell1 = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsCell"];
-    
-//        for (int i=1;i<_dataArr.count;i++)
-//        {
+        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
-            NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
-            
-            cell1.newlab.text=model.a_Title;
-            
-            cell1.fromLab.text=model.a_From;
-            cell1.dataTimelab.text=model.a_AddDate;
+        cell1.newlab.text=model.a_Title;
+        cell1.fromLab.numberOfLines=0;
+        
+        
+        cell1.fromLab.text=model.a_From;
+
+        cell1.newlab.numberOfLines=0;
+       
+        CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
+        CGRect rect1 = [cell1.fromLab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.fromLab.font} context:nil];
+      cell1.newlab.frame = CGRectMake(0, 20, 150, rect.size.height);
+        cell1.fromLab.frame=CGRectMake(0, 20, 100, rect1.size.height);
+        
+        NSLog(@"cell1.fromLab-----%@",cell1.newlab);
+        NSLog(@"cell1.fromLab%@",cell1.fromLab);
+       
+        cell1.dataTimelab.text=model.a_AddDate;
             
             [cell1.iamge setImageWithURL:[NSURL URLWithString:model.a_SmallImg] ];
             
            
     
         return cell1;
-   // }
+
    
 
     return nil;
@@ -187,12 +196,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailsViewController *ctl2=[[DetailsViewController alloc]init];
-//   NSDictionary *dic=_dataArr[indexPath.row];
+
     NewsModel *arr=_dataArr[indexPath.row];
     
     ctl2.goodIndex=arr.a_ID;
     
-   //ctl2.goodIndex=[NSString stringWithFormat:@"%@",dic[@"a_ID"]];
+  
     
     
     [self.navigationController pushViewController:ctl2 animated:YES];
