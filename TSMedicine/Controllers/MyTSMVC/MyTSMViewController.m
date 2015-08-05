@@ -72,6 +72,12 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
    
     [self createUI];
     
+    
+    
+    
+    
+    
+    
 }
 
 -(void)createUI
