@@ -23,7 +23,6 @@
     
     self.window.rootViewController = [YYTabBarViewController initIalizeTab];
    
-    
     return YES;
 }
 
