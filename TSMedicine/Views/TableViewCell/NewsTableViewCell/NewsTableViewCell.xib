@@ -14,8 +14,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="网通" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYe-Hy-xEe">
-                        <rect key="frame" x="38" y="12" width="92" height="25"/>
+                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="网通" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYe-Hy-xEe">
+                        <rect key="frame" x="8" y="12" width="206" height="25"/>
+                        <color key="tintColor" red="0.26059905705522157" green="0.40625878098844947" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -53,9 +54,7 @@
                     <constraint firstItem="wnj-qU-p3L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="2Cw-3o-e9i"/>
                     <constraint firstItem="wnj-qU-p3L" firstAttribute="top" secondItem="yJH-QH-lfi" secondAttribute="bottom" constant="11" id="5Bx-47-3w9"/>
                     <constraint firstItem="yJH-QH-lfi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="7Ox-Bn-34a"/>
-                    <constraint firstItem="OYe-Hy-xEe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="9pP-Ot-HB9"/>
                     <constraint firstAttribute="bottom" secondItem="wnj-qU-p3L" secondAttribute="bottom" id="Xfn-1z-Tic"/>
-                    <constraint firstItem="OYe-Hy-xEe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="bqb-xU-Z2q"/>
                     <constraint firstAttribute="trailing" secondItem="wnj-qU-p3L" secondAttribute="trailing" constant="12" id="daa-3e-qYJ"/>
                 </constraints>
             </tableViewCellContentView>

@@ -153,20 +153,16 @@
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
         cell1.newlab.text=model.a_Title;
-        cell1.fromLab.numberOfLines=0;
-        
-        
-        cell1.fromLab.text=model.a_From;
-
         cell1.newlab.numberOfLines=0;
        
+        cell1.fromLab.text=model.a_From;
+
         CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
-        CGRect rect1 = [cell1.fromLab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.fromLab.font} context:nil];
-      cell1.newlab.frame = CGRectMake(0, 20, 150, rect.size.height);
-        cell1.fromLab.frame=CGRectMake(0, 20, 100, rect1.size.height);
+    cell1.newlab.frame = CGRectMake(0, 0, 320, rect.size.height);
+       
         
         NSLog(@"cell1.fromLab-----%@",cell1.newlab);
-        NSLog(@"cell1.fromLab%@",cell1.fromLab);
+      //  NSLog(@"cell1.fromLab%@",cell1.fromLab);
        
         cell1.dataTimelab.text=model.a_AddDate;
             
@@ -184,7 +180,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.row ) {
-        return 165;
+        return 170;
     }else
     {
         return 100;
