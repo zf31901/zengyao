@@ -59,7 +59,7 @@
                 model.upimage1=[dataDic  objectForKey:@"upimage"];
                 
                 [testArr addObject:model];
-              //  NSLog(@"dic12345----%@",dataDic);
+                NSLog(@"dic12345----%@",dataDic);
 
             
             }

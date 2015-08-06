@@ -56,7 +56,7 @@
 }
 
 -(void)UIlable{
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H- 64-44)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H- 64)];
 //SCREEN_H- TOPBAR- BOTTOMBAR
     _webView.delegate=self;
 //    _webView.scrollView.bounces=NO;

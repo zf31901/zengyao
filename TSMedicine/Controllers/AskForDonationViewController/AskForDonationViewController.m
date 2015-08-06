@@ -7,7 +7,7 @@
 //
 
 #import "AskForDonationViewController.h"
-#import "COMmitAskfor.h"
+#import "CommitAskForViewController.h"
 
 #define URLisr @"http://app.aixinland.cn//page/notice_detail"
 
@@ -61,7 +61,7 @@
 }
 - (void)nextpageVC
 {
-    COMmitAskfor *commitVC = [COMmitAskfor new];
+    CommitAskForViewController *commitVC = [CommitAskForViewController new];
     [self.navigationController pushViewController:commitVC animated:YES];
     
 }

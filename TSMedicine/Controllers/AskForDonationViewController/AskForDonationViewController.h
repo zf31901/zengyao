@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AskForDonationViewController : BaseViewController
-//@property (weak, nonatomic) IBOutlet UIButton *askForDonation_nextpageBtn;
+@property (weak, nonatomic) IBOutlet UIButton *askForDonation_nextpageBtn;
 
 @end

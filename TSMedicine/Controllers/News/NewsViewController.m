@@ -11,8 +11,6 @@
 #import "DetailsViewController.h"
 #import "NewsTableViewCell.h"
 #import "newCell.h"
-#import "FootLabel.h"
-
 
 #import "UIImageView+AFNetworking.h"
 
@@ -20,7 +18,6 @@
 
 
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
-
 {
     NSMutableArray  *brr;
     NSMutableArray  *arr;
@@ -31,22 +28,14 @@
     NSInteger a_id;
     
 }
-@property(nonatomic,strong)FootLabel *footerLabel;
-@property (nonatomic,assign)NSInteger count;//控制行数
-@property (nonatomic,assign)CGSize recordSize;//记录当前UITableView的ContentSize;
+
+
 @end
 
 @implementation NewsViewController
--(void)dealloc{
-    
-    //移除观察者
-    [_mytableView   removeObserver:self forKeyPath:@"contentOffset"];
-    
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self  caselable];
-    
     _dataArr=[[NSMutableArray alloc]init];
     
     _mytableView=[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -61,33 +50,16 @@
     
     
     self.title = @"新闻";
-
+    // [self  lale];
+//       UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H- TOPBAR- BOTTOMBAR)];
+//        [self.view addSubview:web];
+//        [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ewt.cc"]]];
+    
    [self UILABLE];
    
     
     
 }
--(void)caselable{
-    
-    //关闭优化机制
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    //实例化一个FootLabel类型的对象
-    self.footerLabel = [[FootLabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 35)];
-    
-    self.footerLabel.textAlignment = NSTextAlignmentCenter;
-    self.footerLabel.text = @"加载更多";
-    
-    //设置为UITabelView的尾部视图
-    _mytableView.tableFooterView = self.footerLabel;
-
-    //观察myTableView的contentSize
-    
-    [_mytableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
-
-}
-
-
 -(void)UILABLE{
     
     
@@ -98,7 +70,7 @@
   
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"4"      forKey:@"pagesize"];
+    [dic setObject:@"3"      forKey:@"pagesize"];
 
     YYHttpRequest *hq = [[YYHttpRequest alloc] init];
     
@@ -137,63 +109,12 @@
 
 
 }
--(void)finish{
-    
-    //增加行数
-    self.count += 3;
-    
-    //恢复为非加载状态
-    self.footerLabel.isFreshState = NO;
-    
-    //恢复文字显示
-    self.footerLabel.text = @"加载更多";
-    
-    [_mytableView reloadData];
-    
-    
-}
-
-#pragma mark- KVO回调方法
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    
-    
-    //判断是否为对应的观者属性
-    if ([keyPath isEqualToString:@"contentOffset"] && object == _mytableView) {
-        
-        NSLog(@"change = %@",change);
-        NSLog(@"%f",_mytableView.contentSize.height);
-        
-        //取得偏移量的值
-        NSValue *offsetValue = change[@"new"];
-        CGPoint offsetPoint = [offsetValue CGPointValue];
-        
-        if (offsetPoint.y + _mytableView.frame.size.height >= _mytableView.contentSize.height) {
-            
-            //保证如果 处于加载状态，期间再触发此方法，也不会重复加载
-            if (!self.footerLabel.isFreshState) {
-                self.footerLabel.isFreshState = YES;
-                
-                //滑动到最底端
-                self.footerLabel.text = @"加载刷新中.....";
-                
-                //延时执行某个方法
-                [self performSelector:@selector(finish) withObject:nil afterDelay:3.0f];
-            }
-            
-            
-        }
-        
-        
-    }
-    
-    
-}
 
 #pragma mark - UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return _dataArr.count;
+//}
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _dataArr.count;
@@ -237,7 +158,7 @@
         cell1.fromLab.text=model.a_From;
 
         CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
-    cell1.newlab.frame = CGRectMake(0, 0, 200, rect.size.height);
+    cell1.newlab.frame = CGRectMake(0, 0, 320, rect.size.height);
        
         
         NSLog(@"cell1.fromLab-----%@",cell1.newlab);
@@ -268,8 +189,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailsViewController *ctl2=[[DetailsViewController alloc]init];
+
     NewsModel *arr=_dataArr[indexPath.row];
+    
     ctl2.goodIndex=arr.a_ID;
+    
+  
+    
+    
     [self.navigationController pushViewController:ctl2 animated:YES];
 }
 
