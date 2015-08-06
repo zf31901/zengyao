@@ -7,8 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="loginBtn" destination="H19-4A-Va4" id="tcP-Jp-t9g"/>
                 <outlet property="nikeName" destination="13P-nl-IUZ" id="5Ce-u3-spO"/>
                 <outlet property="pawssWorld" destination="OZU-tm-5C3" id="y3X-4G-rLR"/>
+                <outlet property="registerBtn" destination="WSE-x0-dKK" id="77M-kD-EOc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -58,10 +60,10 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H19-4A-Va4">
-                    <rect key="frame" x="60" y="184" width="80" height="36"/>
+                    <rect key="frame" x="30" y="184" width="120" height="36"/>
                     <color key="backgroundColor" red="0.54117647059999996" green="0.34509803919999998" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="CVt-Uv-auR"/>
+                        <constraint firstAttribute="width" constant="120" id="CVt-Uv-auR"/>
                         <constraint firstAttribute="height" constant="36" id="Sj0-rO-c4d"/>
                     </constraints>
                     <state key="normal" title="登录">
@@ -73,10 +75,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSE-x0-dKK">
-                    <rect key="frame" x="235" y="184" width="80" height="35"/>
+                    <rect key="frame" x="225" y="184" width="120" height="35"/>
                     <color key="backgroundColor" red="1" green="0.3243613139" blue="0.15311359490000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="2AD-kX-s0D"/>
+                        <constraint firstAttribute="width" constant="120" id="2AD-kX-s0D"/>
                         <constraint firstAttribute="height" constant="35" id="FGh-1H-Ucq"/>
                     </constraints>
                     <state key="normal" title="注册">
@@ -87,10 +89,54 @@
                         <action selector="regainBtn:" destination="-1" eventType="touchUpInside" id="Jp5-fq-hcB"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJM-ZN-afJ">
+                    <rect key="frame" x="30" y="248" width="50" height="30"/>
+                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="用户">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="userBtnClick:" destination="-1" eventType="touchUpInside" id="pDB-F8-1rO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a41-OF-537">
+                    <rect key="frame" x="170" y="248" width="50" height="30"/>
+                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="协管员">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="managerBtnClick:" destination="-1" eventType="touchUpInside" id="BXX-EB-C7h"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q5-yn-jTJ">
+                    <rect key="frame" x="240" y="248" width="50" height="30"/>
+                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="药房">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="medBtnClick:" destination="-1" eventType="touchUpInside" id="3H2-0h-T7J"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJu-pB-MmM">
+                    <rect key="frame" x="100" y="248" width="50" height="30"/>
+                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="医生">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="docBtnClick:" destination="-1" eventType="touchUpInside" id="QM0-H6-aWo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="WSE-x0-dKK" secondAttribute="trailing" constant="60" id="0V2-D4-zFq"/>
+                <constraint firstAttribute="trailing" secondItem="WSE-x0-dKK" secondAttribute="trailing" constant="30" id="0V2-D4-zFq"/>
                 <constraint firstItem="HbZ-CR-ykh" firstAttribute="top" secondItem="OZU-tm-5C3" secondAttribute="bottom" constant="15" id="0ZV-rH-bc7"/>
                 <constraint firstItem="olW-Ow-9bj" firstAttribute="top" secondItem="OZU-tm-5C3" secondAttribute="bottom" constant="15" id="3NB-nq-lvz"/>
                 <constraint firstItem="WSE-x0-dKK" firstAttribute="top" secondItem="HbZ-CR-ykh" secondAttribute="bottom" constant="30" id="8mK-vy-zY0"/>
@@ -101,7 +147,7 @@
                 <constraint firstItem="13P-nl-IUZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="bRG-8K-Sim"/>
                 <constraint firstAttribute="trailing" secondItem="OZU-tm-5C3" secondAttribute="trailing" constant="12" id="irv-za-HQf"/>
                 <constraint firstAttribute="trailing" secondItem="13P-nl-IUZ" secondAttribute="trailing" constant="12" id="kpl-Wv-Ywc"/>
-                <constraint firstItem="H19-4A-Va4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="rRh-Kd-OVj"/>
+                <constraint firstItem="H19-4A-Va4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="rRh-Kd-OVj"/>
                 <constraint firstItem="olW-Ow-9bj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="vdf-Ds-tdh"/>
                 <constraint firstItem="OZU-tm-5C3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="zpr-Je-DTT"/>
             </constraints>

@@ -27,9 +27,6 @@
     NSString *tree;
     NSInteger a_id;
     
-    
-    
-    
 }
 
 

@@ -14,5 +14,6 @@
 
 - (void)buidRightBtn:(NSString *)title;
 
+- (void)commit;
 
 @end

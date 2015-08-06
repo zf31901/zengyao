@@ -16,6 +16,13 @@
 
 #import "MyApplication.h"
 
+#import "PatientApplyViewController.h"
+#import "PatientQuestiViewController.h"
+#import "DocMyPatientViewController.h"
+#import "DocMyTrainViewController.h"
+#import "DocMyAnswerViewController.h"
+#import "ManagerMyTrainViewController.h"
+
 #import "LoginViewController.h"
 #import "MyTSMUserInfoViewController.h"
 #import "MyTSMNoticeViewController.h"
@@ -24,6 +31,8 @@
 #import "MyHeaderView.h"
 #import "MyProModel.h"
 #import "MyProTableViewCell.h"
+
+
 
 
 NSString *const ProTableViewCell = @"MyProTableViewCell";
@@ -54,6 +63,18 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         [_tableView registerNib:[UINib nibWithNibName:ProTableViewCell bundle:nil] forCellReuseIdentifier:ProTableViewCell];
         
          [self loadData];
+    }else{
+//        for (UIView *view in self.view.subviews) {
+//            if ([view isKindOfClass:[UITableView class]]) {
+//                [view removeFromSuperview];
+//            }
+        
+        [self.tableView removeFromSuperview];
+        self.tableView = nil;
+            _headView.headImageView.image = [UIImage imageNamed:default_head];
+            _headView.nameLab.text = @"点击登录";
+        
+//        }
     }
 }
 
@@ -69,9 +90,10 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    [self createUI];
     
+    _dataArr = [NSMutableArray array];
+    
+    [self createUI];
 }
 
 -(void)createUI
@@ -83,7 +105,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 #pragma mark -------UITableViewDataSource-----
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return _dataArr.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -105,12 +127,89 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 #pragma mark --------UITableViewDelegate--------------
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
     
+    
+    if (indexPath.section == 0)
+    {
+        
+        if ([key isEqualToString:@"1"])
+        {
+            
+            switch (indexPath.row) {
+                case 0:
+                {
+                    PatientApplyViewController *applyVC = [[PatientApplyViewController alloc] init];
+                    applyVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:applyVC animated:YES];
+                }
+                    break;
+                    
+                case 1:
+                {
+                    PatientQuestiViewController *questVC = [[PatientQuestiViewController alloc] init];
+                    questVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:questVC animated:YES];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }else if ([key isEqualToString:@"2"]){
+        
+            switch (indexPath.row) {
+                case 0:
+                {
+                    DocMyPatientViewController *patientVC = [[DocMyPatientViewController alloc] init];
+                    patientVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:patientVC animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    DocMyTrainViewController *trainVC = [[DocMyTrainViewController alloc] init];
+                    trainVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:trainVC animated:YES];
+                }
+                    break;
+                case 2:
+                {
+                    DocMyAnswerViewController *answerVC = [[DocMyAnswerViewController alloc] init];
+                    answerVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:answerVC animated:YES];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }else if ([key isEqualToString:@"3"] || [key isEqualToString:@"4"]){
+            
+            switch (indexPath.row){
+                case 0:
+                {
+                    ManagerMyTrainViewController *managerTrianVC = [[ManagerMyTrainViewController alloc] init];
+                    managerTrianVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:managerTrianVC animated:YES];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+        }else{
+            
+        }
+    }
+    
+
     if (indexPath.section == 1) {
         switch (indexPath.row) {
             case 0:
             {
                 MyTSMNoticeViewController *noticeVC = [[MyTSMNoticeViewController alloc] init];
+                noticeVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:noticeVC animated:YES];
             }
                 break;
@@ -118,6 +217,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
             case 1:
             {
                 MyTSMSetViewController *setVC = [[MyTSMSetViewController alloc] init];
+                setVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:setVC animated:YES];
             }
                 break;
@@ -147,8 +247,11 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 #pragma mark ------------ 数据 ---------------
 -(void)loadData
 {
-    _dataArr = [NSMutableArray array];
-    NSString *key = @"2";
+    [_dataArr removeAllObjects];
+    
+//    NSString *key = @"4";
+    
+    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
     
     NSArray *picArr = nil;
     if ([key isEqualToString:@"1"]) {
@@ -175,7 +278,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     NSArray *comTitleArr = [NSArray arrayWithObjects:@"系统通知", @"设置", nil];
     
     NSMutableArray *arr1 = [NSMutableArray array];
-    for (int i = 0; i < titleArr.count; i++) {
+    for (int i = 0; i < picArr.count; i++) {
         
         MyProModel *model = [[MyProModel alloc] init];
         model.pic = picArr[i];
@@ -197,6 +300,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         [arr1 addObject:model];
     }
     
+    
     NSMutableArray *arr2 = [NSMutableArray array];
     for (int i = 0; i < comTitleArr.count; i++) {
         
@@ -215,7 +319,6 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 #pragma mark ---------MyHeaderViewDelegate--------
 -(void)myHeaderViewClick:(MyHeaderView *)headerView
 {
-    
     if ([GlobalMethod sharedInstance].isLogin) {
 
         MyTSMUserInfoViewController *infoVC = [[MyTSMUserInfoViewController alloc] init];

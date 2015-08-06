@@ -14,4 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *pawssWorld;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+
 @end

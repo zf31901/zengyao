@@ -7,6 +7,8 @@
 //
 
 #import "MyTSMSetViewController.h"
+#import "AboutTSMViewController.h"
+#import "MyTSMFeedBackViewController.h"
 
 @interface MyTSMSetViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -29,6 +31,10 @@
 {
     self.navigationController.navigationBarHidden = NO;
     self.title = @"设置";
+    
+    [_exitBtn makeCorner:5];
+    [_exitBtn setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+    [_exitBtn setBackgroundColor:Common_Btn_BgColor];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -53,8 +59,29 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.section == 0) {
+        switch (indexPath.row){
+            case 0:
+            {
+                AboutTSMViewController *aboutVC = [[AboutTSMViewController alloc] init];
+                [self.navigationController pushViewController:aboutVC animated:YES];
+            }
+                break;
+            case 1:
+            {
+                MyTSMFeedBackViewController *feedBack = [[MyTSMFeedBackViewController alloc] init];
+                [self.navigationController pushViewController:feedBack animated:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }else{
+        
+    }
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -80,6 +107,32 @@
     NSArray *arr1 = [NSArray arrayWithObjects:@"清除缓存", nil];
     [_dataArr addObject:arr];
     [_dataArr addObject:arr1];
+}
+- (IBAction)exitLoginAction:(id)sender {
+    
+    
+    NSDictionary *parameter = @{@"u": UserInfoData.im,@"clientkey":UserInfoData.clientkey};
+    [HttpRequest_MyApi GETURLString:@"/user/loginout/" parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    
+        NSDictionary *rqDic = (NSDictionary *)responseObj;
+        
+        NSLog(@"rqDic === %@",rqDic);
+        
+        if([rqDic[HTTP_STATE] boolValue]){
+            
+            [GlobalMethod saveLoginInStatus:NO];
+            [GlobalMethod sharedInstance].isLogin = NO;
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        }else{
+            NSLog(@"errorMsg: %@",rqDic[HTTP_MSG]);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
 }
 
 - (void)back
