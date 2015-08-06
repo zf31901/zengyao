@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyTSMSetViewController">
             <connections>
+                <outlet property="exitBtn" destination="c5f-1B-Hyn" id="RfD-Q7-uEG"/>
                 <outlet property="tableView" destination="rAK-3q-d1y" id="V9i-mz-kVw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,6 +25,16 @@
                         <outlet property="delegate" destination="-1" id="mFo-lI-xL4"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5f-1B-Hyn">
+                    <rect key="frame" x="20" y="172" width="280" height="40"/>
+                    <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="退出登录">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="exitLoginAction:" destination="-1" eventType="touchUpInside" id="GfI-gC-Mwo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="6" y="112"/>

@@ -9,6 +9,7 @@
 
 
 
-#define CommonBgColor (UIColorFromRGB(0x915ce6))
+#define CommonBgColor      (UIColorFromRGB(0x915ce6))
+#define Common_Btn_BgColor (UIColorFromRGB(0xa075e6))
 
 #define default_head @"默认头像80"

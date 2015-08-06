@@ -73,6 +73,20 @@
 		165EB4771B298F440070D1F8 /* ThinLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165EB4751B298F440070D1F8 /* ThinLineCell.xib */; };
 		16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BE81B466A7C00767F94 /* S2-Logo-FM.png */; };
 		16776BEB1B466BC100767F94 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BEA1B466BC100767F94 /* Default-568h@2x.png */; };
+		167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */; };
+		167BB28F1B73126500098D86 /* MyTSMFeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB28D1B73126500098D86 /* MyTSMFeedBackViewController.xib */; };
+		167BB2981B73496C00098D86 /* PatientApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB2961B73496C00098D86 /* PatientApplyViewController.m */; };
+		167BB2991B73496C00098D86 /* PatientApplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2971B73496C00098D86 /* PatientApplyViewController.xib */; };
+		167BB29D1B73499800098D86 /* PatientQuestiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB29B1B73499800098D86 /* PatientQuestiViewController.m */; };
+		167BB29E1B73499800098D86 /* PatientQuestiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB29C1B73499800098D86 /* PatientQuestiViewController.xib */; };
+		167BB2A21B734A0E00098D86 /* DocMyPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB2A01B734A0E00098D86 /* DocMyPatientViewController.m */; };
+		167BB2A31B734A0E00098D86 /* DocMyPatientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2A11B734A0E00098D86 /* DocMyPatientViewController.xib */; };
+		167BB2A71B734A5F00098D86 /* DocMyTrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */; };
+		167BB2A81B734A5F00098D86 /* DocMyTrainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */; };
+		167BB2AC1B734A9A00098D86 /* DocMyAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */; };
+		167BB2AD1B734A9A00098D86 /* DocMyAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */; };
+		167BB2B11B734B0200098D86 /* ManagerMyTrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB2AF1B734B0200098D86 /* ManagerMyTrainViewController.m */; };
+		167BB2B21B734B0200098D86 /* ManagerMyTrainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2B01B734B0200098D86 /* ManagerMyTrainViewController.xib */; };
 		168369411B2AAD2100A78898 /* YYPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369401B2AAD2100A78898 /* YYPhotoPicker.m */; };
 		168369461B2AB1B800A78898 /* SetMyTSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369441B2AB1B800A78898 /* SetMyTSMViewController.m */; };
 		168369471B2AB1B800A78898 /* SetMyTSMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168369451B2AB1B800A78898 /* SetMyTSMViewController.xib */; };
@@ -302,6 +316,27 @@
 		165EB4751B298F440070D1F8 /* ThinLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThinLineCell.xib; sourceTree = "<group>"; };
 		16776BE81B466A7C00767F94 /* S2-Logo-FM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "S2-Logo-FM.png"; sourceTree = "<group>"; };
 		16776BEA1B466BC100767F94 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMFeedBackViewController.h; sourceTree = "<group>"; };
+		167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMFeedBackViewController.m; sourceTree = "<group>"; };
+		167BB28D1B73126500098D86 /* MyTSMFeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMFeedBackViewController.xib; sourceTree = "<group>"; };
+		167BB2951B73496C00098D86 /* PatientApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientApplyViewController.h; sourceTree = "<group>"; };
+		167BB2961B73496C00098D86 /* PatientApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientApplyViewController.m; sourceTree = "<group>"; };
+		167BB2971B73496C00098D86 /* PatientApplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientApplyViewController.xib; sourceTree = "<group>"; };
+		167BB29A1B73499800098D86 /* PatientQuestiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientQuestiViewController.h; sourceTree = "<group>"; };
+		167BB29B1B73499800098D86 /* PatientQuestiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientQuestiViewController.m; sourceTree = "<group>"; };
+		167BB29C1B73499800098D86 /* PatientQuestiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientQuestiViewController.xib; sourceTree = "<group>"; };
+		167BB29F1B734A0E00098D86 /* DocMyPatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocMyPatientViewController.h; sourceTree = "<group>"; };
+		167BB2A01B734A0E00098D86 /* DocMyPatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocMyPatientViewController.m; sourceTree = "<group>"; };
+		167BB2A11B734A0E00098D86 /* DocMyPatientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocMyPatientViewController.xib; sourceTree = "<group>"; };
+		167BB2A41B734A5F00098D86 /* DocMyTrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocMyTrainViewController.h; sourceTree = "<group>"; };
+		167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocMyTrainViewController.m; sourceTree = "<group>"; };
+		167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocMyTrainViewController.xib; sourceTree = "<group>"; };
+		167BB2A91B734A9A00098D86 /* DocMyAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocMyAnswerViewController.h; sourceTree = "<group>"; };
+		167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocMyAnswerViewController.m; sourceTree = "<group>"; };
+		167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocMyAnswerViewController.xib; sourceTree = "<group>"; };
+		167BB2AE1B734B0200098D86 /* ManagerMyTrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerMyTrainViewController.h; sourceTree = "<group>"; };
+		167BB2AF1B734B0200098D86 /* ManagerMyTrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerMyTrainViewController.m; sourceTree = "<group>"; };
+		167BB2B01B734B0200098D86 /* ManagerMyTrainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerMyTrainViewController.xib; sourceTree = "<group>"; };
 		1683693F1B2AAD2100A78898 /* YYPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPhotoPicker.h; sourceTree = "<group>"; };
 		168369401B2AAD2100A78898 /* YYPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPhotoPicker.m; sourceTree = "<group>"; };
 		168369431B2AB1B800A78898 /* SetMyTSMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMyTSMViewController.h; sourceTree = "<group>"; };
@@ -530,6 +565,9 @@
 				10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */,
 				10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */,
 				161E7F171B721B6E0067635E /* MyTSMSetViewController.xib */,
+				167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */,
+				167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */,
+				167BB28D1B73126500098D86 /* MyTSMFeedBackViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -771,6 +809,48 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		167BB2911B7346C700098D86 /* patient(患者) */ = {
+			isa = PBXGroup;
+			children = (
+				167BB2951B73496C00098D86 /* PatientApplyViewController.h */,
+				167BB2961B73496C00098D86 /* PatientApplyViewController.m */,
+				167BB2971B73496C00098D86 /* PatientApplyViewController.xib */,
+				167BB29A1B73499800098D86 /* PatientQuestiViewController.h */,
+				167BB29B1B73499800098D86 /* PatientQuestiViewController.m */,
+				167BB29C1B73499800098D86 /* PatientQuestiViewController.xib */,
+			);
+			name = "patient(患者)";
+			path = patient;
+			sourceTree = "<group>";
+		};
+		167BB2921B7347C700098D86 /* doctor(医生) */ = {
+			isa = PBXGroup;
+			children = (
+				167BB29F1B734A0E00098D86 /* DocMyPatientViewController.h */,
+				167BB2A01B734A0E00098D86 /* DocMyPatientViewController.m */,
+				167BB2A11B734A0E00098D86 /* DocMyPatientViewController.xib */,
+				167BB2A41B734A5F00098D86 /* DocMyTrainViewController.h */,
+				167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */,
+				167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */,
+				167BB2A91B734A9A00098D86 /* DocMyAnswerViewController.h */,
+				167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */,
+				167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */,
+			);
+			name = "doctor(医生)";
+			path = doctor;
+			sourceTree = "<group>";
+		};
+		167BB2931B73484D00098D86 /* manager(协管员和药房) */ = {
+			isa = PBXGroup;
+			children = (
+				167BB2AE1B734B0200098D86 /* ManagerMyTrainViewController.h */,
+				167BB2AF1B734B0200098D86 /* ManagerMyTrainViewController.m */,
+				167BB2B01B734B0200098D86 /* ManagerMyTrainViewController.xib */,
+			);
+			name = "manager(协管员和药房)";
+			path = manager;
+			sourceTree = "<group>";
+		};
 		1683693E1B2AAD2100A78898 /* YYPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -924,6 +1004,9 @@
 		16B9098E1B281EFA00211892 /* MyTSMVC */ = {
 			isa = PBXGroup;
 			children = (
+				167BB2931B73484D00098D86 /* manager(协管员和药房) */,
+				167BB2921B7347C700098D86 /* doctor(医生) */,
+				167BB2911B7346C700098D86 /* patient(患者) */,
 				16034ABD1B6F43EF0063EFD7 /* model */,
 				16034ABC1B6F43DB0063EFD7 /* views */,
 				16034ABE1B6F43FE0063EFD7 /* controller */,
@@ -1235,6 +1318,7 @@
 				161263621B3D034B00EAEDE6 /* MyShenqingViewContrlller.xib in Resources */,
 				168561831B4A8A5C00F47F93 /* LoginViewController.xib in Resources */,
 				16C3F9BD1B25711C0040D80C /* User50_press@2x.png in Resources */,
+				167BB2B21B734B0200098D86 /* ManagerMyTrainViewController.xib in Resources */,
 				16C3F9B61B25711C0040D80C /* successful50_nomal@1.5x.png in Resources */,
 				16C3F9851B25711C0040D80C /* appl40@1x.png in Resources */,
 				169071441B34088700A4CD21 /* DonationCell.xib in Resources */,
@@ -1259,12 +1343,14 @@
 				1692BBC01B426E330094E7A0 /* PhoneNumCell.xib in Resources */,
 				162597CF1B68E31000E3FA95 /* SetTSMCell.xib in Resources */,
 				16C3F9BA1B25711C0040D80C /* User50_nomal@2x.png in Resources */,
+				167BB2A31B734A0E00098D86 /* DocMyPatientViewController.xib in Resources */,
 				16C3F9951B25711C0040D80C /* choose40_selected@1.5x.png in Resources */,
 				8ABF0FB11B25296700F42BC5 /* Images.xcassets in Resources */,
 				161263681B3D371800EAEDE6 /* ReportViewContrlller.xib in Resources */,
 				16C3F9991B25711C0040D80C /* Help50_press@2x.png in Resources */,
 				16C3F9AE1B25711C0040D80C /* Set-up40@2x.png in Resources */,
 				16C3F99E1B25711C0040D80C /* News50_nomal@3x.png in Resources */,
+				167BB2991B73496C00098D86 /* PatientApplyViewController.xib in Resources */,
 				1685AF361B2FFD4200F725C3 /* MyPatientViewController.xib in Resources */,
 				16C3F99D1B25711C0040D80C /* News50_nomal@1x.png in Resources */,
 				16C3F98B1B25711C0040D80C /* arrow-fight16x25_gray@0.5x.png in Resources */,
@@ -1295,6 +1381,7 @@
 				16B909951B281F6600211892 /* DonationViewController.xib in Resources */,
 				16C3F9961B25711C0040D80C /* Help50_nomal@2x.png in Resources */,
 				165EB4721B298F290070D1F8 /* LineCell.xib in Resources */,
+				167BB29E1B73499800098D86 /* PatientQuestiViewController.xib in Resources */,
 				169071501B34220600A4CD21 /* AskForCell.xib in Resources */,
 				16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */,
 				16B9099F1B281F7800211892 /* NewsViewController.xib in Resources */,
@@ -1313,8 +1400,10 @@
 				168369471B2AB1B800A78898 /* SetMyTSMViewController.xib in Resources */,
 				16C3F9AD1B25711C0040D80C /* remind36@1.5x.png in Resources */,
 				16C3F9A61B25711C0040D80C /* patient40@1x.png in Resources */,
+				167BB28F1B73126500098D86 /* MyTSMFeedBackViewController.xib in Resources */,
 				16C3F9AB1B25711C0040D80C /* remind36.png in Resources */,
 				1683695B1B2ACC1E00A78898 /* PersonalDataViewController.xib in Resources */,
+				167BB2A81B734A5F00098D86 /* DocMyTrainViewController.xib in Resources */,
 				16C3F9B21B25711C0040D80C /* successful50@0.5x.png in Resources */,
 				1690714A1B3408D600A4CD21 /* AskForDonationViewController.xib in Resources */,
 				16C3F9B41B25711C0040D80C /* successful50_nomal.png in Resources */,
@@ -1330,6 +1419,7 @@
 				16C3F9B91B25711C0040D80C /* training40@3x.png in Resources */,
 				16B084FE1B6B5506004512E6 /* RegisterNextViewController.xib in Resources */,
 				10694DC11B72066800CE2504 /* MyTSMUserInfoViewController.xib in Resources */,
+				167BB2AD1B734A9A00098D86 /* DocMyAnswerViewController.xib in Resources */,
 				16C3F9861B25711C0040D80C /* appl40@3x.png in Resources */,
 				1692BBC51B4275400094E7A0 /* OnlyTextFieldCell.xib in Resources */,
 				16C3F9931B25711C0040D80C /* choose40_selected.png in Resources */,
@@ -1393,7 +1483,11 @@
 				168369411B2AAD2100A78898 /* YYPhotoPicker.m in Sources */,
 				1685AF2F1B2FF9D600F725C3 /* MyPatientCell.m in Sources */,
 				1615F9701B4BCC8800B236B7 /* NewsTableViewCell.m in Sources */,
+				167BB2981B73496C00098D86 /* PatientApplyViewController.m in Sources */,
+				167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */,
 				16034AB81B6F0DF80063EFD7 /* GlobalMethod.m in Sources */,
+				167BB2A21B734A0E00098D86 /* DocMyPatientViewController.m in Sources */,
+				167BB29D1B73499800098D86 /* PatientQuestiViewController.m in Sources */,
 				1612635B1B3CFB3500EAEDE6 /* MyShenqingCell.m in Sources */,
 				8ABF0FA31B25296700F42BC5 /* main.m in Sources */,
 				169071491B3408D600A4CD21 /* AskForDonationViewController.m in Sources */,
@@ -1412,6 +1506,7 @@
 				16415CD71B6A1E0C00466A03 /* RegisterViewController.m in Sources */,
 				9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */,
 				16B9099E1B281F7800211892 /* NewsViewController.m in Sources */,
+				167BB2B11B734B0200098D86 /* ManagerMyTrainViewController.m in Sources */,
 				16034AB51B6F0D6B0063EFD7 /* UserObj.m in Sources */,
 				164C0F461B6F77D00040321E /* MyProTableViewCell.m in Sources */,
 				16034ABB1B6F0E990063EFD7 /* GlobalVariable.m in Sources */,
@@ -1419,6 +1514,7 @@
 				1692BBBF1B426E330094E7A0 /* PhoneNumCell.m in Sources */,
 				9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */,
 				9D51FD601B6F446F007FF74F /* newCell.m in Sources */,
+				167BB2A71B734A5F00098D86 /* DocMyTrainViewController.m in Sources */,
 				10694DC21B72066800CE2504 /* MyTSMUserInfoViewController.m in Sources */,
 				168369651B2AD5E800A78898 /* PersonalCell.m in Sources */,
 				168369461B2AB1B800A78898 /* SetMyTSMViewController.m in Sources */,
@@ -1441,6 +1537,7 @@
 				165EB4711B298F290070D1F8 /* LineCell.m in Sources */,
 				162597C81B68E2AD00E3FA95 /* MyTSMListCell.m in Sources */,
 				162597C61B68E2AD00E3FA95 /* MyTSMHeaderCell.m in Sources */,
+				167BB2AC1B734A9A00098D86 /* DocMyAnswerViewController.m in Sources */,
 				9DD88C7A1B6B8AAD00D22955 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

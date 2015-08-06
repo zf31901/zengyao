@@ -20,10 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUI];
     [self setNavView];
     
     [self setLogin];
     
+}
+
+-(void)setUI
+{
+    [_loginBtn makeCorner:5];
+    [_registerBtn makeCorner:5];
+    
+    [_loginBtn setBackgroundColor:Common_Btn_BgColor];
+    [_loginBtn setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+    [_registerBtn setBackgroundColor:UIColorFromRGB(0xd8d8d8)];
+    [_registerBtn setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
 }
 
 -(void)setNavView
@@ -41,6 +53,48 @@
 #pragma mark -------登录-------------
 - (IBAction)loginBtn:(id)sender {
     
+    [self saveUserIdentifyByObj:@"1"];
+    [self loginRquest];
+    
+}
+//用户
+- (IBAction)userBtnClick:(id)sender {
+    
+    [self saveUserIdentifyByObj:@"1"];
+    [self loginRquest];
+}
+
+//医生
+- (IBAction)docBtnClick:(id)sender {
+    
+    [self saveUserIdentifyByObj:@"2"];
+     [self loginRquest];
+}
+
+//协管员
+- (IBAction)managerBtnClick:(id)sender {
+    
+    [self saveUserIdentifyByObj:@"3"];
+     [self loginRquest];
+}
+
+//药房
+- (IBAction)medBtnClick:(id)sender {
+    
+    [self saveUserIdentifyByObj:@"4"];
+     [self loginRquest];
+}
+
+-(void)saveUserIdentifyByObj:(id)obj
+{
+    [[NSUserDefaults standardUserDefaults] setObject:obj forKey:@"userId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+-(void)loginRquest
+{
+    
     if (![self cheakText]) {
         return;
     }
@@ -51,9 +105,9 @@
         NSDictionary *rqDic = (NSDictionary *)responseObject;
         
         if ([rqDic[@"state"] boolValue]) {
-//            NSLog(@"rqdic == %@",rqDic);
+            NSLog(@"rqdic == %@",rqDic);
             NSDictionary *dic_login = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-//            NSLog(@"dic_login = %@",dic_login);
+            NSLog(@"dic_login = %@",dic_login);
             
             NSDictionary *param = @{@"u": _nikeName.text, @"clientkey": dic_login[@"clientkey"]};
             //获取用户信息
@@ -65,6 +119,7 @@
     }];
     
     [self hidKeyBoard];
+    
 }
 
 // 获取用户信息

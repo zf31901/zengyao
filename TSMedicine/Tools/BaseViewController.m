@@ -22,8 +22,17 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:RGBS(255), NSFontAttributeName:[UIFont systemFontOfSize:18]};
     
     [self buidLeftBtn];
+    
+    [self setbgView];
    
 }
+-(void)setbgView
+{
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    bgImageView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    [self.view sendSubviewToBack:bgImageView];
+}
+
 - (void)buidLeftBtn
 {
     if((int)[self.navigationController.viewControllers count]!=1)

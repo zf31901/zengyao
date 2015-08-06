@@ -36,7 +36,9 @@
     _verifyBtn.layer.borderColor = RGBA(0, 0, 0, 0.2).CGColor;
     
     _nextBtn.layer.cornerRadius = 4.0;
-    [_nextBtn setBackgroundColor:CommonBgColor];
+    [_nextBtn setBackgroundColor:Common_Btn_BgColor];
+    
+    _phoneNumbTF.keyboardType = UIKeyboardTypeNumberPad;
     
 }
 
@@ -82,9 +84,6 @@
         [self.navigationController pushViewController:nextRgster animated:YES];
     }
 }
-
-
-
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

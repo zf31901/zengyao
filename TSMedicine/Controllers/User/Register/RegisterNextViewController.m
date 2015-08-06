@@ -31,8 +31,8 @@
 
 -(void)drawUI
 {
-    _finishBtn.layer.cornerRadius = 4.0;
-    [_finishBtn setBackgroundColor:CommonBgColor];
+    _finishBtn.layer.cornerRadius = 5.0;
+    [_finishBtn setBackgroundColor:Common_Btn_BgColor];
     
 }
 

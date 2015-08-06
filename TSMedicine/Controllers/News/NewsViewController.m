@@ -30,9 +30,6 @@
     NSString *tree;
     NSInteger a_id;
     
-    
-    
-    
 }
 @property(nonatomic,strong)FootLabel *footerLabel;
 @property (nonatomic,assign)NSInteger count;//控制行数
