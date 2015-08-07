@@ -71,6 +71,11 @@
 		165EB4721B298F290070D1F8 /* LineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165EB4701B298F290070D1F8 /* LineCell.xib */; };
 		165EB4761B298F440070D1F8 /* ThinLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 165EB4741B298F440070D1F8 /* ThinLineCell.m */; };
 		165EB4771B298F440070D1F8 /* ThinLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165EB4751B298F440070D1F8 /* ThinLineCell.xib */; };
+		1660771D1B74503C00978E0F /* MyPatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1660771B1B74503C00978E0F /* MyPatientTableViewCell.m */; };
+		1660771E1B74503C00978E0F /* MyPatientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1660771C1B74503C00978E0F /* MyPatientTableViewCell.xib */; };
+		166077221B74523900978E0F /* MyPatientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077211B74523900978E0F /* MyPatientModel.m */; };
+		166077261B74602000978E0F /* MyTrainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077241B74602000978E0F /* MyTrainTableViewCell.m */; };
+		166077271B74602000978E0F /* MyTrainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166077251B74602000978E0F /* MyTrainTableViewCell.xib */; };
 		16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BE81B466A7C00767F94 /* S2-Logo-FM.png */; };
 		16776BEB1B466BC100767F94 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BEA1B466BC100767F94 /* Default-568h@2x.png */; };
 		167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */; };
@@ -314,6 +319,14 @@
 		165EB4731B298F440070D1F8 /* ThinLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThinLineCell.h; sourceTree = "<group>"; };
 		165EB4741B298F440070D1F8 /* ThinLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThinLineCell.m; sourceTree = "<group>"; };
 		165EB4751B298F440070D1F8 /* ThinLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThinLineCell.xib; sourceTree = "<group>"; };
+		1660771A1B74503C00978E0F /* MyPatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPatientTableViewCell.h; sourceTree = "<group>"; };
+		1660771B1B74503C00978E0F /* MyPatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPatientTableViewCell.m; sourceTree = "<group>"; };
+		1660771C1B74503C00978E0F /* MyPatientTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPatientTableViewCell.xib; sourceTree = "<group>"; };
+		166077201B74523900978E0F /* MyPatientModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPatientModel.h; sourceTree = "<group>"; };
+		166077211B74523900978E0F /* MyPatientModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPatientModel.m; sourceTree = "<group>"; };
+		166077231B74602000978E0F /* MyTrainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrainTableViewCell.h; sourceTree = "<group>"; };
+		166077241B74602000978E0F /* MyTrainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTrainTableViewCell.m; sourceTree = "<group>"; };
+		166077251B74602000978E0F /* MyTrainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTrainTableViewCell.xib; sourceTree = "<group>"; };
 		16776BE81B466A7C00767F94 /* S2-Logo-FM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "S2-Logo-FM.png"; sourceTree = "<group>"; };
 		16776BEA1B466BC100767F94 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMFeedBackViewController.h; sourceTree = "<group>"; };
@@ -809,6 +822,44 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		166077181B74468300978E0F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				1660771A1B74503C00978E0F /* MyPatientTableViewCell.h */,
+				1660771B1B74503C00978E0F /* MyPatientTableViewCell.m */,
+				1660771C1B74503C00978E0F /* MyPatientTableViewCell.xib */,
+				166077231B74602000978E0F /* MyTrainTableViewCell.h */,
+				166077241B74602000978E0F /* MyTrainTableViewCell.m */,
+				166077251B74602000978E0F /* MyTrainTableViewCell.xib */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		166077191B74469000978E0F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				167BB29F1B734A0E00098D86 /* DocMyPatientViewController.h */,
+				167BB2A01B734A0E00098D86 /* DocMyPatientViewController.m */,
+				167BB2A11B734A0E00098D86 /* DocMyPatientViewController.xib */,
+				167BB2A41B734A5F00098D86 /* DocMyTrainViewController.h */,
+				167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */,
+				167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */,
+				167BB2A91B734A9A00098D86 /* DocMyAnswerViewController.h */,
+				167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */,
+				167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		1660771F1B7451FB00978E0F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				166077201B74523900978E0F /* MyPatientModel.h */,
+				166077211B74523900978E0F /* MyPatientModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		167BB2911B7346C700098D86 /* patient(患者) */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,15 +877,9 @@
 		167BB2921B7347C700098D86 /* doctor(医生) */ = {
 			isa = PBXGroup;
 			children = (
-				167BB29F1B734A0E00098D86 /* DocMyPatientViewController.h */,
-				167BB2A01B734A0E00098D86 /* DocMyPatientViewController.m */,
-				167BB2A11B734A0E00098D86 /* DocMyPatientViewController.xib */,
-				167BB2A41B734A5F00098D86 /* DocMyTrainViewController.h */,
-				167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */,
-				167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */,
-				167BB2A91B734A9A00098D86 /* DocMyAnswerViewController.h */,
-				167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */,
-				167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */,
+				1660771F1B7451FB00978E0F /* model */,
+				166077181B74468300978E0F /* views */,
+				166077191B74469000978E0F /* controller */,
 			);
 			name = "doctor(医生)";
 			path = doctor;
@@ -1318,6 +1363,7 @@
 				161263621B3D034B00EAEDE6 /* MyShenqingViewContrlller.xib in Resources */,
 				168561831B4A8A5C00F47F93 /* LoginViewController.xib in Resources */,
 				16C3F9BD1B25711C0040D80C /* User50_press@2x.png in Resources */,
+				166077271B74602000978E0F /* MyTrainTableViewCell.xib in Resources */,
 				167BB2B21B734B0200098D86 /* ManagerMyTrainViewController.xib in Resources */,
 				16C3F9B61B25711C0040D80C /* successful50_nomal@1.5x.png in Resources */,
 				16C3F9851B25711C0040D80C /* appl40@1x.png in Resources */,
@@ -1390,6 +1436,7 @@
 				162597C71B68E2AD00E3FA95 /* MyTSMHeaderCell.xib in Resources */,
 				10694DCF1B72074000CE2504 /* MyUserInfoView.xib in Resources */,
 				16C3F9971B25711C0040D80C /* Help50_nomal@1x.png in Resources */,
+				1660771E1B74503C00978E0F /* MyPatientTableViewCell.xib in Resources */,
 				16C3F9941B25711C0040D80C /* choose40_selected@0.5x.png in Resources */,
 				16C3F99A1B25711C0040D80C /* Help50_press@1x.png in Resources */,
 				16C3F9A31B25711C0040D80C /* notice40@1x.png in Resources */,
@@ -1491,6 +1538,7 @@
 				1612635B1B3CFB3500EAEDE6 /* MyShenqingCell.m in Sources */,
 				8ABF0FA31B25296700F42BC5 /* main.m in Sources */,
 				169071491B3408D600A4CD21 /* AskForDonationViewController.m in Sources */,
+				1660771D1B74503C00978E0F /* MyPatientTableViewCell.m in Sources */,
 				16B909991B281F6E00211892 /* MyTSMViewController.m in Sources */,
 				1653CE461B69B85B001D21FF /* JSONKit.m in Sources */,
 				16034AB21B6F0D510063EFD7 /* BaseModel.m in Sources */,
@@ -1517,6 +1565,8 @@
 				167BB2A71B734A5F00098D86 /* DocMyTrainViewController.m in Sources */,
 				10694DC21B72066800CE2504 /* MyTSMUserInfoViewController.m in Sources */,
 				168369651B2AD5E800A78898 /* PersonalCell.m in Sources */,
+				166077261B74602000978E0F /* MyTrainTableViewCell.m in Sources */,
+				166077221B74523900978E0F /* MyPatientModel.m in Sources */,
 				168369461B2AB1B800A78898 /* SetMyTSMViewController.m in Sources */,
 				16034AC11B6F45390063EFD7 /* MyHeaderView.m in Sources */,
 				16034AD01B6F4ADB0063EFD7 /* NSString+autoResize.m in Sources */,

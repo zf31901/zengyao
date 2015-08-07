@@ -10,4 +10,6 @@
 
 @interface DocMyPatientViewController : BaseViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
