@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il5-iL-hc1">
-                        <rect key="frame" x="128" y="76" width="89" height="29.5"/>
+                        <rect key="frame" x="128" y="76" width="149" height="29.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -39,7 +39,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="dataTime" destination="il5-iL-hc1" id="5lf-hU-eqq"/>
-                <outlet property="imageView" destination="PDF-EV-TUA" id="NPy-UU-xnA"/>
                 <outlet property="upimage" destination="PDF-EV-TUA" id="MEy-4H-PrL"/>
                 <outlet property="upname" destination="LTY-xz-vT9" id="eUj-0k-1v3"/>
             </connections>

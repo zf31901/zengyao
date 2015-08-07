@@ -70,7 +70,7 @@
   
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"3"      forKey:@"pagesize"];
+    [dic setObject:@"4"      forKey:@"pagesize"];
 
     YYHttpRequest *hq = [[YYHttpRequest alloc] init];
     
