@@ -12,5 +12,7 @@
 @property (nonatomic, strong)             NSString *upimage1;
 @property (nonatomic, strong)             NSString *upname1;
 @property (nonatomic, strong)             NSString *upcreatedate1;
+@property(nonatomic,strong)              NSString *upstate1;
+@property (nonatomic,assign) BOOL isReport;
 
 @end
