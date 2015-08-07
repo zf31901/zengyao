@@ -139,11 +139,11 @@
     //  [cell.upimage setImageWithURL:[NSURL URLWithString:model.upimage1] ];
 //    [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage1]];
     
-    if (model.upimage1) {
+    if (![model.upimage1 isKindOfClass:[NSNull class]]) {
         //cell.upimage.image = [UIImage imageWithContentsOfFile:model.upimage1];
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.upimage1]];
+       // NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.upimage1]];
         
-     // [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage1] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
+      [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage1] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
     }
     
     NSLog(@"upimage1--%@",model.upimage1);

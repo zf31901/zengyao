@@ -7,6 +7,9 @@
 //
 
 #import "AppprogressViewController.h"
+#import "ProjectdetailViewController.h"
+
+
 
 @interface AppprogressViewController ()
 
@@ -19,6 +22,9 @@
     
     [self setNavView];
     [self setNavlable];
+    
+        
+    
     
 }
 -(void)setNavView
@@ -43,8 +49,8 @@
 }
 - (void)nextpageVC
 {
-//    CommitAskForViewController *commitVC = [CommitAskForViewController new];
-//    [self.navigationController pushViewController:commitVC animated:YES];
+    ProjectdetailViewController *commitVC = [ProjectdetailViewController new];
+    [self.navigationController pushViewController:commitVC animated:YES];
     
 }
 
