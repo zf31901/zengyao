@@ -1,36 +1,44 @@
 //
-//  DocMyAnswerViewController.m
+//  DocProjectQuestViewController.m
 //  TSMedicine
 //
-//  Created by lyy on 15-8-6.
+//  Created by lyy on 15-8-7.
 //  Copyright (c) 2015年 ewt. All rights reserved.
 //
 
-#import "DocMyAnswerViewController.h"
 #import "DocProjectQuestViewController.h"
+#import "MyPatQuestModel.h"
 
-#import "MyProjectModel.h"
+#import "MyQuestTableViewCell.h"
 
-@interface DocMyAnswerViewController ()<UITableViewDelegate,UITableViewDataSource>
+NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
+
+@interface DocProjectQuestViewController ()<UITableViewDataSource,UITabBarDelegate>
 
 @property (nonatomic,strong) NSMutableArray *dataArr;
 
 @end
 
-@implementation DocMyAnswerViewController
+@implementation DocProjectQuestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setNavView];
-    
     [self loadData];
+    
+    [self setTabView];
 }
 
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden = NO;
-    self.title = @"选择项目";
+    self.title = [NSString stringWithFormat:@"%@问题",_model.upname];
+}
+
+-(void)setTabView
+{
+    [_tableView registerNib:[UINib nibWithNibName:QuestTableViewCell bundle:nil] forCellReuseIdentifier:QuestTableViewCell];
 }
 
 #pragma mark --------UITableViewDataSource--------
@@ -44,13 +52,12 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MyQuestTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QuestTableViewCell];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[MyQuestTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QuestTableViewCell];
     }
-    MyProjectModel *model = _dataArr[indexPath.row];
-    cell.textLabel.text = model.upname;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    MyPatQuestModel *model = _dataArr[indexPath.row];
+    cell.model = model;
     return cell;
 }
 
@@ -58,15 +65,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    DocProjectQuestViewController *questVC = [[DocProjectQuestViewController alloc] init];
-    questVC.model = _dataArr[indexPath.row];
-    [self.navigationController pushViewController:questVC animated:YES];
-    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return 60.0f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -78,13 +80,13 @@
 {
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"pid":_model.uppid,@"userid":_model.upuserid,@"pageid":@"1",@"pagesize":@"10"};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj == %@",responseObj);
         
         for (NSDictionary *dic in responseObj[@"data"]) {
-            MyProjectModel *model = [[MyProjectModel alloc] init];
+            MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [_dataArr addObject:model];
         }
@@ -92,14 +94,13 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
     }];
-
+    
 }
 
 - (void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

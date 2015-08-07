@@ -10,4 +10,6 @@
 
 @interface DocMyAnswerViewController : BaseViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end

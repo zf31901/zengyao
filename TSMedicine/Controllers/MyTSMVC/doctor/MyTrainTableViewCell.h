@@ -10,4 +10,9 @@
 
 @interface MyTrainTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *picImageView;
+@property (weak, nonatomic) IBOutlet UILabel *projectLab;
+@property (weak, nonatomic) IBOutlet UILabel *timeLab;
+@property (weak, nonatomic) IBOutlet UILabel *stateLab;
+
 @end

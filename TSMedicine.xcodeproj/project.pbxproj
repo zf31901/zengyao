@@ -76,6 +76,12 @@
 		166077221B74523900978E0F /* MyPatientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077211B74523900978E0F /* MyPatientModel.m */; };
 		166077261B74602000978E0F /* MyTrainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077241B74602000978E0F /* MyTrainTableViewCell.m */; };
 		166077271B74602000978E0F /* MyTrainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166077251B74602000978E0F /* MyTrainTableViewCell.xib */; };
+		1660772A1B74AA8000978E0F /* MyProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077291B74AA8000978E0F /* MyProjectModel.m */; };
+		1660772E1B74B03600978E0F /* DocProjectQuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1660772C1B74B03600978E0F /* DocProjectQuestViewController.m */; };
+		1660772F1B74B03600978E0F /* DocProjectQuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1660772D1B74B03600978E0F /* DocProjectQuestViewController.xib */; };
+		166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077311B74B41700978E0F /* MyPatQuestModel.m */; };
+		166077361B74B6FA00978E0F /* MyQuestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077341B74B6FA00978E0F /* MyQuestTableViewCell.m */; };
+		166077371B74B6FA00978E0F /* MyQuestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166077351B74B6FA00978E0F /* MyQuestTableViewCell.xib */; };
 		16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BE81B466A7C00767F94 /* S2-Logo-FM.png */; };
 		16776BEB1B466BC100767F94 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BEA1B466BC100767F94 /* Default-568h@2x.png */; };
 		167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */; };
@@ -327,6 +333,16 @@
 		166077231B74602000978E0F /* MyTrainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrainTableViewCell.h; sourceTree = "<group>"; };
 		166077241B74602000978E0F /* MyTrainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTrainTableViewCell.m; sourceTree = "<group>"; };
 		166077251B74602000978E0F /* MyTrainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTrainTableViewCell.xib; sourceTree = "<group>"; };
+		166077281B74AA8000978E0F /* MyProjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProjectModel.h; sourceTree = "<group>"; };
+		166077291B74AA8000978E0F /* MyProjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProjectModel.m; sourceTree = "<group>"; };
+		1660772B1B74B03600978E0F /* DocProjectQuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocProjectQuestViewController.h; sourceTree = "<group>"; };
+		1660772C1B74B03600978E0F /* DocProjectQuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocProjectQuestViewController.m; sourceTree = "<group>"; };
+		1660772D1B74B03600978E0F /* DocProjectQuestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocProjectQuestViewController.xib; sourceTree = "<group>"; };
+		166077301B74B41700978E0F /* MyPatQuestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPatQuestModel.h; sourceTree = "<group>"; };
+		166077311B74B41700978E0F /* MyPatQuestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPatQuestModel.m; sourceTree = "<group>"; };
+		166077331B74B6FA00978E0F /* MyQuestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQuestTableViewCell.h; sourceTree = "<group>"; };
+		166077341B74B6FA00978E0F /* MyQuestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQuestTableViewCell.m; sourceTree = "<group>"; };
+		166077351B74B6FA00978E0F /* MyQuestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyQuestTableViewCell.xib; sourceTree = "<group>"; };
 		16776BE81B466A7C00767F94 /* S2-Logo-FM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "S2-Logo-FM.png"; sourceTree = "<group>"; };
 		16776BEA1B466BC100767F94 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMFeedBackViewController.h; sourceTree = "<group>"; };
@@ -831,6 +847,9 @@
 				166077231B74602000978E0F /* MyTrainTableViewCell.h */,
 				166077241B74602000978E0F /* MyTrainTableViewCell.m */,
 				166077251B74602000978E0F /* MyTrainTableViewCell.xib */,
+				166077331B74B6FA00978E0F /* MyQuestTableViewCell.h */,
+				166077341B74B6FA00978E0F /* MyQuestTableViewCell.m */,
+				166077351B74B6FA00978E0F /* MyQuestTableViewCell.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -847,6 +866,9 @@
 				167BB2A91B734A9A00098D86 /* DocMyAnswerViewController.h */,
 				167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */,
 				167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */,
+				1660772B1B74B03600978E0F /* DocProjectQuestViewController.h */,
+				1660772C1B74B03600978E0F /* DocProjectQuestViewController.m */,
+				1660772D1B74B03600978E0F /* DocProjectQuestViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -856,6 +878,10 @@
 			children = (
 				166077201B74523900978E0F /* MyPatientModel.h */,
 				166077211B74523900978E0F /* MyPatientModel.m */,
+				166077281B74AA8000978E0F /* MyProjectModel.h */,
+				166077291B74AA8000978E0F /* MyProjectModel.m */,
+				166077301B74B41700978E0F /* MyPatQuestModel.h */,
+				166077311B74B41700978E0F /* MyPatQuestModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1378,6 +1404,7 @@
 				16C3F9A91B25711C0040D80C /* questions40@1x.png in Resources */,
 				9D51FD611B6F446F007FF74F /* newCell.xib in Resources */,
 				1610F2511B282B9D0038E6E2 /* ef.png in Resources */,
+				1660772F1B74B03600978E0F /* DocProjectQuestViewController.xib in Resources */,
 				16C3F9811B25711C0040D80C /* answer40@2x.png in Resources */,
 				16C3F9921B25711C0040D80C /* choose40_nomal@1.5x.png in Resources */,
 				1612635C1B3CFB3500EAEDE6 /* MyShenqingCell.xib in Resources */,
@@ -1440,6 +1467,7 @@
 				16C3F9941B25711C0040D80C /* choose40_selected@0.5x.png in Resources */,
 				16C3F99A1B25711C0040D80C /* Help50_press@1x.png in Resources */,
 				16C3F9A31B25711C0040D80C /* notice40@1x.png in Resources */,
+				166077371B74B6FA00978E0F /* MyQuestTableViewCell.xib in Resources */,
 				16415CD81B6A1E0C00466A03 /* RegisterViewController.xib in Resources */,
 				16C3F9841B25711C0040D80C /* appl40@2x.png in Resources */,
 				16C3F98F1B25711C0040D80C /* arrow-left26x42_white@3x.png in Resources */,
@@ -1555,8 +1583,11 @@
 				9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */,
 				16B9099E1B281F7800211892 /* NewsViewController.m in Sources */,
 				167BB2B11B734B0200098D86 /* ManagerMyTrainViewController.m in Sources */,
+				1660772E1B74B03600978E0F /* DocProjectQuestViewController.m in Sources */,
+				1660772A1B74AA8000978E0F /* MyProjectModel.m in Sources */,
 				16034AB51B6F0D6B0063EFD7 /* UserObj.m in Sources */,
 				164C0F461B6F77D00040321E /* MyProTableViewCell.m in Sources */,
+				166077361B74B6FA00978E0F /* MyQuestTableViewCell.m in Sources */,
 				16034ABB1B6F0E990063EFD7 /* GlobalVariable.m in Sources */,
 				1653CE4E1B6A0409001D21FF /* WIDevice.m in Sources */,
 				1692BBBF1B426E330094E7A0 /* PhoneNumCell.m in Sources */,
@@ -1584,6 +1615,7 @@
 				1685AF351B2FFD4200F725C3 /* MyPatientViewController.m in Sources */,
 				1692BBB91B426CCE0094E7A0 /* PhoneVerificationCodeViewController.m in Sources */,
 				1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */,
+				166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */,
 				165EB4711B298F290070D1F8 /* LineCell.m in Sources */,
 				162597C81B68E2AD00E3FA95 /* MyTSMListCell.m in Sources */,
 				162597C61B68E2AD00E3FA95 /* MyTSMHeaderCell.m in Sources */,
