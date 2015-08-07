@@ -16,6 +16,8 @@
 
 
 #define URL @"http://app.aixinland.cn/api/userproject/List"
+
+
 @interface PatientApplyViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -74,7 +76,12 @@
                 model.upcreatedate1=[dic objectForKey:@"upcreatedate"];
                 
                 model.upimage1=[dic  objectForKey:@"upimage"];
-                
+                model.upstate1=[dic  objectForKey:@"upstate"];
+//                if (i % 2 == 0) {
+//                    model.isReport = YES;
+//                }else{
+//                    model.isReport = NO;
+//                }
                 [_dataArr addObject:model];
             }
             
@@ -136,13 +143,12 @@
     
     
     cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate1];
+    cell.upstate.text=[NSString stringWithFormat:@"%@",model.upstate1];
     //  [cell.upimage setImageWithURL:[NSURL URLWithString:model.upimage1] ];
 //    [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage1]];
     
     if (![model.upimage1 isKindOfClass:[NSNull class]]) {
-        //cell.upimage.image = [UIImage imageWithContentsOfFile:model.upimage1];
-       // NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.upimage1]];
-        
+    
       [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage1] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
     }
     

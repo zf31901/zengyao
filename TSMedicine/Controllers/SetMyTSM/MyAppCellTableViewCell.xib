@@ -29,20 +29,21 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FW4-FF-k7Q">
-                        <rect key="frame" x="222" y="38" width="72" height="30"/>
-                        <state key="normal" title="申请通过">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="申请通过" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjD-VZ-RVk">
+                        <rect key="frame" x="227" y="42" width="83" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dataTime" destination="il5-iL-hc1" id="5lf-hU-eqq"/>
                 <outlet property="upimage" destination="PDF-EV-TUA" id="MEy-4H-PrL"/>
                 <outlet property="upname" destination="LTY-xz-vT9" id="eUj-0k-1v3"/>
+                <outlet property="upstate" destination="JjD-VZ-RVk" id="Erf-Cx-ugG"/>
             </connections>
-            <point key="canvasLocation" x="260" y="262"/>
+            <point key="canvasLocation" x="120" y="188"/>
         </tableViewCell>
     </objects>
 </document>

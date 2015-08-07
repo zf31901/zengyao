@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyAppModel.h"
 @interface MyAppCellTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *upname;
 @property (weak, nonatomic) IBOutlet UIImageView *upimage;
 @property (weak, nonatomic) IBOutlet UILabel *dataTime;
+
+@property (weak, nonatomic) IBOutlet UILabel *upstate;
+
+@property(nonatomic,strong)MyAppModel *model;
+
 
 
 @end

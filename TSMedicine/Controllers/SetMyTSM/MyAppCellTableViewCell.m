@@ -14,10 +14,20 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+-(void)setModel:(MyAppModel *)model
+{
+    _model = model;
+    
+    
+    if (model.isReport) {
+       _upstate.text = @"申请通过";
+        _upstate.textColor = UIColorFromRGB(0xc7c7c7);
+    }else{
+        _upstate.text = @"拒绝申请";
+       _upstate.textColor = UIColorFromRGB(0x929292);
+    }
+    
+    
 }
 
 @end

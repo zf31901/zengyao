@@ -29,7 +29,7 @@
     _webView.delegate=self;
     
     NSString *url=[NSString stringWithFormat:@"%@",URLisr];
-    NSLog(@"url1234------%@",url);
+   // NSLog(@"url1234------%@",url);
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
