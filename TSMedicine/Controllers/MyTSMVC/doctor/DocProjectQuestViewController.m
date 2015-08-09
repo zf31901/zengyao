@@ -7,6 +7,7 @@
 //
 
 #import "DocProjectQuestViewController.h"
+#import "DocProjectAnswerViewController.h"
 #import "MyPatQuestModel.h"
 
 #import "MyQuestTableViewCell.h"
@@ -28,6 +29,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
     [self loadData];
     
     [self setTabView];
+    
 }
 
 -(void)setNavView
@@ -65,10 +67,15 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DocProjectAnswerViewController *answerVC = [[DocProjectAnswerViewController alloc] init];
+    answerVC.model = _dataArr[indexPath.row];
+    [self.navigationController pushViewController:answerVC animated:YES];
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.0f;
+    MyPatQuestModel *model = _dataArr[indexPath.row];
+    return 40.0 + model.contentSize.height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

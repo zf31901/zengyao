@@ -12,8 +12,8 @@
 
 - (void)awakeFromNib {
     
-    _nameLab.textColor = UIColorFromRGB(0x333333);
-    _phoneLab.textColor = UIColorFromRGB(0x929292);
+    _nameLab.textColor = Commom_TextColor_Main;
+    _phoneLab.textColor = Commom_TextColor_Gray;
     
 }
 

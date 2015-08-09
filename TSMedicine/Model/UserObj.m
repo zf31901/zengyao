@@ -24,6 +24,16 @@
 #define PHONESTATE  @"phoneState"
 #define REGTIME     @"regTime"
 
+#define ADDRE       @"Address"
+#define AGE         @"Age"
+#define AREA        @"Area"
+#define CITY        @"City"
+#define HOSPIT      @"Hospital"
+#define ID          @"Id"
+#define PROVIN      @"Province"
+#define TYPE        @"Type"
+#define KESHI       @"keshi"
+#define ZHICHENG    @"zhicheng"
 
 @implementation UserObj
 
@@ -41,12 +51,23 @@
         self.clientkey  = [aDecoder decodeObjectForKey:CLIENTKEY];
         self.nickName   = [aDecoder decodeObjectForKey:NICKNAME];
         self.trueName   = [aDecoder decodeObjectForKey:TRUENAME];
-        self.sex        = [aDecoder decodeBoolForKey:SEX];
+        self.sex        = [aDecoder decodeObjectForKey:SEX];
         self.headPic    = [aDecoder decodeObjectForKey:HEADPIC];
         self.email      = [aDecoder decodeObjectForKey:EMAIL];
         self.emailState = [aDecoder decodeBoolForKey:EMAILSTATE];
         self.phoneState = [aDecoder decodeBoolForKey:PHONESTATE];
         self.regTime    = [aDecoder decodeObjectForKey:REGTIME];
+        
+        self.Address      = [aDecoder decodeObjectForKey:ADDRE];
+        self.Age          = [aDecoder decodeObjectForKey:AGE];
+        self.Area         = [aDecoder decodeObjectForKey:AREA];
+        self.City         = [aDecoder decodeObjectForKey:CITY];
+        self.Hospital     = [aDecoder decodeObjectForKey:HOSPIT];
+        self.Id           = [aDecoder decodeObjectForKey:ID];
+        self.Province     = [aDecoder decodeObjectForKey:PROVIN];
+        self.Type         = [aDecoder decodeObjectForKey:TYPE];
+        self.keshi        = [aDecoder decodeObjectForKey:KESHI];
+        self.zhicheng     = [aDecoder decodeObjectForKey:ZHICHENG];
     }
     
     return self;
@@ -63,12 +84,25 @@
     [aCoder encodeObject:self.clientkey forKey:CLIENTKEY];
     [aCoder encodeObject:self.nickName forKey:NICKNAME];
     [aCoder encodeObject:self.trueName forKey:TRUENAME];
-    [aCoder encodeBool:self.sex  forKey:SEX];
+    [aCoder encodeObject:self.sex  forKey:SEX];
     [aCoder encodeObject:self.headPic    forKey:HEADPIC];
     [aCoder encodeObject:self.email       forKey:EMAIL];
     [aCoder encodeBool:self.emailState    forKey:EMAILSTATE];
     [aCoder encodeBool:self.phoneState forKey:PHONESTATE];
     [aCoder encodeObject:self.regTime       forKey:REGTIME];
+    
+    [aCoder encodeObject:self.Address       forKey:ADDRE];
+    [aCoder encodeObject:self.Age       forKey:AGE];
+    [aCoder encodeObject:self.Area       forKey:AREA];
+    [aCoder encodeObject:self.City       forKey:CITY];
+    [aCoder encodeObject:self.Hospital       forKey:HOSPIT];
+    [aCoder encodeObject:self.Id       forKey:ID];
+    [aCoder encodeObject:self.Province       forKey:PROVIN];
+    [aCoder encodeObject:self.Type       forKey:TYPE];
+    [aCoder encodeObject:self.keshi       forKey:KESHI];
+    [aCoder encodeObject:self.zhicheng       forKey:ZHICHENG];
+    
+    
 }
 
 @end

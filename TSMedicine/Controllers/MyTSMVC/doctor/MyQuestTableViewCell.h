@@ -10,6 +10,7 @@
 #import "MyPatQuestModel.h"
 
 @interface MyQuestTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *questLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 

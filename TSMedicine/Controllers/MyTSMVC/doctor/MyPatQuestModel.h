@@ -22,4 +22,6 @@
 @property (nonatomic,copy) NSString *uquserimage;
 @property (nonatomic,copy) NSString *uqusername;
 
+@property (nonatomic,assign) CGSize contentSize;
+
 @end

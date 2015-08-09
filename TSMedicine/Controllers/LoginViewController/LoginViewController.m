@@ -131,7 +131,7 @@
         NSDictionary *rqDic = (NSDictionary *)responseObj;
         if ([rqDic[@"state"] boolValue]) {
             NSDictionary *infoDic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-//            NSLog(@"infoDic === %@",infoDic)
+//            NSLog(@"infoDic === %@ --- sex = %@--%@----%@----%@",infoDic,infoDic[@"Sex"],infoDic[@"Area"],infoDic[@"City"],infoDic[@"Province"]);
             
             //保存用户信息
             [self saveUserInfor:infoDic withLoginInfo:dic_login];
@@ -157,12 +157,23 @@
     [user setIsLogin:YES];
     [user setNickName:dic[@"Nick"]];
     [user setTrueName:dic[@"TrueName"]];
-    [user setSex:[dic[@"Sex"] boolValue]];
+    [user setSex:dic[@"Sex"]];
     [user setHeadPic:dic[@"HeadPicture"]];
     [user setEmail:dic[@"Email"]];
     [user setEmailState:[dic[@"EmailState"] boolValue]];
     [user setPhoneState:[dic[@"MobileState"] boolValue]];
     [user setRegTime:dic[@"RegDateTime"]];
+    
+    [user setAddress:dic[@"Address"]];
+    [user setAge:dic[@"Age"]];
+    [user setArea:dic[@"Area"]];
+    [user setCity:dic[@"City"]];
+    [user setHospital:dic[@"Hospital"]];
+    [user setId:dic[@"Id"]];
+    [user setProvince:dic[@"Province"]];
+    [user setType:dic[@"Type"]];
+    [user setKeshi:dic[@"keshi"]];
+    [user setZhicheng:dic[@"zhicheng"]];
     
     [GlobalMethod saveObject:user withKey:USEROBJECT];
     [GlobalMethod saveLoginInStatus:YES];
