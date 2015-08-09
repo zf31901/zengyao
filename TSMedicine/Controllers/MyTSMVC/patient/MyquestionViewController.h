@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "personmodel.h"
 @interface MyquestionViewController : BaseViewController
+@property(nonatomic,strong)personmodel  *goodIndex;//记录ID的值
 
 @end

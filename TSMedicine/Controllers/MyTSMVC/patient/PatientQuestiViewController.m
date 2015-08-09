@@ -7,9 +7,11 @@
 //
 
 #import "PatientQuestiViewController.h"
-#import "PersonTableViewCell.h"
+//#import "PersonTableViewCell.h"
 #import "personmodel.h"
 #import "MyquestionViewController.h"
+
+
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
 
@@ -44,15 +46,25 @@
     [self.view addSubview:_myTableView];
 }
 -(void)setNavlable{
-
-NSArray *arr = @[@"项目一",@"项目二",@"项目三",@"项目四"];
-    for (int i=0; i<4; i++) {
-       personmodel *pModel = [[personmodel alloc] init];
-        pModel.nameStr = arr[i];
-        pModel.headImageStr = @"arrow-fight16x25_gray";
-        [_dataArr addObject:pModel];
-
-    }
+    
+    _dataArr = [NSMutableArray array];
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *dic = @{@"userid":@"903050",@"pageid":@"1",@"pagesize":@"10"};
+    
+    [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+                NSLog(@"responseObj == %@",responseObj);
+        
+        for (NSDictionary *dic in responseObj[@"data"]) {
+            personmodel *model = [[personmodel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [_dataArr addObject:model];
+        }
+        [_myTableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error == %@",error);
+    }];
+    
+    
 }
 -(void)setNavView
 {
@@ -66,7 +78,10 @@ NSArray *arr = @[@"项目一",@"项目二",@"项目三",@"项目四"];
 }
 
 #pragma mark-
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return _dataArr.count;
@@ -74,32 +89,28 @@ NSArray *arr = @[@"项目一",@"项目二",@"项目三",@"项目四"];
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 80;
+    return 40;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[PersonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    //刷新数据
-    personmodel *pModel = _dataArr[indexPath.row];
-    
-    cell.nameLabel.text = pModel.nameStr;
-    cell.headImageView.image = [UIImage imageNamed:pModel.headImageStr];
-
+    personmodel *model = _dataArr[indexPath.row];
+    cell.textLabel.text = model.upname;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-   MyquestionViewController *ctl = [[MyquestionViewController alloc] init];
-//    ctl.myModel = _dataArr[indexPath.row];
-    
-    [self.navigationController pushViewController:ctl animated:YES];
-    
+    MyquestionViewController *VC = [[MyquestionViewController alloc] init];
+    VC.goodIndex = _dataArr[indexPath.row];
+    [self.navigationController pushViewController:VC animated:YES];
     
 }
 

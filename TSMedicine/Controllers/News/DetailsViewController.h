@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "personmodel.h"
 @interface DetailsViewController : BaseViewController
 @property(nonatomic,strong)NSString *Namelable;
 @property(nonatomic,strong)NSString *forLable;
 @property(nonatomic,strong)NSString *dataTime;
 @property(nonatomic,strong)NSString *caseLable;
 
-@property(nonatomic,strong)NSString  *goodIndex;//记录ID的值
+@property(nonatomic,strong)personmodel  *model;//记录ID的值
 
 
 @end

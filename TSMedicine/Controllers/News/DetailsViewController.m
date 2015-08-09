@@ -64,7 +64,7 @@
 //    _webView.scrollView.scrollEnabled=NO;
    
     //NSString *url=[NSString stringWithFormat:URLisr,_goodIndex];
-    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_goodIndex];
+    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model];
     NSLog(@"url1234------%@",url);
    
    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -85,7 +85,7 @@
    
     YYHttpRequest *hq = [[YYHttpRequest alloc] init];
    
-    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_goodIndex];
+    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model];
   
     [hq  GETURLString:url parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         

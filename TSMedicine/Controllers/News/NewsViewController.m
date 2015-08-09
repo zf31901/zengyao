@@ -192,7 +192,7 @@
 
     NewsModel *arr=_dataArr[indexPath.row];
     
-    ctl2.goodIndex=arr.a_ID;
+    ctl2.model=arr.a_ID;
     
   
     
