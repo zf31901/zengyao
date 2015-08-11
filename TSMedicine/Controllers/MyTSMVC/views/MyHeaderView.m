@@ -49,7 +49,6 @@
     _nameLab.textColor = RGB(255, 255, 255);
     [self addSubview:_nameLab];
     
-    
 }
 
 -(void)myTap

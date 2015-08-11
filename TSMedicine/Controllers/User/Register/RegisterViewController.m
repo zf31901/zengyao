@@ -26,7 +26,7 @@
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden  = NO;
-    self.title = @"手机验证";
+    self.title = _navTitle;
 }
 
 -(void)drawUI
@@ -70,8 +70,6 @@
         
     }];
     
-    
-    
 }
 
 //下一步
@@ -81,6 +79,7 @@
     if (_phoneNumbTF.text.length > 0 && _verifyTF.text.length == 4) {
         
         RegisterNextViewController *nextRgster = [[RegisterNextViewController alloc] init];
+        nextRgster.navTitle = @"确认密码";
         [self.navigationController pushViewController:nextRgster animated:YES];
     }
 }

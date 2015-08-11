@@ -51,6 +51,8 @@
 		162597C91B68E2AD00E3FA95 /* MyTSMListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162597C51B68E2AD00E3FA95 /* MyTSMListCell.xib */; };
 		162597CE1B68E31000E3FA95 /* SetTSMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162597CC1B68E31000E3FA95 /* SetTSMCell.m */; };
 		162597CF1B68E31000E3FA95 /* SetTSMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162597CD1B68E31000E3FA95 /* SetTSMCell.xib */; };
+		163FE6DD1B799B7700A45019 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163FE6DB1B799B7700A45019 /* LoginViewController.m */; };
+		163FE6DE1B799B7700A45019 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163FE6DC1B799B7700A45019 /* LoginViewController.xib */; };
 		16415CD71B6A1E0C00466A03 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16415CD51B6A1E0C00466A03 /* RegisterViewController.m */; };
 		16415CD81B6A1E0C00466A03 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16415CD61B6A1E0C00466A03 /* RegisterViewController.xib */; };
 		1648C8C61B281CB0003DB57A /* UIView+YYFrameEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1648C8C51B281CB0003DB57A /* UIView+YYFrameEasy.m */; };
@@ -111,8 +113,6 @@
 		168369611B2AD3C000A78898 /* PersonalDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1683695F1B2AD3C000A78898 /* PersonalDataCell.xib */; };
 		168369651B2AD5E800A78898 /* PersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369631B2AD5E800A78898 /* PersonalCell.m */; };
 		168369661B2AD5E800A78898 /* PersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168369641B2AD5E800A78898 /* PersonalCell.xib */; };
-		168561821B4A8A5C00F47F93 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168561801B4A8A5C00F47F93 /* LoginViewController.m */; };
-		168561831B4A8A5C00F47F93 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168561811B4A8A5C00F47F93 /* LoginViewController.xib */; };
 		1685AF2F1B2FF9D600F725C3 /* MyPatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1685AF2D1B2FF9D600F725C3 /* MyPatientCell.m */; };
 		1685AF301B2FF9D600F725C3 /* MyPatientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1685AF2E1B2FF9D600F725C3 /* MyPatientCell.xib */; };
 		1685AF351B2FFD4200F725C3 /* MyPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1685AF331B2FFD4200F725C3 /* MyPatientViewController.m */; };
@@ -131,6 +131,17 @@
 		1692BBC01B426E330094E7A0 /* PhoneNumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1692BBBE1B426E330094E7A0 /* PhoneNumCell.xib */; };
 		1692BBC41B4275400094E7A0 /* OnlyTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1692BBC21B4275400094E7A0 /* OnlyTextFieldCell.m */; };
 		1692BBC51B4275400094E7A0 /* OnlyTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1692BBC31B4275400094E7A0 /* OnlyTextFieldCell.xib */; };
+		1695CC161B7839ED00FA1B1E /* personmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC151B7839ED00FA1B1E /* personmodel.m */; };
+		1695CC191B783A1300FA1B1E /* AppprogressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC181B783A1300FA1B1E /* AppprogressViewController.m */; };
+		1695CC1D1B783A3600FA1B1E /* DocProjectAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC1B1B783A3600FA1B1E /* DocProjectAnswerViewController.m */; };
+		1695CC1E1B783A3600FA1B1E /* DocProjectAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695CC1C1B783A3600FA1B1E /* DocProjectAnswerViewController.xib */; };
+		1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC231B783ACC00FA1B1E /* DocAnswerTableViewCell.m */; };
+		1695CC261B783ACC00FA1B1E /* DocAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695CC241B783ACC00FA1B1E /* DocAnswerTableViewCell.xib */; };
+		1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */; };
+		1695CC2B1B783B2C00FA1B1E /* MyquestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC2A1B783B2C00FA1B1E /* MyquestionViewController.m */; };
+		1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC2D1B783B5C00FA1B1E /* MYquestion.m */; };
+		1695CC331B783C2D00FA1B1E /* MYquestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */; };
+		1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */; };
 		16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */; };
 		16B084FE1B6B5506004512E6 /* RegisterNextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */; };
 		16B909941B281F6600211892 /* DonationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B909921B281F6600211892 /* DonationViewController.m */; };
@@ -208,6 +219,10 @@
 		16C3F9C31B25711C0040D80C /* 默认头像80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F97E1B25711C0040D80C /* 默认头像80@2x.png */; };
 		16C3F9C41B25711C0040D80C /* 默认头像80@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F97F1B25711C0040D80C /* 默认头像80@1x.png */; };
 		16C3F9C51B25711C0040D80C /* 默认头像80@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F9801B25711C0040D80C /* 默认头像80@3x.png */; };
+		16FAB2791B78AFD600AE4566 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2721B78AFD600AE4566 /* UIImage+Rotation.m */; };
+		16FAB27A1B78AFD600AE4566 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2741B78AFD600AE4566 /* UIImage+Resize.m */; };
+		16FAB27B1B78AFD600AE4566 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2761B78AFD600AE4566 /* UIImage+Alpha.m */; };
+		16FAB27C1B78AFD600AE4566 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2781B78AFD600AE4566 /* UIImage+RoundedCorner.m */; };
 		8ABF0FA31B25296700F42BC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF0FA21B25296700F42BC5 /* main.m */; };
 		8ABF0FA61B25296700F42BC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF0FA51B25296700F42BC5 /* AppDelegate.m */; };
 		8ABF0FB11B25296700F42BC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ABF0FB01B25296700F42BC5 /* Images.xcassets */; };
@@ -294,6 +309,9 @@
 		162597CB1B68E31000E3FA95 /* SetTSMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTSMCell.h; sourceTree = "<group>"; };
 		162597CC1B68E31000E3FA95 /* SetTSMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTSMCell.m; sourceTree = "<group>"; };
 		162597CD1B68E31000E3FA95 /* SetTSMCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetTSMCell.xib; sourceTree = "<group>"; };
+		163FE6DA1B799B7700A45019 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		163FE6DB1B799B7700A45019 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		163FE6DC1B799B7700A45019 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		16415CD41B6A1E0C00466A03 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		16415CD51B6A1E0C00466A03 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		16415CD61B6A1E0C00466A03 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -386,9 +404,6 @@
 		168369621B2AD5E800A78898 /* PersonalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCell.h; sourceTree = "<group>"; };
 		168369631B2AD5E800A78898 /* PersonalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCell.m; sourceTree = "<group>"; };
 		168369641B2AD5E800A78898 /* PersonalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalCell.xib; sourceTree = "<group>"; };
-		1685617F1B4A8A5C00F47F93 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		168561801B4A8A5C00F47F93 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		168561811B4A8A5C00F47F93 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		1685AF2C1B2FF9D600F725C3 /* MyPatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPatientCell.h; sourceTree = "<group>"; };
 		1685AF2D1B2FF9D600F725C3 /* MyPatientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPatientCell.m; sourceTree = "<group>"; };
 		1685AF2E1B2FF9D600F725C3 /* MyPatientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPatientCell.xib; sourceTree = "<group>"; };
@@ -416,6 +431,26 @@
 		1692BBC11B4275400094E7A0 /* OnlyTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyTextFieldCell.h; sourceTree = "<group>"; };
 		1692BBC21B4275400094E7A0 /* OnlyTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyTextFieldCell.m; sourceTree = "<group>"; };
 		1692BBC31B4275400094E7A0 /* OnlyTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlyTextFieldCell.xib; sourceTree = "<group>"; };
+		1695CC141B7839ED00FA1B1E /* personmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = personmodel.h; path = TSMedicine/Controllers/MyTSMVC/model/personmodel.h; sourceTree = SOURCE_ROOT; };
+		1695CC151B7839ED00FA1B1E /* personmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = personmodel.m; path = TSMedicine/Controllers/MyTSMVC/doctor/personmodel.m; sourceTree = SOURCE_ROOT; };
+		1695CC171B783A1300FA1B1E /* AppprogressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppprogressViewController.h; sourceTree = "<group>"; };
+		1695CC181B783A1300FA1B1E /* AppprogressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppprogressViewController.m; sourceTree = "<group>"; };
+		1695CC1A1B783A3600FA1B1E /* DocProjectAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocProjectAnswerViewController.h; sourceTree = "<group>"; };
+		1695CC1B1B783A3600FA1B1E /* DocProjectAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocProjectAnswerViewController.m; sourceTree = "<group>"; };
+		1695CC1C1B783A3600FA1B1E /* DocProjectAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocProjectAnswerViewController.xib; sourceTree = "<group>"; };
+		1695CC1F1B783A9700FA1B1E /* MyquestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyquestionViewController.h; sourceTree = "<group>"; };
+		1695CC221B783ACC00FA1B1E /* DocAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocAnswerTableViewCell.h; sourceTree = "<group>"; };
+		1695CC231B783ACC00FA1B1E /* DocAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocAnswerTableViewCell.m; sourceTree = "<group>"; };
+		1695CC241B783ACC00FA1B1E /* DocAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocAnswerTableViewCell.xib; sourceTree = "<group>"; };
+		1695CC271B783AEA00FA1B1E /* MyAnswerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnswerModel.h; sourceTree = "<group>"; };
+		1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnswerModel.m; sourceTree = "<group>"; };
+		1695CC2A1B783B2C00FA1B1E /* MyquestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyquestionViewController.m; sourceTree = "<group>"; };
+		1695CC2C1B783B5C00FA1B1E /* MYquestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYquestion.h; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.h; sourceTree = SOURCE_ROOT; };
+		1695CC2D1B783B5C00FA1B1E /* MYquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYquestion.m; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.m; sourceTree = SOURCE_ROOT; };
+		1695CC2F1B783B7600FA1B1E /* MYquestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYquestionTableViewCell.h; path = TSMedicine/Controllers/MyTSMVC/views/MYquestionTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYquestionTableViewCell.m; sourceTree = "<group>"; };
+		1695CC341B783C5F00FA1B1E /* ProjectdetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectdetailViewController.h; sourceTree = "<group>"; };
+		1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectdetailViewController.m; path = TSMedicine/Controllers/MyTSMVC/ProjectdetailViewController.m; sourceTree = SOURCE_ROOT; };
 		16B084FA1B6B5506004512E6 /* RegisterNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNextViewController.h; sourceTree = "<group>"; };
 		16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNextViewController.m; sourceTree = "<group>"; };
 		16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterNextViewController.xib; sourceTree = "<group>"; };
@@ -498,6 +533,14 @@
 		16C3F97F1B25711C0040D80C /* 默认头像80@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像80@1x.png"; sourceTree = "<group>"; };
 		16C3F9801B25711C0040D80C /* 默认头像80@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像80@3x.png"; sourceTree = "<group>"; };
 		16C3F9DB1B2576DA0040D80C /* TSMedicine.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSMedicine.pch; sourceTree = "<group>"; };
+		16FAB2711B78AFD600AE4566 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
+		16FAB2721B78AFD600AE4566 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
+		16FAB2731B78AFD600AE4566 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		16FAB2741B78AFD600AE4566 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		16FAB2751B78AFD600AE4566 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		16FAB2761B78AFD600AE4566 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		16FAB2771B78AFD600AE4566 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		16FAB2781B78AFD600AE4566 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		833FB237EDFC8991422360C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8ABF0F9D1B25296700F42BC5 /* TSMedicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSMedicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ABF0FA11B25296700F42BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -621,6 +664,14 @@
 				16034ACF1B6F4ADB0063EFD7 /* NSString+autoResize.m */,
 				16034AD11B6F4AF80063EFD7 /* UIView+ModifyFrame.h */,
 				16034AD21B6F4AF80063EFD7 /* UIView+ModifyFrame.m */,
+				16FAB2711B78AFD600AE4566 /* UIImage+Rotation.h */,
+				16FAB2721B78AFD600AE4566 /* UIImage+Rotation.m */,
+				16FAB2731B78AFD600AE4566 /* UIImage+Resize.h */,
+				16FAB2741B78AFD600AE4566 /* UIImage+Resize.m */,
+				16FAB2751B78AFD600AE4566 /* UIImage+Alpha.h */,
+				16FAB2761B78AFD600AE4566 /* UIImage+Alpha.m */,
+				16FAB2771B78AFD600AE4566 /* UIImage+RoundedCorner.h */,
+				16FAB2781B78AFD600AE4566 /* UIImage+RoundedCorner.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -719,6 +770,17 @@
 			path = SetTXMCell;
 			sourceTree = "<group>";
 		};
+		163FE6D91B799B7700A45019 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				163FE6DA1B799B7700A45019 /* LoginViewController.h */,
+				163FE6DB1B799B7700A45019 /* LoginViewController.m */,
+				163FE6DC1B799B7700A45019 /* LoginViewController.xib */,
+			);
+			name = LoginViewController;
+			path = TSMedicine/Controllers/LoginViewController;
+			sourceTree = SOURCE_ROOT;
+		};
 		1648C8C31B281C9E003DB57A /* Unity */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,7 +811,7 @@
 		1653CE3F1B69B5CD001D21FF /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1685617E1B4A8A4700F47F93 /* LoginViewController */,
+				163FE6D91B799B7700A45019 /* LoginViewController */,
 				1653CE401B69B617001D21FF /* Register */,
 			);
 			path = User;
@@ -850,6 +912,9 @@
 				166077331B74B6FA00978E0F /* MyQuestTableViewCell.h */,
 				166077341B74B6FA00978E0F /* MyQuestTableViewCell.m */,
 				166077351B74B6FA00978E0F /* MyQuestTableViewCell.xib */,
+				1695CC221B783ACC00FA1B1E /* DocAnswerTableViewCell.h */,
+				1695CC231B783ACC00FA1B1E /* DocAnswerTableViewCell.m */,
+				1695CC241B783ACC00FA1B1E /* DocAnswerTableViewCell.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -869,6 +934,9 @@
 				1660772B1B74B03600978E0F /* DocProjectQuestViewController.h */,
 				1660772C1B74B03600978E0F /* DocProjectQuestViewController.m */,
 				1660772D1B74B03600978E0F /* DocProjectQuestViewController.xib */,
+				1695CC1A1B783A3600FA1B1E /* DocProjectAnswerViewController.h */,
+				1695CC1B1B783A3600FA1B1E /* DocProjectAnswerViewController.m */,
+				1695CC1C1B783A3600FA1B1E /* DocProjectAnswerViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -882,6 +950,8 @@
 				166077291B74AA8000978E0F /* MyProjectModel.m */,
 				166077301B74B41700978E0F /* MyPatQuestModel.h */,
 				166077311B74B41700978E0F /* MyPatQuestModel.m */,
+				1695CC271B783AEA00FA1B1E /* MyAnswerModel.h */,
+				1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -889,6 +959,18 @@
 		167BB2911B7346C700098D86 /* patient(患者) */ = {
 			isa = PBXGroup;
 			children = (
+				1695CC2C1B783B5C00FA1B1E /* MYquestion.h */,
+				1695CC2D1B783B5C00FA1B1E /* MYquestion.m */,
+				1695CC141B7839ED00FA1B1E /* personmodel.h */,
+				1695CC151B7839ED00FA1B1E /* personmodel.m */,
+				1695CC341B783C5F00FA1B1E /* ProjectdetailViewController.h */,
+				1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */,
+				1695CC2F1B783B7600FA1B1E /* MYquestionTableViewCell.h */,
+				1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */,
+				1695CC1F1B783A9700FA1B1E /* MyquestionViewController.h */,
+				1695CC2A1B783B2C00FA1B1E /* MyquestionViewController.m */,
+				1695CC171B783A1300FA1B1E /* AppprogressViewController.h */,
+				1695CC181B783A1300FA1B1E /* AppprogressViewController.m */,
 				167BB2951B73496C00098D86 /* PatientApplyViewController.h */,
 				167BB2961B73496C00098D86 /* PatientApplyViewController.m */,
 				167BB2971B73496C00098D86 /* PatientApplyViewController.xib */,
@@ -983,17 +1065,6 @@
 				168369641B2AD5E800A78898 /* PersonalCell.xib */,
 			);
 			path = PersonalDataCell;
-			sourceTree = "<group>";
-		};
-		1685617E1B4A8A4700F47F93 /* LoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1685617F1B4A8A5C00F47F93 /* LoginViewController.h */,
-				168561801B4A8A5C00F47F93 /* LoginViewController.m */,
-				168561811B4A8A5C00F47F93 /* LoginViewController.xib */,
-			);
-			name = LoginViewController;
-			path = ../LoginViewController;
 			sourceTree = "<group>";
 		};
 		1685AF2B1B2FF99600F725C3 /*  MyPatient */ = {
@@ -1387,7 +1458,6 @@
 				9DD88C7C1B6B8AB200D22955 /* DetailsViewController.xib in Resources */,
 				16C3F9A41B25711C0040D80C /* notice40@3x.png in Resources */,
 				161263621B3D034B00EAEDE6 /* MyShenqingViewContrlller.xib in Resources */,
-				168561831B4A8A5C00F47F93 /* LoginViewController.xib in Resources */,
 				16C3F9BD1B25711C0040D80C /* User50_press@2x.png in Resources */,
 				166077271B74602000978E0F /* MyTrainTableViewCell.xib in Resources */,
 				167BB2B21B734B0200098D86 /* ManagerMyTrainViewController.xib in Resources */,
@@ -1445,8 +1515,10 @@
 				1692BBBA1B426CCE0094E7A0 /* PhoneVerificationCodeViewController.xib in Resources */,
 				16C3F9BE1B25711C0040D80C /* User50_press@1x.png in Resources */,
 				16C3F9981B25711C0040D80C /* Help50_nomal@3x.png in Resources */,
+				1695CC261B783ACC00FA1B1E /* DocAnswerTableViewCell.xib in Resources */,
 				16C3F9A71B25711C0040D80C /* patient40@3x.png in Resources */,
 				16C3F9BB1B25711C0040D80C /* User50_nomal@1x.png in Resources */,
+				163FE6DE1B799B7700A45019 /* LoginViewController.xib in Resources */,
 				169071551B34243800A4CD21 /* CommitAskForViewController.xib in Resources */,
 				16C3F98D1B25711C0040D80C /* arrow-left26x42_white@2x.png in Resources */,
 				16C3F9C31B25711C0040D80C /* 默认头像80@2x.png in Resources */,
@@ -1456,6 +1528,7 @@
 				165EB4721B298F290070D1F8 /* LineCell.xib in Resources */,
 				167BB29E1B73499800098D86 /* PatientQuestiViewController.xib in Resources */,
 				169071501B34220600A4CD21 /* AskForCell.xib in Resources */,
+				1695CC1E1B783A3600FA1B1E /* DocProjectAnswerViewController.xib in Resources */,
 				16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */,
 				16B9099F1B281F7800211892 /* NewsViewController.xib in Resources */,
 				16C3F9821B25711C0040D80C /* answer40@1x.png in Resources */,
@@ -1544,9 +1617,11 @@
 			files = (
 				1648C8C61B281CB0003DB57A /* UIView+YYFrameEasy.m in Sources */,
 				10694DA81B71FE7400CE2504 /* YYHttpRequest.m in Sources */,
+				16FAB2791B78AFD600AE4566 /* UIImage+Rotation.m in Sources */,
 				1653CE511B6A05AE001D21FF /* WITool.m in Sources */,
 				16034ACC1B6F46CF0063EFD7 /* WIBaseButton.m in Sources */,
 				168369601B2AD3C000A78898 /* PersonalDataCell.m in Sources */,
+				1695CC331B783C2D00FA1B1E /* MYquestionTableViewCell.m in Sources */,
 				10694DB21B7204C000CE2504 /* BaseViewController.m in Sources */,
 				16034AC91B6F464E0063EFD7 /* WIBaseLabel.m in Sources */,
 				16B909941B281F6600211892 /* DonationViewController.m in Sources */,
@@ -1554,18 +1629,24 @@
 				1690714F1B34220600A4CD21 /* AskForCell.m in Sources */,
 				10694DB51B72053100CE2504 /* YYTabBarViewController.m in Sources */,
 				1612636D1B3D5B8200EAEDE6 /* TrainViewController.m in Sources */,
+				163FE6DD1B799B7700A45019 /* LoginViewController.m in Sources */,
 				8ABF0FA61B25296700F42BC5 /* AppDelegate.m in Sources */,
 				168369411B2AAD2100A78898 /* YYPhotoPicker.m in Sources */,
 				1685AF2F1B2FF9D600F725C3 /* MyPatientCell.m in Sources */,
 				1615F9701B4BCC8800B236B7 /* NewsTableViewCell.m in Sources */,
+				1695CC161B7839ED00FA1B1E /* personmodel.m in Sources */,
 				167BB2981B73496C00098D86 /* PatientApplyViewController.m in Sources */,
 				167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */,
 				16034AB81B6F0DF80063EFD7 /* GlobalMethod.m in Sources */,
 				167BB2A21B734A0E00098D86 /* DocMyPatientViewController.m in Sources */,
 				167BB29D1B73499800098D86 /* PatientQuestiViewController.m in Sources */,
 				1612635B1B3CFB3500EAEDE6 /* MyShenqingCell.m in Sources */,
+				16FAB27B1B78AFD600AE4566 /* UIImage+Alpha.m in Sources */,
 				8ABF0FA31B25296700F42BC5 /* main.m in Sources */,
+				1695CC1D1B783A3600FA1B1E /* DocProjectAnswerViewController.m in Sources */,
+				16FAB27C1B78AFD600AE4566 /* UIImage+RoundedCorner.m in Sources */,
 				169071491B3408D600A4CD21 /* AskForDonationViewController.m in Sources */,
+				1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */,
 				1660771D1B74503C00978E0F /* MyPatientTableViewCell.m in Sources */,
 				16B909991B281F6E00211892 /* MyTSMViewController.m in Sources */,
 				1653CE461B69B85B001D21FF /* JSONKit.m in Sources */,
@@ -1576,6 +1657,7 @@
 				16034AC61B6F463B0063EFD7 /* WIBaseImageView.m in Sources */,
 				169071541B34243800A4CD21 /* CommitAskForViewController.m in Sources */,
 				168369541B2ABF4100A78898 /* AboutTSMViewController.m in Sources */,
+				1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */,
 				10694DD31B7207B100CE2504 /* MyAppCellTableViewCell.m in Sources */,
 				1683695A1B2ACC1E00A78898 /* PersonalDataViewController.m in Sources */,
 				10694DC61B7206B600CE2504 /* MyTSMNoticeViewController.m in Sources */,
@@ -1583,20 +1665,24 @@
 				9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */,
 				16B9099E1B281F7800211892 /* NewsViewController.m in Sources */,
 				167BB2B11B734B0200098D86 /* ManagerMyTrainViewController.m in Sources */,
+				1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */,
 				1660772E1B74B03600978E0F /* DocProjectQuestViewController.m in Sources */,
 				1660772A1B74AA8000978E0F /* MyProjectModel.m in Sources */,
 				16034AB51B6F0D6B0063EFD7 /* UserObj.m in Sources */,
 				164C0F461B6F77D00040321E /* MyProTableViewCell.m in Sources */,
+				1695CC2B1B783B2C00FA1B1E /* MyquestionViewController.m in Sources */,
 				166077361B74B6FA00978E0F /* MyQuestTableViewCell.m in Sources */,
 				16034ABB1B6F0E990063EFD7 /* GlobalVariable.m in Sources */,
 				1653CE4E1B6A0409001D21FF /* WIDevice.m in Sources */,
 				1692BBBF1B426E330094E7A0 /* PhoneNumCell.m in Sources */,
 				9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */,
 				9D51FD601B6F446F007FF74F /* newCell.m in Sources */,
+				16FAB27A1B78AFD600AE4566 /* UIImage+Resize.m in Sources */,
 				167BB2A71B734A5F00098D86 /* DocMyTrainViewController.m in Sources */,
 				10694DC21B72066800CE2504 /* MyTSMUserInfoViewController.m in Sources */,
 				168369651B2AD5E800A78898 /* PersonalCell.m in Sources */,
 				166077261B74602000978E0F /* MyTrainTableViewCell.m in Sources */,
+				1695CC191B783A1300FA1B1E /* AppprogressViewController.m in Sources */,
 				166077221B74523900978E0F /* MyPatientModel.m in Sources */,
 				168369461B2AB1B800A78898 /* SetMyTSMViewController.m in Sources */,
 				16034AC11B6F45390063EFD7 /* MyHeaderView.m in Sources */,
@@ -1606,7 +1692,6 @@
 				16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */,
 				169071431B34088700A4CD21 /* DonationCell.m in Sources */,
 				10694DCE1B72074000CE2504 /* MyUserInfoView.m in Sources */,
-				168561821B4A8A5C00F47F93 /* LoginViewController.m in Sources */,
 				10694DB81B72059000CE2504 /* MyApplication.m in Sources */,
 				165EB4761B298F440070D1F8 /* ThinLineCell.m in Sources */,
 				161263671B3D371800EAEDE6 /* ReportViewContrlller.m in Sources */,
@@ -1614,6 +1699,7 @@
 				10694DD71B7207DB00CE2504 /* MyAppModel.m in Sources */,
 				1685AF351B2FFD4200F725C3 /* MyPatientViewController.m in Sources */,
 				1692BBB91B426CCE0094E7A0 /* PhoneVerificationCodeViewController.m in Sources */,
+				1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */,
 				1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */,
 				166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */,
 				165EB4711B298F290070D1F8 /* LineCell.m in Sources */,

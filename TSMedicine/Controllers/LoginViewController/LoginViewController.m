@@ -187,8 +187,27 @@
 - (IBAction)regainBtn:(id)sender {
     
     RegisterViewController *registerVC = [[RegisterViewController alloc] init];
+    registerVC.navTitle = @"手机验证";
     [self.navigationController pushViewController:registerVC animated:YES];
 }
+
+#pragma mark  -----------忘记密码-------------
+- (IBAction)forgetPWBtnAction:(id)sender {
+    
+    RegisterViewController *registerVC = [[RegisterViewController alloc] init];
+    registerVC.navTitle = @"找回密码";
+    [self.navigationController pushViewController:registerVC animated:YES];
+    
+}
+#pragma mark  -----------自动登录-------------
+- (IBAction)autoLoginBtnAction:(id)sender {
+    
+    
+    
+}
+
+
+
 
 -(BOOL)cheakText
 {

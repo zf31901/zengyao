@@ -78,8 +78,19 @@
                 break;
         }
     }else{
-        
+        switch (indexPath.row){
+            case 0:
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否清除缓存!" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alert show];
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
+    
 }
 
 

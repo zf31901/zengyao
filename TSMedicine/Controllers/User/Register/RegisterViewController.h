@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
+@property (nonatomic,copy) NSString *navTitle;
+
 @end

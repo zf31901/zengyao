@@ -25,7 +25,7 @@
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden  = NO;
-    self.title = @"确认密码";
+    self.title = _navTitle;
     
 }
 
@@ -38,7 +38,7 @@
 
 - (IBAction)finishBtnClick:(id)sender {
     
-    
+    NSLog(@"提交");
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

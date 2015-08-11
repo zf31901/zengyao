@@ -12,6 +12,7 @@
 @interface BaseViewController : UIViewController
 
 
+- (void)setbgView;
 - (void)buidRightBtn:(NSString *)title;
 
 - (void)commit;

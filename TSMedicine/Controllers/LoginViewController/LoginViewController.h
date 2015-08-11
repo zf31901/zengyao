@@ -11,10 +11,12 @@
 @interface LoginViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *nikeName;
-
 @property (weak, nonatomic) IBOutlet UITextField *pawssWorld;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *forgetPWBtn;
+@property (weak, nonatomic) IBOutlet UIButton *autoLoginBtn;
 
 @end

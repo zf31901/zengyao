@@ -24,12 +24,23 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 
 @implementation DocProjectAnswerViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self loadData];
     [self setNavView];
+    
+    if (_dataArr.count > 1) {
+        [self createUI];
+    }
 
+    
 }
 -(void)setNavView
 {
@@ -52,6 +63,10 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     _textField.backgroundColor = [UIColor clearColor];
     _textField.placeholder = @"输入回答";
     [self.view addSubview:_textField];
+//    NSLog(@"frame == %@",NSStringFromCGRect(_textField.frame));
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap)];
+    [self.view addGestureRecognizer:tap];
 }
 
 #pragma mark --------UITableViewDataSource--------
@@ -79,12 +94,10 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-   
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        
         MyPatQuestModel *model = _dataArr[indexPath.section][indexPath.row];
         
         return 80.0 + model.contentSize.height;
@@ -103,7 +116,6 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     }else{
         return 3.0f;
     }
-    
 }
 
 -(void)loadData
@@ -125,7 +137,6 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
             [arr2 addObject:model];
         }
         [_dataArr addObject:arr2];
-        [self createUI];
         [_tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -136,8 +147,53 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 //回答问题
 - (void)commit
 {
-    NSLog(@"回答");
+    NSLog(@"回答提问");
+    
+    if (![self cheakText]) {
+        return;
+    }
+    
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
+    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":@(0),@"uqauserid":UserInfoData.Id,@"uqausername":UserInfoData.nickName,@"uqacontent":_textField.text,@"uqcreatedate":@"2015-08-10"};
+    
+    [rq POSTURLString:@"http://app.aixinland.cn/api/userquestionanswer/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"responseObject ==== %@",responseObject);
+        
+        if ([responseObject[@"status"] isEqualToString:@"Success"]) {
+            
+            [self loadData];
+            _textField.text = @"";
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"error == %@",error);
+    }];
+    
 }
+
+-(BOOL)cheakText
+{
+    if (_textField.text.length == 0) {
+        [self showAlertViewWithTitle:@"回答不能为空!" andDelay:1.0];
+        return NO;
+    }
+    return YES;
+}
+
+-(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+
+-(void)myTap
+{
+    [WITool hideAllKeyBoard];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passWordTF2;
 @property (weak, nonatomic) IBOutlet UIButton *finishBtn;
 
+@property (nonatomic,copy) NSString *navTitle;
 
 @end

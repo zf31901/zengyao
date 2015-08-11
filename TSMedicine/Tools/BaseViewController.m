@@ -28,7 +28,7 @@
 }
 -(void)setbgView
 {
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     bgImageView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     [self.view addSubview:bgImageView];
     [self.view sendSubviewToBack:bgImageView];

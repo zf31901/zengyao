@@ -11,8 +11,6 @@
 #import "personmodel.h"
 #import "MyquestionViewController.h"
 
-
-
 #define URL @"http://app.aixinland.cn/api/projects/List"
 
 @interface PatientQuestiViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -26,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _dataArr=[[NSMutableArray alloc]init];
     
     [self loadData];
