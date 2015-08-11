@@ -86,6 +86,9 @@
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyProjectModel *model = [[MyProjectModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
+            
+//            NSLog(@"upname == %@",model.upname)
+            
             [_dataArr addObject:model];
         }
         [_tableView reloadData];

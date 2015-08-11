@@ -30,7 +30,7 @@ typedef void(^SSDownloadImageFinishBlock)(UIImage *image);
 + (NSString *)durationStringWithSeconds:(int)seconds;
 
 // 得到当前时间
-+ (NSString *)getTime;
++ (NSString *)getCurrentTime;
 
 // 时间戳转日期
 + (NSString *)dateformatter:(NSString *)str;

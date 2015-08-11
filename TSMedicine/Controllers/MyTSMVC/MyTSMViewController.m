@@ -71,8 +71,8 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         
         [self.tableView removeFromSuperview];
         self.tableView = nil;
-            _headView.headImageView.image = [UIImage imageNamed:default_head];
-            _headView.nameLab.text = @"点击登录";
+        _headView.headImageView.image = [UIImage imageNamed:default_head];
+        _headView.nameLab.text = @"点击登录";
         
 //        }
     }
@@ -188,9 +188,9 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
             switch (indexPath.row){
                 case 0:
                 {
-                    ManagerMyTrainViewController *managerTrianVC = [[ManagerMyTrainViewController alloc] init];
-                    managerTrianVC.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:managerTrianVC animated:YES];
+                    DocMyTrainViewController *trainVC = [[DocMyTrainViewController alloc] init];
+                    trainVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:trainVC animated:YES];
                 }
                     break;
                     

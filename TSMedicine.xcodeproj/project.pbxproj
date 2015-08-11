@@ -53,6 +53,9 @@
 		162597CF1B68E31000E3FA95 /* SetTSMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162597CD1B68E31000E3FA95 /* SetTSMCell.xib */; };
 		163FE6DD1B799B7700A45019 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163FE6DB1B799B7700A45019 /* LoginViewController.m */; };
 		163FE6DE1B799B7700A45019 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163FE6DC1B799B7700A45019 /* LoginViewController.xib */; };
+		163FE6E11B79E48D00A45019 /* MyTrainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 163FE6E01B79E48D00A45019 /* MyTrainModel.m */; };
+		163FE6E51B79EE0A00A45019 /* DocMyTrainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163FE6E31B79EE0A00A45019 /* DocMyTrainDetailViewController.m */; };
+		163FE6E61B79EE0A00A45019 /* DocMyTrainDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163FE6E41B79EE0A00A45019 /* DocMyTrainDetailViewController.xib */; };
 		16415CD71B6A1E0C00466A03 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16415CD51B6A1E0C00466A03 /* RegisterViewController.m */; };
 		16415CD81B6A1E0C00466A03 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16415CD61B6A1E0C00466A03 /* RegisterViewController.xib */; };
 		1648C8C61B281CB0003DB57A /* UIView+YYFrameEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1648C8C51B281CB0003DB57A /* UIView+YYFrameEasy.m */; };
@@ -312,6 +315,11 @@
 		163FE6DA1B799B7700A45019 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		163FE6DB1B799B7700A45019 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		163FE6DC1B799B7700A45019 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		163FE6DF1B79E48D00A45019 /* MyTrainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrainModel.h; sourceTree = "<group>"; };
+		163FE6E01B79E48D00A45019 /* MyTrainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTrainModel.m; sourceTree = "<group>"; };
+		163FE6E21B79EE0A00A45019 /* DocMyTrainDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocMyTrainDetailViewController.h; sourceTree = "<group>"; };
+		163FE6E31B79EE0A00A45019 /* DocMyTrainDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocMyTrainDetailViewController.m; sourceTree = "<group>"; };
+		163FE6E41B79EE0A00A45019 /* DocMyTrainDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocMyTrainDetailViewController.xib; sourceTree = "<group>"; };
 		16415CD41B6A1E0C00466A03 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		16415CD51B6A1E0C00466A03 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		16415CD61B6A1E0C00466A03 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -928,6 +936,9 @@
 				167BB2A41B734A5F00098D86 /* DocMyTrainViewController.h */,
 				167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */,
 				167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */,
+				163FE6E21B79EE0A00A45019 /* DocMyTrainDetailViewController.h */,
+				163FE6E31B79EE0A00A45019 /* DocMyTrainDetailViewController.m */,
+				163FE6E41B79EE0A00A45019 /* DocMyTrainDetailViewController.xib */,
 				167BB2A91B734A9A00098D86 /* DocMyAnswerViewController.h */,
 				167BB2AA1B734A9A00098D86 /* DocMyAnswerViewController.m */,
 				167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */,
@@ -952,6 +963,8 @@
 				166077311B74B41700978E0F /* MyPatQuestModel.m */,
 				1695CC271B783AEA00FA1B1E /* MyAnswerModel.h */,
 				1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */,
+				163FE6DF1B79E48D00A45019 /* MyTrainModel.h */,
+				163FE6E01B79E48D00A45019 /* MyTrainModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1473,6 +1486,7 @@
 				168369551B2ABF4100A78898 /* AboutTSMViewController.xib in Resources */,
 				16C3F9A91B25711C0040D80C /* questions40@1x.png in Resources */,
 				9D51FD611B6F446F007FF74F /* newCell.xib in Resources */,
+				163FE6E61B79EE0A00A45019 /* DocMyTrainDetailViewController.xib in Resources */,
 				1610F2511B282B9D0038E6E2 /* ef.png in Resources */,
 				1660772F1B74B03600978E0F /* DocProjectQuestViewController.xib in Resources */,
 				16C3F9811B25711C0040D80C /* answer40@2x.png in Resources */,
@@ -1660,6 +1674,7 @@
 				1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */,
 				10694DD31B7207B100CE2504 /* MyAppCellTableViewCell.m in Sources */,
 				1683695A1B2ACC1E00A78898 /* PersonalDataViewController.m in Sources */,
+				163FE6E11B79E48D00A45019 /* MyTrainModel.m in Sources */,
 				10694DC61B7206B600CE2504 /* MyTSMNoticeViewController.m in Sources */,
 				16415CD71B6A1E0C00466A03 /* RegisterViewController.m in Sources */,
 				9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */,
@@ -1702,6 +1717,7 @@
 				1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */,
 				1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */,
 				166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */,
+				163FE6E51B79EE0A00A45019 /* DocMyTrainDetailViewController.m in Sources */,
 				165EB4711B298F290070D1F8 /* LineCell.m in Sources */,
 				162597C81B68E2AD00E3FA95 /* MyTSMListCell.m in Sources */,
 				162597C61B68E2AD00E3FA95 /* MyTSMHeaderCell.m in Sources */,

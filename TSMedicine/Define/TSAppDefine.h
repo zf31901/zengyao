@@ -11,6 +11,7 @@
 
 #define CommonBgColor      (UIColorFromRGB(0x915ce6))
 #define Common_Btn_BgColor (UIColorFromRGB(0xa075e6))
+
 #define Commom_TextColor_Main   (UIColorFromRGB(0x333333))
 #define Commom_TextColor_Gray   (UIColorFromRGB(0x929292))
 

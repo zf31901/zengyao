@@ -19,6 +19,7 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArr;
 @property (nonatomic,strong) UITextField *textField;
+@property (nonatomic,assign) BOOL isFirst;
 
 @end
 
@@ -27,19 +28,16 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    _isFirst = YES;
     
     [self loadData];
     [self setNavView];
-    
-    if (_dataArr.count > 1) {
-        [self createUI];
-    }
-
     
 }
 -(void)setNavView
@@ -99,7 +97,7 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 {
     if (indexPath.section == 0) {
         MyPatQuestModel *model = _dataArr[indexPath.section][indexPath.row];
-        
+//         NSLog(@"%f",model.contentSize.height);
         return 80.0 + model.contentSize.height;
         
     }else{
@@ -137,6 +135,12 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
             [arr2 addObject:model];
         }
         [_dataArr addObject:arr2];
+        
+        if (_isFirst) {
+            [self createUI];
+            _isFirst = NO;
+        }
+        
         [_tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -155,7 +159,8 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
-    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":@(0),@"uqauserid":UserInfoData.Id,@"uqausername":UserInfoData.nickName,@"uqacontent":_textField.text,@"uqcreatedate":@"2015-08-10"};
+    NSString *currentTime = [WITool getCurrentTime];
+    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":@(0),@"uqauserid":UserInfoData.Id,@"uqausername":UserInfoData.nickName,@"uqacontent":_textField.text,@"uqcreatedate":currentTime};
     
     [rq POSTURLString:@"http://app.aixinland.cn/api/userquestionanswer/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"responseObject ==== %@",responseObject);
@@ -164,7 +169,6 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
             
             [self loadData];
             _textField.text = @"";
-            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"error == %@",error);
@@ -192,7 +196,6 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 {
     [WITool hideAllKeyBoard];
 }
-
 
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,11 @@
 //
 
 #import "DocMyTrainViewController.h"
+#import "DocMyTrainDetailViewController.h"
+
 #import "MyTrainTableViewCell.h"
+
+#import "MyTrainModel.h"
 
 NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 
@@ -22,6 +26,7 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self setNavView];
     [self setTabView];
 }
@@ -42,7 +47,7 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return _dataArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -50,7 +55,7 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
     if (!cell) {
         cell = [[MyTrainTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TrainTableViewCell];
     }
-    
+    cell.model = _dataArr[indexPath.row];
     return cell;
 }
 
@@ -58,6 +63,10 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DocMyTrainDetailViewController *trainDetailVC = [[DocMyTrainDetailViewController alloc] init];
+    trainDetailVC.model = _dataArr[indexPath.row];
+    [self.navigationController pushViewController:trainDetailVC animated:YES];
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -67,6 +76,31 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 0.1f;
+}
+
+-(void)loadData
+{
+    _dataArr = [NSMutableArray array];
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
+    NSDictionary *dic = @{@"pageid":@"1",@"pagesize":@"10"};
+    
+    [rq GETURLString:@"http://app.aixinland.cn/api/training/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+//        NSLog(@"responseObj === %@",responseObj);
+       if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+           
+           for (NSDictionary *dic in responseObj[@"data"]) {
+               
+               MyTrainModel *model = [[MyTrainModel alloc] init];
+               [model setValuesForKeysWithDictionary:dic];
+               [_dataArr addObject:model];
+           }
+           [_tableView reloadData];
+       }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error == %@",error);
+    }];
 }
 
 - (void)back

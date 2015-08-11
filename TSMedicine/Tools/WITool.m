@@ -53,7 +53,7 @@
 }
 
 // 得到当前时间
-+ (NSString *)getTime
++ (NSString *)getCurrentTime
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
