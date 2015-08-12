@@ -83,10 +83,11 @@ NSString *const UserInfoView = @"MyUserInfoView";
                             destructiveButtonTitle:nil
                             otherButtonTitles:nil];
         
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-        {
-            [_pageActionSheet addButtonWithTitle:NSLocalizedString(@"拍照", @"")];
-        }
+//        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//        {
+//            [_pageActionSheet addButtonWithTitle:NSLocalizedString(@"拍照", @"")];
+//        }
+        [_pageActionSheet addButtonWithTitle:NSLocalizedString(@"拍照", @"")];
         [_pageActionSheet addButtonWithTitle:NSLocalizedString(@"从相册中选择", @"")];
         
         [_pageActionSheet addButtonWithTitle:NSLocalizedString(@"取消", @"")];
@@ -112,7 +113,6 @@ NSString *const UserInfoView = @"MyUserInfoView";
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         picker.delegate = self;
-        //        picker.showsCameraControls = NO;
         picker.allowsEditing = YES;
         
         [self presentModalViewController:picker animated:YES];
