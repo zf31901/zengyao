@@ -30,13 +30,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavlable];
+   
     _dataArr=[[NSMutableArray alloc]init];
     
     
-    [self StaNav];
+    [self Staload];
     self.navigationController.navigationBarHidden = NO;
-    self.title = @"项目";
+    self.title = @"问题详情";
+    [self buidRightBtn:@"提问"];
+
 }
 
 -(void)settabView{
@@ -51,7 +53,7 @@
     
     
 }
--(void)StaNav{
+-(void)Staload{
     
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
@@ -61,7 +63,7 @@
         
         // NSMutableArray *arr2 = [NSMutableArray array];
         for (NSDictionary *dic in responseObj[@"data"]) {
-            MyAnswerModel *model = [[MyAnswerModel alloc] init];
+           MyAnswerModel *model = [[MyAnswerModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             
             [_dataArr addObject:model];
@@ -79,7 +81,7 @@
 #pragma mark --------UITableViewDataSource--------
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -92,9 +94,10 @@
     if (!cell) {
         cell = [[QuestPersoNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+   
     MyAnswerModel *model1=_dataArr[indexPath.row];
     
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model1.uqauserimage] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+[cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model1.uqauserimage] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
     
     cell.nameLable.text = model1.uqausername;
     
@@ -105,7 +108,7 @@
     cell.answerLab.text = [NSString stringWithFormat:@"问: %@",model1.uqacontent];
     cell.answerLab.numberOfLines = 0;
     cell.answerLab.height = model1.contentSize.height;
-   // NSLog(@"123123678----%@",model1.uqauserimage);
+  
     
     
     return cell;
@@ -117,22 +120,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
--(void)setNavlable{
-    
-    
-    UIButton *btn = [UIButton buttonWithType:0];
-    
-    btn.frame = CGRectMake(325, 0, 60, 120);
-    [btn setTitle:@"提问" forState:0];
-    [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
-    [btn setTitleColor:[UIColor whiteColor] forState:0];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    [btn addTarget:self action:@selector(nextpageVC) forControlEvents:UIControlEventTouchUpInside];
-    btn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0,40);
-    
-    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -23, 0, 0);
-}
-- (void)nextpageVC
+
+- (void)commit
 {
     QuestionTurnViewController *commitVC = [QuestionTurnViewController new];
     [self.navigationController pushViewController:commitVC animated:YES];
@@ -144,5 +133,8 @@
         return 100;
     
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
 @end

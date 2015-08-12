@@ -141,7 +141,6 @@
 		1695CC261B783ACC00FA1B1E /* DocAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695CC241B783ACC00FA1B1E /* DocAnswerTableViewCell.xib */; };
 		1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */; };
 		1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC2D1B783B5C00FA1B1E /* MYquestion.m */; };
-		1695CC331B783C2D00FA1B1E /* MYquestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */; };
 		1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */; };
 		16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */; };
 		16B084FE1B6B5506004512E6 /* RegisterNextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */; };
@@ -233,6 +232,18 @@
 		9D0C8D7F1B7AE868001B4A8E /* MyquestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D7E1B7AE868001B4A8E /* MyquestionViewController.m */; };
 		9D0C8D891B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */; };
 		9D0C8D8A1B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */; };
+		9D0C8D8E1B7B1551001B4A8E /* APPlicationProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D8C1B7B1551001B4A8E /* APPlicationProgressViewController.m */; };
+		9D0C8D8F1B7B1551001B4A8E /* APPlicationProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D8D1B7B1551001B4A8E /* APPlicationProgressViewController.xib */; };
+		9D0C8D931B7B1D53001B4A8E /* AuditInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D911B7B1D53001B4A8E /* AuditInformationTableViewCell.m */; };
+		9D0C8D941B7B1D53001B4A8E /* AuditInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D921B7B1D53001B4A8E /* AuditInformationTableViewCell.xib */; };
+		9D0C8D981B7B1E87001B4A8E /* ReasonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D961B7B1E87001B4A8E /* ReasonTableViewCell.m */; };
+		9D0C8D991B7B1E87001B4A8E /* ReasonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D971B7B1E87001B4A8E /* ReasonTableViewCell.xib */; };
+		9D0C8D9D1B7B1F6B001B4A8E /* HospitalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D9B1B7B1F6B001B4A8E /* HospitalTableViewCell.m */; };
+		9D0C8D9E1B7B1F6B001B4A8E /* HospitalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D9C1B7B1F6B001B4A8E /* HospitalTableViewCell.xib */; };
+		9D0C8DA21B7B200A001B4A8E /* CanonicalormTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8DA01B7B200A001B4A8E /* CanonicalormTableViewCell.m */; };
+		9D0C8DA31B7B200A001B4A8E /* CanonicalormTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8DA11B7B200A001B4A8E /* CanonicalormTableViewCell.xib */; };
+		9D0C8DAB1B7B2B60001B4A8E /* CanonFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8DAA1B7B2B60001B4A8E /* CanonFormViewController.m */; };
+		9D0C8DB41B7B4D16001B4A8E /* xqingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8DB31B7B4D16001B4A8E /* xqingViewController.m */; };
 		9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD081B6EFDE6007FF74F /* ShopFrame.m */; };
 		9D51FD601B6F446F007FF74F /* newCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD5E1B6F446F007FF74F /* newCell.m */; };
 		9D51FD611B6F446F007FF74F /* newCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D51FD5F1B6F446F007FF74F /* newCell.xib */; };
@@ -458,8 +469,6 @@
 		1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnswerModel.m; sourceTree = "<group>"; };
 		1695CC2C1B783B5C00FA1B1E /* MYquestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYquestion.h; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.h; sourceTree = SOURCE_ROOT; };
 		1695CC2D1B783B5C00FA1B1E /* MYquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYquestion.m; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.m; sourceTree = SOURCE_ROOT; };
-		1695CC2F1B783B7600FA1B1E /* MYquestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYquestionTableViewCell.h; path = TSMedicine/Controllers/MyTSMVC/views/MYquestionTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYquestionTableViewCell.m; sourceTree = "<group>"; };
 		1695CC341B783C5F00FA1B1E /* ProjectdetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectdetailViewController.h; sourceTree = "<group>"; };
 		1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectdetailViewController.m; path = TSMedicine/Controllers/MyTSMVC/ProjectdetailViewController.m; sourceTree = SOURCE_ROOT; };
 		16B084FA1B6B5506004512E6 /* RegisterNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNextViewController.h; sourceTree = "<group>"; };
@@ -563,13 +572,32 @@
 		8ABF0FBE1B25296700F42BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ABF0FBF1B25296700F42BC5 /* TSMedicineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSMedicineTests.m; sourceTree = "<group>"; };
 		92EA984C20B7F103F7725FBC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myquerstionTableViewCell.h; sourceTree = "<group>"; };
-		9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myquerstionTableViewCell.m; sourceTree = "<group>"; };
-		9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myquerstionTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myquerstionTableViewCell.h; path = ../controller/myquerstionTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myquerstionTableViewCell.m; path = ../controller/myquerstionTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = myquerstionTableViewCell.xib; path = ../controller/myquerstionTableViewCell.xib; sourceTree = "<group>"; };
 		9D0C8D7E1B7AE868001B4A8E /* MyquestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyquestionViewController.m; sourceTree = "<group>"; };
-		9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestPersoNTableViewCell.h; sourceTree = "<group>"; };
-		9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestPersoNTableViewCell.m; sourceTree = "<group>"; };
-		9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestPersoNTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestPersoNTableViewCell.h; path = ../controller/QuestPersoNTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestPersoNTableViewCell.m; path = ../controller/QuestPersoNTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestPersoNTableViewCell.xib; path = ../controller/QuestPersoNTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D8B1B7B1551001B4A8E /* APPlicationProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPlicationProgressViewController.h; sourceTree = "<group>"; };
+		9D0C8D8C1B7B1551001B4A8E /* APPlicationProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPlicationProgressViewController.m; sourceTree = "<group>"; };
+		9D0C8D8D1B7B1551001B4A8E /* APPlicationProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPlicationProgressViewController.xib; sourceTree = "<group>"; };
+		9D0C8D901B7B1D53001B4A8E /* AuditInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuditInformationTableViewCell.h; path = ../controller/AuditInformationTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D911B7B1D53001B4A8E /* AuditInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuditInformationTableViewCell.m; path = ../controller/AuditInformationTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D921B7B1D53001B4A8E /* AuditInformationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuditInformationTableViewCell.xib; path = ../controller/AuditInformationTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D951B7B1E87001B4A8E /* ReasonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReasonTableViewCell.h; path = ../controller/ReasonTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D961B7B1E87001B4A8E /* ReasonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReasonTableViewCell.m; path = ../controller/ReasonTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D971B7B1E87001B4A8E /* ReasonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReasonTableViewCell.xib; path = ../controller/ReasonTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D9A1B7B1F6B001B4A8E /* HospitalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HospitalTableViewCell.h; path = ../controller/HospitalTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D9B1B7B1F6B001B4A8E /* HospitalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HospitalTableViewCell.m; path = ../controller/HospitalTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D9C1B7B1F6B001B4A8E /* HospitalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HospitalTableViewCell.xib; path = ../controller/HospitalTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D9F1B7B200A001B4A8E /* CanonicalormTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CanonicalormTableViewCell.h; path = ../controller/CanonicalormTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8DA01B7B200A001B4A8E /* CanonicalormTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CanonicalormTableViewCell.m; path = ../controller/CanonicalormTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8DA11B7B200A001B4A8E /* CanonicalormTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CanonicalormTableViewCell.xib; path = ../controller/CanonicalormTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8DA91B7B2B60001B4A8E /* CanonFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonFormViewController.h; sourceTree = "<group>"; };
+		9D0C8DAA1B7B2B60001B4A8E /* CanonFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonFormViewController.m; sourceTree = "<group>"; };
+		9D0C8DB21B7B4D16001B4A8E /* xqingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xqingViewController.h; sourceTree = "<group>"; };
+		9D0C8DB31B7B4D16001B4A8E /* xqingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xqingViewController.m; sourceTree = "<group>"; };
 		9D51FD071B6EFDE6007FF74F /* ShopFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopFrame.h; sourceTree = "<group>"; };
 		9D51FD081B6EFDE6007FF74F /* ShopFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopFrame.m; sourceTree = "<group>"; };
 		9D51FD5D1B6F446F007FF74F /* newCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newCell.h; sourceTree = "<group>"; };
@@ -619,6 +647,9 @@
 		16034ABC1B6F43DB0063EFD7 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */,
+				9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */,
+				9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */,
 				10694DD01B7207B100CE2504 /* MyAppCellTableViewCell.h */,
 				10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */,
 				10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */,
@@ -630,6 +661,21 @@
 				10694DCB1B72074000CE2504 /* MyUserInfoView.h */,
 				10694DCC1B72074000CE2504 /* MyUserInfoView.m */,
 				10694DCD1B72074000CE2504 /* MyUserInfoView.xib */,
+				9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */,
+				9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */,
+				9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */,
+				9D0C8D901B7B1D53001B4A8E /* AuditInformationTableViewCell.h */,
+				9D0C8D911B7B1D53001B4A8E /* AuditInformationTableViewCell.m */,
+				9D0C8D921B7B1D53001B4A8E /* AuditInformationTableViewCell.xib */,
+				9D0C8D951B7B1E87001B4A8E /* ReasonTableViewCell.h */,
+				9D0C8D961B7B1E87001B4A8E /* ReasonTableViewCell.m */,
+				9D0C8D971B7B1E87001B4A8E /* ReasonTableViewCell.xib */,
+				9D0C8D9A1B7B1F6B001B4A8E /* HospitalTableViewCell.h */,
+				9D0C8D9B1B7B1F6B001B4A8E /* HospitalTableViewCell.m */,
+				9D0C8D9C1B7B1F6B001B4A8E /* HospitalTableViewCell.xib */,
+				9D0C8D9F1B7B200A001B4A8E /* CanonicalormTableViewCell.h */,
+				9D0C8DA01B7B200A001B4A8E /* CanonicalormTableViewCell.m */,
+				9D0C8DA11B7B200A001B4A8E /* CanonicalormTableViewCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -650,9 +696,6 @@
 		16034ABE1B6F43FE0063EFD7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */,
-				9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */,
-				9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */,
 				16B909961B281F6E00211892 /* MyTSMViewController.h */,
 				16B909971B281F6E00211892 /* MyTSMViewController.m */,
 				16B909981B281F6E00211892 /* MyTSMViewController.xib */,
@@ -668,9 +711,6 @@
 				167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */,
 				167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */,
 				167BB28D1B73126500098D86 /* MyTSMFeedBackViewController.xib */,
-				9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */,
-				9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */,
-				9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -995,17 +1035,22 @@
 		167BB2911B7346C700098D86 /* patient(患者) */ = {
 			isa = PBXGroup;
 			children = (
+				167BB2951B73496C00098D86 /* PatientApplyViewController.h */,
+				167BB2961B73496C00098D86 /* PatientApplyViewController.m */,
+				167BB2971B73496C00098D86 /* PatientApplyViewController.xib */,
+				9D0C8D8B1B7B1551001B4A8E /* APPlicationProgressViewController.h */,
+				9D0C8D8C1B7B1551001B4A8E /* APPlicationProgressViewController.m */,
+				9D0C8D8D1B7B1551001B4A8E /* APPlicationProgressViewController.xib */,
+				9D0C8DB21B7B4D16001B4A8E /* xqingViewController.h */,
+				9D0C8DB31B7B4D16001B4A8E /* xqingViewController.m */,
+				9D0C8DA91B7B2B60001B4A8E /* CanonFormViewController.h */,
+				9D0C8DAA1B7B2B60001B4A8E /* CanonFormViewController.m */,
 				1695CC341B783C5F00FA1B1E /* ProjectdetailViewController.h */,
 				1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */,
-				1695CC2F1B783B7600FA1B1E /* MYquestionTableViewCell.h */,
-				1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */,
 				1695CC1F1B783A9700FA1B1E /* MyquestionViewController.h */,
 				9D0C8D7E1B7AE868001B4A8E /* MyquestionViewController.m */,
 				1695CC171B783A1300FA1B1E /* AppprogressViewController.h */,
 				1695CC181B783A1300FA1B1E /* AppprogressViewController.m */,
-				167BB2951B73496C00098D86 /* PatientApplyViewController.h */,
-				167BB2961B73496C00098D86 /* PatientApplyViewController.m */,
-				167BB2971B73496C00098D86 /* PatientApplyViewController.xib */,
 				167BB29A1B73499800098D86 /* PatientQuestiViewController.h */,
 				167BB29B1B73499800098D86 /* PatientQuestiViewController.m */,
 				167BB29C1B73499800098D86 /* PatientQuestiViewController.xib */,
@@ -1513,6 +1558,7 @@
 				163FE6E61B79EE0A00A45019 /* DocMyTrainDetailViewController.xib in Resources */,
 				1610F2511B282B9D0038E6E2 /* ef.png in Resources */,
 				1660772F1B74B03600978E0F /* DocProjectQuestViewController.xib in Resources */,
+				9D0C8D8F1B7B1551001B4A8E /* APPlicationProgressViewController.xib in Resources */,
 				16C3F9811B25711C0040D80C /* answer40@2x.png in Resources */,
 				16C3F9921B25711C0040D80C /* choose40_nomal@1.5x.png in Resources */,
 				1612635C1B3CFB3500EAEDE6 /* MyShenqingCell.xib in Resources */,
@@ -1527,6 +1573,7 @@
 				167BB2A31B734A0E00098D86 /* DocMyPatientViewController.xib in Resources */,
 				16C3F9951B25711C0040D80C /* choose40_selected@1.5x.png in Resources */,
 				8ABF0FB11B25296700F42BC5 /* Images.xcassets in Resources */,
+				9D0C8D9E1B7B1F6B001B4A8E /* HospitalTableViewCell.xib in Resources */,
 				161263681B3D371800EAEDE6 /* ReportViewContrlller.xib in Resources */,
 				16C3F9991B25711C0040D80C /* Help50_press@2x.png in Resources */,
 				16C3F9AE1B25711C0040D80C /* Set-up40@2x.png in Resources */,
@@ -1540,6 +1587,7 @@
 				16C3F9B51B25711C0040D80C /* successful50_nomal@0.5x.png in Resources */,
 				9D0C8D8A1B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib in Resources */,
 				16C3F9911B25711C0040D80C /* choose40_nomal@0.5x.png in Resources */,
+				9D0C8D991B7B1E87001B4A8E /* ReasonTableViewCell.xib in Resources */,
 				1683694F1B2AB56800A78898 /* ExitLoginCell.xib in Resources */,
 				16C3F9AA1B25711C0040D80C /* questions40@3x.png in Resources */,
 				16C3F9891B25711C0040D80C /* apply160@3x.png in Resources */,
@@ -1556,6 +1604,7 @@
 				16C3F9981B25711C0040D80C /* Help50_nomal@3x.png in Resources */,
 				1695CC261B783ACC00FA1B1E /* DocAnswerTableViewCell.xib in Resources */,
 				16C3F9A71B25711C0040D80C /* patient40@3x.png in Resources */,
+				9D0C8D941B7B1D53001B4A8E /* AuditInformationTableViewCell.xib in Resources */,
 				16C3F9BB1B25711C0040D80C /* User50_nomal@1x.png in Resources */,
 				163FE6DE1B799B7700A45019 /* LoginViewController.xib in Resources */,
 				169071551B34243800A4CD21 /* CommitAskForViewController.xib in Resources */,
@@ -1609,6 +1658,7 @@
 				10694DC11B72066800CE2504 /* MyTSMUserInfoViewController.xib in Resources */,
 				167BB2AD1B734A9A00098D86 /* DocMyAnswerViewController.xib in Resources */,
 				16C3F9861B25711C0040D80C /* appl40@3x.png in Resources */,
+				9D0C8DA31B7B200A001B4A8E /* CanonicalormTableViewCell.xib in Resources */,
 				1692BBC51B4275400094E7A0 /* OnlyTextFieldCell.xib in Resources */,
 				16C3F9931B25711C0040D80C /* choose40_selected.png in Resources */,
 				9D0C8D7C1B7AE780001B4A8E /* myquerstionTableViewCell.xib in Resources */,
@@ -1662,7 +1712,6 @@
 				1653CE511B6A05AE001D21FF /* WITool.m in Sources */,
 				16034ACC1B6F46CF0063EFD7 /* WIBaseButton.m in Sources */,
 				168369601B2AD3C000A78898 /* PersonalDataCell.m in Sources */,
-				1695CC331B783C2D00FA1B1E /* MYquestionTableViewCell.m in Sources */,
 				9DD49E001B7AE49C00D5770B /* QuestionTurnViewController.m in Sources */,
 				10694DB21B7204C000CE2504 /* BaseViewController.m in Sources */,
 				16034AC91B6F464E0063EFD7 /* WIBaseLabel.m in Sources */,
@@ -1677,8 +1726,10 @@
 				1685AF2F1B2FF9D600F725C3 /* MyPatientCell.m in Sources */,
 				1615F9701B4BCC8800B236B7 /* NewsTableViewCell.m in Sources */,
 				167BB2981B73496C00098D86 /* PatientApplyViewController.m in Sources */,
+				9D0C8DA21B7B200A001B4A8E /* CanonicalormTableViewCell.m in Sources */,
 				167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */,
 				16034AB81B6F0DF80063EFD7 /* GlobalMethod.m in Sources */,
+				9D0C8D8E1B7B1551001B4A8E /* APPlicationProgressViewController.m in Sources */,
 				167BB2A21B734A0E00098D86 /* DocMyPatientViewController.m in Sources */,
 				167BB29D1B73499800098D86 /* PatientQuestiViewController.m in Sources */,
 				1612635B1B3CFB3500EAEDE6 /* MyShenqingCell.m in Sources */,
@@ -1688,6 +1739,8 @@
 				16FAB27C1B78AFD600AE4566 /* UIImage+RoundedCorner.m in Sources */,
 				169071491B3408D600A4CD21 /* AskForDonationViewController.m in Sources */,
 				1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */,
+				9D0C8D931B7B1D53001B4A8E /* AuditInformationTableViewCell.m in Sources */,
+				9D0C8DAB1B7B2B60001B4A8E /* CanonFormViewController.m in Sources */,
 				1660771D1B74503C00978E0F /* MyPatientTableViewCell.m in Sources */,
 				16B909991B281F6E00211892 /* MyTSMViewController.m in Sources */,
 				9D0C8D7B1B7AE780001B4A8E /* myquerstionTableViewCell.m in Sources */,
@@ -1700,6 +1753,7 @@
 				169071541B34243800A4CD21 /* CommitAskForViewController.m in Sources */,
 				168369541B2ABF4100A78898 /* AboutTSMViewController.m in Sources */,
 				1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */,
+				9D0C8D9D1B7B1F6B001B4A8E /* HospitalTableViewCell.m in Sources */,
 				10694DD31B7207B100CE2504 /* MyAppCellTableViewCell.m in Sources */,
 				1683695A1B2ACC1E00A78898 /* PersonalDataViewController.m in Sources */,
 				163FE6E11B79E48D00A45019 /* MyTrainModel.m in Sources */,
@@ -1711,12 +1765,14 @@
 				1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */,
 				1660772E1B74B03600978E0F /* DocProjectQuestViewController.m in Sources */,
 				1660772A1B74AA8000978E0F /* MyProjectModel.m in Sources */,
+				9D0C8DB41B7B4D16001B4A8E /* xqingViewController.m in Sources */,
 				16034AB51B6F0D6B0063EFD7 /* UserObj.m in Sources */,
 				164C0F461B6F77D00040321E /* MyProTableViewCell.m in Sources */,
 				166077361B74B6FA00978E0F /* MyQuestTableViewCell.m in Sources */,
 				16034ABB1B6F0E990063EFD7 /* GlobalVariable.m in Sources */,
 				1653CE4E1B6A0409001D21FF /* WIDevice.m in Sources */,
 				9D0C8D7F1B7AE868001B4A8E /* MyquestionViewController.m in Sources */,
+				9D0C8D981B7B1E87001B4A8E /* ReasonTableViewCell.m in Sources */,
 				1692BBBF1B426E330094E7A0 /* PhoneNumCell.m in Sources */,
 				9D0C8D891B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m in Sources */,
 				9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */,

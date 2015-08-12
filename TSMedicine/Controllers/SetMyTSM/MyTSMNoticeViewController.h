@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface MyTSMNoticeViewController : BaseViewController
+@interface MyTSMNoticeViewController :BaseViewController
 
 @end

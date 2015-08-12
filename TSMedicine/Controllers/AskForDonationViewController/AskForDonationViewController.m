@@ -9,7 +9,7 @@
 #import "AskForDonationViewController.h"
 #import "CommitAskForViewController.h"
 
-#define URLisr @"http://app.aixinland.cn//page/notice_detail"
+#define URLisr @"http://app.aixinland.cn//page/notice_detail?datald="
 
 @interface AskForDonationViewController ()<UIWebViewDelegate>
 {
@@ -22,12 +22,7 @@
 
 - (void)viewDidLoad { 
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-   // self.title = @"申请捐助";
- //   self.askForDonation_nextpageBtn.layer.borderWidth = 1;
-    //self.askForDonation_nextpageBtn.layer.borderColor = RGB(159,115,230).CGColor;
-  //  self.askForDonation_nextpageBtn.layer.cornerRadius = 4;
-   // self.askForDonation_nextpageBtn.layer.masksToBounds = YES;
+    
     
     UIButton *btn = [UIButton buttonWithType:0];
     
@@ -43,19 +38,15 @@
     
     
     _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H- 64)];
-    //SCREEN_H- TOPBAR- BOTTOMBAR
+
     _webView.delegate=self;
    
-    NSString *url=[NSString stringWithFormat:@"%@",URLisr];
-    NSLog(@"url1234------%@",url);
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn//page/apply_form.ht?dataid=%@",_model.pid];
+  
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
     [self.view addSubview:_webView];
-
-    
-    
-   // [self.askForDonation_nextpageBtn addTarget:self action:@selector(nextpageVC) forControlEvents:UIControlEventTouchUpInside];
     
     
 }
@@ -65,19 +56,6 @@
     [self.navigationController pushViewController:commitVC animated:YES];
     
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
