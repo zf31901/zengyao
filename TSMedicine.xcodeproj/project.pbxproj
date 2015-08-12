@@ -233,6 +233,7 @@
 		9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD081B6EFDE6007FF74F /* ShopFrame.m */; };
 		9D51FD601B6F446F007FF74F /* newCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD5E1B6F446F007FF74F /* newCell.m */; };
 		9D51FD611B6F446F007FF74F /* newCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D51FD5F1B6F446F007FF74F /* newCell.xib */; };
+		9DD49DDF1B7ADA7000D5770B /* Stast.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DDE1B7ADA7000D5770B /* Stast.m */; };
 		9DD88C7A1B6B8AAD00D22955 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD88C791B6B8AAD00D22955 /* DetailsViewController.m */; };
 		9DD88C7C1B6B8AB200D22955 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD88C7B1B6B8AB200D22955 /* DetailsViewController.xib */; };
 		9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD88C7E1B6B8CAD00D22955 /* DetailModel.m */; };
@@ -565,6 +566,8 @@
 		9D51FD5D1B6F446F007FF74F /* newCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newCell.h; sourceTree = "<group>"; };
 		9D51FD5E1B6F446F007FF74F /* newCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newCell.m; sourceTree = "<group>"; };
 		9D51FD5F1B6F446F007FF74F /* newCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newCell.xib; sourceTree = "<group>"; };
+		9DD49DDD1B7ADA7000D5770B /* Stast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stast.h; sourceTree = "<group>"; };
+		9DD49DDE1B7ADA7000D5770B /* Stast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stast.m; sourceTree = "<group>"; };
 		9DD88C781B6B8AA700D22955 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		9DD88C791B6B8AAD00D22955 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		9DD88C7B1B6B8AB200D22955 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
@@ -626,6 +629,8 @@
 				164C0F411B6F72610040321E /* MyProModel.m */,
 				10694DD51B7207DB00CE2504 /* MyAppModel.h */,
 				10694DD61B7207DB00CE2504 /* MyAppModel.m */,
+				9DD49DDD1B7ADA7000D5770B /* Stast.h */,
+				9DD49DDE1B7ADA7000D5770B /* Stast.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1678,6 +1683,7 @@
 				10694DC61B7206B600CE2504 /* MyTSMNoticeViewController.m in Sources */,
 				16415CD71B6A1E0C00466A03 /* RegisterViewController.m in Sources */,
 				9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */,
+				9DD49DDF1B7ADA7000D5770B /* Stast.m in Sources */,
 				16B9099E1B281F7800211892 /* NewsViewController.m in Sources */,
 				167BB2B11B734B0200098D86 /* ManagerMyTrainViewController.m in Sources */,
 				1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */,
