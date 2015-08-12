@@ -73,10 +73,13 @@
     return YES;
     
 }
+-(void)commit
+{
+    NSLog(@"发表");
+}
+
 //结束编辑
 - (void)textViewDidEndEditing:(UITextView *)textView{
-
-
 
 
 }

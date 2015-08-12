@@ -16,4 +16,6 @@
 
 @property (nonatomic,copy) NSString *navTitle;
 
+@property (nonatomic,assign) BOOL isFindPass;
+
 @end

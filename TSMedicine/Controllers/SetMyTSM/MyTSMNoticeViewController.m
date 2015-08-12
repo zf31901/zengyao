@@ -15,7 +15,6 @@
 {
     UIWebView *_webView;
     
-    
 }
 @end
 

@@ -196,6 +196,7 @@
     
     RegisterViewController *registerVC = [[RegisterViewController alloc] init];
     registerVC.navTitle = @"找回密码";
+    registerVC.isFindPass = YES;
     [self.navigationController pushViewController:registerVC animated:YES];
     
 }
@@ -205,8 +206,6 @@
     
     
 }
-
-
 
 
 -(BOOL)cheakText
@@ -224,7 +223,7 @@
 
 -(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
     [self performSelector:@selector(removeAlert:) withObject:alert afterDelay:time];
     

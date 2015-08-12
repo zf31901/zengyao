@@ -48,8 +48,6 @@
     
     [_mytableView registerNib:[UINib nibWithNibName:@"QuestPersoNTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
-    
-    
 }
 -(void)StaNav{
     
@@ -120,22 +118,29 @@
 -(void)setNavlable{
     
     
-    UIButton *btn = [UIButton buttonWithType:0];
+    [self buidRightBtn:@"提问"];
     
-    btn.frame = CGRectMake(325, 0, 60, 120);
-    [btn setTitle:@"提问" forState:0];
-    [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
-    [btn setTitleColor:[UIColor whiteColor] forState:0];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    [btn addTarget:self action:@selector(nextpageVC) forControlEvents:UIControlEventTouchUpInside];
-    btn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0,40);
-    
-    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -23, 0, 0);
+//    UIButton *btn = [UIButton buttonWithType:0];
+//    
+//    btn.frame = CGRectMake(325, 0, 60, 120);
+//    [btn setTitle:@"提问" forState:0];
+//    [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
+//    [btn setTitleColor:[UIColor whiteColor] forState:0];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+//    [btn addTarget:self action:@selector(nextpageVC) forControlEvents:UIControlEventTouchUpInside];
+//    btn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0,40);
+//    
+//    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -23, 0, 0);
 }
-- (void)nextpageVC
+
+-(void)commit
 {
     QuestionTurnViewController *commitVC = [QuestionTurnViewController new];
     [self.navigationController pushViewController:commitVC animated:YES];
+}
+- (void)nextpageVC
+{
+    
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
