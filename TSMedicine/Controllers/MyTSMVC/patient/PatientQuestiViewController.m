@@ -7,8 +7,8 @@
 //
 
 #import "PatientQuestiViewController.h"
-//#import "PersonTableViewCell.h"
-#import "personmodel.h"
+
+#import "MyProjectModel.h"
 #import "MyquestionViewController.h"
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
@@ -37,7 +37,7 @@
 }
 -(void)loadData{
     //实例化一个UITableView
-    _myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
@@ -54,7 +54,7 @@
                 NSLog(@"responseObj == %@",responseObj);
         
         for (NSDictionary *dic in responseObj[@"data"]) {
-            personmodel *model = [[personmodel alloc] init];
+            MyProjectModel *model = [[MyProjectModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [_dataArr addObject:model];
         }
@@ -97,7 +97,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    personmodel *model = _dataArr[indexPath.row];
+    MyProjectModel *model = _dataArr[indexPath.row];
     cell.textLabel.text = model.upname;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;

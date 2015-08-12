@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyPatQuestModel.h"
 @interface QuestionViewController :BaseViewController
+@property(nonatomic,strong) MyPatQuestModel *model;
 
 @end

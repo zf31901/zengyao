@@ -50,11 +50,6 @@
     
     
     self.title = @"新闻";
-    // [self  lale];
-//       UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H- TOPBAR- BOTTOMBAR)];
-//        [self.view addSubview:web];
-//        [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ewt.cc"]]];
-    
    [self UILABLE];
    
     
@@ -111,10 +106,7 @@
 }
 
 #pragma mark - UITableViewDelegate
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return _dataArr.count;
-//}
+
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _dataArr.count;
@@ -180,7 +172,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.row ) {
-        return 170;
+        return 190;
     }else
     {
         return 100;
