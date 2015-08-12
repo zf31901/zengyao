@@ -52,12 +52,7 @@
     CGSize constraintSize;
     constraintSize.width = textView.frame.size.width-16;
     constraintSize.height = MAXFLOAT;
-//    CGSize sizeFrame =[textView.text sizeWithFont:textView.font
-//                                constrainedToSize:constraintSize
-//                                    lineBreakMode:UILineBreakModeWordWrap];
-//    
-//  
-//    textView.frame = CGRectMake(textView.frame.origin.x,textView.frame.origin.y,textView.frame.size.width,sizeFrame.height+5);
+
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -83,6 +78,10 @@
 
 
 }
+-(void)commit{
 
+    NSLog(@"发表");
+
+}
 
 @end

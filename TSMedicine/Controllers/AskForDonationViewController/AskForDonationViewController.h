@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DetailModel.h"
 @interface AskForDonationViewController : BaseViewController
-@property (weak, nonatomic) IBOutlet UIButton *askForDonation_nextpageBtn;
+
+@property(nonatomic,strong) DetailModel *model;
 
 @end

@@ -15,6 +15,10 @@
 @property (nonatomic, strong)             NSString *pjieshao;
 
 @property (nonatomic, strong)             NSString *pfaqidanwei;
+@property(nonatomic,strong)                NSString *pid;
+@property(nonatomic,strong)NSString *pshiyingzheng;
+@property(nonatomic,strong)NSString *pstate;
+@property(nonatomic,strong)NSString *pcheckurl;
 
 
 @end

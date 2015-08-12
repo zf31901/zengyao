@@ -12,10 +12,14 @@
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
 
-#define URLLIST @"http://app.aixinland.cn:80/api/projects/List?pageid=2&pagesize=2"
+
 
 
 @interface DonationViewController ()
+{
+    NSMutableArray *_dataArry;
+    
+}
 @property (weak, nonatomic) IBOutlet X_TableView *tableView;
 
 @end
@@ -25,10 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
       self.title = @"捐助项目";
+    _dataArry=[[NSMutableArray alloc]init];
     
-    //NSArray *titleArr = @[@"性别",@"年龄",@"手机号",@"地址",@"街道"];
+    
     NSMutableArray *arr=[[NSMutableArray alloc]init];
-    NSMutableArray *testArr = [NSMutableArray array];
+   // NSMutableArray *testArr = [[NSMutableArray alloc]init];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:@"1"              forKey:@"pageid"];
@@ -37,27 +42,21 @@
     
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
-        
-//        NSLog(@"111111111%@",responseObj);
+
         
         if ([responseObj objectForKey:@"data"] !=nil) {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
             
-//            NSLog(@"222222%lu",(unsigned long)dataArr.count);
+
             
             for (int i = 0; i < dataArr.count; i++)
             {
                 DetailModel *model=[[DetailModel alloc]init];
                 NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
              
-                
-                model.pname=[dataDic objectForKey:@"pname"];
-                model.pjieshao=[dataDic objectForKey:@"pjieshao"];
-                model.pfaqidanwei=[dataDic objectForKey:@"pfaqidanwei"];
-                model.pimage=[dataDic  objectForKey:@"pimage"];
-                
-                [testArr addObject:model];
-//                NSLog(@"dic12345----%@",dataDic);
+                [model setValuesForKeysWithDictionary:dataDic];
+                [_dataArry addObject:model];
+
                 
                 [arr addObject:[@{
                                   kCellTag:@"DonationCell",
@@ -67,11 +66,7 @@
                                   @"donation_unitlab":[dataDic objectForKey:@"pfaqidanwei"],
                                   @"donation_imgView":[dataDic  objectForKey:@"pimage"],
                                   } mutableCopy]];
-                //            [arr addObject:[@{
-                //                              kCellTag:@"ThinLine",
-                //                              kCellDidSelect:@"f1",
-                //                              @"l":@"12",
-                //                              } mutableCopy]];
+           
                 
             }
             self.tableView.xDataSource = arr;
@@ -86,23 +81,7 @@
         
     }];
     
-    
-    //    AFHTTPRequestOperationManager*manger=[AFHTTPRequestOperationManager manager];
-    //    manger.responseSerializer = [AFHTTPResponseSerializer serializer];
-    //    [manger GET:URLLIST parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    //      NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-    //
-    //        DetailModel*model=[[DetailModel alloc]init];
-    //        
-    //        [model setValuesForKeysWithDictionary:dic];
-    //        
-    //        [arr addObject:model];
-    //        NSLog(@"=========%@",arr);
-    //        
-    //    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    //        
-    //    }];
-    //
+
 }
 
 -(void)lable{
@@ -115,6 +94,10 @@
         
         AskForDonationViewController *askVC = [AskForDonationViewController new];
         askVC.hidesBottomBarWhenPushed = YES;
+        
+       
+        askVC.model=_dataArry[indexPath.row];
+        
         [weakSelf.navigationController pushViewController:askVC animated:YES];
     }];
 }
