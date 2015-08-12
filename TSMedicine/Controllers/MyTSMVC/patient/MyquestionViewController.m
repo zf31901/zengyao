@@ -8,8 +8,9 @@
 
 #import "MyquestionViewController.h"
 #import "MYquestion.h"
-#import "MYquestionTableViewCell.h"
+#import "myquerstionTableViewCell.h"
 
+#import "QuestionViewController.h"
 
 #define URL @"http://app.aixinland.cn/api/userquestion/List"
 
@@ -33,44 +34,21 @@
     
     [self setTableView];
     
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"0" forKey:@"pid"];
-    [dic setObject:@"903050" forKey:@"userid"];
-    [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"10"    forKey:@"pagesize"];
-   
-    
     _dataArr = [NSMutableArray array];
-    YYHttpRequest *hq=[[YYHttpRequest alloc]init];
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *dic = @{@"pid":_goodIndex.uppid,@"userid":_goodIndex.upuserid,@"pageid":@"1",@"pagesize":@"10"};
     
-    [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        NSLog(@"responseObj == %@",responseObj);
         
-        
-       
-        
-        if ([responseObj objectForKey:@"data"] !=nil) {
-            NSArray *dataArr =[responseObj objectForKey:@"data"];
-                      
-            for (NSDictionary *dic in dataArr)
-            {
-                MYquestion *model = [[MYquestion alloc] init];
-                model.uqcontent1=[dic objectForKey:@"uqcontent"];
-               model.uqcreatedate1=[dic objectForKey:@"uqcreatedate"];
-               
-                model.uqstate1=[dic  objectForKey:@"uqstate"];
-               
-               [_dataArr addObject:model];
-            }
-            
-            
-            
-            [_mytableView reloadData];
-            
+        for (NSDictionary *dic in responseObj[@"data"]) {
+            MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [_dataArr addObject:model];
         }
-        
+        [_mytableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"error123--%@",error);
+        NSLog(@"error == %@",error);
     }];
     
     
@@ -78,12 +56,12 @@
 }
 -(void)setTableView
 {
-    _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     [self.view addSubview:_mytableView];
     
-  [_mytableView registerNib:[UINib nibWithNibName:@"MYquestionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+  [_mytableView registerNib:[UINib nibWithNibName:@"myquerstionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
 }
 
@@ -103,34 +81,34 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MYquestionTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    myquerstionTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (!cell) {
         
-        cell=[[MYquestionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell=[[myquerstionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         
     }
     
-    
-    MYquestion *model=[_dataArr objectAtIndex:indexPath.row];
-    
-    cell.uqcontent.text= model.uqcontent1;
-    cell.uqcreatedate.text= model.uqcreatedate1;
-    cell.uqstate.text=model.uqstate1;
-   
+    MyPatQuestModel *model1 = _dataArr[indexPath.row];
     
     
+    cell.model=model1;
     return cell;
-    
-    
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 106.0f;
+    return 70.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    AppprogressViewController *nav=[[AppprogressViewController alloc]init];
-//    [self.navigationController pushViewController:nav animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    QuestionViewController *nav=[[QuestionViewController alloc]init];
+    nav.model = _dataArr[indexPath.row];
+    
+    [self.navigationController pushViewController:nav animated:YES];
+
     
 }
 @end

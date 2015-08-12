@@ -134,14 +134,12 @@
 		1692BBC01B426E330094E7A0 /* PhoneNumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1692BBBE1B426E330094E7A0 /* PhoneNumCell.xib */; };
 		1692BBC41B4275400094E7A0 /* OnlyTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1692BBC21B4275400094E7A0 /* OnlyTextFieldCell.m */; };
 		1692BBC51B4275400094E7A0 /* OnlyTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1692BBC31B4275400094E7A0 /* OnlyTextFieldCell.xib */; };
-		1695CC161B7839ED00FA1B1E /* personmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC151B7839ED00FA1B1E /* personmodel.m */; };
 		1695CC191B783A1300FA1B1E /* AppprogressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC181B783A1300FA1B1E /* AppprogressViewController.m */; };
 		1695CC1D1B783A3600FA1B1E /* DocProjectAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC1B1B783A3600FA1B1E /* DocProjectAnswerViewController.m */; };
 		1695CC1E1B783A3600FA1B1E /* DocProjectAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695CC1C1B783A3600FA1B1E /* DocProjectAnswerViewController.xib */; };
 		1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC231B783ACC00FA1B1E /* DocAnswerTableViewCell.m */; };
 		1695CC261B783ACC00FA1B1E /* DocAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1695CC241B783ACC00FA1B1E /* DocAnswerTableViewCell.xib */; };
 		1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */; };
-		1695CC2B1B783B2C00FA1B1E /* MyquestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC2A1B783B2C00FA1B1E /* MyquestionViewController.m */; };
 		1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC2D1B783B5C00FA1B1E /* MYquestion.m */; };
 		1695CC331B783C2D00FA1B1E /* MYquestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */; };
 		1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */; };
@@ -230,9 +228,17 @@
 		8ABF0FA61B25296700F42BC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF0FA51B25296700F42BC5 /* AppDelegate.m */; };
 		8ABF0FB11B25296700F42BC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ABF0FB01B25296700F42BC5 /* Images.xcassets */; };
 		8ABF0FB41B25296700F42BC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABF0FB21B25296700F42BC5 /* LaunchScreen.xib */; };
+		9D0C8D7B1B7AE780001B4A8E /* myquerstionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */; };
+		9D0C8D7C1B7AE780001B4A8E /* myquerstionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */; };
+		9D0C8D7F1B7AE868001B4A8E /* MyquestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D7E1B7AE868001B4A8E /* MyquestionViewController.m */; };
+		9D0C8D891B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */; };
+		9D0C8D8A1B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */; };
 		9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD081B6EFDE6007FF74F /* ShopFrame.m */; };
 		9D51FD601B6F446F007FF74F /* newCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD5E1B6F446F007FF74F /* newCell.m */; };
 		9D51FD611B6F446F007FF74F /* newCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D51FD5F1B6F446F007FF74F /* newCell.xib */; };
+		9DD49DF71B7AE37400D5770B /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DF61B7AE37400D5770B /* QuestionViewController.m */; };
+		9DD49E001B7AE49C00D5770B /* QuestionTurnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DFE1B7AE49C00D5770B /* QuestionTurnViewController.m */; };
+		9DD49E011B7AE49C00D5770B /* QuestionTurnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49DFF1B7AE49C00D5770B /* QuestionTurnViewController.xib */; };
 		9DD88C7A1B6B8AAD00D22955 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD88C791B6B8AAD00D22955 /* DetailsViewController.m */; };
 		9DD88C7C1B6B8AB200D22955 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD88C7B1B6B8AB200D22955 /* DetailsViewController.xib */; };
 		9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD88C7E1B6B8CAD00D22955 /* DetailModel.m */; };
@@ -439,8 +445,6 @@
 		1692BBC11B4275400094E7A0 /* OnlyTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyTextFieldCell.h; sourceTree = "<group>"; };
 		1692BBC21B4275400094E7A0 /* OnlyTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyTextFieldCell.m; sourceTree = "<group>"; };
 		1692BBC31B4275400094E7A0 /* OnlyTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlyTextFieldCell.xib; sourceTree = "<group>"; };
-		1695CC141B7839ED00FA1B1E /* personmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = personmodel.h; path = TSMedicine/Controllers/MyTSMVC/model/personmodel.h; sourceTree = SOURCE_ROOT; };
-		1695CC151B7839ED00FA1B1E /* personmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = personmodel.m; path = TSMedicine/Controllers/MyTSMVC/doctor/personmodel.m; sourceTree = SOURCE_ROOT; };
 		1695CC171B783A1300FA1B1E /* AppprogressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppprogressViewController.h; sourceTree = "<group>"; };
 		1695CC181B783A1300FA1B1E /* AppprogressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppprogressViewController.m; sourceTree = "<group>"; };
 		1695CC1A1B783A3600FA1B1E /* DocProjectAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocProjectAnswerViewController.h; sourceTree = "<group>"; };
@@ -452,7 +456,6 @@
 		1695CC241B783ACC00FA1B1E /* DocAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		1695CC271B783AEA00FA1B1E /* MyAnswerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnswerModel.h; sourceTree = "<group>"; };
 		1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnswerModel.m; sourceTree = "<group>"; };
-		1695CC2A1B783B2C00FA1B1E /* MyquestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyquestionViewController.m; sourceTree = "<group>"; };
 		1695CC2C1B783B5C00FA1B1E /* MYquestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYquestion.h; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.h; sourceTree = SOURCE_ROOT; };
 		1695CC2D1B783B5C00FA1B1E /* MYquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYquestion.m; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.m; sourceTree = SOURCE_ROOT; };
 		1695CC2F1B783B7600FA1B1E /* MYquestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYquestionTableViewCell.h; path = TSMedicine/Controllers/MyTSMVC/views/MYquestionTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -560,11 +563,23 @@
 		8ABF0FBE1B25296700F42BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ABF0FBF1B25296700F42BC5 /* TSMedicineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSMedicineTests.m; sourceTree = "<group>"; };
 		92EA984C20B7F103F7725FBC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myquerstionTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myquerstionTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myquerstionTableViewCell.xib; sourceTree = "<group>"; };
+		9D0C8D7E1B7AE868001B4A8E /* MyquestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyquestionViewController.m; sourceTree = "<group>"; };
+		9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestPersoNTableViewCell.h; sourceTree = "<group>"; };
+		9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestPersoNTableViewCell.m; sourceTree = "<group>"; };
+		9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestPersoNTableViewCell.xib; sourceTree = "<group>"; };
 		9D51FD071B6EFDE6007FF74F /* ShopFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopFrame.h; sourceTree = "<group>"; };
 		9D51FD081B6EFDE6007FF74F /* ShopFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopFrame.m; sourceTree = "<group>"; };
 		9D51FD5D1B6F446F007FF74F /* newCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newCell.h; sourceTree = "<group>"; };
 		9D51FD5E1B6F446F007FF74F /* newCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newCell.m; sourceTree = "<group>"; };
 		9D51FD5F1B6F446F007FF74F /* newCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newCell.xib; sourceTree = "<group>"; };
+		9DD49DF51B7AE37400D5770B /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		9DD49DF61B7AE37400D5770B /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		9DD49DFD1B7AE49C00D5770B /* QuestionTurnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTurnViewController.h; sourceTree = "<group>"; };
+		9DD49DFE1B7AE49C00D5770B /* QuestionTurnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTurnViewController.m; sourceTree = "<group>"; };
+		9DD49DFF1B7AE49C00D5770B /* QuestionTurnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionTurnViewController.xib; sourceTree = "<group>"; };
 		9DD88C781B6B8AA700D22955 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		9DD88C791B6B8AAD00D22955 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		9DD88C7B1B6B8AB200D22955 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
@@ -622,6 +637,8 @@
 		16034ABD1B6F43EF0063EFD7 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1695CC2C1B783B5C00FA1B1E /* MYquestion.h */,
+				1695CC2D1B783B5C00FA1B1E /* MYquestion.m */,
 				164C0F401B6F72610040321E /* MyProModel.h */,
 				164C0F411B6F72610040321E /* MyProModel.m */,
 				10694DD51B7207DB00CE2504 /* MyAppModel.h */,
@@ -633,6 +650,9 @@
 		16034ABE1B6F43FE0063EFD7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */,
+				9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */,
+				9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */,
 				16B909961B281F6E00211892 /* MyTSMViewController.h */,
 				16B909971B281F6E00211892 /* MyTSMViewController.m */,
 				16B909981B281F6E00211892 /* MyTSMViewController.xib */,
@@ -648,6 +668,9 @@
 				167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */,
 				167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */,
 				167BB28D1B73126500098D86 /* MyTSMFeedBackViewController.xib */,
+				9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */,
+				9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */,
+				9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -972,16 +995,12 @@
 		167BB2911B7346C700098D86 /* patient(患者) */ = {
 			isa = PBXGroup;
 			children = (
-				1695CC2C1B783B5C00FA1B1E /* MYquestion.h */,
-				1695CC2D1B783B5C00FA1B1E /* MYquestion.m */,
-				1695CC141B7839ED00FA1B1E /* personmodel.h */,
-				1695CC151B7839ED00FA1B1E /* personmodel.m */,
 				1695CC341B783C5F00FA1B1E /* ProjectdetailViewController.h */,
 				1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */,
 				1695CC2F1B783B7600FA1B1E /* MYquestionTableViewCell.h */,
 				1695CC321B783C2D00FA1B1E /* MYquestionTableViewCell.m */,
 				1695CC1F1B783A9700FA1B1E /* MyquestionViewController.h */,
-				1695CC2A1B783B2C00FA1B1E /* MyquestionViewController.m */,
+				9D0C8D7E1B7AE868001B4A8E /* MyquestionViewController.m */,
 				1695CC171B783A1300FA1B1E /* AppprogressViewController.h */,
 				1695CC181B783A1300FA1B1E /* AppprogressViewController.m */,
 				167BB2951B73496C00098D86 /* PatientApplyViewController.h */,
@@ -990,6 +1009,11 @@
 				167BB29A1B73499800098D86 /* PatientQuestiViewController.h */,
 				167BB29B1B73499800098D86 /* PatientQuestiViewController.m */,
 				167BB29C1B73499800098D86 /* PatientQuestiViewController.xib */,
+				9DD49DF51B7AE37400D5770B /* QuestionViewController.h */,
+				9DD49DF61B7AE37400D5770B /* QuestionViewController.m */,
+				9DD49DFD1B7AE49C00D5770B /* QuestionTurnViewController.h */,
+				9DD49DFE1B7AE49C00D5770B /* QuestionTurnViewController.m */,
+				9DD49DFF1B7AE49C00D5770B /* QuestionTurnViewController.xib */,
 			);
 			name = "patient(患者)";
 			path = patient;
@@ -1514,6 +1538,7 @@
 				16C3F9BF1B25711C0040D80C /* User50_press@3x.png in Resources */,
 				16C3F9881B25711C0040D80C /* apply160@1x.png in Resources */,
 				16C3F9B51B25711C0040D80C /* successful50_nomal@0.5x.png in Resources */,
+				9D0C8D8A1B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib in Resources */,
 				16C3F9911B25711C0040D80C /* choose40_nomal@0.5x.png in Resources */,
 				1683694F1B2AB56800A78898 /* ExitLoginCell.xib in Resources */,
 				16C3F9AA1B25711C0040D80C /* questions40@3x.png in Resources */,
@@ -1555,6 +1580,7 @@
 				16C3F99A1B25711C0040D80C /* Help50_press@1x.png in Resources */,
 				16C3F9A31B25711C0040D80C /* notice40@1x.png in Resources */,
 				166077371B74B6FA00978E0F /* MyQuestTableViewCell.xib in Resources */,
+				9DD49E011B7AE49C00D5770B /* QuestionTurnViewController.xib in Resources */,
 				16415CD81B6A1E0C00466A03 /* RegisterViewController.xib in Resources */,
 				16C3F9841B25711C0040D80C /* appl40@2x.png in Resources */,
 				16C3F98F1B25711C0040D80C /* arrow-left26x42_white@3x.png in Resources */,
@@ -1585,6 +1611,7 @@
 				16C3F9861B25711C0040D80C /* appl40@3x.png in Resources */,
 				1692BBC51B4275400094E7A0 /* OnlyTextFieldCell.xib in Resources */,
 				16C3F9931B25711C0040D80C /* choose40_selected.png in Resources */,
+				9D0C8D7C1B7AE780001B4A8E /* myquerstionTableViewCell.xib in Resources */,
 				16C3F9B81B25711C0040D80C /* training40@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1636,6 +1663,7 @@
 				16034ACC1B6F46CF0063EFD7 /* WIBaseButton.m in Sources */,
 				168369601B2AD3C000A78898 /* PersonalDataCell.m in Sources */,
 				1695CC331B783C2D00FA1B1E /* MYquestionTableViewCell.m in Sources */,
+				9DD49E001B7AE49C00D5770B /* QuestionTurnViewController.m in Sources */,
 				10694DB21B7204C000CE2504 /* BaseViewController.m in Sources */,
 				16034AC91B6F464E0063EFD7 /* WIBaseLabel.m in Sources */,
 				16B909941B281F6600211892 /* DonationViewController.m in Sources */,
@@ -1648,7 +1676,6 @@
 				168369411B2AAD2100A78898 /* YYPhotoPicker.m in Sources */,
 				1685AF2F1B2FF9D600F725C3 /* MyPatientCell.m in Sources */,
 				1615F9701B4BCC8800B236B7 /* NewsTableViewCell.m in Sources */,
-				1695CC161B7839ED00FA1B1E /* personmodel.m in Sources */,
 				167BB2981B73496C00098D86 /* PatientApplyViewController.m in Sources */,
 				167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */,
 				16034AB81B6F0DF80063EFD7 /* GlobalMethod.m in Sources */,
@@ -1663,6 +1690,7 @@
 				1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */,
 				1660771D1B74503C00978E0F /* MyPatientTableViewCell.m in Sources */,
 				16B909991B281F6E00211892 /* MyTSMViewController.m in Sources */,
+				9D0C8D7B1B7AE780001B4A8E /* myquerstionTableViewCell.m in Sources */,
 				1653CE461B69B85B001D21FF /* JSONKit.m in Sources */,
 				16034AB21B6F0D510063EFD7 /* BaseModel.m in Sources */,
 				164C0F421B6F72610040321E /* MyProModel.m in Sources */,
@@ -1685,11 +1713,12 @@
 				1660772A1B74AA8000978E0F /* MyProjectModel.m in Sources */,
 				16034AB51B6F0D6B0063EFD7 /* UserObj.m in Sources */,
 				164C0F461B6F77D00040321E /* MyProTableViewCell.m in Sources */,
-				1695CC2B1B783B2C00FA1B1E /* MyquestionViewController.m in Sources */,
 				166077361B74B6FA00978E0F /* MyQuestTableViewCell.m in Sources */,
 				16034ABB1B6F0E990063EFD7 /* GlobalVariable.m in Sources */,
 				1653CE4E1B6A0409001D21FF /* WIDevice.m in Sources */,
+				9D0C8D7F1B7AE868001B4A8E /* MyquestionViewController.m in Sources */,
 				1692BBBF1B426E330094E7A0 /* PhoneNumCell.m in Sources */,
+				9D0C8D891B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m in Sources */,
 				9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */,
 				9D51FD601B6F446F007FF74F /* newCell.m in Sources */,
 				16FAB27A1B78AFD600AE4566 /* UIImage+Resize.m in Sources */,
@@ -1716,6 +1745,7 @@
 				1692BBB91B426CCE0094E7A0 /* PhoneVerificationCodeViewController.m in Sources */,
 				1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */,
 				1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */,
+				9DD49DF71B7AE37400D5770B /* QuestionViewController.m in Sources */,
 				166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */,
 				163FE6E51B79EE0A00A45019 /* DocMyTrainDetailViewController.m in Sources */,
 				165EB4711B298F290070D1F8 /* LineCell.m in Sources */,
