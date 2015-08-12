@@ -45,7 +45,12 @@ NSString *const UserInfoView = @"MyUserInfoView";
     _infoView.frame = CGRectMake(0, 0, ScreenWidth, 286);
     [self.view addSubview:_infoView];
     
-    [_infoView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    if ([GlobalMethod sharedInstance].headImageURL.length > 0) {
+         [_infoView.headImageView sd_setImageWithURL:[NSURL URLWithString:[GlobalMethod sharedInstance].headImageURL] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    }else{
+         [_infoView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    }
+   
     
     UITapGestureRecognizer *headTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectHeadImage)];
     [_infoView.headImageView addGestureRecognizer:headTap];
@@ -142,9 +147,17 @@ NSString *const UserInfoView = @"MyUserInfoView";
     NSDictionary *dic = @{@"clientkey":UserInfoData.clientkey,@"UserLogin":UserInfoData.im};
     
     [HttpRequest_MyApi POSTURLString:@"/User/updateavatarfile/" parameters:dic imageData:pictureData success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
 //         NSLog(@"responseObject == %@",responseObject);
+        
         if ([responseObject[@"state"] boolValue]) {
             NSLog(@"头像更新成功");
+             NSDictionary *dataDic = (NSDictionary *)[responseObject[@"data"] objectFromJSONString];
+            
+//            NSLog(@"dataDic == %@",dataDic);
+            
+            [GlobalMethod sharedInstance].headImageURL = dataDic[@"fileurl"];
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

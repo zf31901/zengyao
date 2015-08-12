@@ -55,7 +55,15 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 {
     self.navigationController.navigationBarHidden  = YES;
     if ([GlobalMethod sharedInstance].isLogin){
-        [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+        
+        if ([GlobalMethod sharedInstance].headImageURL.length > 0) {
+            
+            [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:[GlobalMethod sharedInstance].headImageURL] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+        }else{
+           [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+        }
+        
+        
         _headView.nameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.im];
         
         [self.view addSubview:self.tableView];

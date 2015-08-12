@@ -39,6 +39,8 @@
 
 @property (nonatomic,assign) BOOL isLogin;
 
+@property (nonatomic,strong) NSString *headImageURL;
+
 
 //处理时间戳和时间
 + (NSString *)getJsonDateString:(NSString *)JsonString;                 //"Date(xxxxx)" 转换成 "xxxxx"
