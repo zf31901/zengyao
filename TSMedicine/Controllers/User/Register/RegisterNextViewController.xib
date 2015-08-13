@@ -22,12 +22,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的登录密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFB-S2-2Ya">
-                            <rect key="frame" x="10" y="0.0" width="180" height="44"/>
+                            <rect key="frame" x="10" y="0.0" width="200" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入您的登录密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zev-aF-R5Z">
-                            <rect key="frame" x="10" y="45" width="180" height="44"/>
+                            <rect key="frame" x="10" y="45" width="200" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>

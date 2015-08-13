@@ -81,7 +81,7 @@
     NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-//        NSLog(@"responseObj == %@",responseObj);
+        NSLog(@"responseObj == %@",responseObj);
         
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyProjectModel *model = [[MyProjectModel alloc] init];

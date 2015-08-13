@@ -16,6 +16,8 @@
 
 @property (nonatomic, copy) NSString *phoneNum;
 
+@property (nonatomic,assign) BOOL isChangePassWord;
+
 @property (nonatomic,copy) NSString *navTitle;
 
 @end

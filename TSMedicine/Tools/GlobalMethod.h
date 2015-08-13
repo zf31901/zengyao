@@ -33,11 +33,14 @@
 //用户数据解归档
 + (UserObj *)getUserObj;
 
+
 //登录状态
 + (void)saveLoginInStatus:(BOOL)isSignIn;
 + (BOOL)loginInStatus;
 
 @property (nonatomic,assign) BOOL isLogin;
+
+@property (nonatomic,assign) BOOL isAutoLogin;
 
 @property (nonatomic,strong) NSString *headImageURL;
 

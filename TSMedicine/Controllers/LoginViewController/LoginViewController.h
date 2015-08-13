@@ -18,5 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *forgetPWBtn;
 @property (weak, nonatomic) IBOutlet UIButton *autoLoginBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
 
 @end

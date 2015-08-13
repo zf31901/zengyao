@@ -12,6 +12,8 @@
 @interface RegisterViewController ()
 
 @property (nonatomic,copy) NSString *sessionkey;
+@property (nonatomic,copy) NSString *userlogin;
+
 @property (nonatomic,assign) NSInteger second;
 @property (nonatomic,strong) NSTimer *timer;
 
@@ -54,32 +56,54 @@
         return;
     }
     
-    NSDictionary *parameters = @{@"phone":_phoneNumbTF.text};
-    [HttpRequest_MyApi GETURLString:@"/User/register/sendverifycode/" userCache:NO parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
-        NSDictionary *rqDic = (NSDictionary *)responseObj;
-        if ([rqDic[@"state"] boolValue]) {
-            NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-            NSLog(@"dic ==== %@",dic);
-            
-            _sessionkey = dic[@"sessionkey"];
-            
-            if ([dic[@"result"] boolValue]) {
+    if (_isFindPass)
+    {
+        //找回密码
+        NSDictionary *parameters = @{@"u":_phoneNumbTF.text};
+        [HttpRequest_MyApi GETURLString:@"/User/findpassword/sendverifycode/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+             NSDictionary *rqDic = (NSDictionary *)responseObj;
+            if([rqDic[HTTP_STATE] boolValue]){
+                NSDictionary *dic = (NSDictionary *)[rqDic[HTTP_DATA] objectFromJSONString];
+//                NSLog(@"dic === %@",dic);
                 
-                NSLog(@"验证码发送成功");
-                
-            }else{
-                NSLog(@"验证码发送失败");
+                _sessionkey = dic[@"sessionkey"];
+                _userlogin = dic[@"userlogin"];
             }
-        }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error == %@",error);
+        }];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error == %@",error);
-    }];
+    }else{
+        //注册新账号
+        NSDictionary *parameters = @{@"phone":_phoneNumbTF.text};
+        [HttpRequest_MyApi GETURLString:@"/User/register/sendverifycode/" userCache:NO parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+            
+            NSDictionary *rqDic = (NSDictionary *)responseObj;
+            if ([rqDic[@"state"] boolValue]) {
+                NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+                //            NSLog(@"dic ==== %@",dic);
+                
+                _sessionkey = dic[@"sessionkey"];
+                
+                if ([dic[@"result"] boolValue]) {
+                    
+                    NSLog(@"验证码发送成功");
+                    
+                }else{
+                    NSLog(@"验证码发送失败");
+                }
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error == %@",error);
+        }];
+        
+    }
     
     _second = 60;
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
-    _verifyBtn.selected = NO;
+    _verifyBtn.enabled = NO;
 }
 
 -(void)time
@@ -90,7 +114,7 @@
         _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
         [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
-        _verifyBtn.selected = YES;
+        _verifyBtn.enabled = YES;
         
         [_timer invalidate];
         _timer = nil;
@@ -100,6 +124,7 @@
         [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",_second] forState:UIControlStateNormal];
         [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
         _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
+        _verifyBtn.enabled = NO;
         
     }
     
@@ -116,33 +141,58 @@
         return;
     }
 
-/*
-    NSDictionary *dic = @{@"phone":_phoneNumbTF.text,@"verifycode":_verifyTF.text,@"sessionkey":_sessionkey};
-    [HttpRequest_MyApi GETURLString:@"/User/register/checkverifycode/" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-//        NSLog(@"responseObj === %@",responseObj);
-        NSDictionary *rqDic = (NSDictionary *)responseObj;
-        if ([rqDic[@"state"] boolValue]) {
-            NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-            NSLog(@"dic ==== %@",dic);
-            
-            if ([dic[@"result"] boolValue]) {
-                NSLog(@"进入下一步");
+    if (_isFindPass)
+    {
+        //找回密码
+         NSDictionary *parameters = @{@"u": _phoneNumbTF.text, @"verifycode": _verifyTF.text, @"sessionkey": _sessionkey};
+        [HttpRequest_MyApi GETURLString:@"/User/findpassword/checkverifycode/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+            NSDictionary *rqDic = (NSDictionary *)responseObj;
+            if([rqDic[HTTP_STATE] boolValue]){
+                NSDictionary *dataDic = (NSDictionary *)[rqDic[HTTP_DATA] objectFromJSONString];
+                NSLog(@"dataDic == %@",dataDic);
+                if([dataDic[@"result"] boolValue]){
+                    
+                    RegisterNextViewController *nextRgster = [[RegisterNextViewController alloc] init];
+                    nextRgster.navTitle = @"设置新密码";
+                    nextRgster.phoneNum = _phoneNumbTF.text;
+                    nextRgster.isChangePassWord = YES;
+                    [self.navigationController pushViewController:nextRgster animated:YES];
+                
+                }
             }
-  
-        }
-  
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error == %@",error);
-    }];
-*/
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error == %@",error);
+        }];
+        
+        
+    }else{
+        //注册新账号
+        NSDictionary *dic = @{@"phone":_phoneNumbTF.text,@"verifycode":_verifyTF.text,@"sessionkey":_sessionkey};
+        [HttpRequest_MyApi GETURLString:@"/User/register/checkverifycode/" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+            NSDictionary *rqDic = (NSDictionary *)responseObj;
+            if ([rqDic[@"state"] boolValue]) {
+                NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+//                NSLog(@"dic ==== %@",dic);
+                
+                if ([dic[@"result"] boolValue]) {
+                    NSLog(@"进入下一步");
+                    
+                    RegisterNextViewController *nextRgster = [[RegisterNextViewController alloc] init];
+                    nextRgster.navTitle = @"设置密码";
+                    nextRgster.phoneNum = _phoneNumbTF.text;
+                    [self.navigationController pushViewController:nextRgster animated:YES];
+                }
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error == %@",error);
+        }];
+        
+        
+    }
     
-    RegisterNextViewController *nextRgster = [[RegisterNextViewController alloc] init];
-    nextRgster.navTitle = @"确认密码";
-    nextRgster.phoneNum = _phoneNumbTF.text;
-    [self.navigationController pushViewController:nextRgster animated:YES];
     
-
-
 }
 -(BOOL)cheakPhoneNumber
 {

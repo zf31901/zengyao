@@ -34,8 +34,10 @@
     _finishBtn.layer.cornerRadius = 5.0;
     [_finishBtn setBackgroundColor:Common_Btn_BgColor];
     
+    _passWordTF1.secureTextEntry = YES;
+    _passWordTF2.secureTextEntry = YES;
+    
 }
-
 - (IBAction)finishBtnClick:(id)sender {
    
     if (![self cheakText]) {
@@ -43,21 +45,52 @@
     }
     NSLog(@"提交");
     
-     NSDictionary *parameters = @{@"pwd": _passWordTF2.text, @"phone": _phoneNum};
-    [HttpRequest_MyApi POSTURLString:@"/User/register/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *rqDic = (NSDictionary *)responseObject;
-        NSLog(@"rqDic == %@",rqDic);
-        if([rqDic[@"state"] boolValue]){
-            
-            NSLog(@"注册成功");
-        }else{
-            
+    if (_isChangePassWord)
+    {
+        //修改密码
+        NSDictionary *parameters = @{@"pwd": _passWordTF2.text, @"u": _phoneNum};
+        [HttpRequest_MyApi POSTURLString:@"/User/findpassword/resetpassword/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *rqDic = (NSDictionary *)responseObject;
+//            NSLog(@"rqDic == %@",rqDic);
+            if([rqDic[@"state"] boolValue]){
+                 NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+                if ([dic[@"result"] boolValue]) {
+                    NSLog(@"密码修改成功");
+                    UserObj *user = [[UserObj alloc] init];
+                    [user setUserName:_phoneNum];
+                    [user setPassword:_passWordTF2.text];
+                    [GlobalMethod saveObject:user withKey:USEROBJECT];
+                    [self showAlertViewWithTitle:@"密码修改成功!" andDelay:1.5];
+                    
+                }
+            }
+
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"error == %@",error);
+        }];
         
-        }
+    }else{
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error == %@",error);
-    }];
+        //设置密码
+        NSDictionary *parameters = @{@"pwd": _passWordTF2.text, @"phone": _phoneNum};
+        [HttpRequest_MyApi POSTURLString:@"/User/register/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *rqDic = (NSDictionary *)responseObject;
+            NSLog(@"rqDic == %@",rqDic);
+            if([rqDic[@"state"] boolValue]){
+                NSLog(@"注册成功");
+                NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+                NSString *userlogin = dic[@"userlogin"];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册成功" message:[NSString stringWithFormat:@"您的爱心号: %@",userlogin] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+            }else{
+                
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error == %@",error);
+        }];
+    }
+    
     
 }
 

@@ -9,7 +9,7 @@
 #import "MyTSMNoticeViewController.h"
 #define URL @"http://app.aixinland.cn//page/notice_detail"
 
-#define htmlURL @"http://app.aixinland.cn/page/notice_list.html?userid=903050"
+#define htmlURL @"http://app.aixinland.cn/page/notice_list.html?from=app&userid=%@"
 
 @interface MyTSMNoticeViewController ()<UIWebViewDelegate>
 {
@@ -24,14 +24,12 @@
     [super viewDidLoad];
     
     [self setNavView];
-    
     _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H - 64)];
     
-    NSString *url=[NSString stringWithFormat:@"%@",URL];
-    NSLog(@"url1234------%@",url);
+//    NSString *url=[NSString stringWithFormat:@"%@",URL];
+//    NSLog(@"url1234------%@",url);
     
-    
-    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlURL]]];
+    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:htmlURL,UserInfoData.im]]]];
     [_webView  sizeToFit];
     [self.view addSubview:_webView];
 

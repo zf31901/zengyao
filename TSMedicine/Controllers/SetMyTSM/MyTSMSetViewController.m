@@ -133,6 +133,7 @@
             
             [GlobalMethod saveLoginInStatus:NO];
             [GlobalMethod sharedInstance].isLogin = NO;
+            [GlobalMethod sharedInstance].isAutoLogin = NO;
             
             [self.navigationController popToRootViewControllerAnimated:YES];
             
