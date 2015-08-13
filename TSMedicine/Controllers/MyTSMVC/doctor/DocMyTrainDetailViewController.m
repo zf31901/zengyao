@@ -36,7 +36,7 @@
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     _webView.delegate = self;
     
-    NSString *url = [NSString stringWithFormat:@"http://app.aixinland.cn/page/train_detail.html?dataId=%@&userid=%@",_model.tid,UserInfoData.im];
+    NSString *url = [NSString stringWithFormat:@"http://app.aixinland.cn/page/train_detail.html?from=app&dataId=%@&userid=%@",_model.tid,UserInfoData.im];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
     [self.view addSubview:_webView];

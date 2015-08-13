@@ -144,6 +144,10 @@
 		1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */; };
 		16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */; };
 		16B084FE1B6B5506004512E6 /* RegisterNextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */; };
+		16B64F0A1B7C6D5100C60EB5 /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B64F061B7C6D5100C60EB5 /* icon@3x.png */; };
+		16B64F0B1B7C6D5100C60EB5 /* icon58@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B64F071B7C6D5100C60EB5 /* icon58@2x.png */; };
+		16B64F0C1B7C6D5100C60EB5 /* icon58@x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B64F081B7C6D5100C60EB5 /* icon58@x.png */; };
+		16B64F0D1B7C6D5100C60EB5 /* icon120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B64F091B7C6D5100C60EB5 /* icon120@2x.png */; };
 		16B909941B281F6600211892 /* DonationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B909921B281F6600211892 /* DonationViewController.m */; };
 		16B909951B281F6600211892 /* DonationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B909931B281F6600211892 /* DonationViewController.xib */; };
 		16B909991B281F6E00211892 /* MyTSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B909971B281F6E00211892 /* MyTSMViewController.m */; };
@@ -474,6 +478,10 @@
 		16B084FA1B6B5506004512E6 /* RegisterNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNextViewController.h; sourceTree = "<group>"; };
 		16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNextViewController.m; sourceTree = "<group>"; };
 		16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterNextViewController.xib; sourceTree = "<group>"; };
+		16B64F061B7C6D5100C60EB5 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
+		16B64F071B7C6D5100C60EB5 /* icon58@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon58@2x.png"; sourceTree = "<group>"; };
+		16B64F081B7C6D5100C60EB5 /* icon58@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon58@x.png"; sourceTree = "<group>"; };
+		16B64F091B7C6D5100C60EB5 /* icon120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon120@2x.png"; sourceTree = "<group>"; };
 		16B909911B281F6600211892 /* DonationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationViewController.h; sourceTree = "<group>"; };
 		16B909921B281F6600211892 /* DonationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationViewController.m; sourceTree = "<group>"; };
 		16B909931B281F6600211892 /* DonationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationViewController.xib; sourceTree = "<group>"; };
@@ -1225,6 +1233,17 @@
 			path = PhoneNumCell;
 			sourceTree = "<group>";
 		};
+		16B64F051B7C6CB900C60EB5 /* Appicon */ = {
+			isa = PBXGroup;
+			children = (
+				16B64F061B7C6D5100C60EB5 /* icon@3x.png */,
+				16B64F071B7C6D5100C60EB5 /* icon58@2x.png */,
+				16B64F081B7C6D5100C60EB5 /* icon58@x.png */,
+				16B64F091B7C6D5100C60EB5 /* icon120@2x.png */,
+			);
+			path = Appicon;
+			sourceTree = "<group>";
+		};
 		16B9098E1B281EFA00211892 /* MyTSMVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1264,6 +1283,7 @@
 		16C3F93B1B25711C0040D80C /* ios切图 */ = {
 			isa = PBXGroup;
 			children = (
+				16B64F051B7C6CB900C60EB5 /* Appicon */,
 				16776BE81B466A7C00767F94 /* S2-Logo-FM.png */,
 				16C3F93C1B25711C0040D80C /* answer40@2x.png */,
 				16C3F93D1B25711C0040D80C /* answer40@1x.png */,
@@ -1530,6 +1550,7 @@
 			files = (
 				8ABF0FB41B25296700F42BC5 /* LaunchScreen.xib in Resources */,
 				16C3F9A21B25711C0040D80C /* notice40@2x.png in Resources */,
+				16B64F0A1B7C6D5100C60EB5 /* icon@3x.png in Resources */,
 				16C3F9C01B25711C0040D80C /* 默认头像120.png in Resources */,
 				16C3F9BC1B25711C0040D80C /* User50_nomal@3x.png in Resources */,
 				161E7F181B721B6E0067635E /* MyTSMSetViewController.xib in Resources */,
@@ -1584,6 +1605,7 @@
 				16C3F98B1B25711C0040D80C /* arrow-fight16x25_gray@0.5x.png in Resources */,
 				16C3F9BF1B25711C0040D80C /* User50_press@3x.png in Resources */,
 				16C3F9881B25711C0040D80C /* apply160@1x.png in Resources */,
+				16B64F0C1B7C6D5100C60EB5 /* icon58@x.png in Resources */,
 				16C3F9B51B25711C0040D80C /* successful50_nomal@0.5x.png in Resources */,
 				9D0C8D8A1B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib in Resources */,
 				16C3F9911B25711C0040D80C /* choose40_nomal@0.5x.png in Resources */,
@@ -1642,6 +1664,7 @@
 				1683695B1B2ACC1E00A78898 /* PersonalDataViewController.xib in Resources */,
 				167BB2A81B734A5F00098D86 /* DocMyTrainViewController.xib in Resources */,
 				16C3F9B21B25711C0040D80C /* successful50@0.5x.png in Resources */,
+				16B64F0B1B7C6D5100C60EB5 /* icon58@2x.png in Resources */,
 				1690714A1B3408D600A4CD21 /* AskForDonationViewController.xib in Resources */,
 				16C3F9B41B25711C0040D80C /* successful50_nomal.png in Resources */,
 				164C0F471B6F77D00040321E /* MyProTableViewCell.xib in Resources */,
@@ -1658,6 +1681,7 @@
 				10694DC11B72066800CE2504 /* MyTSMUserInfoViewController.xib in Resources */,
 				167BB2AD1B734A9A00098D86 /* DocMyAnswerViewController.xib in Resources */,
 				16C3F9861B25711C0040D80C /* appl40@3x.png in Resources */,
+				16B64F0D1B7C6D5100C60EB5 /* icon120@2x.png in Resources */,
 				9D0C8DA31B7B200A001B4A8E /* CanonicalormTableViewCell.xib in Resources */,
 				1692BBC51B4275400094E7A0 /* OnlyTextFieldCell.xib in Resources */,
 				16C3F9931B25711C0040D80C /* choose40_selected.png in Resources */,

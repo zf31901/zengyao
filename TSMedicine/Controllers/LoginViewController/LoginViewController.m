@@ -17,25 +17,37 @@
 
 @implementation LoginViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setUI];
     [self setNavView];
     
-    [self setLogin];
-    
 }
 
 -(void)setUI
 {
-    [_loginBtn makeCorner:5];
-    [_registerBtn makeCorner:5];
     
+    [_loginBtn makeCorner:5];
     [_loginBtn setBackgroundColor:Common_Btn_BgColor];
     [_loginBtn setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+    
+    [_registerBtn makeCorner:5];
     [_registerBtn setBackgroundColor:UIColorFromRGB(0xd8d8d8)];
     [_registerBtn setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+    
+//    _nikeName.text = @"903050";
+//    _pawssWorld.text = @"123456";
+    _pawssWorld.secureTextEntry = YES;
+    
+    _nikeName.clearButtonMode = UITextFieldViewModeAlways;
+    _pawssWorld.clearButtonMode = UITextFieldViewModeAlways;
+    
 }
 
 -(void)setNavView
@@ -44,52 +56,49 @@
     self.title = @"登录";
 }
 
--(void)setLogin
-{
-    _nikeName.text = @"903050";
-    _pawssWorld.text = @"123456";
-}
 
 #pragma mark -------登录-------------
 - (IBAction)loginBtn:(id)sender {
     
-    [self saveUserIdentifyByObj:@"1"];
+//    [self saveUserIdentifyByObj:@"1"];
+    
     [self loginRquest];
     
 }
-//用户
-- (IBAction)userBtnClick:(id)sender {
-    
-    [self saveUserIdentifyByObj:@"1"];
-    [self loginRquest];
-}
 
-//医生
-- (IBAction)docBtnClick:(id)sender {
-    
-    [self saveUserIdentifyByObj:@"2"];
-     [self loginRquest];
-}
+////用户
+//- (IBAction)userBtnClick:(id)sender {
+//    
+//    [self saveUserIdentifyByObj:@"1"];
+//    [self loginRquest];
+//}
 
-//协管员
-- (IBAction)managerBtnClick:(id)sender {
-    
-    [self saveUserIdentifyByObj:@"3"];
-     [self loginRquest];
-}
+////医生
+//- (IBAction)docBtnClick:(id)sender {
+//    
+//    [self saveUserIdentifyByObj:@"2"];
+//     [self loginRquest];
+//}
 
-//药房
-- (IBAction)medBtnClick:(id)sender {
-    
-    [self saveUserIdentifyByObj:@"4"];
-     [self loginRquest];
-}
+////协管员
+//- (IBAction)managerBtnClick:(id)sender {
+//    
+//    [self saveUserIdentifyByObj:@"3"];
+//     [self loginRquest];
+//}
 
--(void)saveUserIdentifyByObj:(id)obj
-{
-    [[NSUserDefaults standardUserDefaults] setObject:obj forKey:@"userId"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
+////药房
+//- (IBAction)medBtnClick:(id)sender {
+//    
+//    [self saveUserIdentifyByObj:@"4"];
+//     [self loginRquest];
+//}
+
+//-(void)saveUserIdentifyByObj:(id)obj
+//{
+//    [[NSUserDefaults standardUserDefaults] setObject:obj forKey:@"userId"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//}
 
 
 -(void)loginRquest
@@ -115,7 +124,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error = %@",error);
+        NSLog(@"error = %@---- operation = %@",error,operation);
     }];
     
     [self hidKeyBoard];
@@ -131,7 +140,7 @@
         NSDictionary *rqDic = (NSDictionary *)responseObj;
         if ([rqDic[@"state"] boolValue]) {
             NSDictionary *infoDic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-//            NSLog(@"infoDic === %@ --- sex = %@--%@----%@----%@",infoDic,infoDic[@"Sex"],infoDic[@"Area"],infoDic[@"City"],infoDic[@"Province"]);
+            NSLog(@"infoDic === %@",infoDic);
             
             //保存用户信息
             [self saveUserInfor:infoDic withLoginInfo:dic_login];
@@ -201,14 +210,22 @@
     
 }
 #pragma mark  -----------自动登录-------------
-- (IBAction)autoLoginBtnAction:(id)sender {
+- (IBAction)autoLoginBtnAction:(UIButton *)sender {
     
+    sender.selected = !sender.selected;
     
+    if (sender.selected == YES) {
+        _selectImageView.image = [UIImage imageNamed:@"choose40_selected"];
+        [GlobalMethod sharedInstance].isAutoLogin = YES;
+        
+    }else{
+        _selectImageView.image = [UIImage imageNamed:@"choose40_nomal"];
+        [GlobalMethod sharedInstance].isAutoLogin = NO;
+    }
     
 }
 
-
--(BOOL)cheakText
+- (BOOL)cheakText
 {
     if (_nikeName.text.length == 0) {
         [self showAlertViewWithTitle:@"帐号不能为空" andDelay:1.5];
@@ -221,14 +238,14 @@
     return YES;
 }
 
--(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
+- (void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
     [self performSelector:@selector(removeAlert:) withObject:alert afterDelay:time];
     
 }
--(void)removeAlert:(UIAlertView *)alertView
+- (void)removeAlert:(UIAlertView *)alertView
 {
     [alertView removeFromSuperview];
     alertView = nil;
@@ -249,7 +266,6 @@
     [self.navigationController popViewControllerAnimated:YES];
     self.navigationController.navigationBarHidden  = YES;
 }
-
 
 
 - (void)didReceiveMemoryWarning {

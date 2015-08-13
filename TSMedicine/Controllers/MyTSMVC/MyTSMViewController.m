@@ -54,36 +54,41 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden  = YES;
-    if ([GlobalMethod sharedInstance].isLogin){
+    
+//    NSLog(@"isAutoLogin == %d",[GlobalMethod sharedInstance].isAutoLogin);
+    
+    if ([GlobalMethod sharedInstance].isAutoLogin)
+    {
+        [self drawUI];
+        [GlobalMethod sharedInstance].isLogin = YES;
+    }else if ([GlobalMethod sharedInstance].isLogin){
         
-        if ([GlobalMethod sharedInstance].headImageURL.length > 0) {
-            
-            [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:[GlobalMethod sharedInstance].headImageURL] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-        }else{
-           [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-        }
-        
-        
-        _headView.nameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.im];
-        
-        [self.view addSubview:self.tableView];
-        
-        [_tableView registerNib:[UINib nibWithNibName:ProTableViewCell bundle:nil] forCellReuseIdentifier:ProTableViewCell];
-        
-         [self loadData];
+        [self drawUI];
     }else{
-//        for (UIView *view in self.view.subviews) {
-//            if ([view isKindOfClass:[UITableView class]]) {
-//                [view removeFromSuperview];
-//            }
         
         [self.tableView removeFromSuperview];
         self.tableView = nil;
         _headView.headImageView.image = [UIImage imageNamed:default_head];
         _headView.nameLab.text = @"点击登录";
-        
-//        }
     }
+}
+
+-(void)drawUI
+{
+    if ([GlobalMethod sharedInstance].headImageURL.length > 0) {
+        
+        [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:[GlobalMethod sharedInstance].headImageURL] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    }else{
+        [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    }
+    
+    _headView.nameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.im];
+    
+    [self.view addSubview:self.tableView];
+    
+    [_tableView registerNib:[UINib nibWithNibName:ProTableViewCell bundle:nil] forCellReuseIdentifier:ProTableViewCell];
+    
+    [self loadData];
 }
 
 - (UITableView *)tableView
@@ -135,13 +140,14 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 #pragma mark --------UITableViewDelegate--------------
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
+//    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
+     NSString *type = UserInfoData.Type;
     
     
     if (indexPath.section == 0)
     {
         
-        if ([key isEqualToString:@"1"])
+        if ([type isEqualToString:@"010105"] || [type isEqualToString:@""])
         {
             
             switch (indexPath.row) {
@@ -163,7 +169,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
                 default:
                     break;
             }
-        }else if ([key isEqualToString:@"2"]){
+        }else if ([type isEqualToString:@"010101"]){
         
             switch (indexPath.row) {
                 case 0:
@@ -191,7 +197,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
                 default:
                     break;
             }
-        }else if ([key isEqualToString:@"3"] || [key isEqualToString:@"4"]){
+        }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
             
             switch (indexPath.row){
                 case 0:
@@ -256,16 +262,17 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 {
     [_dataArr removeAllObjects];
     
-//    NSString *key = @"4";
+    NSString *type = UserInfoData.Type;
+    NSLog(@"Type == %@",UserInfoData.Type);
     
-    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
+//    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
     
     NSArray *picArr = nil;
-    if ([key isEqualToString:@"1"]) {
+    if ([type isEqualToString:@"010105"] || [type isEqualToString:@""]) {
         picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
-    }else if ([key isEqualToString:@"2"]){
+    }else if ([type isEqualToString:@"010101"]){
         picArr = [NSArray arrayWithObjects:@"patient40", @"training40", @"answer40", nil];
-    }else if ([key isEqualToString:@"3"] || [key isEqualToString:@"4"]){
+    }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
         picArr = [NSArray arrayWithObjects:@"training40", nil];
     }else{
         
@@ -273,11 +280,11 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     NSArray *comPicArr = [NSArray arrayWithObjects:@"notice40", @"Set-up40",nil];
     
     NSArray *titleArr = nil;
-    if ([key isEqualToString:@"1"]) {
+    if ([type isEqualToString:@"010105"] || [type isEqualToString:@""]) {
         titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
-    }else if ([key isEqualToString:@"2"]){
+    }else if ([type isEqualToString:@"010101"]){
         titleArr = [NSArray arrayWithObjects:@"我的患者", @"我的培训", @"我的问答", nil];
-    }else if ([key isEqualToString:@"3"] || [key isEqualToString:@"4"]){
+    }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
         titleArr = [NSArray arrayWithObjects:@"我的培训", nil];
     }else{
     
@@ -291,15 +298,15 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         model.pic = picArr[i];
         model.title = titleArr[i];
         
-        if ([key isEqualToString:@"1"]) {
+        if ([type isEqualToString:@"010105"] || [type isEqualToString:@""]) {
             if (i == 1) {
                  model.msg = [NSString stringWithFormat:@"%d",i];
             }
-        }else if ([key isEqualToString:@"2"]){
+        }else if ([type isEqualToString:@"010101"]){
             if (i == 1) {
                 model.msg = [NSString stringWithFormat:@"%d",i];
             }
-        }else if ([key isEqualToString:@"3"] || [key isEqualToString:@"4"]){
+        }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
             if (i == 0) {
                 model.msg = [NSString stringWithFormat:@"%d",i];
             }
@@ -340,168 +347,6 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     }
     
 }
-
-/*
- 
- WEAKSELF
- //    NSArray *titleArr = @[@"我的申请",@"我的提问",@"系统通知",@"设置"];
- NSArray *titleArr = @[@"我的患者",@"我的培训",@"我的问答",@"系统通知",@"设置"];
- 
- NSArray *imgArr = @[@"patient40",@"training40",@"answer40",@"notice40",@"Set-up40"];
- NSMutableArray *arr=[[NSMutableArray alloc]init];
- [arr addObject:[@{
- kCellTag:@"MyTSMHeaderCell",
- kCellDidSelect:@"myTSMphotoImg",
- @"color":RGB(145, 92, 100),
- @"h":@"154",
- } mutableCopy]];
- 
- [arr addObject:[@{
- kCellTag:@"line",
- kCellDidSelect:@"f1",
- @"color":RGB(242, 242, 242),
- @"h":@"10",
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"ThinLine",
- kCellDidSelect:@"f1",
- @"l":@"0",
- } mutableCopy]];
- 
- [arr addObject:[@{
- kCellTag:@"MyTSMListCell",
- kCellDidSelect:@"myTSMListCell",
- @"color":[UIColor whiteColor],
- @"textlab":[titleArr objectAtIndex:0],
- @"redLab":@"1",
- @"imgView":[imgArr objectAtIndex:0],
- @"redLabHidden":@YES,
- @"h":@"44",
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"ThinLine",
- kCellDidSelect:@"f1",
- @"l":@"44",
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"MyTSMListCell",
- kCellDidSelect:@"myTSMListCell",
- @"color":[UIColor whiteColor],
- @"h":@"44",
- @"textlab":[titleArr objectAtIndex:1],
- @"redLab":@"1",
- @"imgView":[imgArr objectAtIndex:1],
- @"redLabHidden":@NO,
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"ThinLine",
- kCellDidSelect:@"f1",
- @"l":@"44",
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"MyTSMListCell",
- kCellDidSelect:@"myTSMListCell",
- @"color":[UIColor whiteColor],
- @"h":@"44",
- @"textlab":[titleArr objectAtIndex:2],
- @"redLab":@"1",
- @"imgView":[imgArr objectAtIndex:2],
- @"redLabHidden":@YES,
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"line",
- kCellDidSelect:@"f1",
- @"color":RGB(242, 242, 242),
- @"h":@"10",
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"MyTSMListCell",
- kCellDidSelect:@"myTSMListCell",
- @"color":[UIColor whiteColor],
- @"h":@"44",
- @"textlab":[titleArr objectAtIndex:3],
- @"redLab":@"1",
- @"imgView":[imgArr objectAtIndex:3],
- @"redLabHidden":@YES,
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"ThinLine",
- kCellDidSelect:@"f1",
- @"l":@"44",
- } mutableCopy]];
- [arr addObject:[@{
- kCellTag:@"MyTSMListCell",
- kCellDidSelect:@"myTSMListCell",
- @"color":[UIColor whiteColor],
- @"h":@"44",
- @"textlab":[titleArr objectAtIndex:4],
- @"redLab":@"1",
- @"imgView":[imgArr objectAtIndex:4],
- @"redLabHidden":@YES,
- } mutableCopy]];
- 
- self.tableView.xDataSource = arr;
- 
- [arr x_update:@"MyTSMListCell" where:@{@"textlab":@"我的患者"} set:@{kCellDidSelect:@"myPatientVC"}];
- [self.tableView addCellEventListenerWithName:@"myPatientVC" block:^(X_TableViewCell *cell) {
- MyPatientViewController *myPatientVC = [MyPatientViewController new];
- myPatientVC.hidesBottomBarWhenPushed = YES;
- [self.navigationController pushViewController:myPatientVC animated:YES];
- }];
- 
- [arr x_update:@"MyTSMListCell" where:@{@"textlab":@"我的培训"} set:@{kCellDidSelect:@"MyShenqingVC"}];
- [self.tableView addCellEventListenerWithName:@"MyShenqingVC" block:^(X_TableViewCell *cell) {
- TrainViewController *trainVC = [TrainViewController new];
- trainVC.hidesBottomBarWhenPushed = YES;
- [self.navigationController pushViewController:trainVC animated:YES];
- }];
- 
- [arr x_update:@"MyTSMListCell" where:@{@"textlab":@"我的问答"} set:@{kCellDidSelect:@"answerVC"}];
- [self.tableView addCellEventListenerWithName:@"answerVC" block:^(X_TableViewCell *cell) {
- MyShenqingViewContrlller *myShenqingVC = [MyShenqingViewContrlller new];
- myShenqingVC.hidesBottomBarWhenPushed = YES;
- [self.navigationController pushViewController:myShenqingVC animated:YES];
- }];
- 
- [self.tableView addCellEventListenerWithName:@"setMyTSMHeader_photoImg" block:^(X_TableViewCell *cell) {
- [YYPhotoPicker showPhotoInController:self withCallBack:^(UIImage *image) {
- [cell.cellData setObject:image forKey:@"myTSMHeader_photoImg"];
- [weakSelf.tableView reloadData];
- }];
- }];
- 
- [arr x_update:@"MyTSMListCell" where:@{@"textlab":@"系统通知"} set:@{kCellDidSelect:@"push"}];
- [self.tableView addCellEventListenerWithName:@"push" block:^(X_TableViewCell *cell) {
- PhoneVerificationCodeViewController *phone = [PhoneVerificationCodeViewController new];
- phone.hidesBottomBarWhenPushed = YES;
- [self.navigationController pushViewController:phone animated:YES];
- }];
- 
- [self.tableView addCellEventListenerWithName:@"loginBtn" block:^(X_TableViewCell *cell) {
- LoginViewController *loginVC = [LoginViewController new];
- loginVC.hidesBottomBarWhenPushed = YES;
- 
- [self.navigationController pushViewController:loginVC animated:YES];
- 
- }];
- 
- [arr x_update:@"MyTSMListCell" where:@{@"textlab":@"设置"} set:@{kCellDidSelect:@"setMyTSM"}];
- [self.tableView addCellEventListenerWithName:@"setMyTSM" block:^(X_TableViewCell *cell) {
- SetMyTSMViewController *setMyTSMVC = [SetMyTSMViewController new];
- setMyTSMVC.hidesBottomBarWhenPushed = YES;
- 
- [self.navigationController pushViewController:setMyTSMVC animated:YES];
- }];
- 
- 
- [self.tableView addCellEventListenerWithName:@"setMyTSMHeader_photoImg" block:^(X_TableViewCell *cell) {
- [arr x_update:@"MyTSMHeaderCell" where:@{@"h":@"154"} set:@{@"myTSMHeader_photoImg":RGB(32, 164, 82),@"sigOutBtnEnagled":@"true",}];
- [self.tableView  reloadData];
- 
- }];
- 
- */
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

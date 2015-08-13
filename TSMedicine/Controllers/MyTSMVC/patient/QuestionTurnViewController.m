@@ -78,10 +78,6 @@
 
 
 }
--(void)commit{
 
-    NSLog(@"发表");
-
-}
 
 @end

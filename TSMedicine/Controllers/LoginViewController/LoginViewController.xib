@@ -13,6 +13,7 @@
                 <outlet property="nikeName" destination="13P-nl-IUZ" id="5Ce-u3-spO"/>
                 <outlet property="pawssWorld" destination="OZU-tm-5C3" id="y3X-4G-rLR"/>
                 <outlet property="registerBtn" destination="WSE-x0-dKK" id="77M-kD-EOc"/>
+                <outlet property="selectImageView" destination="0fv-Rq-2V8" id="DYg-0F-01t"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您的账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13P-nl-IUZ">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入注册手机号/爱心号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13P-nl-IUZ">
                     <rect key="frame" x="12" y="20" width="351" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -30,7 +31,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入你的密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OZU-tm-5C3">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您的密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OZU-tm-5C3">
                     <rect key="frame" x="12" y="80" width="351" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -53,12 +54,13 @@
                         <action selector="forgetPWBtnAction:" destination="-1" eventType="touchUpInside" id="0YE-pN-t3f"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbZ-CR-ykh">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbZ-CR-ykh">
                     <rect key="frame" x="297" y="135" width="66" height="19"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="19" id="kq5-Mi-SFz"/>
                         <constraint firstAttribute="width" constant="66" id="l79-kp-gpV"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="自动登录">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,50 +99,13 @@
                         <action selector="regainBtn:" destination="-1" eventType="touchUpInside" id="Jp5-fq-hcB"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJM-ZN-afJ">
-                    <rect key="frame" x="30" y="248" width="50" height="30"/>
-                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="用户">
-                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="userBtnClick:" destination="-1" eventType="touchUpInside" id="pDB-F8-1rO"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a41-OF-537">
-                    <rect key="frame" x="170" y="248" width="50" height="30"/>
-                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="协管员">
-                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="managerBtnClick:" destination="-1" eventType="touchUpInside" id="BXX-EB-C7h"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q5-yn-jTJ">
-                    <rect key="frame" x="240" y="248" width="50" height="30"/>
-                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="药房">
-                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="medBtnClick:" destination="-1" eventType="touchUpInside" id="3H2-0h-T7J"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJu-pB-MmM">
-                    <rect key="frame" x="100" y="248" width="50" height="30"/>
-                    <color key="backgroundColor" red="0.56862745100000001" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="医生">
-                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="docBtnClick:" destination="-1" eventType="touchUpInside" id="QM0-H6-aWo"/>
-                    </connections>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="choose40_nomal.png" translatesAutoresizingMaskIntoConstraints="NO" id="0fv-Rq-2V8">
+                    <rect key="frame" x="273" y="134" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="t8b-1N-1aD"/>
+                        <constraint firstAttribute="width" constant="20" id="uYn-6o-tvx"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
@@ -151,8 +116,11 @@
                 <constraint firstItem="H19-4A-Va4" firstAttribute="top" secondItem="olW-Ow-9bj" secondAttribute="bottom" constant="30" id="H2D-q9-kKb"/>
                 <constraint firstItem="13P-nl-IUZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="ImK-VS-ZT9"/>
                 <constraint firstAttribute="trailing" secondItem="HbZ-CR-ykh" secondAttribute="trailing" constant="12" id="Ulg-fg-GQN"/>
+                <constraint firstItem="WSE-x0-dKK" firstAttribute="top" secondItem="0fv-Rq-2V8" secondAttribute="bottom" constant="30" id="VMD-mT-RtT"/>
                 <constraint firstItem="OZU-tm-5C3" firstAttribute="top" secondItem="13P-nl-IUZ" secondAttribute="bottom" constant="20" id="VXE-BC-6ak"/>
                 <constraint firstItem="13P-nl-IUZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="bRG-8K-Sim"/>
+                <constraint firstItem="0fv-Rq-2V8" firstAttribute="top" secondItem="OZU-tm-5C3" secondAttribute="bottom" constant="14" id="gfA-hF-1nx"/>
+                <constraint firstItem="HbZ-CR-ykh" firstAttribute="leading" secondItem="0fv-Rq-2V8" secondAttribute="trailing" constant="4" id="h3V-We-5ib"/>
                 <constraint firstAttribute="trailing" secondItem="OZU-tm-5C3" secondAttribute="trailing" constant="12" id="irv-za-HQf"/>
                 <constraint firstAttribute="trailing" secondItem="13P-nl-IUZ" secondAttribute="trailing" constant="12" id="kpl-Wv-Ywc"/>
                 <constraint firstItem="H19-4A-Va4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="rRh-Kd-OVj"/>
@@ -163,4 +131,7 @@
             <point key="canvasLocation" x="228.5" y="179.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="choose40_nomal.png" width="40" height="40"/>
+    </resources>
 </document>

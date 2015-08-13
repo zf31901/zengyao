@@ -164,6 +164,26 @@
     return [TSUserDefaults boolForKey:@"signInStatus"];
 }
 
+//是否登录
+//-(void)setIsLogin:(BOOL)isLogin
+//{
+//    [TSUserDefaults setBool:isLogin forKey:@"isLogin"];
+//}
+//-(BOOL)isLogin
+//{
+//    return [TSUserDefaults boolForKey:@"isLogin"];
+//}
+
+//是否自动登录
+-(void)setIsAutoLogin:(BOOL)isAutoLogin
+{
+    [TSUserDefaults setBool:isAutoLogin forKey:@"isAutoLogin"];
+}
+-(BOOL)isAutoLogin
+{
+    return [TSUserDefaults boolForKey:@"isAutoLogin"];
+}
+
 
 + (NSString *)getJsonDateString:(NSString *)JsonString
 {
