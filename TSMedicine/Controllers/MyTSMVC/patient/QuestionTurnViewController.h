@@ -10,4 +10,7 @@
 
 @interface QuestionTurnViewController : BaseViewController
 
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @end

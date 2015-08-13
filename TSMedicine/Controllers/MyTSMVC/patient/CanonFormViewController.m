@@ -8,16 +8,28 @@
 
 #import "CanonFormViewController.h"
 
-@interface CanonFormViewController ()
-
+@interface CanonFormViewController ()<UIWebViewDelegate>
+{
+    UIWebView *_webView;
+    
+}
 @end
 
 @implementation CanonFormViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H- 64)];
+    
+    _webView.delegate=self;
+    
+ 
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_list.html?from=app&dataId=%@",_model.upid1];
+    
+    
+    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [_webView  sizeToFit];
+    [self.view addSubview:_webView];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

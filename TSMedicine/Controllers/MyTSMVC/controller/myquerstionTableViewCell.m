@@ -25,7 +25,7 @@
     NSString *dateStr = [model.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
     _uqcreatedate.text = dateStr;
     
-    _uqstats.text=[NSString stringWithFormat:@"%@人回答",model.uqstate];
+    _uqstats.text=[NSString stringWithFormat:@"%@人回答",model.uqcount];
 
   
     

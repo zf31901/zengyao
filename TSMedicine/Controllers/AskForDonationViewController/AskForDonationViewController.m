@@ -41,7 +41,7 @@
 
     _webView.delegate=self;
    
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn//page/apply_form.ht?dataid=%@",_model.pid];
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn//page/project_detail.html?from=app&dataId=%@",_model.pid];
   
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];

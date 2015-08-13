@@ -11,9 +11,10 @@
 #import "ReasonTableViewCell.h"
 #import "HospitalTableViewCell.h"
 #import "CanonicalormTableViewCell.h"
-
+#import "CanonFormViewController.h"
 #import "xqingViewController.h"
 
+#define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 @interface APPlicationProgressViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *_dataArr;
@@ -44,7 +45,7 @@
 -(void)UITableView{
     
    
-    _myTablview= [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _myTablview= [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-25) style:UITableViewStyleGrouped];
     
     _myTablview.delegate = self;
     _myTablview.dataSource = self;
@@ -62,6 +63,18 @@
 
 
 #pragma mark-UITableView代理方法
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (3==indexPath.section) {
+    
+        
+        CanonFormViewController  *answerVC = [[CanonFormViewController alloc] init];
+        // answerVC.model = _dataArr[indexPath.row];
+        [self.navigationController pushViewController:answerVC animated:YES];
+        
+    }
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     

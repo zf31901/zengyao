@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionTurnViewController">
             <connections>
+                <outlet property="textView" destination="F09-zo-vot" id="Bb2-mw-Guj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,16 +23,10 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="背景图.png" translatesAutoresizingMaskIntoConstraints="NO" id="3zX-HQ-DKu">
-                    <rect key="frame" x="0.0" y="0.0" width="441" height="667"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="-28.5" y="-202.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="背景图.png" width="640" height="960"/>
-    </resources>
 </document>

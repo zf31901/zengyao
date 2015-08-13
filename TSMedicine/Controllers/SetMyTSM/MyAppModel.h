@@ -14,6 +14,11 @@
 @property (nonatomic, strong)             NSString *upcreatedate1;
 @property(nonatomic,strong)              NSString *upstate1;
 @property(nonatomic,strong)               NSString *upqacount1;
+@property(nonatomic,strong)               NSString *upid1;
+@property(nonatomic,strong)               NSString *uppid;
+@property(nonatomic,strong)               NSString *upuserid;
+@property(nonatomic,strong)               NSString *upuseridcard;
+@property(nonatomic,strong)               NSString *upusersex;
 @property (nonatomic,assign) BOOL isReport;
 
 @end

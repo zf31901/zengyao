@@ -23,6 +23,7 @@
     UITableView *_mytableView;
 }
 @property(nonatomic,strong)NSMutableArray *dataArr;
+@property (nonatomic,assign) BOOL isFirst;
 
 @end
 
@@ -30,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+       _isFirst = YES;
     _dataArr=[[NSMutableArray alloc]init];
     
     
@@ -39,6 +40,13 @@
     self.title = @"问题详情";
     [self buidRightBtn:@"提问"];
 
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    
+    [self Staload];
 }
 
 -(void)settabView{
@@ -56,21 +64,27 @@
 -(void)Staload{
     
     
+    _dataArr = [NSMutableArray array];
+    NSMutableArray *arr1 = [NSMutableArray array];
+    [arr1 addObject:self.model];
+    [_dataArr addObject:arr1];
+    
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"uqid":@"0",@"userid":@"0",@"pageid":@"1",@"pagesize":@"10"};
-    [rq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        NSLog(@"responseObj123456 === %@",responseObj);
-        
-        // NSMutableArray *arr2 = [NSMutableArray array];
+    NSDictionary *dic = @{@"uqid":@(0),@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        NSMutableArray *arr2 = [NSMutableArray array];
         for (NSDictionary *dic in responseObj[@"data"]) {
-           MyAnswerModel *model = [[MyAnswerModel alloc] init];
+            MyAnswerModel *model = [[MyAnswerModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
-            
-            [_dataArr addObject:model];
-            
+            [arr2 addObject:model];
         }
-        NSLog(@"13123------%@",_dataArr);
-        [self settabView];
+        [_dataArr addObject:arr2];
+        
+        if (_isFirst) {
+            [self settabView];
+            _isFirst = NO;
+        }
+        
         [_mytableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -85,7 +99,8 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataArr.count;
+    return [_dataArr[section] count];
+
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -95,21 +110,7 @@
         cell = [[QuestPersoNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
    
-    MyAnswerModel *model1=_dataArr[indexPath.row];
-    
-[cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model1.uqauserimage] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-    
-    cell.nameLable.text = model1.uqausername;
-    
-    NSString *dateStr = [model1.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
-    NSString *timeStr = [model1.uqcreatedate substringWithRange:NSMakeRange(11, 5)];
-    cell.dateLab.text = [NSString stringWithFormat:@"%@ %@",dateStr,timeStr];
-    
-    cell.answerLab.text = [NSString stringWithFormat:@"问: %@",model1.uqacontent];
-    cell.answerLab.numberOfLines = 0;
-    cell.answerLab.height = model1.contentSize.height;
-  
-    
+  [cell loadDataWithDataArray:_dataArr andWithIndexPath:indexPath];
     
     return cell;
     
@@ -130,11 +131,25 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
  
-        return 100;
+    if (indexPath.section == 0) {
+        MyPatQuestModel *model = _dataArr[indexPath.section][indexPath.row];
+        return 80.0 + model.contentSize.height;
+        
+    }else{
+        MyAnswerModel *model = _dataArr[indexPath.section][indexPath.row];
+        
+        return 80.0 + model.contentSize.height;
+    }
+
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.1f;
+    if (section == 0) {
+        return 0.1f;
+    }else{
+        return 3.0f;
+    }
+
 }
 @end

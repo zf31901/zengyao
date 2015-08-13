@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyAppModel.h"
 @interface CanonFormViewController : UIViewController
+@property(nonatomic,strong)MyAppModel *model;
 
 @end

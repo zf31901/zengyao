@@ -14,6 +14,7 @@
 #import "APPlicationProgressViewController.h"
 
 
+#define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 
 #define URL @"http://app.aixinland.cn/api/userproject/List"
 
@@ -95,7 +96,7 @@
 }
 -(void)setTableView
 {
-    _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+     _mytableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-25) style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     [self.view addSubview:_mytableView];

@@ -16,6 +16,7 @@
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
 
+#define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
@@ -38,7 +39,7 @@
     [super viewDidLoad];
     _dataArr=[[NSMutableArray alloc]init];
     
-    _mytableView=[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-44-64) style:UITableViewStylePlain];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     
@@ -126,9 +127,9 @@
         
         cell.fromeLable.text=model.a_Title;
         cell.fromeLable.numberOfLines=0;
-        CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
+        CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(304, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
 
-        cell.fromeLable.frame = CGRectMake(0, 0, 320, rect.size.height);
+        cell.fromeLable.frame = CGRectMake(0, 0, 304, rect.size.height);
         
         cell.newlabel.text=model.a_From;
         cell.dataTimew.text=model.a_AddDate;
@@ -150,11 +151,10 @@
         cell1.fromLab.text=model.a_From;
 
         CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
-    cell1.newlab.frame = CGRectMake(0, 0, 320, rect.size.height);
+     cell1.newlab.bounds = CGRectMake(0, 0, rect.size.width, 120);
        
         
-        NSLog(@"cell1.fromLab-----%@",cell1.newlab);
-      //  NSLog(@"cell1.fromLab%@",cell1.fromLab);
+
        
         cell1.dataTimelab.text=model.a_AddDate;
             
