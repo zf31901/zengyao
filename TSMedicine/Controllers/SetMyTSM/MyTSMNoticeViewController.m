@@ -7,11 +7,10 @@
 //
 
 #import "MyTSMNoticeViewController.h"
-#define URL @"http://app.aixinland.cn//page/notice_detail"
 
 #define htmlURL @"http://app.aixinland.cn/page/notice_list.html?from=app&userid=%@"
 
-@interface MyTSMNoticeViewController ()<UIWebViewDelegate>
+@interface MyTSMNoticeViewController () <UIWebViewDelegate>
 {
     UIWebView *_webView;
     
@@ -23,22 +22,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavView];
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H - 64)];
+//    [self setNavView];
+    [self loadWebView];
     
-//    NSString *url=[NSString stringWithFormat:@"%@",URL];
-//    NSLog(@"url1234------%@",url);
-    
-    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:htmlURL,UserInfoData.im]]]];
-    [_webView  sizeToFit];
-    [self.view addSubview:_webView];
-
 }
 
 -(void)setNavView
 {
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = YES;
     self.title = @"系统通知";
+}
+-(void)loadWebView
+{
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H - 64)];
+    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:htmlURL,UserInfoData.im]]]];
+    [_webView  sizeToFit];
+    _webView.delegate = self;
+    [self.view addSubview:_webView];
+}
+#pragma mark --------------UIWebViewDelegate----------------
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *urlString = [[request URL] absoluteString];
+    NSLog(@"urlString ==== %@",urlString);
+    if ([urlString rangeOfString:@"page/notice_list.html?objc_receive:Delete"].location != NSNotFound) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        
+    }
+    return YES;
 }
 
 

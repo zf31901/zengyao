@@ -23,11 +23,18 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 
 @implementation DocMyTrainViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setNavView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadData];
-    [self setNavView];
+    
     [self setTabView];
 }
 

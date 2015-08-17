@@ -33,7 +33,11 @@
 #import "MyProTableViewCell.h"
 
 
-
+#define Patient_Type1 @"01"         //患者
+#define Patient_Type2 @""           //患者
+#define Doctor_Type   @"010101"     //医生
+#define Manager_Type  @"010103"     //协管员
+#define Medicine_Type @"010104"     //药房
 
 NSString *const ProTableViewCell = @"MyProTableViewCell";
 
@@ -143,11 +147,10 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 //    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
      NSString *type = UserInfoData.Type;
     
-    
     if (indexPath.section == 0)
     {
         
-        if ([type isEqualToString:@"010105"] || [type isEqualToString:@""])
+        if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2])
         {
             
             switch (indexPath.row) {
@@ -169,7 +172,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
                 default:
                     break;
             }
-        }else if ([type isEqualToString:@"010101"]){
+        }else if ([type isEqualToString:Doctor_Type]){
         
             switch (indexPath.row) {
                 case 0:
@@ -197,7 +200,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
                 default:
                     break;
             }
-        }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
+        }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
             
             switch (indexPath.row){
                 case 0:
@@ -268,11 +271,11 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 //    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
     
     NSArray *picArr = nil;
-    if ([type isEqualToString:@"010105"] || [type isEqualToString:@""]) {
+    if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
         picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
-    }else if ([type isEqualToString:@"010101"]){
+    }else if ([type isEqualToString:Doctor_Type]){
         picArr = [NSArray arrayWithObjects:@"patient40", @"training40", @"answer40", nil];
-    }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
+    }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
         picArr = [NSArray arrayWithObjects:@"training40", nil];
     }else{
         
@@ -280,11 +283,11 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     NSArray *comPicArr = [NSArray arrayWithObjects:@"notice40", @"Set-up40",nil];
     
     NSArray *titleArr = nil;
-    if ([type isEqualToString:@"010105"] || [type isEqualToString:@""]) {
+    if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
         titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
-    }else if ([type isEqualToString:@"010101"]){
+    }else if ([type isEqualToString:Doctor_Type]){
         titleArr = [NSArray arrayWithObjects:@"我的患者", @"我的培训", @"我的问答", nil];
-    }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
+    }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
         titleArr = [NSArray arrayWithObjects:@"我的培训", nil];
     }else{
     
@@ -298,22 +301,21 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         model.pic = picArr[i];
         model.title = titleArr[i];
         
-        if ([type isEqualToString:@"010105"] || [type isEqualToString:@""]) {
+        if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
             if (i == 1) {
                  model.msg = [NSString stringWithFormat:@"%d",i];
             }
-        }else if ([type isEqualToString:@"010101"]){
+        }else if ([type isEqualToString:Doctor_Type]){
             if (i == 1) {
                 model.msg = [NSString stringWithFormat:@"%d",i];
             }
-        }else if ([type isEqualToString:@"010103"] || [type isEqualToString:@"010104"]){
+        }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
             if (i == 0) {
                 model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }
         [arr1 addObject:model];
     }
-    
     
     NSMutableArray *arr2 = [NSMutableArray array];
     for (int i = 0; i < comTitleArr.count; i++) {
@@ -334,7 +336,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 -(void)myHeaderViewClick:(MyHeaderView *)headerView
 {
     if ([GlobalMethod sharedInstance].isLogin) {
-
+        
         MyTSMUserInfoViewController *infoVC = [[MyTSMUserInfoViewController alloc] init];
         infoVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:infoVC animated:YES];

@@ -5,7 +5,7 @@
       "idiom" : "iphone",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "Default-568h@2x-2.png",
+      "filename" : "Default-640_960.png",
       "scale" : "2x"
     },
     {
@@ -32,6 +32,16 @@
       "idiom" : "iphone",
       "subtype" : "667h",
       "filename" : "Default-568h@2x-1.png",
+      "minimum-system-version" : "8.0",
+      "orientation" : "portrait",
+      "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "667h",
+      "filename" : "Default-568h@2x-2.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "unassigned" : true,

@@ -56,6 +56,9 @@ NSString *const UserInfoView = @"MyUserInfoView";
     [_infoView.headImageView addGestureRecognizer:headTap];
     _infoView.headImageView.userInteractionEnabled = YES;
     
+    UITapGestureRecognizer *sexTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectSex)];
+    [_infoView.sexLab addGestureRecognizer:sexTap];
+    
     
     _infoView.sexLab.text = @"男";
     _infoView.ageLab.text = @"25";
@@ -82,6 +85,7 @@ NSString *const UserInfoView = @"MyUserInfoView";
                             cancelButtonTitle:nil
                             destructiveButtonTitle:nil
                             otherButtonTitles:nil];
+        _pageActionSheet.tag = 100;
         
 //        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
 //        {
@@ -98,26 +102,50 @@ NSString *const UserInfoView = @"MyUserInfoView";
 #pragma mark ------------------------ UIActionSheetDelegate------------------
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSString *actTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
-    if ([actTitle isEqualToString:@"拍照"])
-    {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        picker.delegate = self;
-        picker.allowsEditing = YES;
+    if (actionSheet.tag == 100) {
+        NSString *actTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if ([actTitle isEqualToString:@"拍照"])
+        {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            
+            [self presentModalViewController:picker animated:YES];
+        }
+        else if([actTitle isEqualToString:@"从相册中选择"])
+        {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            
+            [self presentModalViewController:picker animated:YES];
+        }
+        self.pageActionSheet = nil;
         
-        [self presentModalViewController:picker animated:YES];
-    }
-    else if([actTitle isEqualToString:@"从相册中选择"])
-    {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.delegate = self;
-        picker.allowsEditing = YES;
+    }else if (actionSheet.tag == 200){
+        switch (buttonIndex) {
+            case 0:
+            {
+                _infoView.sexLab.text = @"男";
+            }
+                break;
+            case 1:
+            {
+                _infoView.sexLab.text = @"女";
+            }
+                break;
+                
+            default:
+                break;
+        }
         
-        [self presentModalViewController:picker animated:YES];
+        
+    }else{
+        
     }
-    self.pageActionSheet = nil;
+    
 }
 #pragma -mark ---------------------相片选取相关-----------------------
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -167,6 +195,13 @@ NSString *const UserInfoView = @"MyUserInfoView";
     
 }
 
+-(void)selectSex
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"男",@"女", nil];
+    sheet.tag = 200;
+    [sheet showInView:self.view];
+    
+}
 
 - (void)back
 {

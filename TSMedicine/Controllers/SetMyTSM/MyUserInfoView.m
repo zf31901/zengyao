@@ -20,6 +20,13 @@
     _addreLab.textColor = UIColorFromRGB(0x929292);
     _streetLab.textColor = UIColorFromRGB(0x929292);
     
+    _headImageView.userInteractionEnabled = YES;
+    _sexLab.userInteractionEnabled = YES;
+    _ageLab.userInteractionEnabled = YES;
+    _phoneLab.userInteractionEnabled = YES;
+    _addreLab.userInteractionEnabled = YES;
+    _streetLab.userInteractionEnabled = YES;
+    
     NSArray *arr = [NSArray arrayWithObjects:_bgView1, _bgView2, _bgView3, _bgView4, _bgView5, _bgView6,nil];
     for (int i = 0; i < arr.count; i++) {
         

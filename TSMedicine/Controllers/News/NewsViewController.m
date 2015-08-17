@@ -130,12 +130,18 @@
         CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(304, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
 
         cell.fromeLable.frame = CGRectMake(0, 0, 304, rect.size.height);
+        CGRect frame = cell.fromeLable.frame;
+        
+        cell.iamgeView.y = frame.size.height + 10;
+        
+        CGRect imageViewFrame = cell.iamgeView.frame;
+        
+        cell.newlabel.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
+        cell.dataTimew.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
         
         cell.newlabel.text=model.a_From;
         cell.dataTimew.text=model.a_AddDate;
       
-       
-        
         [cell.iamgeView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
           return cell;
     }
@@ -147,34 +153,32 @@
         
         cell1.newlab.text=model.a_Title;
         cell1.newlab.numberOfLines=0;
-       
-        cell1.fromLab.text=model.a_From;
-
-        CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
-     cell1.newlab.bounds = CGRectMake(0, 0, rect.size.width, 120);
-       
         
-
-       
+        cell1.fromLab.text=model.a_From;
+        
+        CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
+        cell1.newlab.bounds = CGRectMake(0, 0, rect.size.width, 120);
+        
         cell1.dataTimelab.text=model.a_AddDate;
-            
-            [cell1.iamge setImageWithURL:[NSURL URLWithString:model.a_SmallImg] ];
-            
-           
-    
+        
+        [cell1.iamge setImageWithURL:[NSURL URLWithString:model.a_SmallImg] ];
+        
         return cell1;
-
-   
-
+        
     return nil;
 }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.row ) {
-        return 190;
-    }else
-    {
+        
+        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
+        
+        CGRect rect = [model.a_Title boundingRectWithSize:CGSizeMake(304, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil];
+        
+        return 160 + rect.size.height;
+        
+    }else{
         return 100;
     }
 }

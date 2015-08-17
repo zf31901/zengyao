@@ -41,9 +41,7 @@
     YYHttpRequest *hq=[YYHttpRequest shareInstance];
     
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
-
-        
+    
         if ([responseObj objectForKey:@"data"] !=nil) {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
             

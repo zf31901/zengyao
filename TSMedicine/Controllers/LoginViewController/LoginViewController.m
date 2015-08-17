@@ -114,7 +114,7 @@
         NSDictionary *rqDic = (NSDictionary *)responseObject;
         
         if ([rqDic[@"state"] boolValue]) {
-            NSLog(@"rqdic == %@",rqDic);
+//            NSLog(@"rqdic == %@",rqDic);
             NSDictionary *dic_login = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
             NSLog(@"dic_login = %@",dic_login);
             

@@ -27,9 +27,8 @@
 
 -(void)setNavView
 {
-    self.navigationController.navigationBarHidden = NO;
-    self.title = @"培训详情";
-//    [self buidRightBtn:@"参加考核"];
+    self.navigationController.navigationBarHidden = YES;
+//    self.title = @"培训详情";
 }
 -(void)loadWebView
 {
@@ -43,10 +42,18 @@
     
 }
 
-//-(void)commit
-//{
-//    NSLog(@"参加考核");
-//}
+#pragma mark --------------UIWebViewDelegate----------------
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *urlString = [[request URL] absoluteString];
+    NSLog(@"urlString ==== %@",urlString);
+    if ([urlString rangeOfString:@"page/train_detail.html?objc_receive:Delete"].location != NSNotFound) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        
+    }
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
