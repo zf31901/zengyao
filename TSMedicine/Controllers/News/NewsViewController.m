@@ -13,12 +13,17 @@
 #import "newCell.h"
 
 #import "UIImageView+AFNetworking.h"
+#import "MJRefresh.h"
+
+
+
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
 
 #define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+//MBProgressHUDDelegate
 {
     NSMutableArray  *brr;
     NSMutableArray  *arr;
@@ -26,8 +31,8 @@
     NSMutableArray *_dataArr;
     UITableView *_mytableView;
     NSString *tree;
-    NSInteger a_id;
-    
+    //NSInteger a_id;
+    NSInteger _page;
 }
 
 
@@ -38,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArr=[[NSMutableArray alloc]init];
-    
+      _page=10;
     _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-44-64) style:UITableViewStylePlain];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
@@ -48,13 +53,38 @@
     [_mytableView registerNib:[UINib nibWithNibName:@"newCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
     [self.view addSubview:_mytableView];
-    
+    [self addRefresh];
+
     
     self.title = @"新闻";
    [self UILABLE];
-   
     
-    
+}
+- (NSMutableArray *)dataArr
+{
+    if (_dataArr == nil) {
+        _dataArr  = [NSMutableArray array];
+    }
+    return _dataArr ;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=NO;
+}
+#pragma mark - 上下啦刷新
+- (void)addRefresh
+{
+    __weak NewsViewController * ctl = self;
+    [_mytableView addLegendHeaderWithRefreshingBlock:^{
+        _page = 10;
+        
+        [_dataArr removeAllObjects];
+        [ctl UILABLE];
+    }];
+    [_mytableView addLegendFooterWithRefreshingBlock:^{
+        _page += 10;
+        [ctl UILABLE];
+    }];
 }
 -(void)UILABLE{
     
@@ -63,10 +93,11 @@
     arr = [[NSMutableArray alloc] init];
     brr=[[NSMutableArray alloc]init];
     
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",_page];
   
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"4"      forKey:@"pagesize"];
+    [dic setObject:pageStr     forKey:@"pagesize"];
 
     YYHttpRequest *hq = [[YYHttpRequest alloc] init];
     
@@ -82,29 +113,24 @@
                 NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
                 newModel.a_Title = [dataDic objectForKey:@"a_Title"];
                 newModel.a_From = [dataDic objectForKey:@"a_From"];
-                newModel.a_AddDate = [dataDic objectForKey:@"a_AddDate"];
+                newModel.a_time = [dataDic objectForKey:@"time"];
                 
                 newModel.a_SmallImg=[dataDic objectForKey:@"a_SmallImg"];
-                newModel.a_ID=[dataDic objectForKey:@"a_ID"];
+                newModel.a_Content=[dataDic objectForKey:@"a_Content"];
                 [_dataArr addObject:newModel];
-                
-             //   NSLog(@"rqdic1111----%@",dataDic);
-                
-
-                
             }
 
             [_mytableView reloadData];
+            [_mytableView.header endRefreshing];
+            [_mytableView.footer endRefreshing];
             
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error");
     }];
-
-
-
 }
+
 
 #pragma mark - UITableViewDelegate
 
@@ -140,7 +166,7 @@
         cell.dataTimew.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
         
         cell.newlabel.text=model.a_From;
-        cell.dataTimew.text=model.a_AddDate;
+        cell.dataTimew.text=model.a_time;
       
         [cell.iamgeView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
           return cell;
@@ -156,10 +182,10 @@
         
         cell1.fromLab.text=model.a_From;
         
-        CGRect rect = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
-        cell1.newlab.bounds = CGRectMake(0, 0, rect.size.width, 120);
+        CGRect rect1 = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
+        cell1.newlab.bounds = CGRectMake(0, 0, rect1.size.width, 120);
         
-        cell1.dataTimelab.text=model.a_AddDate;
+        cell1.dataTimelab.text=model.a_time;
         
         [cell1.iamge setImageWithURL:[NSURL URLWithString:model.a_SmallImg] ];
         
@@ -179,7 +205,11 @@
         return 160 + rect.size.height;
         
     }else{
-        return 100;
+        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
+        
+         CGRect rect1 = [model.a_Title boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+        
+        return 83+rect1.size.height;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -188,11 +218,7 @@
 
     NewsModel *arr=_dataArr[indexPath.row];
     
-    ctl2.model=arr.a_ID;
-    
-  
-    
-    
+    ctl2.model=arr.a_Content;
     [self.navigationController pushViewController:ctl2 animated:YES];
 }
 

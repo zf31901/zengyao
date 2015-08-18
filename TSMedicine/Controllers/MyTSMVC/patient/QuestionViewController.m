@@ -21,6 +21,7 @@
 @interface QuestionViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_mytableView;
+     NSInteger _pagesize;
 }
 @property(nonatomic,strong)NSMutableArray *dataArr;
 @property (nonatomic,assign) BOOL isFirst;
@@ -34,7 +35,7 @@
        _isFirst = YES;
     _dataArr=[[NSMutableArray alloc]init];
     
-    
+     _pagesize=10;
     [self Staload];
     self.navigationController.navigationBarHidden = NO;
     self.title = @"问题详情";
@@ -70,7 +71,9 @@
     [_dataArr addObject:arr1];
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"uqid":@(0),@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
+     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    
+    NSDictionary *dic = @{@"uqid":@(0),@"userid":@(0),@"pageid":@"1",@"pagesize":pageStr};
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         NSMutableArray *arr2 = [NSMutableArray array];
         for (NSDictionary *dic in responseObj[@"data"]) {

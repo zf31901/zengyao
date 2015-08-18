@@ -51,7 +51,7 @@
     [self  caselable];
     [self  buidLeftBtn];
     [self UIlable];
-    [self loadLable];
+    
     
 }
 
@@ -64,7 +64,7 @@
 //    _webView.scrollView.scrollEnabled=NO;
    
     //NSString *url=[NSString stringWithFormat:URLisr,_goodIndex];
-    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model];
+    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model.a_Content];
     NSLog(@"url1234------%@",url);
    
    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -75,48 +75,10 @@
     
 
 }
--(void)loadLable{
-  
-    
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"3"      forKey:@"pagesize"];
-    
-   
-    YYHttpRequest *hq = [[YYHttpRequest alloc] init];
-   
-    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model];
-  
-    [hq  GETURLString:url parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
-        if ([responseObj objectForKey:@"data"] !=nil)
-        {
-            NSArray *dataArr =[responseObj objectForKey:@"data"];
-            for (int i = 0; i < dataArr.count; i ++)
-            {
-                NewsModel *newModel = [[NewsModel alloc] init];
-                NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
-                newModel.a_Content = [dataDic objectForKey:@"a_Content"];
-                newModel.a_ID=[dataDic objectForKey:@"a_ID"];
-                
-            }
-            
-           // [_mytableView reloadData];
-            
-        }
-   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-       
-       NSLog(@"%@",error);
-       
-   }];
 
-    
-
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBarHidden = NO;
-    self.tabBarController.tabBar.hidden = NO;
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=YES;
 }
 -(void)caselable{
 
@@ -168,29 +130,14 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *urlString = [[request URL] absoluteString];
     NSLog(@"urlString---  %@",urlString);
+    
+    if ([urlString rangeOfString:@"page/news_detail.html?objc_receive:Delete"].location != NSNotFound) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        
+    }
     return YES;
 }
-
-
-//#pragma mark - Table view data source
-//
-//
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    
-//    return 1;
-//}
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-//    NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
-//    
-//    
-//    
-//    return cell1;
-//}
 
 
 @end

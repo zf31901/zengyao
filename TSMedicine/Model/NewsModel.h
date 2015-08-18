@@ -11,7 +11,7 @@
 @interface NewsModel : NSObject
 @property (nonatomic, strong)             NSString *a_ID;
 @property (nonatomic, strong)             NSString *a_Category;
-@property (nonatomic, strong)             NSString *a_AddDate;
+@property (nonatomic, strong)             NSString *a_time;
 @property (nonatomic, strong)             NSString *a_Content;
 @property (nonatomic, strong)             NSString *a_SecondTitle;
 @property (nonatomic, strong)             NSString *a_Title;
