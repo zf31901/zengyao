@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<MBProgressHUDDelegate>
 
 @end
 
@@ -72,6 +72,70 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)commit
+{
+    
+}
+
+#pragma mark -----------显示隐藏HUD---------------
+- (void)showHUDInView:(UIView *)view WithDetailText:(NSString *)text andDelay:(float)delay
+{
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithFrame:CGRectMake(60, 200, 200, 180)];
+    [hud setDelegate:self];
+    [view addSubview:hud];
+    [hud setDetailsLabelText:text];
+    [hud removeFromSuperViewOnHide];
+    [hud show:YES];
+    [hud hide:YES afterDelay:delay];
+    
+    //tag by harry 2014-02-20: 加载数据过程可以返回
+    // [self.view bringSubviewToFront:barView];
+}
+
+- (void)showHUDInView:(UIView *)view WithText:(NSString *)text andDelay:(float)delay withTag:(NSInteger)tag
+{
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithFrame:CGRectMake(60, 200, 200, 180)];
+    [hud setDelegate:self];
+    [hud setTag:tag];
+    [view addSubview:hud];
+    [hud setLabelText:text];
+    [hud removeFromSuperViewOnHide];
+    [hud show:YES];
+    [hud hide:YES afterDelay:delay];
+    
+    //tag by harry 2014-02-20: 加载数据过程可以返回
+    //[self.view bringSubviewToFront:barView];
+}
+
+- (void)showHUDInView:(UIView *)view WithText:(NSString *)text andDelay:(float)delay
+{
+    [self showHUDInView:view WithText:text andDelay:delay withTag:0];
+}
+
+- (void)showHUDInView:(UIView *)view WithText:(NSString *)text withTag:(NSInteger)tag
+{
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
+    [hud setTag:tag];
+    [view addSubview:hud];
+    [hud setLabelText:text];
+    [hud removeFromSuperViewOnHide];
+    [hud show:YES];
+    
+    //tag by harry 2014-02-20: 加载数据过程可以返回
+//    [self.view bringSubviewToFront:barView];
+}
+
+- (void)showHUDInView:(UIView *)view WithText:(NSString *)text
+{
+    [self showHUDInView:view WithText:text withTag:0];
+}
+
+- (void)hideHUDInView:(UIView *)view
+{
+    [MBProgressHUD hideHUDForView:view animated:YES];
+}
+
+#pragma mark ---------------MBHUDDelegate----------------
+- (void)hudWasHidden:(MBProgressHUD *)hud
 {
     
 }

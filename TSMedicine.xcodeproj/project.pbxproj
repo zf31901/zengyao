@@ -16,8 +16,6 @@
 		10694DC61B7206B600CE2504 /* MyTSMNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */; };
 		10694DC71B7206B600CE2504 /* MyTSMNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */; };
 		10694DCA1B7206EF00CE2504 /* MyTSMSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */; };
-		10694DCE1B72074000CE2504 /* MyUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10694DCC1B72074000CE2504 /* MyUserInfoView.m */; };
-		10694DCF1B72074000CE2504 /* MyUserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10694DCD1B72074000CE2504 /* MyUserInfoView.xib */; };
 		10694DD31B7207B100CE2504 /* MyAppCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */; };
 		10694DD41B7207B100CE2504 /* MyAppCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */; };
 		10694DD71B7207DB00CE2504 /* MyAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10694DD61B7207DB00CE2504 /* MyAppModel.m */; };
@@ -146,6 +144,10 @@
 		1695CC291B783AEA00FA1B1E /* MyAnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */; };
 		1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC2D1B783B5C00FA1B1E /* MYquestion.m */; };
 		1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */; };
+		16A0A3901B83039400572D97 /* MyUserInforView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0A38F1B83039400572D97 /* MyUserInforView.m */; };
+		16A0A3921B8303C100572D97 /* MyUserInforView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A0A3911B8303C100572D97 /* MyUserInforView.xib */; };
+		16A0A3961B83327400572D97 /* MyTSMResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0A3941B83327400572D97 /* MyTSMResetViewController.m */; };
+		16A0A3971B83327400572D97 /* MyTSMResetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A0A3951B83327400572D97 /* MyTSMResetViewController.xib */; };
 		16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */; };
 		16B084FE1B6B5506004512E6 /* RegisterNextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */; };
 		16B909941B281F6600211892 /* DonationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B909921B281F6600211892 /* DonationViewController.m */; };
@@ -223,6 +225,9 @@
 		16C3F9C31B25711C0040D80C /* 默认头像80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F97E1B25711C0040D80C /* 默认头像80@2x.png */; };
 		16C3F9C41B25711C0040D80C /* 默认头像80@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F97F1B25711C0040D80C /* 默认头像80@1x.png */; };
 		16C3F9C51B25711C0040D80C /* 默认头像80@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F9801B25711C0040D80C /* 默认头像80@3x.png */; };
+		16EBB11C1B81C15600599A4E /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB1181B81C15600599A4E /* MBProgressHUD+Add.m */; };
+		16EBB11D1B81C15600599A4E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16EBB1191B81C15600599A4E /* MBProgressHUD.bundle */; };
+		16EBB11E1B81C15600599A4E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB11B1B81C15600599A4E /* MBProgressHUD.m */; };
 		16FAB2791B78AFD600AE4566 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2721B78AFD600AE4566 /* UIImage+Rotation.m */; };
 		16FAB27A1B78AFD600AE4566 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2741B78AFD600AE4566 /* UIImage+Resize.m */; };
 		16FAB27B1B78AFD600AE4566 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FAB2761B78AFD600AE4566 /* UIImage+Alpha.m */; };
@@ -276,9 +281,6 @@
 		10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTSMNoticeViewController.xib; path = ../../SetMyTSM/MyTSMNoticeViewController.xib; sourceTree = "<group>"; };
 		10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTSMSetViewController.h; path = ../../SetMyTSM/MyTSMSetViewController.h; sourceTree = "<group>"; };
 		10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTSMSetViewController.m; path = ../../SetMyTSM/MyTSMSetViewController.m; sourceTree = "<group>"; };
-		10694DCB1B72074000CE2504 /* MyUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyUserInfoView.h; path = ../../SetMyTSM/MyUserInfoView.h; sourceTree = "<group>"; };
-		10694DCC1B72074000CE2504 /* MyUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyUserInfoView.m; path = ../../SetMyTSM/MyUserInfoView.m; sourceTree = "<group>"; };
-		10694DCD1B72074000CE2504 /* MyUserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyUserInfoView.xib; path = ../../SetMyTSM/MyUserInfoView.xib; sourceTree = "<group>"; };
 		10694DD01B7207B100CE2504 /* MyAppCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAppCellTableViewCell.h; path = ../../SetMyTSM/MyAppCellTableViewCell.h; sourceTree = "<group>"; };
 		10694DD11B7207B100CE2504 /* MyAppCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAppCellTableViewCell.m; path = ../../SetMyTSM/MyAppCellTableViewCell.m; sourceTree = "<group>"; };
 		10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyAppCellTableViewCell.xib; path = ../../SetMyTSM/MyAppCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -479,6 +481,12 @@
 		1695CC2D1B783B5C00FA1B1E /* MYquestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYquestion.m; path = TSMedicine/Controllers/MyTSMVC/doctor/MYquestion.m; sourceTree = SOURCE_ROOT; };
 		1695CC341B783C5F00FA1B1E /* ProjectdetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectdetailViewController.h; sourceTree = "<group>"; };
 		1695CC351B783C5F00FA1B1E /* ProjectdetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectdetailViewController.m; path = TSMedicine/Controllers/MyTSMVC/ProjectdetailViewController.m; sourceTree = SOURCE_ROOT; };
+		16A0A38E1B83039400572D97 /* MyUserInforView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUserInforView.h; sourceTree = "<group>"; };
+		16A0A38F1B83039400572D97 /* MyUserInforView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUserInforView.m; sourceTree = "<group>"; };
+		16A0A3911B8303C100572D97 /* MyUserInforView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUserInforView.xib; sourceTree = "<group>"; };
+		16A0A3931B83327400572D97 /* MyTSMResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMResetViewController.h; sourceTree = "<group>"; };
+		16A0A3941B83327400572D97 /* MyTSMResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMResetViewController.m; sourceTree = "<group>"; };
+		16A0A3951B83327400572D97 /* MyTSMResetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMResetViewController.xib; sourceTree = "<group>"; };
 		16B084FA1B6B5506004512E6 /* RegisterNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNextViewController.h; sourceTree = "<group>"; };
 		16B084FB1B6B5506004512E6 /* RegisterNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNextViewController.m; sourceTree = "<group>"; };
 		16B084FC1B6B5506004512E6 /* RegisterNextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterNextViewController.xib; sourceTree = "<group>"; };
@@ -561,6 +569,11 @@
 		16C3F97F1B25711C0040D80C /* 默认头像80@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像80@1x.png"; sourceTree = "<group>"; };
 		16C3F9801B25711C0040D80C /* 默认头像80@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像80@3x.png"; sourceTree = "<group>"; };
 		16C3F9DB1B2576DA0040D80C /* TSMedicine.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSMedicine.pch; sourceTree = "<group>"; };
+		16EBB1171B81C15600599A4E /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		16EBB1181B81C15600599A4E /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		16EBB1191B81C15600599A4E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		16EBB11A1B81C15600599A4E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		16EBB11B1B81C15600599A4E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		16FAB2711B78AFD600AE4566 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
 		16FAB2721B78AFD600AE4566 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
 		16FAB2731B78AFD600AE4566 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -666,9 +679,9 @@
 				164C0F431B6F77D00040321E /* MyProTableViewCell.h */,
 				164C0F441B6F77D00040321E /* MyProTableViewCell.m */,
 				164C0F451B6F77D00040321E /* MyProTableViewCell.xib */,
-				10694DCB1B72074000CE2504 /* MyUserInfoView.h */,
-				10694DCC1B72074000CE2504 /* MyUserInfoView.m */,
-				10694DCD1B72074000CE2504 /* MyUserInfoView.xib */,
+				16A0A38E1B83039400572D97 /* MyUserInforView.h */,
+				16A0A38F1B83039400572D97 /* MyUserInforView.m */,
+				16A0A3911B8303C100572D97 /* MyUserInforView.xib */,
 				9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */,
 				9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */,
 				9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */,
@@ -710,6 +723,9 @@
 				10694DBF1B72066800CE2504 /* MyTSMUserInfoViewController.h */,
 				10694DC01B72066800CE2504 /* MyTSMUserInfoViewController.m */,
 				10694DBE1B72066800CE2504 /* MyTSMUserInfoViewController.xib */,
+				16A0A3931B83327400572D97 /* MyTSMResetViewController.h */,
+				16A0A3941B83327400572D97 /* MyTSMResetViewController.m */,
+				16A0A3951B83327400572D97 /* MyTSMResetViewController.xib */,
 				10694DC31B7206B600CE2504 /* MyTSMNoticeViewController.h */,
 				10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */,
 				10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */,
@@ -912,6 +928,7 @@
 		1653CE421B69B85B001D21FF /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				16EBB1161B81C15600599A4E /* MBProgressHUD */,
 				1653CE431B69B85B001D21FF /* JSONKit */,
 			);
 			path = libs;
@@ -1394,6 +1411,18 @@
 			path = ../Controllers/TabBar;
 			sourceTree = "<group>";
 		};
+		16EBB1161B81C15600599A4E /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				16EBB1171B81C15600599A4E /* MBProgressHUD+Add.h */,
+				16EBB1181B81C15600599A4E /* MBProgressHUD+Add.m */,
+				16EBB1191B81C15600599A4E /* MBProgressHUD.bundle */,
+				16EBB11A1B81C15600599A4E /* MBProgressHUD.h */,
+				16EBB11B1B81C15600599A4E /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		6AAAAB6A2D3870024D666307 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1522,7 +1551,7 @@
 				TargetAttributes = {
 					8ABF0F9C1B25296700F42BC5 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = A297Q6QL65;
+						DevelopmentTeam = A886Z7AVX7;
 					};
 				};
 			};
@@ -1588,6 +1617,7 @@
 				16776BEB1B466BC100767F94 /* Default-568h@2x.png in Resources */,
 				16C3F9901B25711C0040D80C /* choose40_nomal.png in Resources */,
 				16C3F9B11B25711C0040D80C /* successful50.png in Resources */,
+				16A0A3921B8303C100572D97 /* MyUserInforView.xib in Resources */,
 				1692BBC01B426E330094E7A0 /* PhoneNumCell.xib in Resources */,
 				162597CF1B68E31000E3FA95 /* SetTSMCell.xib in Resources */,
 				16C3F9BA1B25711C0040D80C /* User50_nomal@2x.png in Resources */,
@@ -1646,7 +1676,7 @@
 				16C3F9821B25711C0040D80C /* answer40@1x.png in Resources */,
 				16C3F9B71B25711C0040D80C /* training40@2x.png in Resources */,
 				162597C71B68E2AD00E3FA95 /* MyTSMHeaderCell.xib in Resources */,
-				10694DCF1B72074000CE2504 /* MyUserInfoView.xib in Resources */,
+				16EBB11D1B81C15600599A4E /* MBProgressHUD.bundle in Resources */,
 				161C64171B7D78AC000BDB10 /* icon80.png in Resources */,
 				16C3F9971B25711C0040D80C /* Help50_nomal@1x.png in Resources */,
 				1660771E1B74503C00978E0F /* MyPatientTableViewCell.xib in Resources */,
@@ -1667,6 +1697,7 @@
 				1683695B1B2ACC1E00A78898 /* PersonalDataViewController.xib in Resources */,
 				167BB2A81B734A5F00098D86 /* DocMyTrainViewController.xib in Resources */,
 				16C3F9B21B25711C0040D80C /* successful50@0.5x.png in Resources */,
+				16A0A3971B83327400572D97 /* MyTSMResetViewController.xib in Resources */,
 				1690714A1B3408D600A4CD21 /* AskForDonationViewController.xib in Resources */,
 				16C3F9B41B25711C0040D80C /* successful50_nomal.png in Resources */,
 				164C0F471B6F77D00040321E /* MyProTableViewCell.xib in Resources */,
@@ -1738,6 +1769,7 @@
 				16034ACC1B6F46CF0063EFD7 /* WIBaseButton.m in Sources */,
 				168369601B2AD3C000A78898 /* PersonalDataCell.m in Sources */,
 				9DD49E001B7AE49C00D5770B /* QuestionTurnViewController.m in Sources */,
+				16EBB11C1B81C15600599A4E /* MBProgressHUD+Add.m in Sources */,
 				10694DB21B7204C000CE2504 /* BaseViewController.m in Sources */,
 				16034AC91B6F464E0063EFD7 /* WIBaseLabel.m in Sources */,
 				16B909941B281F6600211892 /* DonationViewController.m in Sources */,
@@ -1750,6 +1782,7 @@
 				168369411B2AAD2100A78898 /* YYPhotoPicker.m in Sources */,
 				1685AF2F1B2FF9D600F725C3 /* MyPatientCell.m in Sources */,
 				1615F9701B4BCC8800B236B7 /* NewsTableViewCell.m in Sources */,
+				16A0A3901B83039400572D97 /* MyUserInforView.m in Sources */,
 				167BB2981B73496C00098D86 /* PatientApplyViewController.m in Sources */,
 				9D0C8DA21B7B200A001B4A8E /* CanonicalormTableViewCell.m in Sources */,
 				167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */,
@@ -1816,17 +1849,18 @@
 				161263611B3D034B00EAEDE6 /* MyShenqingViewContrlller.m in Sources */,
 				16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */,
 				169071431B34088700A4CD21 /* DonationCell.m in Sources */,
-				10694DCE1B72074000CE2504 /* MyUserInfoView.m in Sources */,
 				10694DB81B72059000CE2504 /* MyApplication.m in Sources */,
 				165EB4761B298F440070D1F8 /* ThinLineCell.m in Sources */,
 				161263671B3D371800EAEDE6 /* ReportViewContrlller.m in Sources */,
 				1692BBC41B4275400094E7A0 /* OnlyTextFieldCell.m in Sources */,
+				16A0A3961B83327400572D97 /* MyTSMResetViewController.m in Sources */,
 				10694DD71B7207DB00CE2504 /* MyAppModel.m in Sources */,
 				1685AF351B2FFD4200F725C3 /* MyPatientViewController.m in Sources */,
 				1692BBB91B426CCE0094E7A0 /* PhoneVerificationCodeViewController.m in Sources */,
 				1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */,
 				1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */,
 				9DD49DF71B7AE37400D5770B /* QuestionViewController.m in Sources */,
+				16EBB11E1B81C15600599A4E /* MBProgressHUD.m in Sources */,
 				166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */,
 				163FE6E51B79EE0A00A45019 /* DocMyTrainDetailViewController.m in Sources */,
 				165EB4711B298F290070D1F8 /* LineCell.m in Sources */,
@@ -1868,8 +1902,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: wenyang liu (A297Q6QL65)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wenyang liu (A297Q6QL65)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1889,7 +1923,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "b7e27b7c-ae55-401b-8234-446100c11672";
+				PROVISIONING_PROFILE = "274372de-a757-4f4f-98c0-51a2f6af2025";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1911,8 +1945,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: wenyang liu (A297Q6QL65)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wenyang liu (A297Q6QL65)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1925,7 +1959,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "b7e27b7c-ae55-401b-8234-446100c11672";
+				PROVISIONING_PROFILE = "274372de-a757-4f4f-98c0-51a2f6af2025";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1937,7 +1971,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wenyang liu (A297Q6QL65)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -1947,7 +1981,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b7e27b7c-ae55-401b-8234-446100c11672";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1957,7 +1991,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wenyang liu (A297Q6QL65)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -1967,7 +2001,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b7e27b7c-ae55-401b-8234-446100c11672";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

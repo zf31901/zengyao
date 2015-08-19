@@ -36,6 +36,8 @@
         _answerLab.numberOfLines = 0;
         _answerLab.height = model.contentSize.height;
         
+//        NSLog(@"height == %f",model.contentSize.height);
+        
     }else{
         
         MyAnswerModel *model = _dataArr[indexPath.section][indexPath.row];

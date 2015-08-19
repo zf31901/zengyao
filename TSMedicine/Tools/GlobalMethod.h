@@ -12,6 +12,9 @@
 
 #define UserInfoData [GlobalMethod getUserObj]
 
+typedef void(^ReloadUserInfoData)(NSString *status);
+typedef void(^Failure)(void);
+
 @interface GlobalMethod : NSObject
 
 + (GlobalMethod *)sharedInstance;
@@ -33,16 +36,18 @@
 //用户数据解归档
 + (UserObj *)getUserObj;
 
-
 //登录状态
 + (void)saveLoginInStatus:(BOOL)isSignIn;
 + (BOOL)loginInStatus;
 
 @property (nonatomic,assign) BOOL isLogin;
-
 @property (nonatomic,assign) BOOL isAutoLogin;
-
 @property (nonatomic,strong) NSString *headImageURL;
+
+
+@property (nonatomic,copy) ReloadUserInfoData reloadUserInfoData;
+@property (nonatomic,copy) Failure failure;
+- (void)reloadUserInfoDataSuccess:(ReloadUserInfoData)success failure:(Failure)fail;
 
 
 //处理时间戳和时间

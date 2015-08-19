@@ -169,7 +169,7 @@
     }else{
         //注册新账号
         NSDictionary *dic = @{@"phone":_phoneNumbTF.text,@"verifycode":_verifyTF.text,@"sessionkey":_sessionkey};
-        [HttpRequest_MyApi GETURLString:@"/User/register/checkverifycode/" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        [HttpRequest_MyApi GETURLString:@"/User/register/checkverifycode/" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj){
             NSDictionary *rqDic = (NSDictionary *)responseObj;
             if ([rqDic[@"state"] boolValue]) {
                 NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
@@ -188,8 +188,6 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error == %@",error);
         }];
-        
-        
     }
     
     
@@ -203,6 +201,7 @@
         return NO;
     }
 }
+
 -(BOOL)cheakText
 {
     if (_verifyTF.text.length != 4) {

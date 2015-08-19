@@ -108,23 +108,59 @@
         return;
     }
     
+    [self showHUDInView:self.view WithText:@"正在登录"];
+    
     NSDictionary *parameters = @{@"u": _nikeName.text, @"pwd": _pawssWorld.text};
     YYHttpRequest *hq = [YYHttpRequest shareInstance_myapi];
     [hq POSTURLString:@"/User/login/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *rqDic = (NSDictionary *)responseObject;
-        
+//        NSLog(@"errcode == %@",rqDic[@"errcode"]);
         if ([rqDic[@"state"] boolValue]) {
-//            NSLog(@"rqdic == %@",rqDic);
+            NSLog(@"rqdic == %@",rqDic);
             NSDictionary *dic_login = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
             NSLog(@"dic_login = %@",dic_login);
             
             NSDictionary *param = @{@"u": _nikeName.text, @"clientkey": dic_login[@"clientkey"]};
             //获取用户信息
             [self loadUserInfoDataWithApiDic:param andLoginInfo:dic_login];
+            
+        }else{
+            NSLog(@"errorMsg: %@",rqDic[HTTP_MSG]);
+            
+            [self hideHUDInView:self.view];
+            
+            if ([rqDic[HTTP_ERRCODE] intValue] == 100) {
+                [self showHUDInView:self.view WithText:@"帐号不存在" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 101) {
+                [self showHUDInView:self.view WithText:@"验证码错误" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 102) {
+                [self showHUDInView:self.view WithText:@"密码和账号不匹配" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 103) {
+                [self showHUDInView:self.view WithText:@"账号未激活" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 104) {
+                [self showHUDInView:self.view WithText:@"邮箱未验证，无法通过邮箱登录" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 105) {
+                [self showHUDInView:self.view WithText:@"手机未验证，无法通过手机登录" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 106) {
+                [self showHUDInView:self.view WithText:@"账户被冻结" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 107) {
+                [self showHUDInView:self.view WithText:@"验证码失效" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 108) {
+                [self showHUDInView:self.view WithText:@"密码和账号不匹配" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 109) {
+                [self showHUDInView:self.view WithText:@"密码和账号不匹配" andDelay:LOADING_TIME];
+            } else if ([rqDic[HTTP_ERRCODE] intValue] == 200) {
+                [self showHUDInView:self.view WithText:@"其他错误" andDelay:LOADING_TIME];
+            } else {
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@:%@",rqDic[HTTP_ERRCODE],rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
+            }
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error = %@---- operation = %@",error,operation);
+        NSLog(@"%@ , %@",operation,error);
+        [self hideHUDInView:self.view];
+        [self showHUDInView:self.view WithText:@"网络请求失败" andDelay:LOADING_TIME];
     }];
     
     [self hidKeyBoard];
@@ -142,13 +178,23 @@
             NSDictionary *infoDic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
             NSLog(@"infoDic === %@",infoDic);
             
+            NSLog(@"Sex == %@",infoDic[@"Sex"]);
+            
             //保存用户信息
             [self saveUserInfor:infoDic withLoginInfo:dic_login];
+        }else{
+            
+            NSLog(@"errorMsg: %@",rqDic[HTTP_MSG]);
+            [self hideHUDInView:self.view];
+            [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@:%@",rqDic[HTTP_ERRCODE],rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error = %@",error);
+        
+        [self hideHUDInView:self.view];
+        [self showHUDInView:self.view WithText:NETWORKERROR andDelay:LOADING_TIME];
     }];
     
 }

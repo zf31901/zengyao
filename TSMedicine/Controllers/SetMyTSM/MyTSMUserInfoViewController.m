@@ -7,15 +7,16 @@
 //
 
 #import "MyTSMUserInfoViewController.h"
-#import "MyUserInfoView.h"
+#import "MyTSMResetViewController.h"
+#import "MyUserInforView.h"
 
 #import "UIImage+Rotation.h"
 #import "UIImage+Resize.h"
 
-NSString *const UserInfoView = @"MyUserInfoView";
+NSString *const UserInforView = @"MyUserInforView";
 @interface MyTSMUserInfoViewController () <UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
-@property (nonatomic,strong) MyUserInfoView *infoView;
+@property (nonatomic,strong) MyUserInforView *inforView;
 
 @property (nonatomic, strong) UIActionSheet *pageActionSheet;
 @property (nonatomic,strong) UIImage *userImage;
@@ -23,7 +24,18 @@ NSString *const UserInfoView = @"MyUserInfoView";
 @end
 
 @implementation MyTSMUserInfoViewController
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    _inforView.nickNameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.nickName];
+    _inforView.sexLab.text = [NSString stringWithFormat:@"%@",UserInfoData.sex];
+    _inforView.ageLab.text = [NSString stringWithFormat:@"%@",UserInfoData.Age];
+    _inforView.phoneLab.text = [NSString stringWithFormat:@"%@",UserInfoData.phone];
+    _inforView.addreLab.text = [NSString stringWithFormat:@"%@",UserInfoData.Area];
+    _inforView.streetLab.text = [NSString stringWithFormat:@"%@",UserInfoData.Address];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,30 +53,40 @@ NSString *const UserInfoView = @"MyUserInfoView";
 }
 -(void)createUI
 {
-    _infoView = [[[NSBundle mainBundle] loadNibNamed:UserInfoView owner:self options:nil] lastObject];
-    _infoView.frame = CGRectMake(0, 0, ScreenWidth, 286);
-    [self.view addSubview:_infoView];
     
-    if ([GlobalMethod sharedInstance].headImageURL.length > 0) {
-         [_infoView.headImageView sd_setImageWithURL:[NSURL URLWithString:[GlobalMethod sharedInstance].headImageURL] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-    }else{
-         [_infoView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-    }
-   
+    _inforView = [[[NSBundle mainBundle] loadNibNamed:UserInforView owner:self options:nil] lastObject];
+    [self.view addSubview:_inforView];
     
+    //头像
+    [_inforView.headView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    
+    //换头像
     UITapGestureRecognizer *headTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectHeadImage)];
-    [_infoView.headImageView addGestureRecognizer:headTap];
-    _infoView.headImageView.userInteractionEnabled = YES;
+    [_inforView.headView addGestureRecognizer:headTap];
     
+    //性别
     UITapGestureRecognizer *sexTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectSex)];
-    [_infoView.sexLab addGestureRecognizer:sexTap];
+    [_inforView.sexLab addGestureRecognizer:sexTap];
     
+    //昵称
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap:)];
+    [_inforView.nickNameLab addGestureRecognizer:tap1];
     
-    _infoView.sexLab.text = @"男";
-    _infoView.ageLab.text = @"25";
-    _infoView.phoneLab.text = [NSString stringWithFormat:@"%@",UserInfoData.phone];
-    _infoView.addreLab.text = @"广东";
-    _infoView.streetLab.text = @"蛇口大道";
+    //年龄
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap:)];
+    [_inforView.ageLab addGestureRecognizer:tap2];
+    
+    //手机号
+    UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap:)];
+    [_inforView.phoneLab addGestureRecognizer:tap3];
+    
+    //地址
+    UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap:)];
+    [_inforView.addreLab addGestureRecognizer:tap4];
+    
+    //街道
+    UITapGestureRecognizer *tap5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap:)];
+    [_inforView.streetLab addGestureRecognizer:tap5];
     
 }
 
@@ -85,7 +107,7 @@ NSString *const UserInfoView = @"MyUserInfoView";
                             cancelButtonTitle:nil
                             destructiveButtonTitle:nil
                             otherButtonTitles:nil];
-        _pageActionSheet.tag = 100;
+        _pageActionSheet.tag = 20;
         
 //        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
 //        {
@@ -102,7 +124,7 @@ NSString *const UserInfoView = @"MyUserInfoView";
 #pragma mark ------------------------ UIActionSheetDelegate------------------
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet.tag == 100) {
+    if (actionSheet.tag == 20) {
         NSString *actTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
         if ([actTitle isEqualToString:@"拍照"])
         {
@@ -124,23 +146,26 @@ NSString *const UserInfoView = @"MyUserInfoView";
         }
         self.pageActionSheet = nil;
         
-    }else if (actionSheet.tag == 200){
+    }else if (actionSheet.tag == 21){
         switch (buttonIndex) {
             case 0:
             {
-                _infoView.sexLab.text = @"男";
+                _inforView.sexLab.text = @"男";
+                NSDictionary *parameters = @{@"u":UserInfoData.im,@"UserLogin":UserInfoData.im,@"clientkey":UserInfoData.clientkey,@"Sex":_inforView.sexLab.text};
+                [self resetSexWithParameter:parameters];
             }
                 break;
             case 1:
             {
-                _infoView.sexLab.text = @"女";
+                _inforView.sexLab.text = @"女";
+                 NSDictionary *parameters = @{@"u":UserInfoData.im,@"UserLogin":UserInfoData.im,@"clientkey":UserInfoData.clientkey,@"Sex":_inforView.sexLab.text};
+                [self resetSexWithParameter:parameters];
             }
                 break;
                 
             default:
                 break;
         }
-        
         
     }else{
         
@@ -158,7 +183,7 @@ NSString *const UserInfoView = @"MyUserInfoView";
                                                         bounds:CGSizeMake(80, 80)
                                           interpolationQuality:kCGInterpolationDefault];
     self.userImage = renderedImage;
-    _infoView.headImageView.image = renderedImage;
+    _inforView.headView.image = renderedImage;
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
@@ -179,14 +204,23 @@ NSString *const UserInfoView = @"MyUserInfoView";
 //         NSLog(@"responseObject == %@",responseObject);
         
         if ([responseObject[@"state"] boolValue]) {
-            NSLog(@"头像更新成功");
              NSDictionary *dataDic = (NSDictionary *)[responseObject[@"data"] objectFromJSONString];
+            if ([dataDic[@"result"] boolValue]) {
+                 NSLog(@"头像更新成功");
+            }
             
-//            NSLog(@"dataDic == %@",dataDic);
+            [[GlobalMethod sharedInstance] reloadUserInfoDataSuccess:^(NSString *status) {
+                if ([status isEqualToString:@"success"]) {
+                    NSLog(@"用户数据更新成功");
+                }
+            } failure:^{
+                
+            }];
             
-            [GlobalMethod sharedInstance].headImageURL = dataDic[@"fileurl"];
-            
+        }else{
+            [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@:%@",responseObject[HTTP_ERRCODE],responseObject[HTTP_MSG]] andDelay:LOADING_TIME];
         }
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -195,12 +229,107 @@ NSString *const UserInfoView = @"MyUserInfoView";
     
 }
 
+#pragma mark ----------------选择性别------------------
 -(void)selectSex
 {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"男",@"女", nil];
-    sheet.tag = 200;
+    sheet.tag = 21;
     [sheet showInView:self.view];
     
+}
+
+-(void)myTap:(UIGestureRecognizer *)sender
+{
+    switch (sender.view.tag) {
+        case 200:
+        {
+//             NSLog(@"修改昵称");
+            MyTSMResetViewController *resetVC = [[MyTSMResetViewController alloc] init];
+            resetVC.navTitle = @"修改昵称";
+            resetVC.sendTag = 200;
+            [self.navigationController pushViewController:resetVC animated:YES];
+        }
+            break;
+            
+        case 201:
+        {
+//            NSLog(@"修改年龄");
+            MyTSMResetViewController *resetVC = [[MyTSMResetViewController alloc] init];
+            resetVC.navTitle = @"修改年龄";
+            resetVC.sendTag = 201;
+            [self.navigationController pushViewController:resetVC animated:YES];
+        }
+            break;
+            
+        case 202:
+        {
+//            NSLog(@"修改手机号");
+            MyTSMResetViewController *resetVC = [[MyTSMResetViewController alloc] init];
+            resetVC.navTitle = @"修改手机号";
+            resetVC.sendTag = 202;
+            [self.navigationController pushViewController:resetVC animated:YES];
+        }
+            break;
+            
+        case 203:
+        {
+//            NSLog(@"修改地址");
+            MyTSMResetViewController *resetVC = [[MyTSMResetViewController alloc] init];
+            resetVC.navTitle = @"修改地址";
+            resetVC.sendTag = 203;
+            [self.navigationController pushViewController:resetVC animated:YES];
+            
+        }
+            break;
+            
+        case 204:
+        {
+//            NSLog(@"修改街道");
+            MyTSMResetViewController *resetVC = [[MyTSMResetViewController alloc] init];
+            resetVC.navTitle = @"修改街道";
+            resetVC.sendTag = 204;
+            [self.navigationController pushViewController:resetVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+}
+
+#pragma mark ----------修改性别---------------
+-(void)resetSexWithParameter:(NSDictionary *)parameter
+{
+    [HttpRequest_MyApi POSTURLString:@"/User/update/" parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"responseObject == %@",responseObject);
+        
+        if ([responseObject[@"state"] boolValue]) {
+            
+            NSDictionary *dataDic = (NSDictionary *)[responseObject[@"data"] objectFromJSONString];
+            
+            if ([dataDic[@"result"] boolValue]) {
+                NSLog(@"性别修改成功");
+                
+                [[GlobalMethod sharedInstance] reloadUserInfoDataSuccess:^(NSString *status) {
+                    if ([status isEqualToString:@"success"]) {
+                        NSLog(@"用户数据更新成功");
+                    }
+                } failure:^{
+                    
+                }];
+            }
+            
+            
+        }else{
+            [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@:%@",responseObject[HTTP_ERRCODE],responseObject[HTTP_MSG]] andDelay:LOADING_TIME];
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error == %@",error);
+    }];
 }
 
 - (void)back

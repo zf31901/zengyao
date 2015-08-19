@@ -63,11 +63,20 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     
     if ([GlobalMethod sharedInstance].isAutoLogin)
     {
-        [self drawUI];
-        [GlobalMethod sharedInstance].isLogin = YES;
+        [[GlobalMethod sharedInstance] reloadUserInfoDataSuccess:^(NSString *status) {
+            if ([status isEqualToString:@"success"]) {
+                NSLog(@"用户数据更新成功");
+                
+                [self drawUI];
+            }
+        } failure:^{
+            
+        }];
+        
     }else if ([GlobalMethod sharedInstance].isLogin){
         
         [self drawUI];
+        
     }else{
         
         [self.tableView removeFromSuperview];
@@ -79,14 +88,10 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 
 -(void)drawUI
 {
-    if ([GlobalMethod sharedInstance].headImageURL.length > 0) {
-        
-        [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:[GlobalMethod sharedInstance].headImageURL] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-    }else{
-        [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
-    }
     
-    _headView.nameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.im];
+    [_headView.headImageView sd_setImageWithURL:[NSURL URLWithString:UserInfoData.headPic] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
+    
+    _headView.nameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.nickName];
     
     [self.view addSubview:self.tableView];
     

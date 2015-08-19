@@ -175,14 +175,98 @@
 //}
 
 //是否自动登录
--(void)setIsAutoLogin:(BOOL)isAutoLogin
+- (void)setIsAutoLogin:(BOOL)isAutoLogin
 {
     [TSUserDefaults setBool:isAutoLogin forKey:@"isAutoLogin"];
 }
--(BOOL)isAutoLogin
+- (BOOL)isAutoLogin
 {
     return [TSUserDefaults boolForKey:@"isAutoLogin"];
 }
+
+
+- (void)reloadUserInfoDataSuccess:(ReloadUserInfoData)success failure:(Failure)fail
+{
+    NSDictionary *parameters = @{@"u": UserInfoData.im, @"pwd": UserInfoData.password};
+    YYHttpRequest *hq = [YYHttpRequest shareInstance_myapi];
+    [hq POSTURLString:@"/User/login/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSDictionary *rqDic = (NSDictionary *)responseObject;
+        if ([rqDic[@"state"] boolValue]) {
+            
+            NSDictionary *dic_login = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+            
+             NSDictionary *param = @{@"u": UserInfoData.im, @"clientkey": dic_login[@"clientkey"]};
+            //获取用户信息
+            [self loadUserInfoDataWithApiDic:param andLoginInfo:dic_login];
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error = %@",error);
+    }];
+    
+    self.reloadUserInfoData = success;
+    self.failure = fail;
+}
+
+// 获取用户信息
+- (void)loadUserInfoDataWithApiDic:(NSDictionary *)param andLoginInfo:(NSDictionary *)dic_login
+{
+    YYHttpRequest *hq = [YYHttpRequest shareInstance_myapi];
+    [hq GETURLString:@"/User/info/" parameters:param success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        NSDictionary *rqDic = (NSDictionary *)responseObj;
+        
+        if ([rqDic[@"state"] boolValue]) {
+            NSDictionary *infoDic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+            //保存用户信息
+            [self saveUserInfor:infoDic withLoginInfo:dic_login];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error = %@",error);
+    }];
+}
+
+//保存用户信息
+- (void)saveUserInfor:(NSDictionary *)dic withLoginInfo:(NSDictionary *)dic_login
+{
+    UserObj *user = [[UserObj alloc] init];
+    
+    [user setUserName:dic[@"Mobile"]];
+    [user setPassword:UserInfoData.password];
+    [user setIm:dic[@"UserLogin"]];
+    [user setPhone:dic[@"Mobile"]];
+    [user setClientkey:dic_login[@"clientkey"]];
+    [user setIsLogin:YES];
+    [user setNickName:dic[@"Nick"]];
+    [user setTrueName:dic[@"TrueName"]];
+    [user setSex:dic[@"Sex"]];
+    [user setHeadPic:dic[@"HeadPicture"]];
+    [user setEmail:dic[@"Email"]];
+    [user setEmailState:[dic[@"EmailState"] boolValue]];
+    [user setPhoneState:[dic[@"MobileState"] boolValue]];
+    [user setRegTime:dic[@"RegDateTime"]];
+    
+    [user setAddress:dic[@"Address"]];
+    [user setAge:dic[@"Age"]];
+    [user setArea:dic[@"Area"]];
+    [user setCity:dic[@"City"]];
+    [user setHospital:dic[@"Hospital"]];
+    [user setId:dic[@"Id"]];
+    [user setProvince:dic[@"Province"]];
+    [user setType:dic[@"Type"]];
+    [user setKeshi:dic[@"keshi"]];
+    [user setZhicheng:dic[@"zhicheng"]];
+    
+    [GlobalMethod saveObject:user withKey:USEROBJECT];
+    [GlobalMethod saveLoginInStatus:YES];
+    [GlobalMethod sharedInstance].isLogin = YES;
+
+    if (self.reloadUserInfoData) {
+        self.reloadUserInfoData(@"success");
+    }
+}
+
 
 
 + (NSString *)getJsonDateString:(NSString *)JsonString

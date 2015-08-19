@@ -56,15 +56,20 @@
         return;
     }
     
+    
     YYHttpRequest *http = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"fdid":@(0),@"fdtitle":@"string",@"fdcontent":_feedBackTextView.text,@"fduserid":UserInfoData.Id,@"fdusername":UserInfoData.nickName,@"fdcreatedate":@"2015-08-10",@"fdstate":@(0),@"fduserphone":UserInfoData.phone,@"fduseremail":UserInfoData.email};
+    
+    NSString *currentTime = [WITool getCurrentTime];
+    NSDictionary *dic = @{@"fdid":@(0),@"fdtitle":@"string",@"fdcontent":_feedBackTextView.text,@"fduserid":UserInfoData.Id,@"fdusername":UserInfoData.nickName,@"fdcreatedate":currentTime,@"fdstate":@(0),@"fduserphone":UserInfoData.phone,@"fduseremail":UserInfoData.email};
     [http POSTURLString:@"http://app.aixinland.cn/api/feedback/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"responseObject == %@",responseObject)
         
 //        NSLog(@"responseObject == %@",responseObject[@"status"]);
         if ([responseObject[@"status"] isEqualToString:@"Success"]) {
             
             [self.navigationController popViewControllerAnimated:YES];
-            [self showAlertViewWithTitle:@"提交成功，感谢您的建议!" andDelay:1.0];
+//            [self showAlertViewWithTitle:@"提交成功，感谢您的建议!" andDelay:1.0];
+            [self showHUDInView:KEY_WINDOW WithText:@"提交成功" andDelay:LOADING_TIME];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
