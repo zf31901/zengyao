@@ -23,25 +23,14 @@
 - (void)viewDidLoad { 
     [super viewDidLoad];
     
-    
-    UIButton *btn = [UIButton buttonWithType:0];
-    
-    btn.frame = CGRectMake(320, 0, 60, 120);
-    [btn setTitle:@"申请捐助" forState:0];
-    [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
-    [btn setTitleColor:[UIColor whiteColor] forState:0];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    [btn addTarget:self action:@selector(nextpageVC) forControlEvents:UIControlEventTouchUpInside];
-   btn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0,40);
-    
-    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -23, 0, 0);
+     self.navigationController.navigationBarHidden=YES;
     
     
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H- 64)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H)];
 
     _webView.delegate=self;
    
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn//page/project_detail.html?from=app&dataId=%@",_model.pid];
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?from=app&dataId=8&userid=903050"];
   
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -55,6 +44,16 @@
     CommitAskForViewController *commitVC = [CommitAskForViewController new];
     [self.navigationController pushViewController:commitVC animated:YES];
     
+}
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *urlString = [[request URL] absoluteString];
+    NSLog(@"urlString---  %@",urlString);
+    if ([urlString rangeOfString:@"page/project_detail.html?objc_receive:Delete"].location != NSNotFound) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        
+    }
+    return YES;
 }
 
 

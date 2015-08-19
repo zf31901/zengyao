@@ -56,7 +56,7 @@
     if((int)[self.navigationController.viewControllers count]!=1)
     {
         UIButton *btn = [UIButton buttonWithType:0];
-        btn.frame = CGRectMake(0, 0, 60, 120);
+        btn.frame = CGRectMake(0, 0, 120, 120);
         [btn setTitle:title forState:0];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
         [btn setTitleColor:[UIColor whiteColor] forState:0];

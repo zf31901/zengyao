@@ -85,23 +85,8 @@
 }
 
 
-//结束编辑
-- (void)textViewDidEndEditing:(UITextView *)textView{
-    QuestionViewController *model=[[QuestionViewController alloc]init];
-    
-    
-}
-//-(void)textViewDidChange:(UITextView *)textView
-//{
-//
-//    if (_textView.text.length==0) {
-//        _textView.text=@"有更好的建议可以提上来";
-//
-//    }else
-//    {
-//        _textView.text=@"";
-//    }
-//}
+
+
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {

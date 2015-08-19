@@ -17,6 +17,7 @@
 {
     UITableView *_myTableView;
     NSMutableArray *_dataArr;
+    NSInteger _pagesize;
 }
 @end
 
@@ -24,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     _pagesize=10;
     _dataArr=[[NSMutableArray alloc]init];
     
     [self loadData];
@@ -48,7 +49,8 @@
     
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"userid":@"903050",@"pageid":@"1",@"pagesize":@"10"};
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    NSDictionary *dic = @{@"userid":@"903050",@"pageid":@"1",@"pagesize":pageStr};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
                 NSLog(@"responseObj == %@",responseObj);

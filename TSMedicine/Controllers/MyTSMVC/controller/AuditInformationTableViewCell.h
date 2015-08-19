@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface AuditInformationTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *upname;
+
+@property (weak, nonatomic) IBOutlet UILabel *upcreatedate;
+
+
+
 
 @end

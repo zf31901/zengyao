@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyPatQuestModel.h"
+#import "MyAppModel.h"
 @interface APPlicationProgressViewController : BaseViewController
-@property(nonatomic,strong) MyPatQuestModel *model;
+@property(nonatomic,strong) MyAppModel *Goodmodel;
 @end

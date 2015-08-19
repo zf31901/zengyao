@@ -12,7 +12,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "APPlicationProgressViewController.h"
-
+#import "MJRefresh.h"
 
 #define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 
@@ -24,7 +24,7 @@
 {
     UITableView *_mytableView;
     NSMutableArray *_dataArr;
-    
+         NSInteger _pagesize;
     
 }
 @end
@@ -35,18 +35,26 @@
     [super viewDidLoad];
     
     [self setNavView];
-    
+    _pagesize=10;
     [super viewDidLoad];
     
     [self setNavView];
     
     [self setTableView];
-   
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"0" forKey:@"userid"];
-    [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"5"    forKey:@"pagesize"];
+    
+    [self loadData];
+    [self addRefresh];
+    
 
+}
+-(void)loadData{
+
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
+    [dic setObject:UserInfoData.im forKey:@"userid"];
+    [dic setObject:@"1"              forKey:@"pageid"];
+    [dic setObject:pageStr   forKey:@"pagesize"];
+    
     
     _dataArr = [NSMutableArray array];
     YYHttpRequest *hq=[[YYHttpRequest alloc]init];
@@ -54,27 +62,30 @@
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
         
-       
+        
         
         if ([responseObj objectForKey:@"data"] !=nil) {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
             
-           // NSLog(@"2222223456===================%lu",(unsigned long)dataArr.count);
+            // NSLog(@"2222223456===================%lu",(unsigned long)dataArr.count);
             
             for (NSDictionary *dic in dataArr)
             {
                 MyAppModel *model = [[MyAppModel alloc] init];
-                model.upname1=[dic objectForKey:@"upname"];
-                model.upcreatedate1=[dic objectForKey:@"upcreatedate"];
+                model.upname=[dic objectForKey:@"upname"];
+                model.upcreatedate=[dic objectForKey:@"upcreatedate"];
                 
-                model.upimage1=[dic  objectForKey:@"upimage"];
+                model.upimage=[dic  objectForKey:@"upimage"];
+                model.upid=[dic objectForKey:@"upid"];
+                
                 for (int i = 0; i < dataArr.count; i ++){
-                if (i % 2 == 0) {
-                    model.isReport = YES;
-                    model.upqacount1=[dic  objectForKey:@"upstate"];
-                }else{
-                    model.isReport = NO;
-                }
+                    if (i % 2 == 0) {
+                        model.isReport = YES;
+                        model.upqacount=[dic  objectForKey:@"upstate"];
+                        
+                    }else{
+                        model.isReport = NO;
+                    }
                 }
                 [_dataArr addObject:model];
             }
@@ -82,17 +93,40 @@
             NSLog(@"123123-%ld",_dataArr.count);
             
             [_mytableView reloadData];
-            }
-       // }
+            
+        }
+        [_mytableView.header endRefreshing];
+        [_mytableView.footer endRefreshing];
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error--%@",error);
     }];
     
-    
-    
 
+}
+- (NSMutableArray *)dataArr
+{
+    if (_dataArr == nil) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
+#pragma mark - 上下啦刷新
+- (void)addRefresh
+{
+    __weak PatientApplyViewController * ctl = self;
+    [_mytableView addLegendHeaderWithRefreshingBlock:^{
+        _pagesize = 10;
+        
+        [_dataArr removeAllObjects];
+        [ctl loadData];
+    }];
+    [_mytableView addLegendFooterWithRefreshingBlock:^{
+       _pagesize += 10;
+        [ctl loadData];
+    }];
 }
 -(void)setTableView
 {
@@ -133,20 +167,20 @@
     
     MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
     
-    cell.upname.text= [NSString stringWithFormat:@"%@",model.upname1];
+    cell.upname.text= [NSString stringWithFormat:@"%@",model.upname];
     
     
-    cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate1];
+    cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate];
     
    // cell.upstate.text=[NSString stringWithFormat:@"%@人回答",model.upqacount1];
 
     
-    if (![model.upimage1 isKindOfClass:[NSNull class]]) {
+    if (![model.upimage isKindOfClass:[NSNull class]]) {
     
-      [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage1] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
+      [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
     }
     
-    NSLog(@"upimage1--%@",model.upimage1);
+    NSLog(@"upimage1--%@",model.upimage);
     return cell;
     
     
@@ -162,7 +196,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     APPlicationProgressViewController *nav=[[APPlicationProgressViewController alloc]init];
-    nav.model = _dataArr[indexPath.row];
+    nav.Goodmodel = _dataArr[indexPath.row];
 
     [self.navigationController pushViewController:nav animated:YES];
     

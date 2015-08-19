@@ -53,10 +53,10 @@
                 NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
                 
                 
-                model.upname1=[dataDic objectForKey:@"upname"];
-                model.upcreatedate1=[dataDic objectForKey:@"upcreatedate"];
+                model.upname=[dataDic objectForKey:@"upname"];
+                model.upcreatedate=[dataDic objectForKey:@"upcreatedate"];
                 
-                model.upimage1=[dataDic  objectForKey:@"upimage"];
+                model.upimage=[dataDic  objectForKey:@"upimage"];
                 
                 [testArr addObject:model];
               //  NSLog(@"dic12345----%@",dataDic);
@@ -86,9 +86,9 @@
         
     }
     MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
-    cell.upname.text=model.upname1;
-    cell.dataTime.text=model.upcreatedate1;
-    [cell.upimage setImageWithURL:[NSURL URLWithString:model.upimage1] ];
+    cell.upname.text=model.upname;
+    cell.dataTime.text=model.upcreatedate;
+    [cell.upimage setImageWithURL:[NSURL URLWithString:model.upimage] ];
 
     
     

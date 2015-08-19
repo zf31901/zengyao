@@ -8,12 +8,16 @@
 
 #import "APPlicationProgressViewController.h"
 #import "AuditInformationTableViewCell.h"
+//#import "MyAppModel.h"
 #import "ReasonTableViewCell.h"
 #import "HospitalTableViewCell.h"
 #import "CanonicalormTableViewCell.h"
 #import "CanonFormViewController.h"
 #import "xqingViewController.h"
+#import "APPaixinlModel.h"
+#define URL @"http://app.aixinland.cn/api/userproject/List"
 
+#define URLIST @"http://app.aixinland.cn/api/userproject/Get?dataid="
 #define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 @interface APPlicationProgressViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -27,10 +31,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden=YES;
+
     _dataArr=[[NSMutableArray alloc]init];
+    
     [self setNavView];
-    [self UITableView];
-    [self buidRightBtn:@"详情"];
+   
+    [self buidRightBtn:@"项目详情"];
+    [self loadDatacell];
+   
 }
 -(void)setNavView
 {
@@ -38,9 +47,9 @@
    self.title=@"申请进度";
     
 }
-- (void)back
-{
-    [self.navigationController popViewControllerAnimated:YES];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=NO;
 }
 -(void)UITableView{
     
@@ -59,7 +68,29 @@
      [self.view addSubview:_myTablview];
 }
 
+-(void)loadDatacell{
 
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
+    NSString *url=[NSString stringWithFormat:@"%@%@",URLIST,_Goodmodel.upid];
+    NSLog(@"_Goodmodel.upid--%@",_Goodmodel.upid);
+    [rq GETURLString:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+        APPaixinlModel *model = [[APPaixinlModel  alloc] init];
+        
+        [model setValuesForKeysWithDictionary:responseObj[@"data"]];
+        [_dataArr addObject:model];
+        
+        [self UITableView];
+        
+        [_myTablview reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error == %@",error);
+    }];
+    
+    
+}
 
 
 #pragma mark-UITableView代理方法
@@ -70,7 +101,7 @@
     
         
         CanonFormViewController  *answerVC = [[CanonFormViewController alloc] init];
-        // answerVC.model = _dataArr[indexPath.row];
+         answerVC.model = _dataArr[indexPath.row];
         [self.navigationController pushViewController:answerVC animated:YES];
         
     }
@@ -116,7 +147,11 @@
         
     
     AuditInformationTableViewCell *Audcell = [tableView dequeueReusableCellWithIdentifier:@"Audcell" forIndexPath:indexPath];
-    
+        
+       APPaixinlModel *model=[_dataArr objectAtIndex:indexPath.row];
+       Audcell.upcreatedate.text=model.upcreatedate;
+        Audcell.upname.text=model.upname;
+       
         return Audcell;
         
     }
@@ -145,9 +180,10 @@
 
 }
 
+
 -(void)commit{
     xqingViewController *VC = [[xqingViewController   alloc] init];
-    // VC.goodIndex = _dataArr[indexPath.row];
+
     [self.navigationController pushViewController:VC animated:YES];
 
 

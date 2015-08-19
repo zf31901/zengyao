@@ -9,54 +9,87 @@
 #import "DonationViewController.h"
 #import "AskForDonationViewController.h"
 #import "DetailModel.h"
+#import "MJRefresh.h"
+
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
-
-
-
 
 @interface DonationViewController ()
 {
     NSMutableArray *_dataArry;
+    NSMutableArray *_dataA;
+    // 下拉刷新变量
+    BOOL _isPull;
+     NSInteger _page;
     
 }
 @property (weak, nonatomic) IBOutlet X_TableView *tableView;
 
+
 @end
 
 @implementation DonationViewController
-
+-(void)dealloc{
+   // [self.headerRefreshView free];
+    //[self.footerRefreshView free];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
       self.title = @"捐助项目";
+    _page=10;
     _dataArry=[[NSMutableArray alloc]init];
+    _dataA=[[NSMutableArray alloc]init];
     
+       // NSMutableArray *testArr = [[NSMutableArray alloc]init];
+    [self crealade];
+    [self addRefresh];
     
-    NSMutableArray *arr=[[NSMutableArray alloc]init];
-   // NSMutableArray *testArr = [[NSMutableArray alloc]init];
-    
+}
+
+- (NSMutableArray *)ListArr
+{
+    if (_dataArry == nil) {
+        _dataArry = [NSMutableArray array];
+    }
+    return _dataArry;
+}
+- (NSMutableArray *)itemHeightArr
+{
+    if (_dataA == nil) {
+       _dataA = [NSMutableArray array];
+    }
+    return _dataA;
+}
+
+-(void)crealade{
+   // NSMutableArray *arr=[[NSMutableArray alloc]init];
+
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",_page];
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"3"      forKey:@"pagesize"];
+    [dic setObject:pageStr      forKey:@"pagesize"];
     YYHttpRequest *hq=[YYHttpRequest shareInstance];
     
-    [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
     
+    
+    [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+       
         if ([responseObj objectForKey:@"data"] !=nil) {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
             
-
+            
             
             for (int i = 0; i < dataArr.count; i++)
             {
                 DetailModel *model=[[DetailModel alloc]init];
                 NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
-             
+                
                 [model setValuesForKeysWithDictionary:dataDic];
                 [_dataArry addObject:model];
-
                 
-                [arr addObject:[@{
+                
+                [_dataA addObject:[@{
                                   kCellTag:@"DonationCell",
                                   kCellDidSelect:@"DonationCell",
                                   @"donation_titleLab":[dataDic objectForKey:@"pname"],
@@ -64,24 +97,48 @@
                                   @"donation_unitlab":[dataDic objectForKey:@"pfaqidanwei"],
                                   @"donation_imgView":[dataDic  objectForKey:@"pimage"],
                                   } mutableCopy]];
-           
+                
                 
             }
-            self.tableView.xDataSource = arr;
+            self.tableView.xDataSource = _dataA;
             
             [self.tableView reloadData];
+            [self.tableView.header endRefreshing];
+            [self.tableView.footer endRefreshing];
             
         }
         [self lable];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+
+
         
     }];
-    
 
 }
+#pragma mark - 上下啦刷新
+- (void)addRefresh
+{
+    __weak DonationViewController * ctl = self;
+    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+        _page = 10;
 
+        [_dataA removeAllObjects];
+        [ctl crealade];
+    }];
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        _page += 10;
+        [ctl crealade];
+    }];
+}
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=NO;
+}
 -(void)lable{
     
     WEAKSELF
@@ -101,19 +158,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

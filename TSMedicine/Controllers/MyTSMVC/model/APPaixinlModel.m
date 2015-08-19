@@ -1,14 +1,14 @@
 //
-//  MyAppModel.m
+//  APPaixinlModel.m
 //  TSMedicine
 //
-//  Created by 123 on 15/8/4.
+//  Created by 123 on 15/8/18.
 //  Copyright (c) 2015年 ewt. All rights reserved.
 //
 
-#import "MyAppModel.h"
+#import "APPaixinlModel.h"
 
-@implementation MyAppModel
+@implementation APPaixinlModel
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
