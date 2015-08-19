@@ -116,7 +116,7 @@
                 newModel.a_time = [dataDic objectForKey:@"time"];
                 
                 newModel.a_SmallImg=[dataDic objectForKey:@"a_SmallImg"];
-                newModel.a_Content=[dataDic objectForKey:@"a_Content"];
+                newModel.a_ID=[dataDic objectForKey:@"a_ID"];
                 [_dataArr addObject:newModel];
             }
 
@@ -218,7 +218,7 @@
 
     NewsModel *arr=_dataArr[indexPath.row];
     
-    ctl2.model=arr.a_Content;
+    ctl2.model=arr.a_ID;
     [self.navigationController pushViewController:ctl2 animated:YES];
 }
 

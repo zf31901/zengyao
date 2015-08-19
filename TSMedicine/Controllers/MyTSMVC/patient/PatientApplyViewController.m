@@ -51,7 +51,7 @@
 
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"0" forKey:@"userid"];
+    [dic setObject:UserInfoData.im forKey:@"userid"];
     [dic setObject:@"1"              forKey:@"pageid"];
     [dic setObject:pageStr   forKey:@"pagesize"];
     
@@ -196,7 +196,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     APPlicationProgressViewController *nav=[[APPlicationProgressViewController alloc]init];
-    nav.model = _dataArr[indexPath.row];
+    nav.Goodmodel = _dataArr[indexPath.row];
 
     [self.navigationController pushViewController:nav animated:YES];
     

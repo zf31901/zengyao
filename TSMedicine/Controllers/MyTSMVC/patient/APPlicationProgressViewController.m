@@ -8,15 +8,16 @@
 
 #import "APPlicationProgressViewController.h"
 #import "AuditInformationTableViewCell.h"
-#import "MyAppModel.h"
+//#import "MyAppModel.h"
 #import "ReasonTableViewCell.h"
 #import "HospitalTableViewCell.h"
 #import "CanonicalormTableViewCell.h"
 #import "CanonFormViewController.h"
 #import "xqingViewController.h"
-
+#import "APPaixinlModel.h"
 #define URL @"http://app.aixinland.cn/api/userproject/List"
 
+#define URLIST @"http://app.aixinland.cn/api/userproject/Get?dataid="
 #define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
 @interface APPlicationProgressViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -33,11 +34,12 @@
     self.navigationController.navigationBarHidden=YES;
 
     _dataArr=[[NSMutableArray alloc]init];
+    
     [self setNavView];
-   // [self UITableView];
+   
     [self buidRightBtn:@"项目详情"];
-    //[self loadData];
-    [self loadDataAudcell];
+    [self loadDatacell];
+   
 }
 -(void)setNavView
 {
@@ -49,10 +51,6 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
 }
-//- (void)back
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
 -(void)UITableView{
     
    
@@ -69,67 +67,22 @@
     [_myTablview registerNib:[UINib nibWithNibName:@"CanonicalormTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cancell"];
      [self.view addSubview:_myTablview];
 }
--(void)loadDataAudcell{
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"0" forKey:@"userid"];
-    [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:@"5"    forKey:@"pagesize"];
-    
-    
-    _dataArr = [NSMutableArray array];
-    YYHttpRequest *hq=[[YYHttpRequest alloc]init];
-    
-    [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
-        if ([responseObj objectForKey:@"data"] !=nil) {
-            NSArray *dataArr =[responseObj objectForKey:@"data"];
-            
-            
-            for (NSDictionary *dic in dataArr)
-            {
-                MyAppModel *model = [[MyAppModel alloc] init];
-                
-              [model setValuesForKeysWithDictionary:dic];
-            [_dataArr addObject:model];
-            }
-            
-            NSLog(@"123123-%ld",_dataArr.count);
-            
-             [self UITableView];
-            [_myTablview reloadData];
-        }
-        // }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"error--%@",error);
-    }];
-    
 
-
-
-
-}
--(void)loadData{
+-(void)loadDatacell{
 
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/api/userproject/Detail?userid=903050&dataid=%@",_model.upid];
-    NSLog(@"%@",_model.upid);
+    NSString *url=[NSString stringWithFormat:@"%@%@",URLIST,_Goodmodel.upid];
+    NSLog(@"_Goodmodel.upid--%@",_Goodmodel.upid);
     [rq GETURLString:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        NSLog(@"111111=====%@",responseObj);
         
-        for (NSDictionary *dic in responseObj[@"data"]) {
-          MyAppModel *model = [[MyAppModel alloc] init];
-            
-            [model setValuesForKeysWithDictionary:dic];
-         
-            [_dataArr addObject:model];
-         
-            
-        }
+        APPaixinlModel *model = [[APPaixinlModel  alloc] init];
+        
+        [model setValuesForKeysWithDictionary:responseObj[@"data"]];
+        [_dataArr addObject:model];
+        
         [self UITableView];
-      
+        
         [_myTablview reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -195,8 +148,8 @@
     
     AuditInformationTableViewCell *Audcell = [tableView dequeueReusableCellWithIdentifier:@"Audcell" forIndexPath:indexPath];
         
-       MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
-        Audcell.upcreatedate.text=model.upcreatedate;
+       APPaixinlModel *model=[_dataArr objectAtIndex:indexPath.row];
+       Audcell.upcreatedate.text=model.upcreatedate;
         Audcell.upname.text=model.upname;
        
         return Audcell;

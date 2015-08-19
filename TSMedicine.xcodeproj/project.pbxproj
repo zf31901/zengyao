@@ -268,6 +268,7 @@
 		9DD49DF71B7AE37400D5770B /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DF61B7AE37400D5770B /* QuestionViewController.m */; };
 		9DD49E001B7AE49C00D5770B /* QuestionTurnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DFE1B7AE49C00D5770B /* QuestionTurnViewController.m */; };
 		9DD49E011B7AE49C00D5770B /* QuestionTurnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49DFF1B7AE49C00D5770B /* QuestionTurnViewController.xib */; };
+		9DD5E2D51B83063500375503 /* APPaixinlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD5E2D41B83063500375503 /* APPaixinlModel.m */; };
 		9DD88C7A1B6B8AAD00D22955 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD88C791B6B8AAD00D22955 /* DetailsViewController.m */; };
 		9DD88C7C1B6B8AB200D22955 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD88C7B1B6B8AB200D22955 /* DetailsViewController.xib */; };
 		9DD88C7F1B6B8CAD00D22955 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD88C7E1B6B8CAD00D22955 /* DetailModel.m */; };
@@ -658,6 +659,8 @@
 		9DD49DFD1B7AE49C00D5770B /* QuestionTurnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTurnViewController.h; sourceTree = "<group>"; };
 		9DD49DFE1B7AE49C00D5770B /* QuestionTurnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTurnViewController.m; sourceTree = "<group>"; };
 		9DD49DFF1B7AE49C00D5770B /* QuestionTurnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionTurnViewController.xib; sourceTree = "<group>"; };
+		9DD5E2D31B83063500375503 /* APPaixinlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPaixinlModel.h; sourceTree = "<group>"; };
+		9DD5E2D41B83063500375503 /* APPaixinlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPaixinlModel.m; sourceTree = "<group>"; };
 		9DD88C781B6B8AA700D22955 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		9DD88C791B6B8AAD00D22955 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		9DD88C7B1B6B8AB200D22955 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
@@ -739,6 +742,8 @@
 				164C0F411B6F72610040321E /* MyProModel.m */,
 				10694DD51B7207DB00CE2504 /* MyAppModel.h */,
 				10694DD61B7207DB00CE2504 /* MyAppModel.m */,
+				9DD5E2D31B83063500375503 /* APPaixinlModel.h */,
+				9DD5E2D41B83063500375503 /* APPaixinlModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1907,6 +1912,7 @@
 				16B084FD1B6B5506004512E6 /* RegisterNextViewController.m in Sources */,
 				169071431B34088700A4CD21 /* DonationCell.m in Sources */,
 				10694DCE1B72074000CE2504 /* MyUserInfoView.m in Sources */,
+				9DD5E2D51B83063500375503 /* APPaixinlModel.m in Sources */,
 				10694DB81B72059000CE2504 /* MyApplication.m in Sources */,
 				165EB4761B298F440070D1F8 /* ThinLineCell.m in Sources */,
 				161263671B3D371800EAEDE6 /* ReportViewContrlller.m in Sources */,

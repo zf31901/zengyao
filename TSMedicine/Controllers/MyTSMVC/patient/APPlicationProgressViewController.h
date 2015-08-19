@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "MyAppModel.h"
 @interface APPlicationProgressViewController : BaseViewController
-@property(nonatomic,strong) MyAppModel *model;
+@property(nonatomic,strong) MyAppModel *Goodmodel;
 @end
