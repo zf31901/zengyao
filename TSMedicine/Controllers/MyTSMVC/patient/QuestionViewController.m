@@ -11,7 +11,6 @@
 #import "QuestionTurnViewController.h"
 
 
-
 #import "MyPatQuestModel.h"
 #import "MyAnswerModel.h"
 
@@ -49,6 +48,9 @@
     
     [self Staload];
 }
+
+
+
 
 -(void)settabView{
     _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];

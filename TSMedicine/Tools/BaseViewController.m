@@ -58,6 +58,7 @@
         UIButton *btn = [UIButton buttonWithType:0];
         btn.frame = CGRectMake(0, 0, 120, 120);
         [btn setTitle:title forState:0];
+        btn.titleLabel.textAlignment = NSTextAlignmentRight;
         [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
         [btn setTitleColor:[UIColor whiteColor] forState:0];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
