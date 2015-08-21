@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *upcreatedate;
 
+@property (weak, nonatomic) IBOutlet UILabel *upstate;
 
 
 

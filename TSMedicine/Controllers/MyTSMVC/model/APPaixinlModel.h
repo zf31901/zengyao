@@ -23,5 +23,6 @@
 @property(nonatomic,copy)               NSString *upcode;
 @property(nonatomic,copy)               NSString *upcreatedate;
 @property(nonatomic,copy)               NSString *upstate;
+@property (nonatomic,assign) BOOL isReport;
 
 @end

@@ -78,13 +78,16 @@
                 model.upimage=[dic  objectForKey:@"upimage"];
                 model.upid=[dic objectForKey:@"upid"];
                 
+                
                 for (int i = 0; i < dataArr.count; i ++){
+                    model.upqacount=[dic  objectForKey:@"upstate"];
                     if (i % 2 == 0) {
                         model.isReport = YES;
-                        model.upqacount=[dic  objectForKey:@"upstate"];
+                        
                         
                     }else{
                         model.isReport = NO;
+                        
                     }
                 }
                 [_dataArr addObject:model];
@@ -172,8 +175,14 @@
     
     cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate];
     
-   // cell.upstate.text=[NSString stringWithFormat:@"%@人回答",model.upqacount1];
-
+    if (model.isReport) {
+        cell.upstate.text=@"审核通过";
+        cell.upstate.textColor=UIColorFromRGB(0x000000FF);
+    }
+    else {
+        cell.upstate.text=@"等待申请";
+        cell.upstate.textColor=UIColorFromRGB(0x000000FF);
+    }
     
     if (![model.upimage isKindOfClass:[NSNull class]]) {
     

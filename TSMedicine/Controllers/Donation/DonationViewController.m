@@ -147,6 +147,7 @@
         NSIndexPath *indexPath = [weakSelf.tableView indexPathForCell:cell];
         NSLog(@"-----cell-->>\n%ld",(long)indexPath.row);
         
+        
         AskForDonationViewController *askVC = [AskForDonationViewController new];
         askVC.hidesBottomBarWhenPushed = YES;
         

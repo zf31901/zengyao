@@ -79,6 +79,14 @@
         APPaixinlModel *model = [[APPaixinlModel  alloc] init];
         
         [model setValuesForKeysWithDictionary:responseObj[@"data"]];
+        
+        for (int i=0; i<_dataArr.count; i++) {
+            if (i % 2 == 0) {
+                model.isReport = YES;
+            }else{
+                model.isReport = NO;
+            }
+        }
         [_dataArr addObject:model];
         
         [self UITableView];
@@ -151,6 +159,16 @@
        APPaixinlModel *model=[_dataArr objectAtIndex:indexPath.row];
        Audcell.upcreatedate.text=model.upcreatedate;
         Audcell.upname.text=model.upname;
+        if (model.isReport) {
+            Audcell.upstate.text=@"审核已通过";
+            Audcell.upstate.textColor=UIColorFromRGB(0x000000FF);
+        }
+        else{
+            Audcell.upstate.text=@"审核未通过";
+            Audcell.upstate.textColor=UIColorFromRGB(0x000000FF);
+        }
+        
+
        
         return Audcell;
         

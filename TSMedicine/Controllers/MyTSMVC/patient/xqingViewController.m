@@ -23,7 +23,7 @@
     
     _webView.delegate=self;
     
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?from=app&dataId=8&userid=903050"];
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?from=app&userid=903050&dataId=4"];
     
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -47,9 +47,15 @@
     NSLog(@"urlString---  %@",urlString);
     if ([urlString rangeOfString:@"page/project_detail.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];
-    }else{
+    }else if([urlString rangeOfString:@"page/userproject_detail.html?objc_receive:Delete"].location != NSNotFound){
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        
         
     }
+
     return YES;
 }
 
