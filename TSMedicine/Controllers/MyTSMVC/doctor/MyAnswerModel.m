@@ -18,4 +18,14 @@
     _contentSize = [uqacontent sizeWithWidth:ScreenWidth - 20 withFont:17];
 }
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+}
+
+- (id)valueForUndefinedKey:(NSString *)key
+{
+    return nil;
+}
+
 @end

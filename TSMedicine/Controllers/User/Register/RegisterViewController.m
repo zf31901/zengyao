@@ -37,10 +37,18 @@
 
 -(void)drawUI
 {
+    _verifyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _verifyBtn.frame = CGRectMake(200, 6, 100, 32);
+    _verifyBtn.backgroundColor = [UIColor clearColor];
+    [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    _verifyBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    
     _verifyBtn.layer.borderWidth = 1.0;
     _verifyBtn.layer.cornerRadius = 4.0;
     _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
     [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
+    [_verifyBtn addTarget:self action:@selector(getVerifyCodeBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_verifyBtn];
     
     _nextBtn.layer.cornerRadius = 4.0;
     [_nextBtn setBackgroundColor:Common_Btn_BgColor];
@@ -50,7 +58,7 @@
 }
 
 //获取验证码
-- (IBAction)getVerifyCodeBtnClick:(id)sender {
+-(void)getVerifyCodeBtnClick {
     
     if (![self cheakPhoneNumber]) {
         return;
@@ -80,20 +88,25 @@
         [HttpRequest_MyApi GETURLString:@"/User/register/sendverifycode/" userCache:NO parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
             
             NSDictionary *rqDic = (NSDictionary *)responseObj;
+            NSLog(@"rqDic == %@",rqDic);
+            
             if ([rqDic[@"state"] boolValue]) {
                 NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-                //            NSLog(@"dic ==== %@",dic);
+                NSLog(@"dic ==== %@",dic);
                 
                 _sessionkey = dic[@"sessionkey"];
                 
                 if ([dic[@"result"] boolValue]) {
-                    
                     NSLog(@"验证码发送成功");
-                    
                 }else{
                     NSLog(@"验证码发送失败");
                 }
+                
+            }else{
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
+            
+            [self runingTimerWithResponseObjDic:rqDic];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error == %@",error);
@@ -101,32 +114,52 @@
         
     }
     
-    _second = 60;
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
-    _verifyBtn.enabled = NO;
+}
+
+-(void)runingTimerWithResponseObjDic:(NSDictionary *)responseObjDic
+{
+    
+    if ([responseObjDic[@"state"] boolValue]) {
+        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            _second = 60;
+            _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
+            _verifyBtn.enabled = NO;
+            
+            [[NSRunLoop currentRunLoop] run];
+            
+        });
+    }else{
+        
+    }
 }
 
 -(void)time
 {
-    _second--;
-    if (_second <= 0) {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
-        [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
-        _verifyBtn.enabled = YES;
+        _second--;
+        if (_second <= 0) {
+            
+            _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
+            [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
+            _verifyBtn.enabled = YES;
+            
+            [_timer invalidate];
+            _timer = nil;
+            
+        }else{
+            [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",_second] forState:UIControlStateNormal];
+            [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
+            _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
+            _verifyBtn.enabled = NO;
+        }
         
-        [_timer invalidate];
-        _timer = nil;
-        
-    }else{
-        
-        [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",_second] forState:UIControlStateNormal];
-        [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
-        _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
-        _verifyBtn.enabled = NO;
-        
-    }
+    });
+   
     
 }
 

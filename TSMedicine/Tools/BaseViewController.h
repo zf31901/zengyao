@@ -17,6 +17,8 @@
 - (void)buidRightBtn:(NSString *)title;
 - (void)commit;
 
+- (void)createNavView;
+
 
 //HUD
 - (void)showHUDInView:(UIView *)view WithDetailText:(NSString *)text andDelay:(float)delay;

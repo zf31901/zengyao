@@ -240,6 +240,10 @@
 		16C3F9C31B25711C0040D80C /* 默认头像80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F97E1B25711C0040D80C /* 默认头像80@2x.png */; };
 		16C3F9C41B25711C0040D80C /* 默认头像80@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F97F1B25711C0040D80C /* 默认头像80@1x.png */; };
 		16C3F9C51B25711C0040D80C /* 默认头像80@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3F9801B25711C0040D80C /* 默认头像80@3x.png */; };
+		16CD1C981B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CD1C961B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.m */; };
+		16CD1C991B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CD1C971B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.xib */; };
+		16CD1C9D1B85C52600A47779 /* MyUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CD1C9B1B85C52600A47779 /* MyUserInfoTableViewCell.m */; };
+		16CD1C9E1B85C52600A47779 /* MyUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CD1C9C1B85C52600A47779 /* MyUserInfoTableViewCell.xib */; };
 		16EBB11C1B81C15600599A4E /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB1181B81C15600599A4E /* MBProgressHUD+Add.m */; };
 		16EBB11D1B81C15600599A4E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16EBB1191B81C15600599A4E /* MBProgressHUD.bundle */; };
 		16EBB11E1B81C15600599A4E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB11B1B81C15600599A4E /* MBProgressHUD.m */; };
@@ -614,6 +618,12 @@
 		16C3F97F1B25711C0040D80C /* 默认头像80@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像80@1x.png"; sourceTree = "<group>"; };
 		16C3F9801B25711C0040D80C /* 默认头像80@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像80@3x.png"; sourceTree = "<group>"; };
 		16C3F9DB1B2576DA0040D80C /* TSMedicine.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSMedicine.pch; sourceTree = "<group>"; };
+		16CD1C951B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUserInfoHeadTableViewCell.h; sourceTree = "<group>"; };
+		16CD1C961B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUserInfoHeadTableViewCell.m; sourceTree = "<group>"; };
+		16CD1C971B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUserInfoHeadTableViewCell.xib; sourceTree = "<group>"; };
+		16CD1C9A1B85C52600A47779 /* MyUserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUserInfoTableViewCell.h; sourceTree = "<group>"; };
+		16CD1C9B1B85C52600A47779 /* MyUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUserInfoTableViewCell.m; sourceTree = "<group>"; };
+		16CD1C9C1B85C52600A47779 /* MyUserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUserInfoTableViewCell.xib; sourceTree = "<group>"; };
 		16EBB1171B81C15600599A4E /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		16EBB1181B81C15600599A4E /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		16EBB1191B81C15600599A4E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -724,9 +734,6 @@
 				164C0F431B6F77D00040321E /* MyProTableViewCell.h */,
 				164C0F441B6F77D00040321E /* MyProTableViewCell.m */,
 				164C0F451B6F77D00040321E /* MyProTableViewCell.xib */,
-				16A0A38E1B83039400572D97 /* MyUserInforView.h */,
-				16A0A38F1B83039400572D97 /* MyUserInforView.m */,
-				16A0A3911B8303C100572D97 /* MyUserInforView.xib */,
 				9D0C8D861B7AEA3B001B4A8E /* QuestPersoNTableViewCell.h */,
 				9D0C8D871B7AEA3B001B4A8E /* QuestPersoNTableViewCell.m */,
 				9D0C8D881B7AEA3B001B4A8E /* QuestPersoNTableViewCell.xib */,
@@ -742,6 +749,15 @@
 				9D0C8D9F1B7B200A001B4A8E /* CanonicalormTableViewCell.h */,
 				9D0C8DA01B7B200A001B4A8E /* CanonicalormTableViewCell.m */,
 				9D0C8DA11B7B200A001B4A8E /* CanonicalormTableViewCell.xib */,
+				16A0A38E1B83039400572D97 /* MyUserInforView.h */,
+				16A0A38F1B83039400572D97 /* MyUserInforView.m */,
+				16A0A3911B8303C100572D97 /* MyUserInforView.xib */,
+				16CD1C951B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.h */,
+				16CD1C961B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.m */,
+				16CD1C971B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.xib */,
+				16CD1C9A1B85C52600A47779 /* MyUserInfoTableViewCell.h */,
+				16CD1C9B1B85C52600A47779 /* MyUserInfoTableViewCell.m */,
+				16CD1C9C1B85C52600A47779 /* MyUserInfoTableViewCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1730,6 +1746,7 @@
 				16C3F9AF1B25711C0040D80C /* Set-up40@1x.png in Resources */,
 				16B9099A1B281F6E00211892 /* MyTSMViewController.xib in Resources */,
 				16C3F99F1B25711C0040D80C /* News50_press@2x.png in Resources */,
+				16CD1C991B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.xib in Resources */,
 				1685AF301B2FF9D600F725C3 /* MyPatientCell.xib in Resources */,
 				16C3F9AC1B25711C0040D80C /* remind36@0.5x.png in Resources */,
 				16C3F9C11B25711C0040D80C /* 默认头像120@0.5x.png in Resources */,
@@ -1772,6 +1789,7 @@
 				16415CD81B6A1E0C00466A03 /* RegisterViewController.xib in Resources */,
 				16C3F9841B25711C0040D80C /* appl40@2x.png in Resources */,
 				16C3F98F1B25711C0040D80C /* arrow-left26x42_white@3x.png in Resources */,
+				16CD1C9E1B85C52600A47779 /* MyUserInfoTableViewCell.xib in Resources */,
 				16C3F9C21B25711C0040D80C /* 默认头像120@1.5x.png in Resources */,
 				168369471B2AB1B800A78898 /* SetMyTSMViewController.xib in Resources */,
 				16C3F9AD1B25711C0040D80C /* remind36@1.5x.png in Resources */,
@@ -1856,6 +1874,8 @@
 				16EBB11C1B81C15600599A4E /* MBProgressHUD+Add.m in Sources */,
 				10694DB21B7204C000CE2504 /* BaseViewController.m in Sources */,
 				16034AC91B6F464E0063EFD7 /* WIBaseLabel.m in Sources */,
+				16CD1C9D1B85C52600A47779 /* MyUserInfoTableViewCell.m in Sources */,
+				16CD1C981B85C4FD00A47779 /* MyUserInfoHeadTableViewCell.m in Sources */,
 				16B909941B281F6600211892 /* DonationViewController.m in Sources */,
 				1615F96B1B4BC9C700B236B7 /* NewsModel.m in Sources */,
 				169909ED1B8480000085BDE4 /* MJRefreshLegendHeader.m in Sources */,
@@ -2018,10 +2038,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "274372de-a757-4f4f-98c0-51a2f6af2025";
+				PROVISIONING_PROFILE = "1897d09c-a9b2-4837-884c-894510a49ca5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2055,9 +2075,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "274372de-a757-4f4f-98c0-51a2f6af2025";
+				PROVISIONING_PROFILE = "1897d09c-a9b2-4837-884c-894510a49ca5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2068,11 +2088,12 @@
 			baseConfigurationReference = 92EA984C20B7F103F7725FBC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2088,11 +2109,12 @@
 			baseConfigurationReference = 833FB237EDFC8991422360C4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

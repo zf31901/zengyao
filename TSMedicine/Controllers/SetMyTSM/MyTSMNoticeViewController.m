@@ -10,7 +10,7 @@
 
 #define htmlURL @"http://app.aixinland.cn/page/notice_list.html?from=app&userid=%@"
 
-@interface MyTSMNoticeViewController () <UIWebViewDelegate>
+@interface MyTSMNoticeViewController () <UIWebViewDelegate,UIScrollViewDelegate>
 {
     UIWebView *_webView;
     
@@ -25,6 +25,8 @@
 //    [self setNavView];
     [self loadWebView];
     
+    [self createNavView];
+    
 }
 
 -(void)setNavView
@@ -34,10 +36,11 @@
 }
 -(void)loadWebView
 {
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H - 64)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H - StatusBar_Height)];
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:htmlURL,UserInfoData.im]]]];
     [_webView  sizeToFit];
     _webView.delegate = self;
+    _webView.scrollView.delegate = self;
     [self.view addSubview:_webView];
 }
 #pragma mark --------------UIWebViewDelegate----------------
@@ -52,6 +55,11 @@
     return YES;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y < 0) {
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+    }
+}
 
 - (void)back
 {

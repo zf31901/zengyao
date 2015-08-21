@@ -34,6 +34,14 @@
     [self.view sendSubviewToBack:bgImageView];
 }
 
+-(void)createNavView
+{
+    UIView *navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth,StatusBar_Height)];
+    navView.backgroundColor = VioletColor;
+    [self.view addSubview:navView];
+    
+}
+
 - (void)buidLeftBtn
 {
     if((int)[self.navigationController.viewControllers count]!=1)
@@ -55,8 +63,8 @@
 {
     if((int)[self.navigationController.viewControllers count]!=1)
     {
-        UIButton *btn = [UIButton buttonWithType:0];
-        btn.frame = CGRectMake(0, 0, 120, 120);
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, 120, 60);
         [btn setTitle:title forState:0];
         btn.titleLabel.textAlignment = NSTextAlignmentRight;
         [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
@@ -65,8 +73,16 @@
         [btn addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
         btn.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0,40);
         
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 23, 0, 0);
+        if (btn.titleLabel.text.length == 2) {
+            
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 83, 0, 0);
+            
+        }else{
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 43, 0, 0);
+        }
     }
+    
+    
 }
 - (void)back
 {
@@ -140,8 +156,6 @@
 {
     
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {

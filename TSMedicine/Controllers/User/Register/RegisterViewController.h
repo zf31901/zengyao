@@ -9,9 +9,12 @@
 #import "BaseViewController.h"
 
 @interface RegisterViewController : BaseViewController
+
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumbTF;
 @property (weak, nonatomic) IBOutlet UITextField *verifyTF;
-@property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
+@property (nonatomic, strong) UIButton *verifyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @property (nonatomic,copy) NSString *navTitle;

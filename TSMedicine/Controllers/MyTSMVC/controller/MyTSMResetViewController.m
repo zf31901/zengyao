@@ -17,7 +17,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [_inputTF becomeFirstResponder];
+//    [_inputTF becomeFirstResponder];
     
 }
 - (void)viewDidLoad {
@@ -33,17 +33,48 @@
     self.navigationController.navigationBarHidden = NO;
     self.title = _navTitle;
     [self buidRightBtn:@"确定"];
+    
 }
 
 -(void)setUI
 {
     _inputTF.clearButtonMode = UITextFieldViewModeAlways;
+    
+    switch (_sendTag) {
+        case 201:
+        {
+            _inputTF.placeholder = @"输入昵称";
+        }
+            break;
+            
+        case 203:
+        {
+            _inputTF.placeholder = @"输入年龄";
+        }
+            break;
+            
+        case 204:
+        {
+            _inputTF.placeholder = @"输入手机号";
+        }
+            break;
+            
+        case 206:
+        {
+            _inputTF.placeholder = @"输入街道";
+        }
+            break;
+            
+        default:
+            break;
+    }
 
-    if (_sendTag == 203 || _sendTag == 204) {
+    if (_sendTag == 206) {
         _textLab.hidden = NO;
     }else{
         _textLab.hidden = YES;
     }
+    
 }
 
 -(void)commit
@@ -55,21 +86,21 @@
     }
     
     switch (_sendTag) {
-        case 200:
+        case 201:
         {
             NSDictionary *parameters = @{@"u":UserInfoData.im,@"UserLogin":UserInfoData.im,@"clientkey":UserInfoData.clientkey,@"Nick":_inputTF.text};
             [self resetInfoWithParameter:parameters];
         }
             break;
             
-        case 201:
+        case 203:
         {
             NSDictionary *parameters = @{@"u":UserInfoData.im,@"UserLogin":UserInfoData.im,@"clientkey":UserInfoData.clientkey,@"Age":_inputTF.text};
             [self resetInfoWithParameter:parameters];
         }
             break;
             
-        case 202:
+        case 204:
         {
             if (![self cheakPhoneNumber]) {
                 return;
@@ -80,14 +111,7 @@
         }
             break;
             
-        case 203:
-        {
-            NSDictionary *parameters = @{@"u":UserInfoData.im,@"UserLogin":UserInfoData.im,@"clientkey":UserInfoData.clientkey,@"Area":_inputTF.text};
-            [self resetInfoWithParameter:parameters];
-        }
-            break;
-            
-        case 204:
+        case 206:
         {
             NSDictionary *parameters = @{@"u":UserInfoData.im,@"UserLogin":UserInfoData.im,@"clientkey":UserInfoData.clientkey,@"Address":_inputTF.text};
             [self resetInfoWithParameter:parameters];
