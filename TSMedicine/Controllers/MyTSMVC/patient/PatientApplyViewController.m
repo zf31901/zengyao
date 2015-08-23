@@ -81,14 +81,14 @@
                 
                 for (int i = 0; i < dataArr.count; i ++){
                     model.upqacount=[dic  objectForKey:@"upstate"];
-                    if (i % 2 == 0) {
-                        model.isReport = YES;
-                        
-                        
-                    }else{
-                        model.isReport = NO;
-                        
-                    }
+//                    if (i % 2 == 0) {
+//                        model.isReport = YES;
+//                        
+//                        
+//                    }else{
+//                        model.isReport = NO;
+//                        
+//                    }
                 }
                 [_dataArr addObject:model];
             }
@@ -127,7 +127,7 @@
         [ctl loadData];
     }];
     [_mytableView addLegendFooterWithRefreshingBlock:^{
-       _pagesize += 10;
+      // _pagesize += 10;
         [ctl loadData];
     }];
 }
@@ -171,24 +171,27 @@
     MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
     
     cell.upname.text= [NSString stringWithFormat:@"%@",model.upname];
-    
+    cell.upname.numberOfLines=0;
+    CGRect rect = [cell.upname.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.upname.font} context:nil];
+    // cell.upname.frame = CGRectMake(0, 0, 200, rect.size.height);
+cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
     
     cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate];
     
-    if (model.isReport) {
-        cell.upstate.text=@"审核通过";
-        cell.upstate.textColor=UIColorFromRGB(0x000000FF);
+    if ([model.upstate boolValue]) {
+        cell.upstate.text=@"申请通过";
+        cell.upstate.textColor=UIColorFromRGB(0x20a456);
     }
     else {
         cell.upstate.text=@"等待申请";
-        cell.upstate.textColor=UIColorFromRGB(0x000000FF);
+        cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
     
     if (![model.upimage isKindOfClass:[NSNull class]]) {
     
       [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
     }
-    
+
     NSLog(@"upimage1--%@",model.upimage);
     return cell;
     
@@ -197,7 +200,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 106.0f;
+    MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
+    CGRect rect = [model.upname boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+
+    return 60+rect.size.height;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

@@ -38,16 +38,10 @@
     [self Staload];
     self.navigationController.navigationBarHidden = NO;
     self.title = @"问题详情";
-    [self buidRightBtn:@"提问"];
+  
 
 }
--(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
-    
-    [self Staload];
-}
+
 
 
 
@@ -127,12 +121,7 @@
     
 }
 
-- (void)commit
-{
-    QuestionTurnViewController *commitVC = [QuestionTurnViewController new];
-    [self.navigationController pushViewController:commitVC animated:YES];
-    
-}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
  

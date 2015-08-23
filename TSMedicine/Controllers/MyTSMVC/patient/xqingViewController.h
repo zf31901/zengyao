@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APPaixinlModel.h"
 
 @interface xqingViewController : BaseViewController
+@property(nonatomic,strong)APPaixinlModel *model;
 
 @end

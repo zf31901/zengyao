@@ -21,6 +21,9 @@
     
 }
 @property(nonatomic,strong)UIScrollView *scrollView;
+@property (nonatomic,strong) UILabel *TextViewLab;
+
+
 @end
 
 @implementation QuestionTurnViewController
@@ -32,15 +35,18 @@
     [self Nav];
     _dataArr=[[NSMutableArray alloc]init];
     
-    _textView.returnKeyType=UIReturnKeyDone;//设置键盘中return 为 Done 完成
-    _textView.scrollEnabled=NO;
-    _textView.font=[UIFont fontWithName:@"Arial" size:16.0];
-    _textView.text = @"详解";
-    _textView.delegate=self;
-    _textView.editable=YES;
-    _textView.keyboardType=UIKeyboardTypeDefault;
+
     
-    [self.view addSubview:_textView];
+    _TextViewLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, self.view.bounds.size.width - 10*2, 40)];
+    
+    _TextViewLab.numberOfLines=0;
+    _TextViewLab.textColor=Commom_TextColor_Gray;
+    _TextViewLab.enabled=NO;
+    //_TextViewLab.text=@"欢迎给我们提宝贵的意见";
+    _TextViewLab.backgroundColor=[UIColor clearColor];
+    _TextViewLab.font=[UIFont systemFontOfSize:14];
+    _TextViewLab.textColor=[UIColor lightGrayColor];
+    [_textView addSubview:_TextViewLab];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap)];
     [self.view addGestureRecognizer:tap];
@@ -65,15 +71,17 @@
     NSLog(@"发表");
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    
+    //UserInfoData.im
     NSString *currentTime = [WITool getCurrentTime];
-    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":@(0),@"uqauserid":UserInfoData.Id,@"uqausername":UserInfoData.nickName,@"uqacontent":_textView.text,@"uqcreatedate":currentTime};
+    NSDictionary *dic = @{@"uqid":@(0),@"uqpid":_model.uppid,@"uqpname":UserInfoData.trueName,@"uqname":UserInfoData.nickName,@"uqcontent":_textView.text,@"uquserid":_model.upuserid,@"uqcreatedate":currentTime,@"uqusername":UserInfoData.userName,@"uqstate":@(0)};
     
-    [rq POSTURLString:@"http://app.aixinland.cn/api/userquestionanswer/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [rq POSTURLString:@"http://app.aixinland.cn/api/userquestion/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject ==== %@",responseObject);
         
         if ([responseObject[@"status"] isEqualToString:@"Success"]) {
-            _textView.text = @"";
+           _textView.text = @"";
+            
+            NSLog(@"responseObject-123123%@",responseObject[@"message"]);
             [self.navigationController popViewControllerAnimated:YES];
             
         }
@@ -82,21 +90,5 @@
     }];
     
     
-}
-
-
-
-
-
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    [self.scrollView setContentOffset:CGPointMake(0, IS_IPHONE_5?50:100) animated:YES];
-    return YES;
-}
-
--(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alert show];
 }
 @end

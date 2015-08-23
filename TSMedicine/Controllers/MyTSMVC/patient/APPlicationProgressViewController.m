@@ -160,12 +160,12 @@
        Audcell.upcreatedate.text=model.upcreatedate;
         Audcell.upname.text=model.upname;
         if (model.isReport) {
-            Audcell.upstate.text=@"审核已通过";
+            Audcell.upstate.text=@"申请已通过";
             Audcell.upstate.textColor=UIColorFromRGB(0x000000FF);
         }
         else{
-            Audcell.upstate.text=@"审核未通过";
-            Audcell.upstate.textColor=UIColorFromRGB(0x000000FF);
+            Audcell.upstate.text=@"等待申请";
+            Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         
 
@@ -201,11 +201,8 @@
 
 -(void)commit{
     xqingViewController *VC = [[xqingViewController   alloc] init];
-
+    VC.model=_Goodmodel;
     [self.navigationController pushViewController:VC animated:YES];
-
-
-
 }
 
 @end

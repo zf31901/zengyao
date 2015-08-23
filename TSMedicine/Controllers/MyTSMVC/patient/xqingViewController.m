@@ -8,7 +8,7 @@
 
 #import "xqingViewController.h"
 #define htmlURL @"http://app.aixinland.cn/page/project_detail?dataId="
-@interface xqingViewController ()<UIWebViewDelegate>
+@interface xqingViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
     UIWebView *_webView;
 }
@@ -19,23 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavView];
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H)];
+    [self createNavView];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H-StatusBar_Height)];
     
     _webView.delegate=self;
     
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?from=app&userid=903050&dataId=4"];
-    
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?from=app&dataId=%@&userid=903050",_model.uppid];
+
+    NSLog(@"_model.upid123--%@",_model.uppid);
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
+    _webView.delegate = self;
+    _webView.scrollView.delegate = self;
     [self.view addSubview:_webView];
 
 }
 -(void)setNavView
 {
-    self.navigationController.navigationBarHidden = YES;
-
-    
+    self.navigationController.navigationBarHidden = YES;    
 }
 
 - (void)back
@@ -58,5 +60,9 @@
 
     return YES;
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y < 0) {
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+    }
+}
 @end

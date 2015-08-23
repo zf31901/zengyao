@@ -77,13 +77,12 @@
     __weak NewsViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
         _page = 10;
-        
         [_dataArr removeAllObjects];
         [ctl UILABLE];
     }];
     [_mytableView addLegendFooterWithRefreshingBlock:^{
-        _page += 10;
-        [ctl UILABLE];
+       // _page += 10;
+       // [ctl UILABLE];
     }];
 }
 -(void)UILABLE{

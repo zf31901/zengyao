@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "APPaixinlModel.h"
-@interface CanonFormViewController : UIViewController
+@interface CanonFormViewController :BaseViewController
 @property(nonatomic,strong)APPaixinlModel *model;
 
 @end
