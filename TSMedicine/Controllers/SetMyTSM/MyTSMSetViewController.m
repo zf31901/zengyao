@@ -7,7 +7,7 @@
 //
 
 #import "MyTSMSetViewController.h"
-#import "AboutTSMViewController.h"
+#import "SetAboutTSMViewController.h"
 #import "MyTSMFeedBackViewController.h"
 
 @interface MyTSMSetViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -64,7 +64,7 @@
         switch (indexPath.row){
             case 0:
             {
-                AboutTSMViewController *aboutVC = [[AboutTSMViewController alloc] init];
+                SetAboutTSMViewController *aboutVC = [[SetAboutTSMViewController alloc] init];
                 [self.navigationController pushViewController:aboutVC animated:YES];
             }
                 break;

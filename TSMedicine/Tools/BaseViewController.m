@@ -19,6 +19,7 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.navigationController.navigationBar setBarTintColor:VioletColor];
+    self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:RGBS(255), NSFontAttributeName:[UIFont systemFontOfSize:18]};
     
     [self buidLeftBtn];
@@ -64,7 +65,8 @@
     if((int)[self.navigationController.viewControllers count]!=1)
     {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(0, 0, 120, 60);
+        btn.frame = CGRectMake(0, 0, 80, 60);
+//        [btn setBackgroundColor:[UIColor redColor]];
         [btn setTitle:title forState:0];
         btn.titleLabel.textAlignment = NSTextAlignmentRight;
         [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
@@ -75,10 +77,10 @@
         
         if (btn.titleLabel.text.length == 2) {
             
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 83, 0, 0);
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 33, 0, 0);
             
         }else{
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 43, 0, 0);
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         }
     }
     

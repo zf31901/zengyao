@@ -8,7 +8,7 @@
 
 #import "DocMyTrainDetailViewController.h"
 
-@interface DocMyTrainDetailViewController () <UIWebViewDelegate>
+@interface DocMyTrainDetailViewController () <UIWebViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic,strong) UIWebView *webView;
 
@@ -22,6 +22,7 @@
     [self setNavView];
     
     [self loadWebView];
+    [self createNavView];
 
 }
 
@@ -32,8 +33,9 @@
 }
 -(void)loadWebView
 {
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H - StatusBar_Height)];
     _webView.delegate = self;
+    _webView.scrollView.delegate = self;
     
     NSString *url = [NSString stringWithFormat:@"http://app.aixinland.cn/page/train_detail.html?from=app&dataId=%@&userid=%@",_model.tid,UserInfoData.im];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -54,6 +56,11 @@
     return YES;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y < 0) {
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

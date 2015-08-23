@@ -94,6 +94,7 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
         model.name = nameArr[i];
         model.phoneNum = @"15987725345";
         
+        
         if (i % 2 == 0) {
             model.isReport = YES;
         }else{

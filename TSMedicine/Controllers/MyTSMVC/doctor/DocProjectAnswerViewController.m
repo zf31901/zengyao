@@ -14,12 +14,14 @@
 
 NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 
-@interface DocProjectAnswerViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface DocProjectAnswerViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArr;
 @property (nonatomic,strong) UITextField *textField;
+@property (nonatomic,strong) UIView *textBgView;
 @property (nonatomic,assign) BOOL isFirst;
+@property (nonatomic,assign) CGRect saveFrame;
 
 @end
 
@@ -49,18 +51,24 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 
 -(void)createUI
 {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 60) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_tableView];
      [_tableView registerNib:[UINib nibWithNibName:AnswerTableViewCell bundle:nil] forCellReuseIdentifier:AnswerTableViewCell];
     
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(20, _tableView.maxY + 15, ScreenWidth - 20*2, 30)];
+    _textBgView = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.maxY, ScreenWidth, 50)];
+    _textBgView.backgroundColor = UIColorFromRGB(0xf8f8f8);;
+    [self.view addSubview:_textBgView];
+    
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, _textBgView.width - 20*2, 30)];
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.backgroundColor = [UIColor clearColor];
     _textField.placeholder = @"输入回答";
-    [self.view addSubview:_textField];
+    _textField.delegate = self;
+    [_textBgView addSubview:_textField];
+    
 //    NSLog(@"frame == %@",NSStringFromCGRect(_textField.frame));
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(myTap)];
@@ -174,6 +182,26 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
          NSLog(@"error == %@",error);
     }];
     
+    [WITool hideAllKeyBoard];
+    
+}
+#pragma mark ---------UITextFieldDelegate----------
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _saveFrame = _textBgView.frame;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        _textBgView.frame = CGRectMake(0, ScreenHeight - 315 - 50, ScreenWidth, 50);
+    }];
+    
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        _textBgView.frame = _saveFrame;
+    }];
 }
 
 -(BOOL)cheakText
@@ -184,7 +212,6 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     }
     return YES;
 }
-
 -(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

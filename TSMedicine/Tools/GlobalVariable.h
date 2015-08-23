@@ -11,7 +11,7 @@
 @interface GlobalVariable : NSObject
 
 //#define Main_Size                   [UIScreen mainScreen].bounds.size
-#define StatusBar_Height            20
+#define StatusBar_Height            20 - 6
 #define Navbar_Height               44
 #define Tabbar_Height               49
 
@@ -123,7 +123,7 @@
 //检查更新
 #define CHECK_SYSTEMVERSON          @"/systems/version/"                        //检查更新
 
-#define LOADING_TIME                1                                           //hud显示时间
+#define LOADING_TIME                1.5                                           //hud显示时间
 
 
 //UMeng统计
