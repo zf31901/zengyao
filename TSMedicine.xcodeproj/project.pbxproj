@@ -110,8 +110,6 @@
 		168369471B2AB1B800A78898 /* SetMyTSMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168369451B2AB1B800A78898 /* SetMyTSMViewController.xib */; };
 		1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1683694C1B2AB56800A78898 /* ExitLoginCell.m */; };
 		1683694F1B2AB56800A78898 /* ExitLoginCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1683694D1B2AB56800A78898 /* ExitLoginCell.xib */; };
-		168369541B2ABF4100A78898 /* AboutTSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369521B2ABF4100A78898 /* AboutTSMViewController.m */; };
-		168369551B2ABF4100A78898 /* AboutTSMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168369531B2ABF4100A78898 /* AboutTSMViewController.xib */; };
 		1683695A1B2ACC1E00A78898 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369581B2ACC1E00A78898 /* PersonalDataViewController.m */; };
 		1683695B1B2ACC1E00A78898 /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168369591B2ACC1E00A78898 /* PersonalDataViewController.xib */; };
 		168369601B2AD3C000A78898 /* PersonalDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1683695E1B2AD3C000A78898 /* PersonalDataCell.m */; };
@@ -159,6 +157,8 @@
 		169909EF1B8480000085BDE4 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 169909E01B8480000085BDE4 /* UIScrollView+MJRefresh.m */; };
 		169909F01B8480000085BDE4 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 169909E21B8480000085BDE4 /* UIView+MJExtension.m */; };
 		169909F31B8480560085BDE4 /* APPaixinlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169909F21B8480560085BDE4 /* APPaixinlModel.m */; };
+		16A09DAC1B89B27E0089B4FF /* SetAboutTSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A09DAA1B89B27E0089B4FF /* SetAboutTSMViewController.m */; };
+		16A09DAD1B89B27E0089B4FF /* SetAboutTSMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A09DAB1B89B27E0089B4FF /* SetAboutTSMViewController.xib */; };
 		16A0A3901B83039400572D97 /* MyUserInforView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0A38F1B83039400572D97 /* MyUserInforView.m */; };
 		16A0A3921B8303C100572D97 /* MyUserInforView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A0A3911B8303C100572D97 /* MyUserInforView.xib */; };
 		16A0A3961B83327400572D97 /* MyTSMResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0A3941B83327400572D97 /* MyTSMResetViewController.m */; };
@@ -446,9 +446,6 @@
 		1683694B1B2AB56800A78898 /* ExitLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExitLoginCell.h; sourceTree = "<group>"; };
 		1683694C1B2AB56800A78898 /* ExitLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExitLoginCell.m; sourceTree = "<group>"; };
 		1683694D1B2AB56800A78898 /* ExitLoginCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExitLoginCell.xib; sourceTree = "<group>"; };
-		168369511B2ABF4100A78898 /* AboutTSMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTSMViewController.h; sourceTree = "<group>"; };
-		168369521B2ABF4100A78898 /* AboutTSMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTSMViewController.m; sourceTree = "<group>"; };
-		168369531B2ABF4100A78898 /* AboutTSMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutTSMViewController.xib; sourceTree = "<group>"; };
 		168369571B2ACC1E00A78898 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
 		168369581B2ACC1E00A78898 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		168369591B2ACC1E00A78898 /* PersonalDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
@@ -530,6 +527,9 @@
 		169909F11B8480560085BDE4 /* APPaixinlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPaixinlModel.h; sourceTree = "<group>"; };
 		169909F21B8480560085BDE4 /* APPaixinlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPaixinlModel.m; sourceTree = "<group>"; };
 		169909F41B8481B20085BDE4 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJRefreshBaseView.h; path = MJRefresh.bundle/MJRefreshBaseView.h; sourceTree = "<group>"; };
+		16A09DA91B89B27E0089B4FF /* SetAboutTSMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetAboutTSMViewController.h; sourceTree = "<group>"; };
+		16A09DAA1B89B27E0089B4FF /* SetAboutTSMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetAboutTSMViewController.m; sourceTree = "<group>"; };
+		16A09DAB1B89B27E0089B4FF /* SetAboutTSMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetAboutTSMViewController.xib; sourceTree = "<group>"; };
 		16A0A38E1B83039400572D97 /* MyUserInforView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUserInforView.h; sourceTree = "<group>"; };
 		16A0A38F1B83039400572D97 /* MyUserInforView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUserInforView.m; sourceTree = "<group>"; };
 		16A0A3911B8303C100572D97 /* MyUserInforView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUserInforView.xib; sourceTree = "<group>"; };
@@ -1207,9 +1207,9 @@
 		168369501B2ABF1F00A78898 /* AboutTSM */ = {
 			isa = PBXGroup;
 			children = (
-				168369511B2ABF4100A78898 /* AboutTSMViewController.h */,
-				168369521B2ABF4100A78898 /* AboutTSMViewController.m */,
-				168369531B2ABF4100A78898 /* AboutTSMViewController.xib */,
+				16A09DA91B89B27E0089B4FF /* SetAboutTSMViewController.h */,
+				16A09DAA1B89B27E0089B4FF /* SetAboutTSMViewController.m */,
+				16A09DAB1B89B27E0089B4FF /* SetAboutTSMViewController.xib */,
 			);
 			name = AboutTSM;
 			path = AboutTXM;
@@ -1701,7 +1701,6 @@
 				16C3F9A81B25711C0040D80C /* questions40@2x.png in Resources */,
 				16C3F98A1B25711C0040D80C /* arrow-fight16x25_gray.png in Resources */,
 				168369661B2AD5E800A78898 /* PersonalCell.xib in Resources */,
-				168369551B2ABF4100A78898 /* AboutTSMViewController.xib in Resources */,
 				16C3F9A91B25711C0040D80C /* questions40@1x.png in Resources */,
 				9D51FD611B6F446F007FF74F /* newCell.xib in Resources */,
 				163FE6E61B79EE0A00A45019 /* DocMyTrainDetailViewController.xib in Resources */,
@@ -1720,6 +1719,7 @@
 				1692BBC01B426E330094E7A0 /* PhoneNumCell.xib in Resources */,
 				162597CF1B68E31000E3FA95 /* SetTSMCell.xib in Resources */,
 				16C3F9BA1B25711C0040D80C /* User50_nomal@2x.png in Resources */,
+				16A09DAD1B89B27E0089B4FF /* SetAboutTSMViewController.xib in Resources */,
 				167BB2A31B734A0E00098D86 /* DocMyPatientViewController.xib in Resources */,
 				16C3F9951B25711C0040D80C /* choose40_selected@1.5x.png in Resources */,
 				8ABF0FB11B25296700F42BC5 /* Images.xcassets in Resources */,
@@ -1917,7 +1917,6 @@
 				16034AC61B6F463B0063EFD7 /* WIBaseImageView.m in Sources */,
 				169071541B34243800A4CD21 /* CommitAskForViewController.m in Sources */,
 				169909E81B8480000085BDE4 /* MJRefreshFooterView.m in Sources */,
-				168369541B2ABF4100A78898 /* AboutTSMViewController.m in Sources */,
 				1695CC2E1B783B5C00FA1B1E /* MYquestion.m in Sources */,
 				9D0C8D9D1B7B1F6B001B4A8E /* HospitalTableViewCell.m in Sources */,
 				10694DD31B7207B100CE2504 /* MyAppCellTableViewCell.m in Sources */,
@@ -1947,6 +1946,7 @@
 				9D51FD601B6F446F007FF74F /* newCell.m in Sources */,
 				16FAB27A1B78AFD600AE4566 /* UIImage+Resize.m in Sources */,
 				167BB2A71B734A5F00098D86 /* DocMyTrainViewController.m in Sources */,
+				16A09DAC1B89B27E0089B4FF /* SetAboutTSMViewController.m in Sources */,
 				10694DC21B72066800CE2504 /* MyTSMUserInfoViewController.m in Sources */,
 				168369651B2AD5E800A78898 /* PersonalCell.m in Sources */,
 				166077261B74602000978E0F /* MyTrainTableViewCell.m in Sources */,
@@ -2020,8 +2020,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jicai chen (EWHKGVVT4E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jicai chen (EWHKGVVT4E)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2041,7 +2041,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1897d09c-a9b2-4837-884c-894510a49ca5";
+				PROVISIONING_PROFILE = "d15694ff-604d-44df-aa24-006c7d719ee8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2063,8 +2063,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jicai chen (EWHKGVVT4E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jicai chen (EWHKGVVT4E)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2077,7 +2077,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "1897d09c-a9b2-4837-884c-894510a49ca5";
+				PROVISIONING_PROFILE = "d15694ff-604d-44df-aa24-006c7d719ee8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2090,7 +2090,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jicai chen (EWHKGVVT4E)";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2100,7 +2100,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d15694ff-604d-44df-aa24-006c7d719ee8";
 			};
 			name = Debug;
 		};
@@ -2111,7 +2111,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jicai chen (EWHKGVVT4E)";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2121,7 +2121,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d15694ff-604d-44df-aa24-006c7d719ee8";
 			};
 			name = Release;
 		};

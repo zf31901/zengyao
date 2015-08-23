@@ -308,15 +308,15 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         
         if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
             if (i == 1) {
-                 model.msg = [NSString stringWithFormat:@"%d",i];
+//                 model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }else if ([type isEqualToString:Doctor_Type]){
             if (i == 1) {
-                model.msg = [NSString stringWithFormat:@"%d",i];
+//                model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
             if (i == 0) {
-                model.msg = [NSString stringWithFormat:@"%d",i];
+//                model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }
         [arr1 addObject:model];

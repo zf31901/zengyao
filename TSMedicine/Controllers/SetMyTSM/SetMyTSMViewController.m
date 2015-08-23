@@ -7,7 +7,7 @@
 //
 
 #import "SetMyTSMViewController.h"
-#import "AboutTSMViewController.h"
+#import "SetAboutTSMViewController.h"
 #import "PersonalDataViewController.h"
 @interface SetMyTSMViewController ()
 @property (weak, nonatomic) IBOutlet X_TableView *tableView;
@@ -87,7 +87,7 @@
     
     [arr x_update:@"SetTSMCell" where:@{@"setTSM_textLab":@"关于我们"} set:@{kCellDidSelect:@"aboutMyTSM"}];
     [self.tableView addCellEventListenerWithName:@"aboutMyTSM" block:^(X_TableViewCell *cell) {
-        AboutTSMViewController *aboutMyTSMVC = [AboutTSMViewController new];
+        SetAboutTSMViewController *aboutMyTSMVC = [SetAboutTSMViewController new];
         [self.navigationController pushViewController:aboutMyTSMVC animated:YES];
     }];
     [arr x_update:@"SetTSMCell" where:@{@"setTSM_textLab":@"清除缓存"} set:@{kCellDidSelect:@"deleteMyTSM"}];

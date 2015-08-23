@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     [self setNavView];
     [self drawUI];
     
@@ -37,6 +37,7 @@
 
 -(void)drawUI
 {
+    
     _verifyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _verifyBtn.frame = CGRectMake(200, 6, 100, 32);
     _verifyBtn.backgroundColor = [UIColor clearColor];
@@ -47,6 +48,8 @@
     _verifyBtn.layer.cornerRadius = 4.0;
     _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
     [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
+    [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateHighlighted];
+    
     [_verifyBtn addTarget:self action:@selector(getVerifyCodeBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_verifyBtn];
     
@@ -64,18 +67,34 @@
         return;
     }
     
+    [self runingTimer];
+    
     if (_isFindPass)
     {
         //找回密码
         NSDictionary *parameters = @{@"u":_phoneNumbTF.text};
         [HttpRequest_MyApi GETURLString:@"/User/findpassword/sendverifycode/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
-             NSDictionary *rqDic = (NSDictionary *)responseObj;
+            NSDictionary *rqDic = (NSDictionary *)responseObj;
+            //            NSLog(@"rqDic == %@",rqDic);
             if([rqDic[HTTP_STATE] boolValue]){
-                NSDictionary *dic = (NSDictionary *)[rqDic[HTTP_DATA] objectFromJSONString];
-//                NSLog(@"dic === %@",dic);
                 
-                _sessionkey = dic[@"sessionkey"];
-                _userlogin = dic[@"userlogin"];
+                NSDictionary *dic = (NSDictionary *)[rqDic[HTTP_DATA] objectFromJSONString];
+                NSLog(@"dic === %@",dic);
+                
+                if ([dic[@"result"] boolValue]) {
+                    NSLog(@"验证码发送成功");
+                    
+                    _sessionkey = dic[@"sessionkey"];
+                    _userlogin = dic[@"userlogin"];
+                    
+                }else{
+                    NSLog(@"验证码发送失败");
+                }
+                
+                
+            }else{
+                
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -90,76 +109,70 @@
             NSDictionary *rqDic = (NSDictionary *)responseObj;
             NSLog(@"rqDic == %@",rqDic);
             
-            if ([rqDic[@"state"] boolValue]) {
+            if ([rqDic[@"state"] boolValue]){
+                
                 NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
                 NSLog(@"dic ==== %@",dic);
                 
-                _sessionkey = dic[@"sessionkey"];
-                
                 if ([dic[@"result"] boolValue]) {
                     NSLog(@"验证码发送成功");
+                    
+                    _sessionkey = dic[@"sessionkey"];
+                    
                 }else{
                     NSLog(@"验证码发送失败");
                 }
                 
+                
             }else{
+                
                 [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
-            
-            [self runingTimerWithResponseObjDic:rqDic];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error == %@",error);
         }];
         
     }
+
     
 }
 
--(void)runingTimerWithResponseObjDic:(NSDictionary *)responseObjDic
+-(void)runingTimer
 {
+    _second = 60;
+    [self time];
     
-    if ([responseObjDic[@"state"] boolValue]) {
-        
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            _second = 60;
-            _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
-            _verifyBtn.enabled = NO;
-            
-            [[NSRunLoop currentRunLoop] run];
-            
-        });
-    }else{
-        
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
     }
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
+    _verifyBtn.enabled = NO;
+    
 }
 
 -(void)time
 {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    _second--;
+    if (_second <= 0) {
         
-        _second--;
-        if (_second <= 0) {
-            
-            _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
-            [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-            [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
-            _verifyBtn.enabled = YES;
-            
-            [_timer invalidate];
-            _timer = nil;
-            
-        }else{
-            [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",_second] forState:UIControlStateNormal];
-            [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
-            _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
-            _verifyBtn.enabled = NO;
-        }
+        _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
+        [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
+        _verifyBtn.enabled = YES;
         
-    });
-   
+        [_timer invalidate];
+        _timer = nil;
+        
+    }else{
+        [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_second] forState:UIControlStateNormal];
+        [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
+        _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
+        _verifyBtn.enabled = NO;
+    }
     
 }
 
@@ -173,13 +186,23 @@
     if (![self cheakText]) {
         return;
     }
-
+    
     if (_isFindPass)
     {
         //找回密码
-         NSDictionary *parameters = @{@"u": _phoneNumbTF.text, @"verifycode": _verifyTF.text, @"sessionkey": _sessionkey};
+        
+        NSDictionary *parameters = nil;
+        if (_sessionkey) {
+            parameters = @{@"u": _phoneNumbTF.text, @"verifycode": _verifyTF.text, @"sessionkey": _sessionkey};
+        }else{
+            [self showHUDInView:KEY_WINDOW WithText:@"请输入正确的手机号和验证码" andDelay:LOADING_TIME];
+            return;
+        }
+        
         [HttpRequest_MyApi GETURLString:@"/User/findpassword/checkverifycode/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
             NSDictionary *rqDic = (NSDictionary *)responseObj;
+            NSLog(@"rqDic == %@",rqDic);
+            
             if([rqDic[HTTP_STATE] boolValue]){
                 NSDictionary *dataDic = (NSDictionary *)[rqDic[HTTP_DATA] objectFromJSONString];
                 NSLog(@"dataDic == %@",dataDic);
@@ -190,8 +213,14 @@
                     nextRgster.phoneNum = _phoneNumbTF.text;
                     nextRgster.isChangePassWord = YES;
                     [self.navigationController pushViewController:nextRgster animated:YES];
-                
+                    
+                }else{
+                    
+                    [self showHUDInView:KEY_WINDOW WithText:@"验证码输入有误" andDelay:LOADING_TIME];
                 }
+            }else{
+                
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -200,13 +229,22 @@
         
         
     }else{
+        
         //注册新账号
-        NSDictionary *dic = @{@"phone":_phoneNumbTF.text,@"verifycode":_verifyTF.text,@"sessionkey":_sessionkey};
+        
+        NSDictionary *dic = nil;
+        if (_sessionkey) {
+            dic = @{@"phone":_phoneNumbTF.text,@"verifycode":_verifyTF.text,@"sessionkey":_sessionkey};
+        }else{
+            [self showHUDInView:KEY_WINDOW WithText:@"请输入正确的手机号和验证码" andDelay:LOADING_TIME];
+            return;
+        }
+        
         [HttpRequest_MyApi GETURLString:@"/User/register/checkverifycode/" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj){
             NSDictionary *rqDic = (NSDictionary *)responseObj;
-            if ([rqDic[@"state"] boolValue]) {
+            if ([rqDic[@"state"] boolValue]){
                 NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-//                NSLog(@"dic ==== %@",dic);
+                //                NSLog(@"dic ==== %@",dic);
                 
                 if ([dic[@"result"] boolValue]) {
                     NSLog(@"进入下一步");
@@ -215,7 +253,14 @@
                     nextRgster.navTitle = @"设置密码";
                     nextRgster.phoneNum = _phoneNumbTF.text;
                     [self.navigationController pushViewController:nextRgster animated:YES];
+                }else{
+                    
+                    [self showHUDInView:KEY_WINDOW WithText:@"验证码输入有误" andDelay:LOADING_TIME];
                 }
+                
+            }else{
+                
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -223,8 +268,8 @@
         }];
     }
     
-    
 }
+
 -(BOOL)cheakPhoneNumber
 {
     if ([WITool isValidateMobile:_phoneNumbTF.text]){
@@ -238,7 +283,7 @@
 -(BOOL)cheakText
 {
     if (_verifyTF.text.length != 4) {
-        [self showAlertViewWithTitle:@"验证码输入有误，请重新输入！" andDelay:1.5];
+        [self showHUDInView:KEY_WINDOW WithText:@"验证码输入有误" andDelay:LOADING_TIME];
         return NO;
     }
     return YES;

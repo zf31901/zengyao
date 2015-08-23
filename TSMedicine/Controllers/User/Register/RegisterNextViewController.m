@@ -51,22 +51,28 @@
         NSDictionary *parameters = @{@"pwd": _passWordTF2.text, @"u": _phoneNum};
         [HttpRequest_MyApi POSTURLString:@"/User/findpassword/resetpassword/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *rqDic = (NSDictionary *)responseObject;
-//            NSLog(@"rqDic == %@",rqDic);
+            NSLog(@"rqDic == %@",rqDic);
             if([rqDic[@"state"] boolValue]){
-                 NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
-                if ([dic[@"result"] boolValue]) {
+                
+                NSDictionary *dic = (NSDictionary *)[rqDic[@"data"] objectFromJSONString];
+                
+                if ([dic[@"result"] boolValue]){
                     NSLog(@"密码修改成功");
                     UserObj *user = [[UserObj alloc] init];
                     [user setUserName:_phoneNum];
                     [user setPassword:_passWordTF2.text];
                     [GlobalMethod saveObject:user withKey:USEROBJECT];
                     [self showAlertViewWithTitle:@"密码修改成功!" andDelay:1.5];
+                    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
                     
                 }
+                
+            }else{
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
-
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"error == %@",error);
+            NSLog(@"error == %@",error);
         }];
         
     }else{
@@ -82,8 +88,11 @@
                 NSString *userlogin = dic[@"userlogin"];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册成功" message:[NSString stringWithFormat:@"您的爱心号: %@",userlogin] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
+                [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+                
             }else{
                 
+                [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

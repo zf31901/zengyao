@@ -78,7 +78,7 @@
 {
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"userid":@"903050",@"pageid":@"1",@"pagesize":@"10"};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj == %@",responseObj);
