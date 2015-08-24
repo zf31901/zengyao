@@ -168,6 +168,7 @@
         _timer = nil;
         
     }else{
+        
         [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_second] forState:UIControlStateNormal];
         [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
         _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;

@@ -33,9 +33,9 @@
     
     NSString *url = nil;
     if (_userID) {
-         url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?from=app&userid=%@&dataId=%@",_userID,_model.pid];
+         url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?userid=%@&dataId=%@",_userID,_model.pid];
     }else{
-         url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?from=app&dataId=%@",_model.pid];
+         url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?dataId=%@",_model.pid];
     }
    
   

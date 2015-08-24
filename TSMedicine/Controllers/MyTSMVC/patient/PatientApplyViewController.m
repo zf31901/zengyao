@@ -8,6 +8,8 @@
 
 #import "PatientApplyViewController.h"
 #import "MyAppModel.h"
+
+
 #import "MyAppCellTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
@@ -77,19 +79,26 @@
                 
                 model.upimage=[dic  objectForKey:@"upimage"];
                 model.upid=[dic objectForKey:@"upid"];
-                
-                
-                for (int i = 0; i < dataArr.count; i ++){
-                    model.upqacount=[dic  objectForKey:@"upstate"];
-//                    if (i % 2 == 0) {
-//                        model.isReport = YES;
-//                        
-//                        
-//                    }else{
-//                        model.isReport = NO;
-//                        
-//                    }
+                model.uppid=[dic objectForKey:@"uppid"];
+                if ([model.upstate boolValue]== 0) {
+                    model.upstate=[dic objectForKey:@"upstate"];
+              
                 }
+                else if ([model.upstate boolValue]== 1) {
+                    
+                     model.upstate=[dic objectForKey:@"upstate"];
+                }
+                else if ([model.upstate boolValue] == 2){
+                     model.upstate=[dic objectForKey:@"upstate"];
+                                     }
+                else{
+                     model.upstate=[dic objectForKey:@"upstate"];
+                
+
+                    
+                }
+                
+              
                 [_dataArr addObject:model];
             }
             
@@ -126,10 +135,10 @@
         [_dataArr removeAllObjects];
         [ctl loadData];
     }];
-    [_mytableView addLegendFooterWithRefreshingBlock:^{
-      // _pagesize += 10;
-        [ctl loadData];
-    }];
+//    [_mytableView addLegendFooterWithRefreshingBlock:^{
+//      // _pagesize += 10;
+//        [ctl loadData];
+//    }];
 }
 -(void)setTableView
 {
@@ -178,13 +187,22 @@ cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
     
     cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate];
     
-    if ([model.upstate boolValue]) {
-        cell.upstate.text=@"申请通过";
-        cell.upstate.textColor=UIColorFromRGB(0x20a456);
-    }
-    else {
-        cell.upstate.text=@"等待申请";
+    if ([model.upstate boolValue]== 0) {
+        cell.upstate.text=@"审核未通过";
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
+    }
+    else if ([model.upstate boolValue]== 1) {
+        cell.upstate.text=@"审核通过";
+        cell.upstate.textColor=UIColorFromRGB(0x20A456);
+    }
+    else if ([model.upstate boolValue] == 2){
+        cell.upstate.text=@"未审核";
+        cell.upstate.textColor=UIColorFromRGB(0xFF6600);
+    }else{
+        cell.upstate.text=@"用户正提交申请";
+        cell.upstate.textColor=UIColorFromRGB(0x20A456);
+    
+    
     }
     
     if (![model.upimage isKindOfClass:[NSNull class]]) {

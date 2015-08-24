@@ -80,10 +80,10 @@
         [_dataArr removeAllObjects];
         [ctl UILABLE];
     }];
-    [_mytableView addLegendFooterWithRefreshingBlock:^{
-       // _page += 10;
-       // [ctl UILABLE];
-    }];
+//    [_mytableView addLegendFooterWithRefreshingBlock:^{
+//       // _page += 10;
+//       // [ctl UILABLE];
+//    }];
 }
 -(void)UILABLE{
     

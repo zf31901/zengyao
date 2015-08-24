@@ -7,6 +7,7 @@
 //
 
 #import "xqingViewController.h"
+#import "MyquestionViewController.h"
 #define htmlURL @"http://app.aixinland.cn/page/project_detail?dataId="
 @interface xqingViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
@@ -24,7 +25,7 @@
     
     _webView.delegate=self;
     
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?from=app&dataId=%@&userid=903050",_model.uppid];
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?dataId=%@&userid=903050",_model.uppid];
 
     NSLog(@"_model.upid123--%@",_model.uppid);
     
@@ -49,9 +50,12 @@
     NSLog(@"urlString---  %@",urlString);
     if ([urlString rangeOfString:@"page/project_detail.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];
-    }else if([urlString rangeOfString:@"page/userproject_detail.html?objc_receive:Delete"].location != NSNotFound){
+    }else if([urlString rangeOfString:@"/page/userproject_detail.html?objc_receive:Answers"].location != NSNotFound){
+
+        MyquestionViewController *model=[[MyquestionViewController alloc]init];
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController pushViewController:model animated:YES];
+        NSLog(@"haha");
     }
     else{
         

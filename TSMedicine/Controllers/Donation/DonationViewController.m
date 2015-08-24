@@ -132,10 +132,10 @@
         [_dataA removeAllObjects];
         [ctl crealade];
     }];
-    [self.tableView addLegendFooterWithRefreshingBlock:^{
-        _page += 10;
-        [ctl crealade];
-    }];
+//    [self.tableView addLegendFooterWithRefreshingBlock:^{
+//        _page += 10;
+//        [ctl crealade];
+//    }];
 }
 
 

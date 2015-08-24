@@ -73,20 +73,33 @@
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
     NSString *url=[NSString stringWithFormat:@"%@%@",URLIST,_Goodmodel.upid];
-    NSLog(@"_Goodmodel.upid--%@",_Goodmodel.upid);
+  //  NSLog(@"_Goodmodel.upid--%@",_Goodmodel.upid);
     [rq GETURLString:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
-        APPaixinlModel *model = [[APPaixinlModel  alloc] init];
+        MyAppModel *model = [[MyAppModel  alloc] init];
         
         [model setValuesForKeysWithDictionary:responseObj[@"data"]];
         
-        for (int i=0; i<_dataArr.count; i++) {
-            if (i % 2 == 0) {
-                model.isReport = YES;
-            }else{
-                model.isReport = NO;
-            }
+        
+        if ([model.upstate boolValue]== 0) {
+            model.upstate=[responseObj objectForKey:@"upstate"];
+            
         }
+        else if ([model.upstate boolValue]== 1) {
+            
+            model.upstate=[responseObj objectForKey:@"upstate"];
+        }
+        else if ([model.upstate boolValue] == 2){
+            model.upstate=[responseObj objectForKey:@"upstate"];
+        }
+        else{
+            model.upstate=[responseObj objectForKey:@"upstate"];
+            
+            
+            
+        }
+
+        
         [_dataArr addObject:model];
         
         [self UITableView];
@@ -159,15 +172,23 @@
        APPaixinlModel *model=[_dataArr objectAtIndex:indexPath.row];
        Audcell.upcreatedate.text=model.upcreatedate;
         Audcell.upname.text=model.upname;
-        if (model.isReport) {
-            Audcell.upstate.text=@"申请已通过";
-            Audcell.upstate.textColor=UIColorFromRGB(0x000000FF);
+        if ([model.upstate boolValue]== 0) {
+             Audcell.upstate.text=@"审核未通过";
+             Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
-        else{
-            Audcell.upstate.text=@"等待申请";
-            Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
+        else if ([model.upstate boolValue]== 1) {
+             Audcell.upstate.text=@"审核通过";
+             Audcell.upstate.textColor=UIColorFromRGB(0x20A456);
         }
-        
+        else if ([model.upstate boolValue] == 2){
+             Audcell.upstate.text=@"未审核";
+             Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
+        }else{
+             Audcell.upstate.text=@"用户正提交申请";
+             Audcell.upstate.textColor=UIColorFromRGB(0x20A456);
+            
+            
+        }
 
        
         return Audcell;
@@ -202,6 +223,7 @@
 -(void)commit{
     xqingViewController *VC = [[xqingViewController   alloc] init];
     VC.model=_Goodmodel;
+   
     [self.navigationController pushViewController:VC animated:YES];
 }
 

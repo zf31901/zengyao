@@ -13,7 +13,7 @@
 #import "NewsViewController.h"
 
 
-#define URLisr @"http://app.aixinland.cn//page/news_detail.html?from=app&dataId="
+#define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId="
 
 #define URLisr1 @"http://news.163.com/15/0813/17/B0TPM7R70001124J.html"
 

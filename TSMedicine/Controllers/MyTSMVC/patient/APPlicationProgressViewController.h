@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "APPaixinlModel.h"
+#import "MyAppModel.h"
 @interface APPlicationProgressViewController : BaseViewController
-@property(nonatomic,strong)APPaixinlModel *Goodmodel;
+@property(nonatomic,strong)MyAppModel *Goodmodel;
 @end

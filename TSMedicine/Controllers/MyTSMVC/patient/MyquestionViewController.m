@@ -45,7 +45,7 @@
    
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
-    //_goodIndex.upuserid
+    
     NSDictionary *dic = @{@"pid":_goodIndex.uppid,@"userid":_goodIndex.upuserid,@"pageid":@"1",@"pagesize":pageStr};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {

@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="申请通过" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjD-VZ-RVk">
-                        <rect key="frame" x="257" y="44" width="83" height="32"/>
+                        <rect key="frame" x="231" y="41" width="83" height="32"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.74127998740000001" green="0.19319543950000001" blue="0.2143033785" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
