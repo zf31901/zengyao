@@ -91,7 +91,6 @@
                     NSLog(@"验证码发送失败");
                 }
                 
-                
             }else{
                 
                 [self showHUDInView:self.view WithText:[NSString stringWithFormat:@"%@",rqDic[HTTP_MSG]] andDelay:LOADING_TIME];
@@ -116,13 +115,12 @@
                 
                 if ([dic[@"result"] boolValue]) {
                     NSLog(@"验证码发送成功");
-                    
+                
                     _sessionkey = dic[@"sessionkey"];
                     
                 }else{
                     NSLog(@"验证码发送失败");
                 }
-                
                 
             }else{
                 
@@ -141,39 +139,72 @@
 -(void)runingTimer
 {
     _second = 60;
-    [self time];
+//    [self time];
     
     if (_timer) {
         [_timer invalidate];
         _timer = nil;
     }
-    
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
-    _verifyBtn.enabled = NO;
-    
+    [_timer fire];
 }
 
 -(void)time
 {
-    
     _second--;
-    if (_second <= 0) {
+    [_verifyBtn setEnabled:YES];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
-        [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
-        _verifyBtn.enabled = YES;
+        if (_second == 0) {
+            
+            [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateHighlighted];
+            [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
+             _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
+            [_verifyBtn setEnabled:YES];
+            
+        }else{
+            [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_second] forState:UIControlStateNormal];
+            [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_second] forState:UIControlStateHighlighted];
+            _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
+        }
         
+    });
+    
+    [_verifyBtn setTitleColor:RGBS(101) forState:UIControlStateNormal];
+    
+    if(_second == 0)
+    {
+        NSLog(@"可以重新获取验证码");
         [_timer invalidate];
         _timer = nil;
         
-    }else{
-        [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_second] forState:UIControlStateNormal];
-        [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
-        _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
-        _verifyBtn.enabled = NO;
+    } else {
+        
+        [_verifyBtn setEnabled:NO];
     }
     
+    
+    
+    /*
+     if (_second <= 0) {
+     
+     _verifyBtn.layer.borderColor = UIColorFromRGB(0xa075e6).CGColor;
+     [_verifyBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+     [_verifyBtn setTitleColor:UIColorFromRGB(0xa075e6) forState:UIControlStateNormal];
+     _verifyBtn.enabled = YES;
+     
+     [_timer invalidate];
+     _timer = nil;
+     
+     }else{
+     [_verifyBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_second] forState:UIControlStateNormal];
+     [_verifyBtn setTitleColor:Commom_TextColor_Gray forState:UIControlStateNormal];
+     _verifyBtn.layer.borderColor = Commom_TextColor_Gray.CGColor;
+     _verifyBtn.enabled = NO;
+     }
+     */
 }
 
 //下一步 核对验证码

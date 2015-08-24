@@ -40,6 +40,7 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
 
 -(void)setTabView
 {
+    _tableView.bounces = YES;
     [_tableView registerNib:[UINib nibWithNibName:PatientTableViewCell bundle:nil] forCellReuseIdentifier:PatientTableViewCell];
 }
 
@@ -67,8 +68,9 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MyPatientModel *model = _dataArr[indexPath.row];
-    if (!model.isReport) {
+    if (![model.urstate boolValue]) {
         ReportViewContrlller *reportVC = [[ReportViewContrlller alloc] init];
+        reportVC.model = _dataArr[indexPath.row];
         [self.navigationController pushViewController:reportVC animated:YES];
     }
     
@@ -86,24 +88,48 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
 -(void)loadData
 {
     _dataArr = [NSMutableArray array];
-    NSArray *nameArr = [NSArray arrayWithObjects:@"张三", @"李四",@"王五",@"赵六", nil];
     
-    for (int i = 0; i < nameArr.count; i++) {
-        
-        MyPatientModel *model = [[MyPatientModel alloc] init];
-        model.name = nameArr[i];
-        model.phoneNum = @"15987725345";
-        
-        
-        if (i % 2 == 0) {
-            model.isReport = YES;
-        }else{
-            model.isReport = NO;
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
+    
+    [rq GETURLString:@"http://app.aixinland.cn/api/userreport/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+//        NSLog(@"responseObj === %@",responseObj);
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            
+            for (NSDictionary *dic in responseObj[@"data"]) {
+                
+                MyPatientModel *model = [[MyPatientModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic];
+                [_dataArr addObject:model];
+            }
         }
-        
-        [_dataArr addObject:model];
-    }
+            [_tableView reloadData];
 
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+         NSLog(@"error == %@",error);
+    }];
+    
+    /*
+     _dataArr = [NSMutableArray array];
+     NSArray *nameArr = [NSArray arrayWithObjects:@"张三", @"李四",@"王五",@"赵六", nil];
+     
+     for (int i = 0; i < nameArr.count; i++) {
+     
+     MyPatientModel *model = [[MyPatientModel alloc] init];
+     model.name = nameArr[i];
+     model.phoneNum = @"15987725345";
+     
+     if (i % 2 == 0) {
+     model.isReport = YES;
+     }else{
+     model.isReport = NO;
+     }
+     
+     [_dataArr addObject:model];
+     }
+     */
+    
 }
 
 - (void)back

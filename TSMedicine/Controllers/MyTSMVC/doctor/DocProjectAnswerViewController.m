@@ -41,6 +41,9 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     [self loadData];
     [self setNavView];
     
+    //监听键盘
+    [self setKeyboard];
+    
 }
 -(void)setNavView
 {
@@ -168,7 +171,7 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
     NSString *currentTime = [WITool getCurrentTime];
-    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":@(0),@"uqauserid":UserInfoData.Id,@"uqausername":UserInfoData.nickName,@"uqacontent":_textField.text,@"uqcreatedate":currentTime};
+    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":_model.uqid,@"uqauserid":_model.uquserid,@"uqausername":_model.uqusername,@"uqacontent":_textField.text,@"uqcreatedate":currentTime};
     
     [rq POSTURLString:@"http://app.aixinland.cn/api/userquestionanswer/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"responseObject ==== %@",responseObject);
@@ -185,21 +188,48 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     [WITool hideAllKeyBoard];
     
 }
+
+#pragma mark -------------监听键盘------------
+-(void)setKeyboard
+{
+    //添加观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    //添加观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)keyboardWillShow:(NSNotification *)not{
+    
+    //获取键盘的y坐标
+    NSLog(@"%@",not.userInfo);
+    
+    CGRect keyboardFrame = [not.userInfo[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    
+     CGFloat distance = CGRectGetMaxY(_textBgView.frame) - keyboardFrame.origin.y;
+    
+    if (distance > 0) {
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            
+            _textBgView.frame = CGRectMake(0, keyboardFrame.origin.y - 50 - 64, ScreenWidth, 50);
+        }];
+    }
+}
+
+-(void)keyboardWillHide:(NSNotification *)not{
+    
+    _textBgView.frame = _saveFrame;
+}
+
 #pragma mark ---------UITextFieldDelegate----------
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     _saveFrame = _textBgView.frame;
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        _textBgView.frame = CGRectMake(0, ScreenHeight - 315 - 50, ScreenWidth, 50);
-    }];
-    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     [UIView animateWithDuration:0.25 animations:^{
-        
         _textBgView.frame = _saveFrame;
     }];
 }

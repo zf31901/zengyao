@@ -333,9 +333,9 @@
 		1612635E1B3D034B00EAEDE6 /* MyShenqingViewContrlller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShenqingViewContrlller.h; sourceTree = "<group>"; };
 		1612635F1B3D034B00EAEDE6 /* MyShenqingViewContrlller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShenqingViewContrlller.m; sourceTree = "<group>"; };
 		161263601B3D034B00EAEDE6 /* MyShenqingViewContrlller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyShenqingViewContrlller.xib; sourceTree = "<group>"; };
-		161263641B3D371800EAEDE6 /* ReportViewContrlller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewContrlller.h; sourceTree = "<group>"; };
-		161263651B3D371800EAEDE6 /* ReportViewContrlller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewContrlller.m; sourceTree = "<group>"; };
-		161263661B3D371800EAEDE6 /* ReportViewContrlller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewContrlller.xib; sourceTree = "<group>"; };
+		161263641B3D371800EAEDE6 /* ReportViewContrlller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportViewContrlller.h; path = ../../ReportViewContrlller/ReportViewContrlller.h; sourceTree = "<group>"; };
+		161263651B3D371800EAEDE6 /* ReportViewContrlller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportViewContrlller.m; path = ../../ReportViewContrlller/ReportViewContrlller.m; sourceTree = "<group>"; };
+		161263661B3D371800EAEDE6 /* ReportViewContrlller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportViewContrlller.xib; path = ../../ReportViewContrlller/ReportViewContrlller.xib; sourceTree = "<group>"; };
 		1612636A1B3D5B8200EAEDE6 /* TrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainViewController.h; sourceTree = "<group>"; };
 		1612636B1B3D5B8200EAEDE6 /* TrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainViewController.m; sourceTree = "<group>"; };
 		1612636C1B3D5B8200EAEDE6 /* TrainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainViewController.xib; sourceTree = "<group>"; };
@@ -859,9 +859,6 @@
 		161263631B3D36F700EAEDE6 /* ReportViewContrlller */ = {
 			isa = PBXGroup;
 			children = (
-				161263641B3D371800EAEDE6 /* ReportViewContrlller.h */,
-				161263651B3D371800EAEDE6 /* ReportViewContrlller.m */,
-				161263661B3D371800EAEDE6 /* ReportViewContrlller.xib */,
 			);
 			path = ReportViewContrlller;
 			sourceTree = "<group>";
@@ -1085,6 +1082,9 @@
 				167BB29F1B734A0E00098D86 /* DocMyPatientViewController.h */,
 				167BB2A01B734A0E00098D86 /* DocMyPatientViewController.m */,
 				167BB2A11B734A0E00098D86 /* DocMyPatientViewController.xib */,
+				161263641B3D371800EAEDE6 /* ReportViewContrlller.h */,
+				161263651B3D371800EAEDE6 /* ReportViewContrlller.m */,
+				161263661B3D371800EAEDE6 /* ReportViewContrlller.xib */,
 				167BB2A41B734A5F00098D86 /* DocMyTrainViewController.h */,
 				167BB2A51B734A5F00098D86 /* DocMyTrainViewController.m */,
 				167BB2A61B734A5F00098D86 /* DocMyTrainViewController.xib */,
@@ -2090,7 +2090,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jicai chen (EWHKGVVT4E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2100,7 +2100,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d15694ff-604d-44df-aa24-006c7d719ee8";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2111,7 +2111,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jicai chen (EWHKGVVT4E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = TSmedicine/TSmedicine.pch;
 				INFOPLIST_FILE = TSMedicine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2121,7 +2121,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d15694ff-604d-44df-aa24-006c7d719ee8";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

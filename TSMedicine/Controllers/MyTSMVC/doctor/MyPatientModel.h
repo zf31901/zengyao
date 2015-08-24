@@ -10,10 +10,15 @@
 
 @interface MyPatientModel : BaseModel
 
-@property (nonatomic,copy) NSString *name;
-@property (nonatomic,copy) NSString *phoneNum;
-@property (nonatomic,copy) NSString *state;
+@property (nonatomic,copy) NSString *urcontent;
+@property (nonatomic,copy) NSString *urcreatedate;
+@property (nonatomic,copy) NSString *urfromuserid;
+@property (nonatomic,copy) NSString *urfromusername;
+@property (nonatomic,copy) NSString *urid;
+@property (nonatomic,copy) NSString *urphone;
+@property (nonatomic,copy) NSString *urstate;
+@property (nonatomic,copy) NSString *urtouserid;
+@property (nonatomic,copy) NSString *urtousername;
 
-@property (nonatomic,assign) BOOL isReport;
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyPatientModel.h"
 
 @interface ReportViewContrlller : BaseViewController
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+
+@property (nonatomic,strong) MyPatientModel *model;
 
 @end

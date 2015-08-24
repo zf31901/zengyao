@@ -155,7 +155,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     if (indexPath.section == 0)
     {
         
-        if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2])
+        if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type])
         {
             
             switch (indexPath.row) {
@@ -276,7 +276,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 //    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
     
     NSArray *picArr = nil;
-    if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
+    if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
         picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
     }else if ([type isEqualToString:Doctor_Type]){
         picArr = [NSArray arrayWithObjects:@"patient40", @"training40", @"answer40", nil];
@@ -288,7 +288,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     NSArray *comPicArr = [NSArray arrayWithObjects:@"notice40", @"Set-up40",nil];
     
     NSArray *titleArr = nil;
-    if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
+    if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
         titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
     }else if ([type isEqualToString:Doctor_Type]){
         titleArr = [NSArray arrayWithObjects:@"我的患者", @"我的培训", @"我的问答", nil];
