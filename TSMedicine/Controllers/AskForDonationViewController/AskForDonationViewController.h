@@ -12,4 +12,6 @@
 
 @property(nonatomic,strong) DetailModel *model;
 
+@property (nonatomic,copy) NSString *userID;
+
 @end

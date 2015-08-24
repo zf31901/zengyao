@@ -13,6 +13,10 @@
 
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
+#define HTMURL @"http://app.aixinland.cn/api/userproject/CheckState?dataId=%@&userid=%@"
+#define Patient_Type1 @"01"         //患者
+#define Patient_Type2 @""           //患者
+
 
 @interface DonationViewController ()
 {
@@ -21,6 +25,7 @@
     // 下拉刷新变量
     BOOL _isPull;
      NSInteger _page;
+    NSInteger  _dataId;
     
 }
 @property (weak, nonatomic) IBOutlet X_TableView *tableView;
@@ -37,6 +42,7 @@
     [super viewDidLoad];
       self.title = @"捐助项目";
     _page=10;
+    
     _dataArry=[[NSMutableArray alloc]init];
     _dataA=[[NSMutableArray alloc]init];
     
@@ -126,10 +132,10 @@
         [_dataA removeAllObjects];
         [ctl crealade];
     }];
-    [self.tableView addLegendFooterWithRefreshingBlock:^{
-        _page += 10;
-        [ctl crealade];
-    }];
+//    [self.tableView addLegendFooterWithRefreshingBlock:^{
+//        _page += 10;
+//        [ctl crealade];
+//    }];
 }
 
 
@@ -147,14 +153,55 @@
         NSIndexPath *indexPath = [weakSelf.tableView indexPathForCell:cell];
         NSLog(@"-----cell-->>\n%ld",(long)indexPath.row);
         
+        YYHttpRequest *rq = [[YYHttpRequest alloc] init];
         
-        AskForDonationViewController *askVC = [AskForDonationViewController new];
-        askVC.hidesBottomBarWhenPushed = YES;
+        if ([GlobalMethod sharedInstance].isLogin) {
+            
+            DetailModel *model = _dataArry[indexPath.row];
+            
+            NSString *prm=[NSString stringWithFormat:HTMURL,model.pid,UserInfoData.im];
+            
+            [rq GET:prm parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                NSLog(@"responseObject1234已登陆--%@",responseObject);
+                NSLog(@"message == %@",responseObject[@"message"]);
+                
+                if ([responseObject[@"data"] boolValue]) {
+                    
+                     AskForDonationViewController *askVC = [AskForDonationViewController new];
+                     askVC.hidesBottomBarWhenPushed = YES;
+                    
+                    if ([UserInfoData.Type isEqualToString:Patient_Type1] || [UserInfoData.Type isEqualToString:Patient_Type2]) {
+                            askVC.userID = UserInfoData.im;
+                    }
+                
+                    askVC.model = _dataArry[indexPath.row];
+                    [weakSelf.navigationController pushViewController:askVC animated:YES];
+                    
+                }else{
+                    
+                    AskForDonationViewController *askVC = [AskForDonationViewController new];
+                    askVC.hidesBottomBarWhenPushed = YES;
+                     askVC.model = _dataArry[indexPath.row];
+                    [weakSelf.navigationController pushViewController:askVC animated:YES];
+                
+                }
+                
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+            }];
+            
+        }else{
+           
+            AskForDonationViewController *askVC = [AskForDonationViewController new];
+            askVC.hidesBottomBarWhenPushed = YES;
+             askVC.model = _dataArry[indexPath.row];
+            [weakSelf.navigationController pushViewController:askVC animated:YES];
+    
+        }
         
-       
-        askVC.model=_dataArry[indexPath.row];
-        
-        [weakSelf.navigationController pushViewController:askVC animated:YES];
+   
     }];
 }
 

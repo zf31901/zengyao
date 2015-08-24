@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyProjectModel.h"
 @interface QuestionTurnViewController : BaseViewController
 
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property(nonatomic,strong)MyProjectModel *model;
+
 
 @end

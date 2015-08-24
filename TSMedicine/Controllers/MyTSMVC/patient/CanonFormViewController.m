@@ -8,7 +8,7 @@
 
 #import "CanonFormViewController.h"
 
-@interface CanonFormViewController ()<UIWebViewDelegate>
+@interface CanonFormViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
     UIWebView *_webView;
     
@@ -19,13 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H)];
+    [self createNavView];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0,StatusBar_Height, SCREEN_W,SCREEN_H-StatusBar_Height)];
     
     _webView.delegate=self;
-    
+    _webView.scrollView.delegate = self;
  
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_list.html?from=app&dataid=%@",_model.upid];
-    
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_detail.html?dataid=%@",_model.uppid];
+   
+    NSLog(@"_model.uppid109---%@",_model.uppid);
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
@@ -40,14 +42,18 @@
     NSString *urlString = [[request URL] absoluteString];
     NSLog(@"urlString---  %@",urlString);
     
-    if ([urlString rangeOfString:@"page/paradigm_list.html?objc_receive:Delete"].location != NSNotFound) {
+    if ([urlString rangeOfString:@"page/paradigm_detail.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         
     }
     return YES;
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y < 0) {
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+    }
+}
 
 
 @end

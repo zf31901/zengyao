@@ -13,16 +13,16 @@
 #import "NewsViewController.h"
 
 
-#define URLisr @"http://app.aixinland.cn//page/news_detail.html?from=app&dataId="
+#define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId="
 
 #define URLisr1 @"http://news.163.com/15/0813/17/B0TPM7R70001124J.html"
 
 
-@interface DetailsViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
+@interface DetailsViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
     UIWebView *_webView;
-    UIScrollView *_scrollview;
-    NSMutableArray *_dataArr;
+    
+
     NSString *terr;
 }
 
@@ -41,17 +41,20 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _dataArr=[[NSMutableArray alloc]init];
+    //_dataArr=[[NSMutableArray alloc]init];
     self.navigationController.navigationBarHidden=YES;
     [self UIlable];
+    [self createNavView];
  
     
 }
 
 -(void)UIlable{
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W,SCREEN_H)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H-StatusBar_Height)];
 
     _webView.delegate=self;
+    _webView.scrollView.delegate = self;
+    
     _webView.dataDetectorTypes=UIDataDetectorTypeLink;
     NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model];
     NSLog(@"url1234------%@",url);
@@ -65,7 +68,10 @@
     
 
 }
-
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=YES;
@@ -88,6 +94,10 @@
     }
     return YES;
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y < 0) {
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+    }
+}
 
 @end

@@ -50,10 +50,10 @@
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
-    NSDictionary *dic = @{@"userid":@"903050",@"pageid":@"1",@"pagesize":pageStr};
+    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":pageStr};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-                NSLog(@"responseObj == %@",responseObj);
+            NSLog(@"responseObj == %@",responseObj);
         
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyProjectModel *model = [[MyProjectModel alloc] init];
@@ -70,7 +70,7 @@
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden = NO;
-    self.title = @"我的提问";
+    self.title = @"选择项目";
 }
 
 - (void)back
@@ -104,6 +104,7 @@
     }
     MyProjectModel *model = _dataArr[indexPath.row];
     cell.textLabel.text = model.upname;
+    //cell.textLabel.text=model.upqcount;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

@@ -9,7 +9,7 @@
 #import "MyquestionViewController.h"
 #import "MYquestion.h"
 #import "myquerstionTableViewCell.h"
-
+#import "QuestionTurnViewController.h"
 #import "QuestionViewController.h"
 
 #define URL @"http://app.aixinland.cn/api/userquestion/List"
@@ -32,11 +32,20 @@
     [super viewDidLoad];
         [self setNavView];
     _pagesize=10;
+     _dataArr = [NSMutableArray array];
     [self setTableView];
+    [self buidRightBtn:@"提问"];
+    [self Staload];
+
     
-    _dataArr = [NSMutableArray array];
+    
+
+}
+-(void)Staload{
+   
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-        NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    
     NSDictionary *dic = @{@"pid":_goodIndex.uppid,@"userid":_goodIndex.upuserid,@"pageid":@"1",@"pagesize":pageStr};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
@@ -51,9 +60,15 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
     }];
-    
-    
 
+
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    
+    [self Staload];
 }
 -(void)setTableView
 {
@@ -65,7 +80,13 @@
   [_mytableView registerNib:[UINib nibWithNibName:@"myquerstionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
 }
-
+- (void)commit
+{
+    QuestionTurnViewController *commitVC = [QuestionTurnViewController new];
+    commitVC.model= _goodIndex;
+    [self.navigationController pushViewController:commitVC animated:YES];
+    
+}
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden = NO;
