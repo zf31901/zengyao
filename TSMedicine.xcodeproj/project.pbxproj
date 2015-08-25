@@ -20,6 +20,7 @@
 		10694DD41B7207B100CE2504 /* MyAppCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10694DD21B7207B100CE2504 /* MyAppCellTableViewCell.xib */; };
 		10694DD71B7207DB00CE2504 /* MyAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10694DD61B7207DB00CE2504 /* MyAppModel.m */; };
 		10694DD91B72096900CE2504 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10694DD81B72096900CE2504 /* libPods.a */; };
+		1601D9031B8B03450047941E /* MyTSMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601D9021B8B03450047941E /* MyTSMAboutViewController.m */; };
 		16034AB21B6F0D510063EFD7 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16034AB11B6F0D510063EFD7 /* BaseModel.m */; };
 		16034AB51B6F0D6B0063EFD7 /* UserObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 16034AB41B6F0D6B0063EFD7 /* UserObj.m */; };
 		16034AB81B6F0DF80063EFD7 /* GlobalMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 16034AB71B6F0DF80063EFD7 /* GlobalMethod.m */; };
@@ -105,6 +106,7 @@
 		167BB2AD1B734A9A00098D86 /* DocMyAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2AB1B734A9A00098D86 /* DocMyAnswerViewController.xib */; };
 		167BB2B11B734B0200098D86 /* ManagerMyTrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB2AF1B734B0200098D86 /* ManagerMyTrainViewController.m */; };
 		167BB2B21B734B0200098D86 /* ManagerMyTrainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 167BB2B01B734B0200098D86 /* ManagerMyTrainViewController.xib */; };
+		1680A29B1B8C56AA00AD2CF0 /* MyProjectsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1680A29A1B8C56AA00AD2CF0 /* MyProjectsListModel.m */; };
 		168369411B2AAD2100A78898 /* YYPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369401B2AAD2100A78898 /* YYPhotoPicker.m */; };
 		168369461B2AB1B800A78898 /* SetMyTSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168369441B2AB1B800A78898 /* SetMyTSMViewController.m */; };
 		168369471B2AB1B800A78898 /* SetMyTSMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168369451B2AB1B800A78898 /* SetMyTSMViewController.xib */; };
@@ -306,6 +308,8 @@
 		10694DD51B7207DB00CE2504 /* MyAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAppModel.h; path = ../../SetMyTSM/MyAppModel.h; sourceTree = "<group>"; };
 		10694DD61B7207DB00CE2504 /* MyAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAppModel.m; path = ../../SetMyTSM/MyAppModel.m; sourceTree = "<group>"; };
 		10694DD81B72096900CE2504 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		1601D9011B8B03450047941E /* MyTSMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMAboutViewController.h; sourceTree = "<group>"; };
+		1601D9021B8B03450047941E /* MyTSMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMAboutViewController.m; sourceTree = "<group>"; };
 		16034AB01B6F0D510063EFD7 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		16034AB11B6F0D510063EFD7 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		16034AB31B6F0D6B0063EFD7 /* UserObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObj.h; sourceTree = "<group>"; };
@@ -438,6 +442,8 @@
 		167BB2AE1B734B0200098D86 /* ManagerMyTrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerMyTrainViewController.h; sourceTree = "<group>"; };
 		167BB2AF1B734B0200098D86 /* ManagerMyTrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerMyTrainViewController.m; sourceTree = "<group>"; };
 		167BB2B01B734B0200098D86 /* ManagerMyTrainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerMyTrainViewController.xib; sourceTree = "<group>"; };
+		1680A2991B8C56AA00AD2CF0 /* MyProjectsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProjectsListModel.h; sourceTree = "<group>"; };
+		1680A29A1B8C56AA00AD2CF0 /* MyProjectsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProjectsListModel.m; sourceTree = "<group>"; };
 		1683693F1B2AAD2100A78898 /* YYPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPhotoPicker.h; sourceTree = "<group>"; };
 		168369401B2AAD2100A78898 /* YYPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPhotoPicker.m; sourceTree = "<group>"; };
 		168369431B2AB1B800A78898 /* SetMyTSMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMyTSMViewController.h; sourceTree = "<group>"; };
@@ -795,6 +801,8 @@
 				10694DC81B7206EF00CE2504 /* MyTSMSetViewController.h */,
 				10694DC91B7206EF00CE2504 /* MyTSMSetViewController.m */,
 				161E7F171B721B6E0067635E /* MyTSMSetViewController.xib */,
+				1601D9011B8B03450047941E /* MyTSMAboutViewController.h */,
+				1601D9021B8B03450047941E /* MyTSMAboutViewController.m */,
 				167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */,
 				167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */,
 				167BB28D1B73126500098D86 /* MyTSMFeedBackViewController.xib */,
@@ -1117,6 +1125,8 @@
 				1695CC281B783AEA00FA1B1E /* MyAnswerModel.m */,
 				163FE6DF1B79E48D00A45019 /* MyTrainModel.h */,
 				163FE6E01B79E48D00A45019 /* MyTrainModel.m */,
+				1680A2991B8C56AA00AD2CF0 /* MyProjectsListModel.h */,
+				1680A29A1B8C56AA00AD2CF0 /* MyProjectsListModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1921,6 +1931,7 @@
 				9D0C8D9D1B7B1F6B001B4A8E /* HospitalTableViewCell.m in Sources */,
 				10694DD31B7207B100CE2504 /* MyAppCellTableViewCell.m in Sources */,
 				1683695A1B2ACC1E00A78898 /* PersonalDataViewController.m in Sources */,
+				1680A29B1B8C56AA00AD2CF0 /* MyProjectsListModel.m in Sources */,
 				163FE6E11B79E48D00A45019 /* MyTrainModel.m in Sources */,
 				169909E61B8480000085BDE4 /* MJRefreshConst.m in Sources */,
 				169909F31B8480560085BDE4 /* APPaixinlModel.m in Sources */,
@@ -1981,6 +1992,7 @@
 				162597C81B68E2AD00E3FA95 /* MyTSMListCell.m in Sources */,
 				169909E51B8480000085BDE4 /* MJRefreshComponent.m in Sources */,
 				169909EC1B8480000085BDE4 /* MJRefreshLegendFooter.m in Sources */,
+				1601D9031B8B03450047941E /* MyTSMAboutViewController.m in Sources */,
 				169909EF1B8480000085BDE4 /* UIScrollView+MJRefresh.m in Sources */,
 				169909F01B8480000085BDE4 /* UIView+MJExtension.m in Sources */,
 				162597C61B68E2AD00E3FA95 /* MyTSMHeaderCell.m in Sources */,

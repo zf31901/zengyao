@@ -51,6 +51,8 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 
 @property (strong,nonatomic) NSMutableArray *dataArr;
 
+@property (nonatomic,assign) NSInteger questionCount;
+
 @end
 
 @implementation MyTSMViewController
@@ -94,7 +96,6 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     _headView.nameLab.text = [NSString stringWithFormat:@"%@",UserInfoData.nickName];
     
     [self.view addSubview:self.tableView];
-    
     [_tableView registerNib:[UINib nibWithNibName:ProTableViewCell bundle:nil] forCellReuseIdentifier:ProTableViewCell];
     
     [self loadData];
@@ -264,20 +265,42 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     return 44.0f;
 }
 
-
 #pragma mark ------------ 数据 ---------------
 -(void)loadData
 {
-    [_dataArr removeAllObjects];
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *dic = @{@"pid":@(0),@"userid":UserInfoData.im};
     
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/Count" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+//        NSLog(@"responseObj === %@",responseObj);
+        
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            
+             _questionCount = [responseObj[@"data"] integerValue];
+        }
+        
+        [self loadLocationData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error == %@",error);
+    }];
+}
+
+-(void)loadLocationData
+{
+    [_dataArr removeAllObjects];
     NSString *type = UserInfoData.Type;
     NSLog(@"Type == %@",UserInfoData.Type);
     
-//    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
-    
     NSArray *picArr = nil;
     if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
-        picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
+        
+        if (_questionCount > 0 ) {
+            picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
+        }else{
+            picArr = [NSArray arrayWithObjects:@"appl40", nil];
+        }
+        
     }else if ([type isEqualToString:Doctor_Type]){
         picArr = [NSArray arrayWithObjects:@"patient40", @"training40", @"answer40", nil];
     }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
@@ -289,13 +312,19 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     
     NSArray *titleArr = nil;
     if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
-        titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
+        
+        if (_questionCount > 0 ) {
+            titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
+        }else{
+            titleArr = [NSArray arrayWithObjects:@"我的申请", nil];
+        }
+        
     }else if ([type isEqualToString:Doctor_Type]){
         titleArr = [NSArray arrayWithObjects:@"我的患者", @"我的培训", @"我的问答", nil];
     }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
         titleArr = [NSArray arrayWithObjects:@"我的培训", nil];
     }else{
-    
+        
     }
     NSArray *comTitleArr = [NSArray arrayWithObjects:@"系统通知", @"设置", nil];
     
@@ -308,15 +337,15 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         
         if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
             if (i == 1) {
-//                 model.msg = [NSString stringWithFormat:@"%d",i];
+                //                 model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }else if ([type isEqualToString:Doctor_Type]){
             if (i == 1) {
-//                model.msg = [NSString stringWithFormat:@"%d",i];
+                //                model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
             if (i == 0) {
-//                model.msg = [NSString stringWithFormat:@"%d",i];
+                //                model.msg = [NSString stringWithFormat:@"%d",i];
             }
         }
         [arr1 addObject:model];
@@ -337,6 +366,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     
     [_tableView reloadData];
 }
+
 #pragma mark ---------MyHeaderViewDelegate--------
 -(void)myHeaderViewClick:(MyHeaderView *)headerView
 {

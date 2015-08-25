@@ -23,6 +23,10 @@
     
     [self loadWebView];
     [self createNavView];
+    
+    
+    
+    
 
 }
 
@@ -33,7 +37,7 @@
 }
 -(void)loadWebView
 {
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H - StatusBar_Height)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H)];
     _webView.delegate = self;
     _webView.scrollView.delegate = self;
     
