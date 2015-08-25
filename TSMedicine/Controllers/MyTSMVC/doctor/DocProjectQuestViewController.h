@@ -7,12 +7,12 @@
 //
 
 #import "BaseViewController.h"
-#import "MyProjectModel.h"
+#import "MyProjectsListModel.h"
 
 @interface DocProjectQuestViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic,strong) MyProjectModel *model;
+@property (nonatomic,strong) MyProjectsListModel *model;
 
 @end

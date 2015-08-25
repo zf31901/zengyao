@@ -9,7 +9,7 @@
 #import "DocMyAnswerViewController.h"
 #import "DocProjectQuestViewController.h"
 
-#import "MyProjectModel.h"
+#import "MyProjectsListModel.h"
 
 @interface DocMyAnswerViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -48,8 +48,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    MyProjectModel *model = _dataArr[indexPath.row];
-    cell.textLabel.text = model.upname;
+    MyProjectsListModel *model = _dataArr[indexPath.row];
+    cell.textLabel.text = model.pname;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -78,17 +78,17 @@
 {
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"userid":@"903050",@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"pageid":@"1",@"pagesize":@"10"};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/projects/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj == %@",responseObj);
-        NSLog(@"message == %@",responseObj[@"message"]);
+//        NSLog(@"message == %@",responseObj[@"message"]);
         
         for (NSDictionary *dic in responseObj[@"data"]) {
-            MyProjectModel *model = [[MyProjectModel alloc] init];
+            MyProjectsListModel *model = [[MyProjectsListModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             
-//            NSLog(@"upname == %@",model.upname)
+//            NSLog(@"pname == %@",model.pname)
             
             [_dataArr addObject:model];
         }

@@ -135,7 +135,7 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     [_dataArr addObject:arr1];
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"uqid":@(0),@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"uqid":_model.uqid,@"userid":_model.uquserid,@"pageid":@"1",@"pagesize":@"10"};
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj === %@",responseObj);
         
@@ -201,7 +201,7 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 -(void)keyboardWillShow:(NSNotification *)not{
     
     //获取键盘的y坐标
-    NSLog(@"%@",not.userInfo);
+//    NSLog(@"%@",not.userInfo);
     
     CGRect keyboardFrame = [not.userInfo[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
     

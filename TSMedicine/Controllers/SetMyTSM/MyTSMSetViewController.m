@@ -7,7 +7,7 @@
 //
 
 #import "MyTSMSetViewController.h"
-#import "SetAboutTSMViewController.h"
+#import "MyTSMAboutViewController.h"
 #import "MyTSMFeedBackViewController.h"
 
 @interface MyTSMSetViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -59,12 +59,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         switch (indexPath.row){
             case 0:
             {
-                SetAboutTSMViewController *aboutVC = [[SetAboutTSMViewController alloc] init];
+                MyTSMAboutViewController *aboutVC = [[MyTSMAboutViewController alloc] init];
                 [self.navigationController pushViewController:aboutVC animated:YES];
             }
                 break;

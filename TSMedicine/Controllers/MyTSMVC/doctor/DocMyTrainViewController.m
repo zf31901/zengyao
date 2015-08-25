@@ -90,10 +90,10 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
-    NSDictionary *dic = @{@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/training/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-//        NSLog(@"responseObj === %@",responseObj);
+    [rq GETURLString:@"http://app.aixinland.cn/api/training/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        NSLog(@"responseObj === %@",responseObj);
        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
            
            for (NSDictionary *dic in responseObj[@"data"]) {

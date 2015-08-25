@@ -35,7 +35,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden = NO;
-    self.title = [NSString stringWithFormat:@"%@问题",_model.upname];
+    self.title = [NSString stringWithFormat:@"%@问题",_model.pname];
 }
 
 -(void)setTabView
@@ -87,7 +87,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 {
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"pid":_model.uppid,@"userid":_model.upuserid,@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"pid":_model.pid,@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj == %@",responseObj);

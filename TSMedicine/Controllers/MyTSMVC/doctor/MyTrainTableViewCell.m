@@ -31,7 +31,7 @@
     NSString *timeStr = [model.tcreatedate substringWithRange:NSMakeRange(11, 5)];
     _timeLab.text = [NSString stringWithFormat:@"%@ %@",dateStr,timeStr];
     
-    NSString *state = [NSString stringWithFormat:@"%@",model.tstate];
+    NSString *state = [NSString stringWithFormat:@"%@",model.examstate];
     
     if ([state isEqualToString:@"0"]) {
         _stateLab.text = @"待考核";
@@ -40,12 +40,10 @@
     }else if([state isEqualToString:@"1"]){
         _stateLab.text = @"考核通过";
         _stateLab.textColor = UIColorFromRGB(0x20a456);
-       
+        
     }else{
         
     }
-    
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
