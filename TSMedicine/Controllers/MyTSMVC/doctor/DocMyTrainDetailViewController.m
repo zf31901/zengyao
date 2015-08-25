@@ -23,6 +23,10 @@
     
     [self loadWebView];
     [self createNavView];
+    
+    
+    
+    
 
 }
 
