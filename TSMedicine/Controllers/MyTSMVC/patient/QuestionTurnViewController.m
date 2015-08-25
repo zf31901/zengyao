@@ -77,6 +77,10 @@
     if (_model) {
       dic = @{@"uqid":@(0),@"uqpid":_model.uppid,@"uqpname":UserInfoData.trueName,@"uqname":UserInfoData.nickName,@"uqcontent":_textView.text,@"uquserid":_model.upuserid,@"uqcreatedate":currentTime,@"uqusername":UserInfoData.userName,@"uqstate":@(0)};
     }
+    if (_appModel) {
+        
+        dic = @{@"uqid":@(0),@"uqpid":_appModel.uppid,@"uqpname":UserInfoData.trueName,@"uqname":UserInfoData.nickName,@"uqcontent":_textView.text,@"uquserid":_appModel.upuserid,@"uqcreatedate":currentTime,@"uqusername":UserInfoData.userName,@"uqstate":@(0)};
+    }
     
     
     

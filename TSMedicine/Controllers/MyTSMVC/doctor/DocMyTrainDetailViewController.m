@@ -24,10 +24,6 @@
     [self loadWebView];
     [self createNavView];
     
-    
-    
-    
-
 }
 
 -(void)setNavView

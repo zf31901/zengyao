@@ -52,7 +52,6 @@
         [self.navigationController popViewControllerAnimated:YES];
     }    else if([urlString rangeOfString:@"/page/userproject_detail.html?objc_receive:Answers"].location != NSNotFound){
         
-
         MyquestionViewController *VC=[[MyquestionViewController alloc]init];
         if (_model) {
             
@@ -60,8 +59,6 @@
             VC.isWeb = YES;
              [self.navigationController pushViewController:VC animated:YES];
         }
-       
-       
     }
     else {
         

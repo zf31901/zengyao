@@ -53,7 +53,6 @@
     }
     if (_model) {
         
-       
         dic = @{@"pid":_model.uppid,@"userid":_model.upuserid,@"pageid":@"1",@"pagesize":pageStr};
     }
     
@@ -91,8 +90,14 @@
 - (void)commit
 {
     QuestionTurnViewController *commitVC = [QuestionTurnViewController new];
-    commitVC.model= _goodIndex;
+    if (_goodIndex) {
+        commitVC.model= _goodIndex;
+    }
+    if (_model) {
+        commitVC.appModel= _model;
+    }
     [self.navigationController pushViewController:commitVC animated:YES];
+    
     
 }
 -(void)setNavView
@@ -139,7 +144,6 @@
     
     [self.navigationController pushViewController:nav animated:YES];
 
-    
 }
 
 - (void)back

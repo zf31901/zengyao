@@ -12,6 +12,7 @@
 
 
 @interface MyquestionViewController : BaseViewController
+
 @property(nonatomic,strong) MyProjectModel  *goodIndex;//记录ID的值
 
 @property(nonatomic,strong) MyAppModel *model;

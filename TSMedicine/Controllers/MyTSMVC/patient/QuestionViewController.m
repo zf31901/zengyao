@@ -42,10 +42,6 @@
 
 }
 
-
-
-
-
 -(void)settabView{
     _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _mytableView.delegate =self;

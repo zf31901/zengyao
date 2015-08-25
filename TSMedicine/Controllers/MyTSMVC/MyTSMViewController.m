@@ -272,7 +272,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     NSDictionary *dic = @{@"pid":@(0),@"userid":UserInfoData.im};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/Count" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-//        NSLog(@"responseObj === %@",responseObj);
+        NSLog(@"responseObj === %@",responseObj);
         
         if ([responseObj[@"status"] isEqualToString:@"Success"]) {
             
