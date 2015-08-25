@@ -71,34 +71,13 @@
 -(void)loadDatacell{
 
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    
     NSString *url=[NSString stringWithFormat:@"%@%@",URLIST,_Goodmodel.upid];
-  //  NSLog(@"_Goodmodel.upid--%@",_Goodmodel.upid);
+   
     [rq GETURLString:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
         MyAppModel *model = [[MyAppModel  alloc] init];
         
         [model setValuesForKeysWithDictionary:responseObj[@"data"]];
-        
-        
-        if ([model.upstate boolValue]== 0) {
-            model.upstate=[responseObj objectForKey:@"upstate"];
-            
-        }
-        else if ([model.upstate boolValue]== 1) {
-            
-            model.upstate=[responseObj objectForKey:@"upstate"];
-        }
-        else if ([model.upstate boolValue] == 2){
-            model.upstate=[responseObj objectForKey:@"upstate"];
-        }
-        else{
-            model.upstate=[responseObj objectForKey:@"upstate"];
-            
-            
-            
-        }
-
         
         [_dataArr addObject:model];
         
@@ -170,7 +149,12 @@
     AuditInformationTableViewCell *Audcell = [tableView dequeueReusableCellWithIdentifier:@"Audcell" forIndexPath:indexPath];
         
        APPaixinlModel *model=[_dataArr objectAtIndex:indexPath.row];
-       Audcell.upcreatedate.text=model.upcreatedate;
+        NSString *dateStr = [model.upcreatedate substringWithRange:NSMakeRange(0, 10)];
+        NSString *timeStr = [model.upcreatedate substringWithRange:NSMakeRange(11, 5)];
+        
+         Audcell.upcreatedate.text = [NSString stringWithFormat:@"%@ %@",dateStr,timeStr];
+
+     
         Audcell.upname.text=model.upname;
         if ([model.upstate boolValue]== 0) {
              Audcell.upstate.text=@"审核未通过";
@@ -180,7 +164,7 @@
              Audcell.upstate.text=@"审核通过";
              Audcell.upstate.textColor=UIColorFromRGB(0x20A456);
         }
-        else if ([model.upstate boolValue] == 2){
+        else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
              Audcell.upstate.text=@"未审核";
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }else{
@@ -221,9 +205,13 @@
 
 
 -(void)commit{
-    xqingViewController *VC = [[xqingViewController   alloc] init];
-    VC.model=_Goodmodel;
-   
+    xqingViewController *VC = [[xqingViewController  alloc] init];
+    if (_Goodmodel) {
+        
+        NSLog(@"%@---%@",_Goodmodel.uppid,_Goodmodel.upuserid);
+        
+        VC.model=_Goodmodel;
+    }
     [self.navigationController pushViewController:VC animated:YES];
 }
 

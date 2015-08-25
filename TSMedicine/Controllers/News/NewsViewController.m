@@ -43,8 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArr=[[NSMutableArray alloc]init];
-      _page=10;
-    _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-44-64) style:UITableViewStylePlain];
+      _page=30;
+    _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-44-64) style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     
@@ -76,7 +76,7 @@
 {
     __weak NewsViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
-        _page = 10;
+        _page = 30;
         [_dataArr removeAllObjects];
         [ctl UILABLE];
     }];
@@ -152,22 +152,27 @@
         
         cell.fromeLable.text=model.a_Title;
         cell.fromeLable.numberOfLines=0;
-        CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(304, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
+        CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(300, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
 
-        cell.fromeLable.frame = CGRectMake(0, 0, 304, rect.size.height);
+        cell.fromeLable.frame = CGRectMake(10, 0, 300, rect.size.height);
+        
         CGRect frame = cell.fromeLable.frame;
-        
         cell.iamgeView.y = frame.size.height + 10;
-        
-        CGRect imageViewFrame = cell.iamgeView.frame;
-        
-        cell.newlabel.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
-        cell.dataTimew.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
         
         cell.newlabel.text=model.a_From;
         cell.dataTimew.text=model.a_time;
-      
+        
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.a_SmallImg]]];
+//         NSLog(@"%f-----%f",image.size.width,image.size.height);
+        
+        cell.iamgeView.height = image.size.height;
+        
+        CGRect imageViewFrame = cell.iamgeView.frame;
+        cell.newlabel.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
+        cell.dataTimew.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
+        
         [cell.iamgeView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
+        
           return cell;
     }
 
@@ -201,14 +206,18 @@
         
         CGRect rect = [model.a_Title boundingRectWithSize:CGSizeMake(304, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil];
         
-        return 160 + rect.size.height;
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.a_SmallImg]]];
+        
+//        NSLog(@"image_Height == %f",image_Height);
+        
+        return 50 + rect.size.height + image.size.height ;
         
     }else{
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
          CGRect rect1 = [model.a_Title boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
         
-        return 83+rect1.size.height;
+        return 87+rect1.size.height;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -220,6 +229,9 @@
     ctl2.model=arr.a_ID;
     [self.navigationController pushViewController:ctl2 animated:YES];
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
 
 @end

@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "MyProjectModel.h"
+#import "MyAppModel.h"
+
+
 @interface MyquestionViewController : BaseViewController
 @property(nonatomic,strong) MyProjectModel  *goodIndex;//记录ID的值
+
+@property(nonatomic,strong) MyAppModel *model;
+
+@property (nonatomic,assign) BOOL isWeb;
+
 
 @end

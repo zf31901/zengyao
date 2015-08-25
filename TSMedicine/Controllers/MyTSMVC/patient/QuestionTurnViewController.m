@@ -20,7 +20,7 @@
     NSMutableArray *_dataArr;
     
 }
-@property(nonatomic,strong)UIScrollView *scrollView;
+
 @property (nonatomic,strong) UILabel *TextViewLab;
 
 
@@ -34,7 +34,7 @@
     
     [self Nav];
     _dataArr=[[NSMutableArray alloc]init];
-    
+    _textView.delegate=self;
 
     
     _TextViewLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, self.view.bounds.size.width - 10*2, 40)];
@@ -42,7 +42,7 @@
     _TextViewLab.numberOfLines=0;
     _TextViewLab.textColor=Commom_TextColor_Gray;
     _TextViewLab.enabled=NO;
-    //_TextViewLab.text=@"欢迎给我们提宝贵的意见";
+    _TextViewLab.text=@"Hi,您遇到什么问题,或者有什么建议吗?欢迎给我们提宝贵的意见,谢谢！";
     _TextViewLab.backgroundColor=[UIColor clearColor];
     _TextViewLab.font=[UIFont systemFontOfSize:14];
     _TextViewLab.textColor=[UIColor lightGrayColor];
@@ -73,7 +73,12 @@
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     //UserInfoData.im
     NSString *currentTime = [WITool getCurrentTime];
-    NSDictionary *dic = @{@"uqid":@(0),@"uqpid":_model.uppid,@"uqpname":UserInfoData.trueName,@"uqname":UserInfoData.nickName,@"uqcontent":_textView.text,@"uquserid":_model.upuserid,@"uqcreatedate":currentTime,@"uqusername":UserInfoData.userName,@"uqstate":@(0)};
+    NSDictionary *dic;
+    if (_model) {
+      dic = @{@"uqid":@(0),@"uqpid":_model.uppid,@"uqpname":UserInfoData.trueName,@"uqname":UserInfoData.nickName,@"uqcontent":_textView.text,@"uquserid":_model.upuserid,@"uqcreatedate":currentTime,@"uqusername":UserInfoData.userName,@"uqstate":@(0)};
+    }
+    
+    
     
     [rq POSTURLString:@"http://app.aixinland.cn/api/userquestion/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject ==== %@",responseObject);
@@ -90,5 +95,33 @@
     }];
     
     
+}
+#pragma mark ---------UITextViewDelegate---------------
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    _TextViewLab.hidden = YES;
+    return YES;
+}
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if ([textView.text length] == 0) {
+        _TextViewLab.hidden = NO;
+    }else{
+       _TextViewLab.hidden = YES;
+    }
+}
+
+-(BOOL)cheakText
+{
+    if (_textView.text.length == 0) {
+        [self showAlertViewWithTitle:@"意见不能为空" andDelay:1.0];
+        return NO;
+    }
+    return YES;
+}
+-(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
 }
 @end

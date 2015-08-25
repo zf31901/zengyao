@@ -50,60 +50,27 @@
 
 }
 -(void)loadData{
-
+    _dataArr = [[NSMutableArray alloc]init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:UserInfoData.im forKey:@"userid"];
     [dic setObject:@"1"              forKey:@"pageid"];
     [dic setObject:pageStr   forKey:@"pagesize"];
-    
-    
-    _dataArr = [NSMutableArray array];
     YYHttpRequest *hq=[[YYHttpRequest alloc]init];
-    
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
-        
-        
-        
         if ([responseObj objectForKey:@"data"] !=nil) {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
-            
-            // NSLog(@"2222223456===================%lu",(unsigned long)dataArr.count);
             
             for (NSDictionary *dic in dataArr)
             {
                 MyAppModel *model = [[MyAppModel alloc] init];
-                model.upname=[dic objectForKey:@"upname"];
-                model.upcreatedate=[dic objectForKey:@"upcreatedate"];
+               
+                [model setValuesForKeysWithDictionary:dic];
                 
-                model.upimage=[dic  objectForKey:@"upimage"];
-                model.upid=[dic objectForKey:@"upid"];
-                model.uppid=[dic objectForKey:@"uppid"];
-                if ([model.upstate boolValue]== 0) {
-                    model.upstate=[dic objectForKey:@"upstate"];
-              
-                }
-                else if ([model.upstate boolValue]== 1) {
-                    
-                     model.upstate=[dic objectForKey:@"upstate"];
-                }
-                else if ([model.upstate boolValue] == 2){
-                     model.upstate=[dic objectForKey:@"upstate"];
-                                     }
-                else{
-                     model.upstate=[dic objectForKey:@"upstate"];
-                
-
-                    
-                }
-                
-              
                 [_dataArr addObject:model];
             }
             
-            NSLog(@"123123-%ld",_dataArr.count);
-            
+
             [_mytableView reloadData];
             
         }
@@ -131,7 +98,6 @@
     __weak PatientApplyViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
         _pagesize = 10;
-        
         [_dataArr removeAllObjects];
         [ctl loadData];
     }];
@@ -175,27 +141,31 @@
         cell=[[MyAppCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         
     }
-    
-    
+
     MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
     
     cell.upname.text= [NSString stringWithFormat:@"%@",model.upname];
     cell.upname.numberOfLines=0;
     CGRect rect = [cell.upname.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.upname.font} context:nil];
-    // cell.upname.frame = CGRectMake(0, 0, 200, rect.size.height);
+    
 cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
     
-    cell.dataTime.text= [NSString stringWithFormat:@"%@",model.upcreatedate];
+    NSString *dateStr = [model.upcreatedate substringWithRange:NSMakeRange(0, 10)];
+    NSString *timeStr = [model.upcreatedate substringWithRange:NSMakeRange(11, 5)];
+   
+    cell.dataTime.text = [NSString stringWithFormat:@"%@ %@",dateStr,timeStr];
+
+
     
-    if ([model.upstate boolValue]== 0) {
+    if ([model.upstate boolValue] == 0) {
         cell.upstate.text=@"审核未通过";
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
-    else if ([model.upstate boolValue]== 1) {
+    else if ([model.upstate boolValue] == 1) {
         cell.upstate.text=@"审核通过";
         cell.upstate.textColor=UIColorFromRGB(0x20A456);
     }
-    else if ([model.upstate boolValue] == 2){
+    else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
         cell.upstate.text=@"未审核";
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }else{
@@ -229,7 +199,11 @@ cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     APPlicationProgressViewController *nav=[[APPlicationProgressViewController alloc]init];
-    nav.Goodmodel = _dataArr[indexPath.row];
+    
+    MyAppModel *model = _dataArr[indexPath.row];
+    
+    nav.Goodmodel = model;
+    
 
     [self.navigationController pushViewController:nav animated:YES];
     

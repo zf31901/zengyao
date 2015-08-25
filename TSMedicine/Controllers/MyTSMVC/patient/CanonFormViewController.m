@@ -25,7 +25,7 @@
     _webView.delegate=self;
     _webView.scrollView.delegate = self;
  
-    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_detail.html?dataid=%@",_model.uppid];
+    NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_list.html?dataid=%@",_model.uppid];
    
     NSLog(@"_model.uppid109---%@",_model.uppid);
     
@@ -42,7 +42,7 @@
     NSString *urlString = [[request URL] absoluteString];
     NSLog(@"urlString---  %@",urlString);
     
-    if ([urlString rangeOfString:@"page/paradigm_detail.html?objc_receive:Delete"].location != NSNotFound) {
+    if ([urlString rangeOfString:@"page/paradigm_list.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         

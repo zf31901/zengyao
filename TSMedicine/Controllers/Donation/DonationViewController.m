@@ -68,7 +68,7 @@
 }
 
 -(void)crealade{
-   // NSMutableArray *arr=[[NSMutableArray alloc]init];
+ 
 
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_page];
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -128,7 +128,7 @@
     __weak DonationViewController * ctl = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         _page = 10;
-
+        [_dataArry removeAllObjects];
         [_dataA removeAllObjects];
         [ctl crealade];
     }];

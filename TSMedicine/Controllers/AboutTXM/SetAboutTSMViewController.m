@@ -34,7 +34,7 @@
 
 -(void)creatUI
 {
-    _iconImageView = [WIBaseImageView createClassWithFrame:CGRectMake((ScreenWidth - 60)/2, 50, 60, 60) andWithImg:@"S2-Logo-FM.png" andWithTag:0 andWithEnable:YES];
+    _iconImageView = [WIBaseImageView createClassWithFrame:CGRectMake((ScreenWidth - 60)/2, 50, 60, 60) andWithImg:@"icon180.png" andWithTag:0 andWithEnable:YES];
     [_iconImageView makeCorner:10];
     [self.view addSubview:_iconImageView];
     

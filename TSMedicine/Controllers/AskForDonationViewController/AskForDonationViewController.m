@@ -61,6 +61,15 @@
        [self.navigationController popViewControllerAnimated:YES];
         
     }
+    else if([urlString rangeOfString:@"page/project_detail.html?objc_receive:Delete"].location != NSNotFound)
+    {
+     [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if([urlString rangeOfString:@"page/apply_successful.html?objc_receive:Delete"].location != NSNotFound)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+
     return YES;
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

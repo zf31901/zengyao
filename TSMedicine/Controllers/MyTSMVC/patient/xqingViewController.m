@@ -48,16 +48,22 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *urlString = [[request URL] absoluteString];
     NSLog(@"urlString---  %@",urlString);
-    if ([urlString rangeOfString:@"page/project_detail.html?objc_receive:Delete"].location != NSNotFound) {
+    if ([urlString rangeOfString:@"page/userproject_detail.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];
-    }else if([urlString rangeOfString:@"/page/userproject_detail.html?objc_receive:Answers"].location != NSNotFound){
-
-        MyquestionViewController *model=[[MyquestionViewController alloc]init];
+    }    else if([urlString rangeOfString:@"/page/userproject_detail.html?objc_receive:Answers"].location != NSNotFound){
         
-        [self.navigationController pushViewController:model animated:YES];
-        NSLog(@"haha");
+
+        MyquestionViewController *VC=[[MyquestionViewController alloc]init];
+        if (_model) {
+            
+             VC.model = _model;
+            VC.isWeb = YES;
+             [self.navigationController pushViewController:VC animated:YES];
+        }
+       
+       
     }
-    else{
+    else {
         
         
     }

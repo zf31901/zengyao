@@ -31,22 +31,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         [self setNavView];
-    _pagesize=10;
+    _pagesize=30;
      _dataArr = [NSMutableArray array];
     [self setTableView];
     [self buidRightBtn:@"提问"];
-    [self Staload];
+//    [self Staload];
 
     
     
-
 }
 -(void)Staload{
-   
+    [_dataArr removeAllObjects];
+    
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
     
-    NSDictionary *dic = @{@"pid":_goodIndex.uppid,@"userid":_goodIndex.upuserid,@"pageid":@"1",@"pagesize":pageStr};
+    NSDictionary *dic = nil;
+    if (_goodIndex) {
+        
+        dic = @{@"pid":_goodIndex.uppid,@"userid":_goodIndex.upuserid,@"pageid":@"1",@"pagesize":pageStr};
+    }
+    if (_model) {
+        
+       
+        dic = @{@"pid":_model.uppid,@"userid":_model.upuserid,@"pageid":@"1",@"pagesize":pageStr};
+    }
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         NSLog(@"responseObj == %@",responseObj);
@@ -66,9 +75,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    
-    
     [self Staload];
+  
 }
 -(void)setTableView
 {
@@ -131,6 +139,17 @@
     
     [self.navigationController pushViewController:nav animated:YES];
 
+    
+}
+
+- (void)back
+{
+    if (_isWeb) {
+        
+        [self.navigationController popToViewController:self.navigationController.viewControllers[2] animated:YES];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 @end
