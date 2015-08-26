@@ -210,7 +210,7 @@
         
 //        NSLog(@"image_Height == %f",image_Height);
         
-        return 50 + rect.size.height + image.size.height ;
+        return 40 + rect.size.height + image.size.height ;
         
     }else{
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
