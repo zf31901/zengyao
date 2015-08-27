@@ -50,7 +50,7 @@ typedef void(^TrainNumber)(NSArray *numberArr);
 @property (nonatomic,copy) Failure failure;
 - (void)reloadUserInfoDataSuccess:(ReloadUserInfoData)success failure:(Failure)fail;
 
-//获取待考核的数量
+//获取培训待考核的数量
 - (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber;
 
 

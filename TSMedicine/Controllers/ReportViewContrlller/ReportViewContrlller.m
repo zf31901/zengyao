@@ -56,10 +56,10 @@
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
      NSString *currentTime = [WITool getCurrentTime];
-    NSDictionary *dic = @{@"urid":_model.urid,@"urtouserid":_model.urtouserid,@"urtousername":_model.urtousername,@"urfromuserid":_model.urfromuserid,@"urfromusername":_model.urfromusername,@"urphone":_model.urphone,@"urcontent":_textView.text,@"urstate":_model.urstate,@"urcreatedate":currentTime};
+    NSDictionary *dic = @{@"urid":_model.id,@"urtouserid":_model.userlogin,@"urtousername":_model.nick,@"urfromuserid":UserInfoData.im,@"urfromusername":UserInfoData.nickName,@"urphone":UserInfoData.phone,@"urcontent":_textView.text,@"urstate":_model.mobilestate,@"urcreatedate":currentTime};
     
     [rq POSTURLString:@"http://app.aixinland.cn/api/userreport/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         NSLog(@"responseObject === %@",responseObject);
+//         NSLog(@"responseObject === %@",responseObject);
         
          if ([responseObject[@"status"] isEqualToString:@"Success"]) {
              NSLog(@"message == %@",responseObject[@"message"]);

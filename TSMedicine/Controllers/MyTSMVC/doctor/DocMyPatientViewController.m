@@ -68,7 +68,7 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MyPatientModel *model = _dataArr[indexPath.row];
-    if (![model.urstate boolValue]) {
+    if (![model.mobilestate boolValue]) {
         ReportViewContrlller *reportVC = [[ReportViewContrlller alloc] init];
         reportVC.model = _dataArr[indexPath.row];
         [self.navigationController pushViewController:reportVC animated:YES];
@@ -89,38 +89,52 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
 {
     _dataArr = [NSMutableArray array];
     
-    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
-    
-    [rq GETURLString:@"http://app.aixinland.cn/api/userreport/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-//        NSLog(@"responseObj === %@",responseObj);
-        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
-            
-            for (NSDictionary *dic in responseObj[@"data"]) {
-                
-                MyPatientModel *model = [[MyPatientModel alloc] init];
-                [model setValuesForKeysWithDictionary:dic];
-                [_dataArr addObject:model];
-            }
-        }
-            [_tableView reloadData];
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-         NSLog(@"error == %@",error);
-    }];
+//    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+//    
+//    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
+//    [rq GETURLString:@"http://app.aixinland.cn/api/userreport/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+////        NSLog(@"responseObj === %@",responseObj);
+//        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+//            
+//            for (NSDictionary *dic in responseObj[@"data"]) {
+//                
+//                MyPatientModel *model = [[MyPatientModel alloc] init];
+//                [model setValuesForKeysWithDictionary:dic];
+//                [_dataArr addObject:model];
+//            }
+//        }
+//            [_tableView reloadData];
+//
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//         NSLog(@"error == %@",error);
+//    }];
     
     
     NSDictionary *parameters = @{@"type":@"010105",@"pageid":@"1",@"pagesize":@"15"};
     [HttpRequest_MyApi POSTURLString:@"/user/list2/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//       NSLog(@"responseObject === %@",responseObject);
         
-       NSLog(@"responseObject === %@",responseObject);
+        if ([responseObject[@"state"] boolValue]) {
+            
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                
+                MyPatientModel *model = [[MyPatientModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic];
+                [_dataArr addObject:model];
+                
+            }
+        }
         
+        [_tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
          NSLog(@"error == %@",error);
     }];
+    
+    
+    
     
     /*
      _dataArr = [NSMutableArray array];
