@@ -14,6 +14,7 @@
 
 typedef void(^ReloadUserInfoData)(NSString *status);
 typedef void(^Failure)(void);
+typedef void(^TrainNumber)(NSArray *numberArr);
 
 @interface GlobalMethod : NSObject
 
@@ -48,6 +49,9 @@ typedef void(^Failure)(void);
 @property (nonatomic,copy) ReloadUserInfoData reloadUserInfoData;
 @property (nonatomic,copy) Failure failure;
 - (void)reloadUserInfoDataSuccess:(ReloadUserInfoData)success failure:(Failure)fail;
+
+//获取待考核的数量
+- (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber;
 
 
 //处理时间戳和时间

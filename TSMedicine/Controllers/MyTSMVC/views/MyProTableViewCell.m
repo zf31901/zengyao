@@ -14,6 +14,7 @@
     
     [_questionBtn makeCorner:_questionBtn.size.width/2];
     _questionBtn.hidden = YES;
+    _questionBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     
 }
 
@@ -23,6 +24,7 @@
     
     _picImageView.image = [UIImage imageNamed:model.pic];
     _titleLab.text = model.title;
+    
     if (model.msg) {
         _questionBtn.hidden = NO;
         [_questionBtn setTitle:model.msg forState:UIControlStateNormal];

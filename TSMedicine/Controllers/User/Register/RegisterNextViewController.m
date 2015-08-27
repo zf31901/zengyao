@@ -113,6 +113,10 @@
         [self showAlertViewWithTitle:@"两次密码输入不一致，请检查重新输入！" andDelay:1.5];
         return NO;
     }
+    if (_passWordTF1.text.length < 6) {
+        [self showAlertViewWithTitle:@"密码长度不能小于6位数！" andDelay:1.5];
+        return NO;
+    }
     return YES;
 }
 

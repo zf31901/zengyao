@@ -255,6 +255,7 @@
     [self.navigationController pushViewController:registerVC animated:YES];
     
 }
+
 #pragma mark  -----------自动登录-------------
 - (IBAction)autoLoginBtnAction:(UIButton *)sender {
     

@@ -28,12 +28,12 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
     [super viewWillAppear:animated];
     
     [self setNavView];
+    
+     [self loadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self loadData];
     
     [self setTabView];
 }
@@ -70,6 +70,7 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     DocMyTrainDetailViewController *trainDetailVC = [[DocMyTrainDetailViewController alloc] init];
     trainDetailVC.model = _dataArr[indexPath.row];
     [self.navigationController pushViewController:trainDetailVC animated:YES];
@@ -93,7 +94,7 @@ NSString *const TrainTableViewCell = @"MyTrainTableViewCell";
     NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/training/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        NSLog(@"responseObj === %@",responseObj);
+//        NSLog(@"responseObj === %@",responseObj);
        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
            
            for (NSDictionary *dic in responseObj[@"data"]) {

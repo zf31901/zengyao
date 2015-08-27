@@ -13,6 +13,7 @@
 #define Main_Size                   [UIScreen mainScreen].bounds.size
 #define TabBar_Height               49
 #define WEAKSELF __weak __typeof(self)weakSelf = self;
+#define Weak(class) __weak class *weakCell = cell;
 
 //颜色快速生成
 #define RGB(r,g,b)                  [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]

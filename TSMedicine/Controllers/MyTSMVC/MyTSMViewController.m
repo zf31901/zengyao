@@ -51,7 +51,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 
 @property (strong,nonatomic) NSMutableArray *dataArr;
 
-@property (nonatomic,assign) NSInteger questionCount;
+@property (nonatomic,assign) NSInteger count;
 
 @end
 
@@ -144,13 +144,76 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     }
     cell.model = _dataArr[indexPath.section][indexPath.row];
     
+    
+    NSString *type = UserInfoData.Type;
+    Weak(MyProTableViewCell)
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        
+        if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]) {
+            
+            [[GlobalMethod sharedInstance] getDoctorWaitTrainNumber:^(NSArray *numberArr){
+                
+                if (numberArr.count > 0) {
+                    
+                    weakCell.questionBtn.hidden = NO;
+                    [weakCell.questionBtn setTitle:[NSString stringWithFormat:@"%d",numberArr.count] forState:UIControlStateNormal];
+                    [weakCell.questionBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
+                }else{
+                    weakCell.questionBtn.hidden = YES;
+                }
+                
+            }];
+            
+        }else{
+            
+        }
+        
+    }
+    
+    if (indexPath.section == 0 && indexPath.row == 1)
+    {
+        
+        if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
+            
+            if (_count > 0) {
+                
+                cell.questionBtn.hidden = NO;
+                [cell.questionBtn setTitle:[NSString stringWithFormat:@"%d",_count] forState:UIControlStateNormal];
+                [cell.questionBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
+                
+            }else{
+                cell.questionBtn.hidden = YES;
+            }
+            
+        }else if ([type isEqualToString:Doctor_Type]){
+            
+            [[GlobalMethod sharedInstance] getDoctorWaitTrainNumber:^(NSArray *numberArr){
+               
+                if (numberArr.count > 0) {
+                    
+                    weakCell.questionBtn.hidden = NO;
+                    [weakCell.questionBtn setTitle:[NSString stringWithFormat:@"%d",numberArr.count] forState:UIControlStateNormal];
+                    [weakCell.questionBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
+                }else{
+                    weakCell.questionBtn.hidden = YES;
+                }
+                
+            }];
+        
+        }else{
+            
+        }
+        
+        
+    }
+    
     return cell;
 }
 
 #pragma mark --------UITableViewDelegate--------------
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
      NSString *type = UserInfoData.Type;
     
     if (indexPath.section == 0)
@@ -269,19 +332,33 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
 -(void)loadData
 {
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"pid":@(0),@"userid":UserInfoData.im};
+    NSDictionary *parameters = @{@"pid":@(0),@"Duserid":@(0),@"Suserid":UserInfoData.im};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/Count" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        NSLog(@"responseObj === %@",responseObj);
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/Count2" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        NSLog(@"responseObj22222 === %@",responseObj);
         
         if ([responseObj[@"status"] isEqualToString:@"Success"]) {
             
-             _questionCount = [responseObj[@"data"] integerValue];
+            NSInteger answerCount = [responseObj[@"data"] integerValue];
+            NSInteger lastAnswerCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"answerCount"];
+            
+            if (answerCount - lastAnswerCount > 0) {
+                
+                _count = answerCount - lastAnswerCount;
+                
+            }else{
+                _count = 0;
+            }
+            
+            [[NSUserDefaults standardUserDefaults] setInteger:answerCount forKey:@"answerCount"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [self loadLocationData];
         }
         
-        [self loadLocationData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
         NSLog(@"error == %@",error);
     }];
 }
@@ -294,13 +371,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     
     NSArray *picArr = nil;
     if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
-        
-        if (_questionCount > 0 ) {
-            picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
-        }else{
-            picArr = [NSArray arrayWithObjects:@"appl40", nil];
-        }
-        
+        picArr = [NSArray arrayWithObjects:@"appl40", @"questions40", nil];
     }else if ([type isEqualToString:Doctor_Type]){
         picArr = [NSArray arrayWithObjects:@"patient40", @"training40", @"answer40", nil];
     }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
@@ -312,13 +383,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     
     NSArray *titleArr = nil;
     if (![type isEqualToString:Doctor_Type] && ![type isEqualToString:Manager_Type] && ![type isEqualToString:Medicine_Type]) {
-        
-        if (_questionCount > 0 ) {
-            titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
-        }else{
-            titleArr = [NSArray arrayWithObjects:@"我的申请", nil];
-        }
-        
+        titleArr = [NSArray arrayWithObjects:@"我的申请", @"我的提问", nil];
     }else if ([type isEqualToString:Doctor_Type]){
         titleArr = [NSArray arrayWithObjects:@"我的患者", @"我的培训", @"我的问答", nil];
     }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
@@ -384,7 +449,6 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     }
     
 }
-
 
 
 

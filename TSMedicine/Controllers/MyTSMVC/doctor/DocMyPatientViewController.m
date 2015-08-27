@@ -110,6 +110,18 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
          NSLog(@"error == %@",error);
     }];
     
+    
+    NSDictionary *parameters = @{@"type":@"010105",@"pageid":@"1",@"pagesize":@"15"};
+    [HttpRequest_MyApi POSTURLString:@"/user/list2/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+       NSLog(@"responseObject === %@",responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+         NSLog(@"error == %@",error);
+    }];
+    
     /*
      _dataArr = [NSMutableArray array];
      NSArray *nameArr = [NSArray arrayWithObjects:@"张三", @"李四",@"王五",@"赵六", nil];

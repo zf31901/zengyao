@@ -71,6 +71,7 @@
 -(void)loadDatacell{
 
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
     NSString *url=[NSString stringWithFormat:@"%@%@",URLIST,_Goodmodel.upid];
    
     [rq GETURLString:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObj) {

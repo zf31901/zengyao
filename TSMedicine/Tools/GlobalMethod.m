@@ -267,6 +267,33 @@
     }
 }
 
+//获取待考核的数量
+- (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"10"};
+    
+    [rq GETURLString:@"http://app.aixinland.cn/api/training/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+//        NSLog(@"responseObj === %@",responseObj);
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            
+            for (NSDictionary *dic in responseObj[@"data"]) {
+              
+                if ([dic[@"examstate"] boolValue]) {
+                }else{
+                    [arr addObject:dic[@"tname"]];
+                }
+            }
+            
+            trainNumber(arr);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error == %@",error);
+    }];
+}
 
 
 + (NSString *)getJsonDateString:(NSString *)JsonString

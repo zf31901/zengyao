@@ -37,7 +37,18 @@
     _webView.delegate = self;
     _webView.scrollView.delegate = self;
     
-    NSString *url = [NSString stringWithFormat:@"http://app.aixinland.cn/page/train_detail.html?from=app&dataId=%@&userid=%@",_model.tid,UserInfoData.im];
+    NSString *url = nil;
+    
+    if ([_model.examstate boolValue]) {
+        
+        //考核已通过
+        url = [NSString stringWithFormat:@"http://app.aixinland.cn/page/train_detail.html?from=app&dataId=%@",_model.tid];
+    }else{
+        
+        //待考核
+        url = [NSString stringWithFormat:@"http://app.aixinland.cn/page/train_detail.html?from=app&dataId=%@&userid=%@",_model.tid,UserInfoData.im];
+    }
+    
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
     [self.view addSubview:_webView];
