@@ -54,7 +54,7 @@ typedef void(^ResponseCount)(NSInteger count);
 @property (nonatomic,copy) Failure failure;
 - (void)reloadUserInfoDataSuccess:(ReloadUserInfoData)success failure:(Failure)fail;
 
-//获取待考核的数量
+//获取培训待考核的数量
 - (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber;
 
 - (void)getDoctorAnswerCountWithQuestionModel:(MyPatQuestModel *)model newResponseCount:(ResponseCount)responseCount;

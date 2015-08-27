@@ -21,9 +21,9 @@
 {
     _model = model;
     
-    _nameLab.text = model.urtousername;
-    _phoneLab.text = model.urphone;
-    if ([model.urstate boolValue]) {
+    _nameLab.text = model.nick;
+    _phoneLab.text = model.mobile;
+    if ([model.mobilestate boolValue]) {
         _stateLab.text = @"已举报";
         _stateLab.textColor = UIColorFromRGB(0xc7c7c7);
     }else{

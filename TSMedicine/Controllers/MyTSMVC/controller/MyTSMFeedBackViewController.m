@@ -60,11 +60,10 @@
     YYHttpRequest *http = [[YYHttpRequest alloc] init];
     
     NSString *currentTime = [WITool getCurrentTime];
-    NSDictionary *dic = @{@"fdid":@(0),@"fdtitle":@"string",@"fdcontent":_feedBackTextView.text,@"fduserid":UserInfoData.Id,@"fdusername":UserInfoData.nickName,@"fdcreatedate":currentTime,@"fdstate":@(0),@"fduserphone":UserInfoData.phone,@"fduseremail":UserInfoData.email};
+    NSDictionary *dic = @{@"fdid":@(0),@"fdtitle":@"string",@"fdcontent":_feedBackTextView.text,@"fduserid":UserInfoData.im,@"fdusername":UserInfoData.nickName,@"fdcreatedate":currentTime,@"fdstate":@(0),@"fduserphone":UserInfoData.phone,@"fduseremail":UserInfoData.email};
     [http POSTURLString:@"http://app.aixinland.cn/api/feedback/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"responseObject == %@",responseObject)
+        NSLog(@"responseObject == %@",responseObject)
         
-//        NSLog(@"responseObject == %@",responseObject[@"status"]);
         if ([responseObject[@"status"] isEqualToString:@"Success"]) {
             
             [self.navigationController popViewControllerAnimated:YES];

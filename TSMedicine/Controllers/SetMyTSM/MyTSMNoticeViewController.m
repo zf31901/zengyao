@@ -36,7 +36,7 @@
 }
 -(void)loadWebView
 {
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H - StatusBar_Height)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W, SCREEN_H)];
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:htmlURL,UserInfoData.im]]]];
     [_webView  sizeToFit];
     _webView.delegate = self;

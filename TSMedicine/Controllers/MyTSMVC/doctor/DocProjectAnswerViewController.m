@@ -129,13 +129,14 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 
 -(void)loadData
 {
+    [_dataArr removeAllObjects];
     _dataArr = [NSMutableArray array];
     NSMutableArray *arr1 = [NSMutableArray array];
     [arr1 addObject:self.model];
     [_dataArr addObject:arr1];
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"uqid":_model.uqid,@"userid":_model.uquserid,@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"uqid":_model.uqid,@"userid":@"0",@"pageid":@"1",@"pagesize":@"10"};
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj === %@",responseObj);
         
@@ -171,16 +172,19 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     
     NSString *currentTime = [WITool getCurrentTime];
-    NSDictionary *dic = @{@"uqaid":@(0),@"uqauqid":_model.uqid,@"uqauserid":_model.uquserid,@"uqausername":_model.uqusername,@"uqacontent":_textField.text,@"uqcreatedate":currentTime};
+//    NSLog(@"uqid = %@",_model.uqid);
+    NSDictionary *dic = @{@"uqaid":@"0",@"uqauqid":_model.uqid,@"uqauserid":UserInfoData.im,@"uqausername":UserInfoData.nickName,@"uqacontent":_textField.text,@"uqcreatedate":currentTime};
     
     [rq POSTURLString:@"http://app.aixinland.cn/api/userquestionanswer/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"responseObject ==== %@",responseObject);
+//        NSLog(@"message ==== %@",responseObject[@"message"]);
         
         if ([responseObject[@"status"] isEqualToString:@"Success"]) {
             
             [self loadData];
             _textField.text = @"";
         }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"error == %@",error);
     }];

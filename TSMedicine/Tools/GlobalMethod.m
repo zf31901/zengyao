@@ -268,7 +268,7 @@
     }
 }
 
-//获取待考核的数量
+//获取培训待考核的数量
 - (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber
 {
     NSMutableArray *arr = [NSMutableArray array];
