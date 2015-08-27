@@ -10,4 +10,7 @@
 
 @interface CanonicalormTableViewCell : UITableViewCell
 
+
+
+
 @end

@@ -14,10 +14,26 @@
     // Initialization code
 }
 - (IBAction)CanonicaForm:(id)sender {
-    CanonFormViewController *nav=[[CanonFormViewController alloc]init];
     
     
 }
+
+- (IBAction)Phone1button:(id)sender {
+   NSString *numbe=@"010-55144411";
+      NSString *num = [[NSString alloc] initWithFormat:@"telprompt://%@",numbe];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
+  
+}
+
+- (IBAction)Phone2button:(id)sender {
+    NSString *numbe=@"010-55133455";
+    NSString *num = [[NSString alloc] initWithFormat:@"telprompt://%@",numbe];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
+}
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

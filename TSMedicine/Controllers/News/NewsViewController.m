@@ -19,11 +19,8 @@
 
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
-
-#define IS_IPHONE_5    ([[UIScreen mainScreen ] bounds] .size.height)
-
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
-//MBProgressHUDDelegate
+
 {
     NSMutableArray  *brr;
     NSMutableArray  *arr;
@@ -33,6 +30,7 @@
     NSString *tree;
     //NSInteger a_id;
     NSInteger _page;
+    NSInteger _pageID;
 }
 
 
@@ -43,8 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArr=[[NSMutableArray alloc]init];
-      _page=30;
-    _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-44-64) style:UITableViewStyleGrouped];
+      _page=10;
+    _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-44-64) style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     
@@ -76,36 +74,39 @@
 {
     __weak NewsViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
-        _page = 30;
+        _page = 10;
+        _pageID = 1;
         [_dataArr removeAllObjects];
         [ctl UILABLE];
     }];
-//    [_mytableView addLegendFooterWithRefreshingBlock:^{
-//       // _page += 10;
-//       // [ctl UILABLE];
-//    }];
+[_mytableView addLegendFooterWithRefreshingBlock:^{
+       _pageID++;
+        [ctl UILABLE];
+    }];
 }
 -(void)UILABLE{
     
-    
+
     
     arr = [[NSMutableArray alloc] init];
     brr=[[NSMutableArray alloc]init];
-    
-    NSString *pageStr = [NSString stringWithFormat:@"%ld",_page];
-  
+    _pageID = _pageID!=0?_pageID:1;
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_page];
+    NSString *pageID = [NSString stringWithFormat:@"%ld",(long)_pageID];
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"1"              forKey:@"pageid"];
-    [dic setObject:pageStr     forKey:@"pagesize"];
+    [dic setObject:pageID       forKey:@"pageid"];
+    [dic setObject:pageStr      forKey:@"pagesize"];
 
     YYHttpRequest *hq = [[YYHttpRequest alloc] init];
     
     [hq POSTURLString:@"http://app.aixinland.cn/api/news/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//       NSLog(@"12390---%@",responseObject);
-        
+        BOOL state = NO;
         if ([responseObject objectForKey:@"data"] !=nil)
         {
             NSArray *dataArr =[responseObject objectForKey:@"data"];
+            if (dataArr.count == 0) {
+                state = YES;
+            }
             for (int i = 0; i < dataArr.count; i ++)
             {
                 NewsModel *newModel = [[NewsModel alloc] init];
@@ -120,8 +121,14 @@
             }
 
             [_mytableView reloadData];
-            [_mytableView.header endRefreshing];
-            [_mytableView.footer endRefreshing];
+        }
+        
+        [_mytableView.header endRefreshing];
+        [_mytableView.footer endRefreshing];
+       
+        if (state)
+        {
+            _mytableView.footer.state = MJRefreshFooterStateNoMoreData;
             
         }
         
@@ -162,16 +169,17 @@
         cell.newlabel.text=model.a_From;
         cell.dataTimew.text=model.a_time;
         
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.a_SmallImg]]];
-//         NSLog(@"%f-----%f",image.size.width,image.size.height);
+       
+        UIImageView *imageView = [[UIImageView alloc] init];
+        [imageView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
         
-        cell.iamgeView.height = image.size.height;
+        cell.iamgeView.height = imageView.image.size.height;
         
         CGRect imageViewFrame = cell.iamgeView.frame;
         cell.newlabel.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
         cell.dataTimew.y = frame.size.height + 10 + imageViewFrame.size.height + 10;
         
-        [cell.iamgeView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
+        [cell.iamgeView setImage:imageView.image];
         
           return cell;
     }
@@ -208,16 +216,15 @@
         
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.a_SmallImg]]];
         
-//        NSLog(@"image_Height == %f",image_Height);
-        
-        return 50 + rect.size.height + image.size.height ;
+        return 40 + rect.size.height + image.size.height ;
         
     }else{
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
-         CGRect rect1 = [model.a_Title boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+        // CGRect rect1 = [model.a_Title boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
         
-        return 87+rect1.size.height;
+        //return 87+rect1.size.height;
+        return 110;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -232,6 +239,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 0.1f;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
+
 }
 
 @end
