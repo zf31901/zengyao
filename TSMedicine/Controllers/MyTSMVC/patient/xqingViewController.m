@@ -27,7 +27,7 @@
     
     NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?dataId=%@&userid=903050",_model.uppid];
 
-    NSLog(@"_model.upid123--%@",_model.uppid);
+    //NSLog(@"_model.upid123--%@",_model.uppid);
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
@@ -47,7 +47,7 @@
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *urlString = [[request URL] absoluteString];
-    NSLog(@"urlString---  %@",urlString);
+   // NSLog(@"urlString---  %@",urlString);
     if ([urlString rangeOfString:@"page/userproject_detail.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];
     }    else if([urlString rangeOfString:@"/page/userproject_detail.html?objc_receive:Answers"].location != NSNotFound){

@@ -26,7 +26,15 @@
         MyPatQuestModel *model = _dataArr[indexPath.section][indexPath.row];
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.uquserimage] placeholderImage:[UIImage imageNamed:default_head] options:SDWebImageRefreshCached];
         
-        _nameLable.text = model.uqusername;
+        NSString *nameStr = [NSString stringWithFormat:@"%@",model.uqusername];
+        if (nameStr.length == 11) {
+            NSMutableString *name = [NSMutableString stringWithFormat:@"%@",nameStr];
+            NSString *replaceStr = @"****";
+            [name replaceCharactersInRange:NSMakeRange(3, 4) withString:replaceStr];
+            _nameLable.text = name;
+        }else{
+            _nameLable.text = model.uqusername;
+        }
         
         NSString *dateStr = [model.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
         NSString *timeStr = [model.uqcreatedate substringWithRange:NSMakeRange(11, 5)];

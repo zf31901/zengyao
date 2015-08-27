@@ -27,7 +27,7 @@
  
     NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_list.html?dataid=%@",_model.uppid];
    
-    NSLog(@"_model.uppid109---%@",_model.uppid);
+   // NSLog(@"_model.uppid109---%@",_model.uppid);
     
     [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     [_webView  sizeToFit];
@@ -40,7 +40,7 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *urlString = [[request URL] absoluteString];
-    NSLog(@"urlString---  %@",urlString);
+    //NSLog(@"urlString---  %@",urlString);
     
     if ([urlString rangeOfString:@"page/paradigm_list.html?objc_receive:Delete"].location != NSNotFound) {
         [self.navigationController popViewControllerAnimated:YES];

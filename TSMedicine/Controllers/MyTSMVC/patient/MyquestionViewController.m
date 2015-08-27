@@ -29,6 +29,7 @@
 
 @implementation MyquestionViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
         [self setNavView];
@@ -57,31 +58,26 @@
         [_dataArr removeAllObjects];
         [ctl Staload];
     }];
-//    [_mytableView addLegendFooterWithRefreshingBlock:^{
-//        _pagesize += 10;
-//        [_dataArr removeAllObjects];
-//        [ctl Staload];
-//    }];
+
 }
 -(void)Staload{
     [_dataArr removeAllObjects];
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
     
     NSDictionary *dic = nil;
     if (_goodIndex) {
         
-        dic = @{@"pid":_goodIndex.uppid,@"userid":_goodIndex.upuserid,@"pageid":@"1",@"pagesize":pageStr};
+        dic = @{@"pid":_goodIndex.uppid,@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":pageStr};
     }
     if (_model) {
         
-        dic = @{@"pid":_model.uppid,@"userid":_model.upuserid,@"pageid":@"1",@"pagesize":pageStr};
+        dic = @{@"pid":_model.uppid,@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":pageStr};
     }
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        NSLog(@"responseObj == %@",responseObj);
-        
+               
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
@@ -131,6 +127,7 @@
 {
     self.navigationController.navigationBarHidden = NO;
     self.title = @"我的提问";
+   
 }
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -150,10 +147,12 @@
         
     }
     
+    cell.indexPath = indexPath;
+    
     MyPatQuestModel *model1 = _dataArr[indexPath.row];
+    cell.model = model1;
     
     
-    cell.model=model1;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -162,12 +161,18 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70.0f;
+    //return 70.0f;
+    MyPatQuestModel *model = _dataArr[indexPath.row];
+    return 40.0 + model.contentSize.height;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QuestionViewController *nav=[[QuestionViewController alloc]init];
+    
     nav.model = _dataArr[indexPath.row];
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.navigationController pushViewController:nav animated:YES];
 

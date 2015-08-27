@@ -11,6 +11,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <math.h>
 #import "BaseModel.h"
+#import "MyAnswerModel.h"
 
 
 #define TSUserDefaults [NSUserDefaults standardUserDefaults]
@@ -293,6 +294,46 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
     }];
+}
+
+- (void)getDoctorAnswerCountWithQuestionModel:(MyPatQuestModel *)model newResponseCount:(ResponseCount)responseCount
+{
+    
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
+    NSDictionary *dic = @{@"uqid":model.uqid,@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"20"};
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+        NSMutableArray *arr2 = [NSMutableArray array];
+        for (NSDictionary *dic in responseObj[@"data"]) {
+            
+            MyAnswerModel *model = [[MyAnswerModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [arr2 addObject:model];
+        }
+        
+        
+         NSInteger lastCount = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%@",model.uqid]];
+        
+        NSInteger newCount = arr2.count - lastCount;
+        
+        if (newCount > 0) {
+            
+            responseCount(newCount);
+        }else{
+            responseCount(0);
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:arr2.count forKey:[NSString stringWithFormat:@"%@",model.uqid]];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error===%@",error);
+    }];
+    
+
+
+
 }
 
 

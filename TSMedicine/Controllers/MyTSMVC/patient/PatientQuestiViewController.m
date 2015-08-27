@@ -31,6 +31,16 @@
     [self loadData];
     [self setNavView];
     [self setNavlable];
+    
+}
+-(void)setlableview{
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    label.text=@"暂无数据";
+    label.center=self.view.center;
+    label.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:label];
+    
+
 }
 -(void)loadData{
   
@@ -53,7 +63,13 @@
             [model setValuesForKeysWithDictionary:dic];
             [_dataArr addObject:model];
         }
+        if (_dataArr.count==0) {
+           [self setlableview];
+        }
+        else{
         [_myTableView reloadData];
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
     }];
@@ -83,7 +99,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 40;
+    return 50;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

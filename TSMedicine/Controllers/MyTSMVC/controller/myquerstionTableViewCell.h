@@ -14,6 +14,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *uqcreatedate;
 
 @property (weak, nonatomic) IBOutlet UILabel *uqstats;
+@property (weak, nonatomic) IBOutlet UILabel *upqcount;
+
+@property (nonatomic,strong) NSIndexPath *indexPath;
+
+
 @property (nonatomic,strong)MyPatQuestModel *model;
 
 @end

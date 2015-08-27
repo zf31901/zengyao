@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCn-XR-b37">
-                        <rect key="frame" x="8" y="43" width="137" height="21"/>
+                        <rect key="frame" x="8" y="42" width="137" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.46198311237373735" green="0.46198311237373735" blue="0.46198311237373735" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -27,14 +27,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzx-zf-B7l">
-                        <rect key="frame" x="248" y="31" width="127" height="44"/>
+                        <rect key="frame" x="248" y="30" width="127" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.48851799242424243" green="0.48851799242424243" blue="0.48851799242424243" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7u-h4-PmF">
+                        <rect key="frame" x="267" y="15" width="20" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="upqcount" destination="C7u-h4-PmF" id="AXL-7P-o6L"/>
                 <outlet property="uqcontent1" destination="sUJ-wD-rSd" id="iaC-cl-IKT"/>
                 <outlet property="uqcreatedate" destination="aCn-XR-b37" id="DAK-Fu-u2Z"/>
                 <outlet property="uqstats" destination="yzx-zf-B7l" id="kPX-id-TDB"/>

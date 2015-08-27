@@ -80,6 +80,7 @@
             _isFirst = NO;
         }
         
+        
         [_mytableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

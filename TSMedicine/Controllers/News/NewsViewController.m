@@ -171,6 +171,7 @@
         
        
         UIImageView *imageView = [[UIImageView alloc] init];
+       
         [imageView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
         
         cell.iamgeView.height = imageView.image.size.height;

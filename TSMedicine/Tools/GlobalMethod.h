@@ -10,11 +10,15 @@
 #import <UIKit/UIKit.h>
 #import "UserObj.h"
 
+#import "MyPatQuestModel.h"
+
 #define UserInfoData [GlobalMethod getUserObj]
 
 typedef void(^ReloadUserInfoData)(NSString *status);
 typedef void(^Failure)(void);
 typedef void(^TrainNumber)(NSArray *numberArr);
+typedef void(^ResponseCount)(NSInteger count);
+
 
 @interface GlobalMethod : NSObject
 
@@ -52,6 +56,8 @@ typedef void(^TrainNumber)(NSArray *numberArr);
 
 //获取待考核的数量
 - (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber;
+
+- (void)getDoctorAnswerCountWithQuestionModel:(MyPatQuestModel *)model newResponseCount:(ResponseCount)responseCount;
 
 
 //处理时间戳和时间

@@ -210,7 +210,7 @@
     xqingViewController *VC = [[xqingViewController  alloc] init];
     if (_Goodmodel) {
         
-        NSLog(@"%@---%@",_Goodmodel.uppid,_Goodmodel.upuserid);
+       // NSLog(@"%@---%@",_Goodmodel.uppid,_Goodmodel.upuserid);
         
         VC.model=_Goodmodel;
     }
