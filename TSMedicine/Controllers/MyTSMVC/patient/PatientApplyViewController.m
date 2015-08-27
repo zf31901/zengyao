@@ -27,6 +27,8 @@
     UITableView *_mytableView;
     NSMutableArray *_dataArr;
          NSInteger _pagesize;
+    NSInteger _pageID;
+
     
 }
 @end
@@ -37,7 +39,7 @@
     [super viewDidLoad];
     
     [self setNavView];
-    _pagesize=10;
+    _pagesize=6;
     [super viewDidLoad];
     
     [self setNavView];
@@ -51,16 +53,22 @@
 }
 -(void)loadData{
     _dataArr = [[NSMutableArray alloc]init];
+       _pageID = _pageID!=0?_pageID:1;
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+        NSString *pageID = [NSString stringWithFormat:@"%ld",_pageID];
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:UserInfoData.im forKey:@"userid"];
-    [dic setObject:@"1"              forKey:@"pageid"];
+    [dic setObject:pageID              forKey:@"pageid"];
     [dic setObject:pageStr   forKey:@"pagesize"];
     YYHttpRequest *hq=[[YYHttpRequest alloc]init];
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+         BOOL state = NO;
         if ([responseObj objectForKey:@"data"] !=nil) {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
-            
+            if (dataArr.count == 0) {
+                state = YES;
+            }
+
             for (NSDictionary *dic in dataArr)
             {
                 MyAppModel *model = [[MyAppModel alloc] init];
@@ -76,6 +84,11 @@
         }
         [_mytableView.header endRefreshing];
         [_mytableView.footer endRefreshing];
+        if (state)
+        {
+            _mytableView.footer.state = MJRefreshFooterStateNoMoreData;
+            
+        }
 
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -97,18 +110,15 @@
 {
     __weak PatientApplyViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
-        _pagesize = 10;
+        _pagesize = 6;
         [_dataArr removeAllObjects];
         [ctl loadData];
     }];
-//    [_mytableView addLegendFooterWithRefreshingBlock:^{
-//      // _pagesize += 10;
-//        [ctl loadData];
-//    }];
+
 }
 -(void)setTableView
 {
-     _mytableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, IS_IPHONE_5-25) style:UITableViewStyleGrouped];
+     _mytableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, ScreenHeight-25) style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     [self.view addSubview:_mytableView];
@@ -125,7 +135,7 @@
 
 - (void)back
 {
-    [self.navigationController popViewControllerAnimated:YES];
+ [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -145,11 +155,7 @@
     MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
     
     cell.upname.text= [NSString stringWithFormat:@"%@",model.upname];
-    cell.upname.numberOfLines=0;
-    CGRect rect = [cell.upname.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.upname.font} context:nil];
-    
-cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
-    
+   cell.upname.numberOfLines=0;
     NSString *dateStr = [model.upcreatedate substringWithRange:NSMakeRange(0, 10)];
     NSString *timeStr = [model.upcreatedate substringWithRange:NSMakeRange(11, 5)];
    
@@ -188,10 +194,9 @@ cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyAppModel *model=[_dataArr objectAtIndex:indexPath.row];
-    CGRect rect = [model.upname boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
 
-    return 60+rect.size.height;
+
+    return 82.0f;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -199,12 +204,8 @@ cell.upname.bounds = CGRectMake(0, 0, rect.size.width,rect.size.height);
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     APPlicationProgressViewController *nav=[[APPlicationProgressViewController alloc]init];
-    
     MyAppModel *model = _dataArr[indexPath.row];
-    
     nav.Goodmodel = model;
-    
-
     [self.navigationController pushViewController:nav animated:YES];
     
 }

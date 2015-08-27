@@ -39,6 +39,7 @@
    
     [self buidRightBtn:@"项目详情"];
     [self loadDatacell];
+  
    
 }
 -(void)setNavView

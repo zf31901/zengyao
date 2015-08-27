@@ -20,12 +20,14 @@
     
     self.donation_titleLab.text = self.cellData[@"donation_titleLab"];
   
-
-    
-    self.donation_contentlab.text = self.cellData[@"donation_contentlab"];
- 
     self.donation_unitlab.text=[NSString stringWithFormat:@"发起人单位：%@",self.cellData[@"donation_unitlab"]];
-NSLog(@"self.donation_contentlab---1%@",self.donation_contentlab);
+    self.donation_contentlab.text=self.cellData[@"donation_contentlab"];
+    
+//    NSString *lab = [NSString stringWithFormat:@"%@",self.cellData[@"donation_contentlab"]];
+//    NSString *donation_contentlab =  [lab stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+//    self.donation_contentlab.text = donation_contentlab;
+//    NSLog(@"%@",self.cellData[@"donation_contentlab"]);
+
 }
 -(CGFloat)getCellHeight;
 {

@@ -26,6 +26,8 @@
     BOOL _isPull;
      NSInteger _page;
     NSInteger  _dataId;
+    NSInteger _pageID;
+
     
 }
 @property (weak, nonatomic) IBOutlet X_TableView *tableView;
@@ -69,25 +71,22 @@
 
 -(void)crealade{
  
-
+    _pageID = _pageID!=0?_pageID:1;
     NSString *pageStr = [NSString stringWithFormat:@"%ld",_page];
+    NSString *pageID = [NSString stringWithFormat:@"%ld",_pageID];
+ 
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:@"1"              forKey:@"pageid"];
+    [dic setObject:pageID       forKey:@"pageid"];
     [dic setObject:pageStr      forKey:@"pagesize"];
     YYHttpRequest *hq=[YYHttpRequest shareInstance];
-    
-    
-    
-    
-    
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
-       
-        if ([responseObj objectForKey:@"data"] !=nil) {
+        BOOL state = NO;
+        if ([responseObj objectForKey:@"data"] !=nil)
+        {
             NSArray *dataArr =[responseObj objectForKey:@"data"];
-            
-            
-            
+            if (dataArr.count == 0) {
+                state = YES;
+            }
             for (int i = 0; i < dataArr.count; i++)
             {
                 DetailModel *model=[[DetailModel alloc]init];
@@ -101,7 +100,7 @@
                                   kCellTag:@"DonationCell",
                                   kCellDidSelect:@"DonationCell",
                                   @"donation_titleLab":[dataDic objectForKey:@"pname"],
-                                  @"donation_contentlab":[dataDic objectForKey:@"pjieshao"],
+                                  @"donation_contentlab":[dataDic objectForKey:@"pshiyingzheng"],
                                   @"donation_unitlab":[dataDic objectForKey:@"pfaqidanwei"],
                                   @"donation_imgView":[dataDic  objectForKey:@"pimage"],
                                   } mutableCopy]];
@@ -114,7 +113,22 @@
             [self.tableView.header endRefreshing];
             [self.tableView.footer endRefreshing];
             
+            if (state)
+            {
+               self.tableView.footer.state = MJRefreshFooterStateNoMoreData;
+                
+            }
+            
         }
+        [self.tableView.header endRefreshing];
+        [self.tableView.footer endRefreshing];
+        
+        if (state)
+        {
+        self.tableView.footer.state = MJRefreshFooterStateNoMoreData;
+            
+        }
+
         [self lable];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -130,14 +144,16 @@
     __weak DonationViewController * ctl = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         _page = 10;
+        _pageID=1;
         [_dataArry removeAllObjects];
         [_dataA removeAllObjects];
         [ctl crealade];
     }];
-//    [self.tableView addLegendFooterWithRefreshingBlock:^{
-//        _page += 10;
-//        [ctl crealade];
-//    }];
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        _pageID++;
+    
+        [ctl crealade];
+    }];
 }
 
 

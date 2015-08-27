@@ -11,6 +11,7 @@
 #import "myquerstionTableViewCell.h"
 #import "QuestionTurnViewController.h"
 #import "QuestionViewController.h"
+#import "MJRefresh.h"
 
 #define URL @"http://app.aixinland.cn/api/userquestion/List"
 
@@ -35,10 +36,32 @@
      _dataArr = [NSMutableArray array];
     [self setTableView];
     [self buidRightBtn:@"提问"];
-//    [self Staload];
+    [self addRefresh];
 
     
     
+}
+- (NSMutableArray *)dataArr
+{
+    if (_dataArr == nil) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
+#pragma mark - 上下啦刷新
+- (void)addRefresh
+{
+    __weak MyquestionViewController * ctl = self;
+    [_mytableView addLegendHeaderWithRefreshingBlock:^{
+        _pagesize = 10;
+        [_dataArr removeAllObjects];
+        [ctl Staload];
+    }];
+//    [_mytableView addLegendFooterWithRefreshingBlock:^{
+//        _pagesize += 10;
+//        [_dataArr removeAllObjects];
+//        [ctl Staload];
+//    }];
 }
 -(void)Staload{
     [_dataArr removeAllObjects];
@@ -65,8 +88,12 @@
             [_dataArr addObject:model];
         }
         [_mytableView reloadData];
+        [_mytableView.header endRefreshing];
+        [_mytableView.footer endRefreshing];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
+    
     }];
 
 

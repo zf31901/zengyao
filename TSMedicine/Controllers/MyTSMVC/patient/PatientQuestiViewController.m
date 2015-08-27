@@ -25,36 +25,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     _pagesize=10;
+     _pagesize=6;
     _dataArr=[[NSMutableArray alloc]init];
     
     [self loadData];
     [self setNavView];
     [self setNavlable];
-    
-    
-    
-    
 }
 -(void)loadData{
   
     _myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     
     [self.view addSubview:_myTableView];
 }
 -(void)setNavlable{
-    
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
     NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":pageStr};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-            NSLog(@"responseObj == %@",responseObj);
-        
+    
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyProjectModel *model = [[MyProjectModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
