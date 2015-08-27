@@ -111,6 +111,8 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
 //    }];
     
     
+    
+    
     NSDictionary *parameters = @{@"type":@"010105",@"pageid":@"1",@"pagesize":@"15"};
     [HttpRequest_MyApi POSTURLString:@"/user/list2/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //       NSLog(@"responseObject === %@",responseObject);
@@ -155,6 +157,7 @@ NSString *const PatientTableViewCell = @"MyPatientTableViewCell";
      [_dataArr addObject:model];
      }
      */
+    
     
 }
 
