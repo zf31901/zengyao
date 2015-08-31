@@ -10,7 +10,7 @@
 #import "MyTSMAboutViewController.h"
 #import "MyTSMFeedBackViewController.h"
 
-@interface MyTSMSetViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyTSMSetViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong) NSMutableArray *dataArr;
 
@@ -83,6 +83,7 @@
             case 0:
             {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否清除缓存!" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                alert.delegate = self;
                 [alert show];
             }
                 break;
@@ -146,6 +147,26 @@
         
     }];
     
+}
+#pragma  mark -------------UIAlertViewDelegate-------------
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            
+        }
+            break;
+            
+        case 1:
+        {
+            [self showHUDInView:KEY_WINDOW WithText:@"清除成功" andDelay:LOADING_TIME];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)back

@@ -157,7 +157,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
                 if (numberArr.count > 0) {
                     
                     weakCell.questionBtn.hidden = NO;
-                    [weakCell.questionBtn setTitle:[NSString stringWithFormat:@"%d",numberArr.count] forState:UIControlStateNormal];
+                    [weakCell.questionBtn setTitle:[NSString stringWithFormat:@"%ld",numberArr.count] forState:UIControlStateNormal];
                     [weakCell.questionBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
                 }else{
                     weakCell.questionBtn.hidden = YES;
@@ -179,7 +179,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
             if (_count > 0) {
                 
                 cell.questionBtn.hidden = NO;
-                [cell.questionBtn setTitle:[NSString stringWithFormat:@"%d",_count] forState:UIControlStateNormal];
+                [cell.questionBtn setTitle:[NSString stringWithFormat:@"%ld",_count] forState:UIControlStateNormal];
                 [cell.questionBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
                 
             }else{
@@ -193,7 +193,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
                 if (numberArr.count > 0) {
                     
                     weakCell.questionBtn.hidden = NO;
-                    [weakCell.questionBtn setTitle:[NSString stringWithFormat:@"%d",numberArr.count] forState:UIControlStateNormal];
+                    [weakCell.questionBtn setTitle:[NSString stringWithFormat:@"%ld",numberArr.count] forState:UIControlStateNormal];
                     [weakCell.questionBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
                 }else{
                     weakCell.questionBtn.hidden = YES;
@@ -335,7 +335,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     NSDictionary *parameters = @{@"pid":@(0),@"Duserid":@(0),@"Suserid":UserInfoData.im};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/Count2" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        NSLog(@"responseObj22222 === %@",responseObj);
+//        NSLog(@"responseObj22222 === %@",responseObj);
         
         if ([responseObj[@"status"] isEqualToString:@"Success"]) {
             
@@ -400,19 +400,6 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
         model.pic = picArr[i];
         model.title = titleArr[i];
         
-        if ([type isEqualToString:Patient_Type1] || [type isEqualToString:Patient_Type2]) {
-            if (i == 1) {
-                //                 model.msg = [NSString stringWithFormat:@"%d",i];
-            }
-        }else if ([type isEqualToString:Doctor_Type]){
-            if (i == 1) {
-                //                model.msg = [NSString stringWithFormat:@"%d",i];
-            }
-        }else if ([type isEqualToString:Manager_Type] || [type isEqualToString:Medicine_Type]){
-            if (i == 0) {
-                //                model.msg = [NSString stringWithFormat:@"%d",i];
-            }
-        }
         [arr1 addObject:model];
     }
     
