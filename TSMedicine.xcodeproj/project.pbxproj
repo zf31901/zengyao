@@ -90,6 +90,8 @@
 		166077321B74B41700978E0F /* MyPatQuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077311B74B41700978E0F /* MyPatQuestModel.m */; };
 		166077361B74B6FA00978E0F /* MyQuestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166077341B74B6FA00978E0F /* MyQuestTableViewCell.m */; };
 		166077371B74B6FA00978E0F /* MyQuestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166077351B74B6FA00978E0F /* MyQuestTableViewCell.xib */; };
+		1676EC3B1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1676EC391B9033DD00E5AB50 /* MyTSMResetPhoneViewController.m */; };
+		1676EC3C1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1676EC3A1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.xib */; };
 		16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BE81B466A7C00767F94 /* S2-Logo-FM.png */; };
 		16776BEB1B466BC100767F94 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16776BEA1B466BC100767F94 /* Default-568h@2x.png */; };
 		167BB28E1B73126500098D86 /* MyTSMFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167BB28C1B73126500098D86 /* MyTSMFeedBackViewController.m */; };
@@ -421,6 +423,9 @@
 		166077331B74B6FA00978E0F /* MyQuestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQuestTableViewCell.h; sourceTree = "<group>"; };
 		166077341B74B6FA00978E0F /* MyQuestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQuestTableViewCell.m; sourceTree = "<group>"; };
 		166077351B74B6FA00978E0F /* MyQuestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyQuestTableViewCell.xib; sourceTree = "<group>"; };
+		1676EC381B9033DD00E5AB50 /* MyTSMResetPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMResetPhoneViewController.h; sourceTree = "<group>"; };
+		1676EC391B9033DD00E5AB50 /* MyTSMResetPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTSMResetPhoneViewController.m; sourceTree = "<group>"; };
+		1676EC3A1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTSMResetPhoneViewController.xib; sourceTree = "<group>"; };
 		16776BE81B466A7C00767F94 /* S2-Logo-FM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "S2-Logo-FM.png"; sourceTree = "<group>"; };
 		16776BEA1B466BC100767F94 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		167BB28B1B73126500098D86 /* MyTSMFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTSMFeedBackViewController.h; sourceTree = "<group>"; };
@@ -801,6 +806,9 @@
 				16A0A3931B83327400572D97 /* MyTSMResetViewController.h */,
 				16A0A3941B83327400572D97 /* MyTSMResetViewController.m */,
 				16A0A3951B83327400572D97 /* MyTSMResetViewController.xib */,
+				1676EC381B9033DD00E5AB50 /* MyTSMResetPhoneViewController.h */,
+				1676EC391B9033DD00E5AB50 /* MyTSMResetPhoneViewController.m */,
+				1676EC3A1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.xib */,
 				10694DC31B7206B600CE2504 /* MyTSMNoticeViewController.h */,
 				10694DC41B7206B600CE2504 /* MyTSMNoticeViewController.m */,
 				10694DC51B7206B600CE2504 /* MyTSMNoticeViewController.xib */,
@@ -1790,6 +1798,7 @@
 				161C64191B7D78AC000BDB10 /* icon180.png in Resources */,
 				167BB29E1B73499800098D86 /* PatientQuestiViewController.xib in Resources */,
 				169071501B34220600A4CD21 /* AskForCell.xib in Resources */,
+				1676EC3C1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.xib in Resources */,
 				1695CC1E1B783A3600FA1B1E /* DocProjectAnswerViewController.xib in Resources */,
 				16776BE91B466A7C00767F94 /* S2-Logo-FM.png in Resources */,
 				16B9099F1B281F7800211892 /* NewsViewController.xib in Resources */,
@@ -1923,6 +1932,7 @@
 				16FAB27C1B78AFD600AE4566 /* UIImage+RoundedCorner.m in Sources */,
 				169071491B3408D600A4CD21 /* AskForDonationViewController.m in Sources */,
 				1695CC361B783C5F00FA1B1E /* ProjectdetailViewController.m in Sources */,
+				1676EC3B1B9033DD00E5AB50 /* MyTSMResetPhoneViewController.m in Sources */,
 				9D0C8D931B7B1D53001B4A8E /* AuditInformationTableViewCell.m in Sources */,
 				9D0C8DAB1B7B2B60001B4A8E /* CanonFormViewController.m in Sources */,
 				1660771D1B74503C00978E0F /* MyPatientTableViewCell.m in Sources */,

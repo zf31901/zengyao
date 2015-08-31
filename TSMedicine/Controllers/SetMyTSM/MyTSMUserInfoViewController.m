@@ -9,9 +9,11 @@
 #import "MyTSMUserInfoViewController.h"
 #import "MyTSMResetViewController.h"
 #import "MyUserInforView.h"
+#import "MyTSMResetPhoneViewController.h"
 
 #import "MyUserInfoHeadTableViewCell.h"
 #import "MyUserInfoTableViewCell.h"
+
 
 #import "UIImage+Rotation.h"
 #import "UIImage+Resize.h"
@@ -252,10 +254,9 @@ NSString *const UserInfoTableViewCell = @"MyUserInfoTableViewCell";
         case 4:
         {
             NSLog(@"修改手机号");
-            MyTSMResetViewController *resetVC = [[MyTSMResetViewController alloc] init];
-            resetVC.navTitle = @"修改手机号";
-            resetVC.sendTag = 204;
-            [self.navigationController pushViewController:resetVC animated:YES];
+            MyTSMResetPhoneViewController *resetPhoneVC = [[MyTSMResetPhoneViewController alloc] init];
+            resetPhoneVC.navTitle = @"修改手机号";
+            [self.navigationController pushViewController:resetPhoneVC animated:YES];
         }
             break;
             

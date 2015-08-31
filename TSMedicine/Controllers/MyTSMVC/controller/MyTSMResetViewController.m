@@ -126,12 +126,12 @@
 -(void)resetInfoWithParameter:(NSDictionary *)parameter
 {
     [HttpRequest_MyApi POSTURLString:@"/User/update/" parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"responseObject == %@",responseObject);
+//        NSLog(@"responseObject == %@",responseObject);
         
         if ([responseObject[@"state"] boolValue]) {
             
             NSDictionary *dataDic = (NSDictionary *)[responseObject[@"data"] objectFromJSONString];
-            NSLog(@"dataDic == %@",dataDic)
+//            NSLog(@"dataDic == %@",dataDic)
             
             if ([dataDic[@"result"] boolValue]) {
                 
@@ -144,7 +144,6 @@
                         [self.navigationController popViewControllerAnimated:YES];
                     }
                 } failure:^{
-                    
                 }];
             }
            
