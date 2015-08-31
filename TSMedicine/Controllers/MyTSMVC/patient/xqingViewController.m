@@ -21,10 +21,10 @@
     [super viewDidLoad];
     [self setNavView];
     [self createNavView];
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H-StatusBar_Height)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, StatusBar_Height, SCREEN_W,SCREEN_H)];
     
     _webView.delegate=self;
-    
+        _webView.backgroundColor=[UIColor clearColor];
     NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/userproject_detail.html?dataId=%@&userid=903050",_model.uppid];
 
     //NSLog(@"_model.upid123--%@",_model.uppid);

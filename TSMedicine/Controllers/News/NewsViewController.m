@@ -15,7 +15,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
 
-
+#import "Helper.h"
+#import "UIView+Extension.h"
 
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
@@ -111,12 +112,7 @@
             {
                 NewsModel *newModel = [[NewsModel alloc] init];
                 NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
-                newModel.a_Title = [dataDic objectForKey:@"a_Title"];
-                newModel.a_From = [dataDic objectForKey:@"a_From"];
-                newModel.a_time = [dataDic objectForKey:@"time"];
-                
-                newModel.a_SmallImg=[dataDic objectForKey:@"a_SmallImg"];
-                newModel.a_ID=[dataDic objectForKey:@"a_ID"];
+               [newModel loadModel:dataDic];
                 [_dataArr addObject:newModel];
             }
 
@@ -146,7 +142,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     if (0 == indexPath.row)
     {
         newCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -160,7 +156,7 @@
         cell.fromeLable.text=model.a_Title;
         cell.fromeLable.numberOfLines=0;
         CGRect rect = [cell.fromeLable.text boundingRectWithSize:CGSizeMake(300, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell.fromeLable.font} context:nil];
-
+        
         cell.fromeLable.frame = CGRectMake(10, 0, 300, rect.size.height);
         
         CGRect frame = cell.fromeLable.frame;
@@ -169,9 +165,9 @@
         cell.newlabel.text=model.a_From;
         cell.dataTimew.text=model.a_time;
         
-       
+        
         UIImageView *imageView = [[UIImageView alloc] init];
-       
+        
         [imageView setImageWithURL:[NSURL URLWithString:model.a_SmallImg]];
         
         cell.iamgeView.height = imageView.image.size.height;
@@ -182,31 +178,39 @@
         
         [cell.iamgeView setImage:imageView.image];
         
-          return cell;
+        return cell;
     }
-
+    
     else{
-      
+        
         NewsTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
-        cell1.newlab.text=model.a_Title;
-        cell1.newlab.numberOfLines=0;
+        cell1.dataTimelab.text = model.a_time;
+        cell1.dataTimelab.frame = model.a_timeF;
+        cell1.dataTimelab. textColor = RGB(147, 139, 148);
         
-        cell1.fromLab.text=model.a_From;
+        cell1.fromLab.text = model.a_From;
+        cell1.fromLab.frame = model.a_FromF;
+        cell1.fromLab.textColor = RGB(147, 139, 148);
         
-        CGRect rect1 = [cell1.newlab.text boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:cell1.newlab.font} context:nil];
-        cell1.newlab.bounds = CGRectMake(0, 0, rect1.size.width, 120);
+        cell1.newlab.text = model.a_Title;
+        cell1.newlab.frame = model.a_TitleF;
+        cell1.newlab.textColor = [UIColor blackColor];
         
-        cell1.dataTimelab.text=model.a_time;
         
-        [cell1.iamge setImageWithURL:[NSURL URLWithString:model.a_SmallImg] ];
+        [cell1.iamge sd_setImageWithURL:[NSURL URLWithString:model.a_SmallImg] placeholderImage:nil];
+        cell1.iamge.frame = model.a_SmallImgF;
+        
+        //  [cell1 loadCellWith:model];
+        
+        
         
         return cell1;
-        
-    return nil;
+    }
+    
 }
-}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.row ) {
@@ -222,10 +226,8 @@
     }else{
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
-        // CGRect rect1 = [model.a_Title boundingRectWithSize:CGSizeMake(200, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
-        
-        //return 87+rect1.size.height;
-        return 110;
+        return model.CellH;
+
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

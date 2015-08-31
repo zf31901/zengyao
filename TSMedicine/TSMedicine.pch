@@ -8,6 +8,13 @@
 
 #import <Availability.h>
 
+//屏幕宽
+#define ScreenW  [UIScreen mainScreen].applicationFrame.size.width
+//屏幕高
+#define ScreenH  [UIScreen mainScreen].applicationFrame.size.height
+//RGB
+#define RGB(r,g,b) [UIColor  colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -16,6 +23,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "TSDefine.h"
+    #import "Helper.h"
+
 #endif
 
 

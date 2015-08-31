@@ -277,6 +277,8 @@
 		9D51FD0B1B6EFDE6007FF74F /* ShopFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD081B6EFDE6007FF74F /* ShopFrame.m */; };
 		9D51FD601B6F446F007FF74F /* newCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D51FD5E1B6F446F007FF74F /* newCell.m */; };
 		9D51FD611B6F446F007FF74F /* newCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D51FD5F1B6F446F007FF74F /* newCell.xib */; };
+		9DBDA5211B9408CB00799BBD /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBDA5201B9408CB00799BBD /* Helper.m */; };
+		9DBDA5241B94151300799BBD /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBDA5231B94151300799BBD /* UIView+Extension.m */; };
 		9DD49DF71B7AE37400D5770B /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DF61B7AE37400D5770B /* QuestionViewController.m */; };
 		9DD49E001B7AE49C00D5770B /* QuestionTurnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD49DFE1B7AE49C00D5770B /* QuestionTurnViewController.m */; };
 		9DD49E011B7AE49C00D5770B /* QuestionTurnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49DFF1B7AE49C00D5770B /* QuestionTurnViewController.xib */; };
@@ -685,6 +687,10 @@
 		9D51FD5D1B6F446F007FF74F /* newCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newCell.h; sourceTree = "<group>"; };
 		9D51FD5E1B6F446F007FF74F /* newCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newCell.m; sourceTree = "<group>"; };
 		9D51FD5F1B6F446F007FF74F /* newCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newCell.xib; sourceTree = "<group>"; };
+		9DBDA51F1B9408CB00799BBD /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		9DBDA5201B9408CB00799BBD /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		9DBDA5221B94151300799BBD /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		9DBDA5231B94151300799BBD /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		9DD49DF51B7AE37400D5770B /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		9DD49DF61B7AE37400D5770B /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		9DD49DFD1B7AE49C00D5770B /* QuestionTurnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTurnViewController.h; sourceTree = "<group>"; };
@@ -1025,6 +1031,10 @@
 		1653CE4B1B6A0332001D21FF /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9DBDA5221B94151300799BBD /* UIView+Extension.h */,
+				9DBDA5231B94151300799BBD /* UIView+Extension.m */,
+				9DBDA51F1B9408CB00799BBD /* Helper.h */,
+				9DBDA5201B9408CB00799BBD /* Helper.m */,
 				1653CE4C1B6A0409001D21FF /* WIDevice.h */,
 				1653CE4D1B6A0409001D21FF /* WIDevice.m */,
 				1653CE4F1B6A05AE001D21FF /* WITool.h */,
@@ -1958,6 +1968,7 @@
 				16FAB27A1B78AFD600AE4566 /* UIImage+Resize.m in Sources */,
 				167BB2A71B734A5F00098D86 /* DocMyTrainViewController.m in Sources */,
 				16A09DAC1B89B27E0089B4FF /* SetAboutTSMViewController.m in Sources */,
+				9DBDA5211B9408CB00799BBD /* Helper.m in Sources */,
 				10694DC21B72066800CE2504 /* MyTSMUserInfoViewController.m in Sources */,
 				168369651B2AD5E800A78898 /* PersonalCell.m in Sources */,
 				166077261B74602000978E0F /* MyTrainTableViewCell.m in Sources */,
@@ -1981,6 +1992,7 @@
 				1685AF351B2FFD4200F725C3 /* MyPatientViewController.m in Sources */,
 				1692BBB91B426CCE0094E7A0 /* PhoneVerificationCodeViewController.m in Sources */,
 				169909EA1B8480000085BDE4 /* MJRefreshGifHeader.m in Sources */,
+				9DBDA5241B94151300799BBD /* UIView+Extension.m in Sources */,
 				1695CC251B783ACC00FA1B1E /* DocAnswerTableViewCell.m in Sources */,
 				1683694E1B2AB56800A78898 /* ExitLoginCell.m in Sources */,
 				9DD49DF71B7AE37400D5770B /* QuestionViewController.m in Sources */,

@@ -30,7 +30,7 @@
 
     _webView.delegate=self;
     _webView.scrollView.delegate = self;
-    
+    _webView.backgroundColor=[UIColor clearColor];
     NSString *url = nil;
     if (_userID) {
          url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/project_detail.html?userid=%@&dataId=%@",_userID,_model.pid];

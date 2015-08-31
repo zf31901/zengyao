@@ -20,11 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavView];
-    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0,StatusBar_Height, SCREEN_W,SCREEN_H-StatusBar_Height)];
+    _webView=[[UIWebView alloc]initWithFrame:CGRectMake(0,StatusBar_Height, SCREEN_W,SCREEN_H)];
     
     _webView.delegate=self;
     _webView.scrollView.delegate = self;
- 
+    _webView.backgroundColor=[UIColor clearColor];
     NSString *url=[NSString stringWithFormat:@"http://app.aixinland.cn/page/paradigm_list.html?dataid=%@",_model.uppid];
    
    // NSLog(@"_model.uppid109---%@",_model.uppid);
