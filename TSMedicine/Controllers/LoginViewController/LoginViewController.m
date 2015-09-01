@@ -41,8 +41,8 @@
     [_registerBtn setBackgroundColor:UIColorFromRGB(0xd8d8d8)];
     [_registerBtn setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
     
-    _nikeName.text = @"903050";
-    _pawssWorld.text = @"111222";
+//    _nikeName.text = @"903050";
+//    _pawssWorld.text = @"111222";
     _pawssWorld.secureTextEntry = YES;
     
     _nikeName.clearButtonMode = UITextFieldViewModeAlways;
