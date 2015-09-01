@@ -91,7 +91,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSDictionary *dic = @{@"pid":_model.pid,@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
 //        NSLog(@"responseObj == %@",responseObj);
         
@@ -100,11 +100,27 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
             [model setValuesForKeysWithDictionary:dic];
             [_dataArr addObject:model];
         }
-        [_tableView reloadData];
+        
+        if (_dataArr.count > 0) {
+            [_tableView reloadData];
+        }else{
+            [_tableView removeFromSuperview];
+            _tableView = nil;
+            [self loadAlertUI];
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
     }];
     
+}
+
+-(void)loadAlertUI
+{
+    WIBaseLabel *label = [WIBaseLabel createClassWithTitle:@"您暂无提问" andWithFrame:CGRectMake(0, 0, 120, 20) andWithFont:17];
+    label.center = self.view.center;
+    label.midY = label.center.y - 50;
+    [self.view addSubview:label];
 }
 
 - (void)back

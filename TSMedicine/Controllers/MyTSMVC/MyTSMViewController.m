@@ -334,7 +334,7 @@ NSString *const ProTableViewCell = @"MyProTableViewCell";
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSDictionary *parameters = @{@"pid":@(0),@"Duserid":@(0),@"Suserid":UserInfoData.im};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/Count2" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/Count3" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj22222 === %@",responseObj);
         
         if ([responseObj[@"status"] isEqualToString:@"Success"]) {

@@ -78,7 +78,7 @@
 {
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"pageid":@"1",@"pagesize":@"10"};
+    NSDictionary *dic = @{@"pageid":@"1",@"pagesize":@"20"};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/projects/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
 //        NSLog(@"responseObj == %@",responseObj);

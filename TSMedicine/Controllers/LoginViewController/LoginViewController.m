@@ -48,6 +48,8 @@
     _nikeName.clearButtonMode = UITextFieldViewModeAlways;
     _pawssWorld.clearButtonMode = UITextFieldViewModeAlways;
     
+    
+    
 }
 
 -(void)setNavView

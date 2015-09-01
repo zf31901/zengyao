@@ -23,7 +23,7 @@
     _questLab.numberOfLines = 0;
     _questLab.height = model.contentSize.height;
     
-    NSLog(@"model.contentSize.height = %f",model.contentSize.height)
+//    NSLog(@"model.contentSize.height = %f",model.contentSize.height)
     
     _dateLab.y = _questLab.height + 10;
     NSString *dateStr = [model.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
