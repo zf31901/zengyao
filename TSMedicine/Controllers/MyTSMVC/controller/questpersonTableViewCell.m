@@ -14,7 +14,6 @@
     
     _dateLab.textColor = Commom_TextColor_Gray;
     _model = [[MyAnswerModel alloc] init];
-    
     [_headImageView makeCorner:_headImageView.size.width/2];
     
 }

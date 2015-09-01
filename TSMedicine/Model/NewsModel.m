@@ -37,14 +37,14 @@
     self.a_SmallImgF = CGRectMake(a_SmallImgX, a_SmallImgY, a_SmallImgWH, a_SmallImgWH);
     
     //内容frame
-    CGFloat a_ContentX = Margin;
-    CGFloat a_ContenY  = Margin;
+    CGFloat a_ContentX = 8;
+    CGFloat a_ContenY  = 8;
     CGFloat a_ContenW ;
     
     //时间frame
     CGFloat a_timeX;
     CGFloat a_timeH = 21;
-    CGFloat a_timeW = [Helper widthOfString:self.a_time font:[UIFont systemFontOfSize:13] height:a_timeH];
+    CGFloat a_timeW = [Helper widthOfString:self.a_time font:[UIFont systemFontOfSize:14] height:a_timeH];
     CGFloat a_timeY;
     
     if ([self.a_SmallImg isEqualToString:@""]) {
@@ -61,16 +61,16 @@
         a_timeX = a_SmallImgX - a_timeW - Margin;
     }
     
-    CGFloat a_ContenH = [Helper heightOfString:self.a_Title font:[UIFont systemFontOfSize:18] width:a_ContenW];
+   // CGFloat a_ContenH = [Helper heightOfString:self.a_Title font:[UIFont systemFontOfSize:18] width:a_ContenW];
     
-    self.a_TitleF = CGRectMake(a_ContentX, a_ContenY, a_ContenW, a_ContenH);
+    self.a_TitleF = CGRectMake(8, 8, a_ContenW, 60);
     
     //来源frame
     CGFloat a_FromX = Margin;
     CGFloat a_FromY = CGRectGetMaxY(self.a_TitleF)+Margin;
     CGFloat a_FromH = 21;
-    CGFloat a_FromW = [Helper widthOfString:self.a_From font:[UIFont systemFontOfSize:15] height:a_FromH];
-    self.a_FromF = CGRectMake(a_FromX, a_FromY, a_FromW, a_FromH);
+   // CGFloat a_FromW = [Helper widthOfString:self.a_From font:[UIFont systemFontOfSize:14] height:a_FromH];
+    self.a_FromF = CGRectMake(a_FromX, a_FromY, 100, a_FromH);
     
     
     a_timeY = a_FromY;

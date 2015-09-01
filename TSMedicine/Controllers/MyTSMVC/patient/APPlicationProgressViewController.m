@@ -8,7 +8,7 @@
 
 #import "APPlicationProgressViewController.h"
 #import "AuditInformationTableViewCell.h"
-//#import "MyAppModel.h"
+
 #import "ReasonTableViewCell.h"
 #import "HospitalTableViewCell.h"
 #import "CanonicalormTableViewCell.h"
@@ -163,11 +163,11 @@
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         else if ([model.upstate boolValue]== 1) {
-             Audcell.upstate.text=@"审核通过";
+             Audcell.upstate.text=@"未审核";
              Audcell.upstate.textColor=UIColorFromRGB(0x20A456);
         }
         else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
-             Audcell.upstate.text=@"未审核";
+             Audcell.upstate.text=@"审核通过";
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }else{
              Audcell.upstate.text=@"用户正提交申请";

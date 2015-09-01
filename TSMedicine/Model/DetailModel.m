@@ -9,6 +9,13 @@
 #import "DetailModel.h"
 
 @implementation DetailModel
+-(void)setUqcontent:(NSString *)uqcontent
+{
+   _pshiyingzheng= uqcontent;
+    
+    _contentSize = [uqcontent sizeWithWidth:ScreenWidth - 20 withFont:17];
+    
+}
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
     

@@ -19,6 +19,7 @@
 @property(nonatomic,strong)NSString *pshiyingzheng;
 @property(nonatomic,strong)NSString *pstate;
 @property(nonatomic,strong)NSString *pcheckurl;
+@property (nonatomic,assign) CGSize contentSize;
 
 
 @end

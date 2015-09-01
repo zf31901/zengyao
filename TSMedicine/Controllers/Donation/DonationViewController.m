@@ -10,7 +10,7 @@
 #import "AskForDonationViewController.h"
 #import "DetailModel.h"
 #import "MJRefresh.h"
-
+#import "DonationCell.h"
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
 #define HTMURL @"http://app.aixinland.cn/api/userproject/CheckState?dataId=%@&userid=%@"
@@ -18,56 +18,55 @@
 #define Patient_Type2 @""           //患者
 
 
-@interface DonationViewController ()
+@interface DonationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *_dataArry;
-    NSMutableArray *_dataA;
-    // 下拉刷新变量
-    BOOL _isPull;
+  
+    UITableView *_mytableView;
+
+//    // 下拉刷新变量
+//    BOOL _isPull;
      NSInteger _page;
     NSInteger  _dataId;
     NSInteger _pageID;
 
     
 }
-@property (weak, nonatomic) IBOutlet X_TableView *tableView;
-
 
 @end
 
 @implementation DonationViewController
--(void)dealloc{
-   // [self.headerRefreshView free];
-    //[self.footerRefreshView free];
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
       self.title = @"捐助项目";
+    _dataArry=[[NSMutableArray alloc]init];
     _page=10;
     
-    _dataArry=[[NSMutableArray alloc]init];
-    _dataA=[[NSMutableArray alloc]init];
-    
-       // NSMutableArray *testArr = [[NSMutableArray alloc]init];
+     [self UItabview];
     [self crealade];
     [self addRefresh];
+   
     
 }
+-(void)UItabview{
+    _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-44-64) style:UITableViewStyleGrouped];
+    _mytableView.delegate =self;
+    _mytableView.dataSource =self;
+    
+    [_mytableView registerNib:[UINib nibWithNibName:@"DonationCell" bundle:nil] forCellReuseIdentifier:@"DonaCell"];
+  
+    [self.view addSubview:_mytableView];
 
-- (NSMutableArray *)ListArr
+}
+- (NSMutableArray *)_dataArry
 {
     if (_dataArry == nil) {
         _dataArry = [NSMutableArray array];
     }
     return _dataArry;
 }
-- (NSMutableArray *)itemHeightArr
-{
-    if (_dataA == nil) {
-       _dataA = [NSMutableArray array];
-    }
-    return _dataA;
-}
+
 
 -(void)crealade{
  
@@ -95,42 +94,20 @@
                 [model setValuesForKeysWithDictionary:dataDic];
                 [_dataArry addObject:model];
                 
-                
-                [_dataA addObject:[@{
-                                  kCellTag:@"DonationCell",
-                                  kCellDidSelect:@"DonationCell",
-                                  @"donation_titleLab":[dataDic objectForKey:@"pname"],
-                                  @"donation_contentlab":[dataDic objectForKey:@"pshiyingzheng"],
-                                  @"donation_unitlab":[dataDic objectForKey:@"pfaqidanwei"],
-                                  @"donation_imgView":[dataDic  objectForKey:@"pimage"],
-                                  } mutableCopy]];
-                
-                
             }
-            self.tableView.xDataSource = _dataA;
+          
             
-            [self.tableView reloadData];
-            [self.tableView.header endRefreshing];
-            [self.tableView.footer endRefreshing];
+            [_mytableView reloadData];
+        }
+            [_mytableView.header endRefreshing];
+            [_mytableView.footer endRefreshing];
             
             if (state)
             {
-               self.tableView.footer.state = MJRefreshFooterStateNoMoreData;
+              _mytableView.footer.state = MJRefreshFooterStateNoMoreData;
                 
-            }
-            
-        }
-        [self.tableView.header endRefreshing];
-        [self.tableView.footer endRefreshing];
-        
-        if (state)
-        {
-        self.tableView.footer.state = MJRefreshFooterStateNoMoreData;
-            
-        }
-
-        [self lable];
-        
+             }
+     
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
 
@@ -142,14 +119,14 @@
 - (void)addRefresh
 {
     __weak DonationViewController * ctl = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+    [_mytableView addLegendHeaderWithRefreshingBlock:^{
         _page = 10;
         _pageID=1;
         [_dataArry removeAllObjects];
-        [_dataA removeAllObjects];
+    
         [ctl crealade];
     }];
-    [self.tableView addLegendFooterWithRefreshingBlock:^{
+    [_mytableView addLegendFooterWithRefreshingBlock:^{
         _pageID++;
     
         [ctl crealade];
@@ -163,65 +140,157 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
 }
--(void)lable{
-    
-    WEAKSELF
-    [self.tableView addCellEventListenerWithName:@"DonationCell" block:^(X_TableViewCell *cell) {
-        
-        NSIndexPath *indexPath = [weakSelf.tableView indexPathForCell:cell];
-        NSLog(@"-----cell-->>\n%ld",(long)indexPath.row);
-        
-        YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-        
-        if ([GlobalMethod sharedInstance].isLogin) {
-            
-            DetailModel *model = _dataArry[indexPath.row];
-            
-            NSString *prm=[NSString stringWithFormat:HTMURL,model.pid,UserInfoData.im];
-            
-            [rq GET:prm parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                
-                NSLog(@"responseObject1234已登陆--%@",responseObject);
-                NSLog(@"message == %@",responseObject[@"message"]);
-                
-                if ([responseObject[@"data"] boolValue]) {
-                    
-                     AskForDonationViewController *askVC = [AskForDonationViewController new];
-                     askVC.hidesBottomBarWhenPushed = YES;
-                    
-                    if ([UserInfoData.Type isEqualToString:Patient_Type1] || [UserInfoData.Type isEqualToString:Patient_Type2]) {
-                            askVC.userID = UserInfoData.im;
-                    }
-                
-                    askVC.model = _dataArry[indexPath.row];
-                    [weakSelf.navigationController pushViewController:askVC animated:YES];
-                    
-                }else{
-                    
-                    AskForDonationViewController *askVC = [AskForDonationViewController new];
-                    askVC.hidesBottomBarWhenPushed = YES;
-                     askVC.model = _dataArry[indexPath.row];
-                    [weakSelf.navigationController pushViewController:askVC animated:YES];
-                
-                }
-                
-                
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
-            }];
-            
-        }else{
-           
-            AskForDonationViewController *askVC = [AskForDonationViewController new];
-            askVC.hidesBottomBarWhenPushed = YES;
-             askVC.model = _dataArry[indexPath.row];
-            [weakSelf.navigationController pushViewController:askVC animated:YES];
-    
-        }
-        
-   
-    }];
+
+#pragma mark - UITableViewDelegate
+
+- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dataArry.count;
 }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DonationCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"DonaCell"];
+    if (!cell1) {
+        cell1 = [[DonationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DonaCell"];
+    }
+
+    
+    [cell1 loadDataWithDataArray:_dataArry andWithIndexPath:indexPath];
+  
+        return cell1;
+    
+    
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    return 90.0f;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
+    if ([GlobalMethod sharedInstance].isLogin) {
+        
+        DetailModel *model = _dataArry[indexPath.row];
+        
+        NSString *prm=[NSString stringWithFormat:HTMURL,model.pid,UserInfoData.im];
+        
+        [rq GET:prm parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"responseObject1234已登陆--%@",responseObject);
+            NSLog(@"message == %@",responseObject[@"message"]);
+            
+            if ([responseObject[@"data"] boolValue]) {
+                
+                AskForDonationViewController *askVC = [AskForDonationViewController new];
+                                     askVC.hidesBottomBarWhenPushed = YES;
+                
+            if ([UserInfoData.Type isEqualToString:Patient_Type1] || [UserInfoData.Type isEqualToString:Patient_Type2]) {
+                    askVC.userID = UserInfoData.im;
+                                    }
+                
+            askVC.model = _dataArry[indexPath.row];
+          [self.navigationController pushViewController:askVC animated:YES];
+                
+            }else{
+                
+                AskForDonationViewController *askVC = [AskForDonationViewController new];
+                                    askVC.hidesBottomBarWhenPushed = YES;
+                                     askVC.model = _dataArry[indexPath.row];
+                                   [self.navigationController pushViewController:askVC animated:YES];
+                
+            }
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+        
+    }else{
+        
+        AskForDonationViewController *askVC = [AskForDonationViewController new];
+        askVC.hidesBottomBarWhenPushed = YES;
+        askVC.model = _dataArry[indexPath.row];
+        [self.navigationController pushViewController:askVC animated:YES];
+
+        
+    }
+    
+    
+
+
+
+
+
+}
+
+//-(void)lable{
+//    
+//    WEAKSELF
+//    [self.tableView addCellEventListenerWithName:@"DonationCell" block:^(X_TableViewCell *cell) {
+//        
+//        NSIndexPath *indexPath = [weakSelf.tableView indexPathForCell:cell];
+//        NSLog(@"-----cell-->>\n%ld",(long)indexPath.row);
+//        
+//        YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+//        
+//        if ([GlobalMethod sharedInstance].isLogin) {
+//            
+//            DetailModel *model = _dataArry[indexPath.row];
+//            
+//            NSString *prm=[NSString stringWithFormat:HTMURL,model.pid,UserInfoData.im];
+//            
+//            [rq GET:prm parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                
+//                NSLog(@"responseObject1234已登陆--%@",responseObject);
+//                NSLog(@"message == %@",responseObject[@"message"]);
+//                
+//                if ([responseObject[@"data"] boolValue]) {
+//                    
+//                     AskForDonationViewController *askVC = [AskForDonationViewController new];
+//                     askVC.hidesBottomBarWhenPushed = YES;
+//                    
+//                    if ([UserInfoData.Type isEqualToString:Patient_Type1] || [UserInfoData.Type isEqualToString:Patient_Type2]) {
+//                            askVC.userID = UserInfoData.im;
+//                    }
+//                
+//                    askVC.model = _dataArry[indexPath.row];
+//                    [weakSelf.navigationController pushViewController:askVC animated:YES];
+//                    
+//                }else{
+//                    
+//                    AskForDonationViewController *askVC = [AskForDonationViewController new];
+//                    askVC.hidesBottomBarWhenPushed = YES;
+//                     askVC.model = _dataArry[indexPath.row];
+//                    [weakSelf.navigationController pushViewController:askVC animated:YES];
+//                
+//                }
+//                
+//                
+//            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                
+//            }];
+//            
+//        }else{
+//           
+//            AskForDonationViewController *askVC = [AskForDonationViewController new];
+//            askVC.hidesBottomBarWhenPushed = YES;
+//             askVC.model = _dataArry[indexPath.row];
+//            [weakSelf.navigationController pushViewController:askVC animated:YES];
+//    
+//        }
+//        
+//   
+//    }];
+//}
 
 
 

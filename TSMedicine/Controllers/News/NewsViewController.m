@@ -15,7 +15,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
 
-//#import "UIView+Extension.h"
+
 
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
@@ -180,7 +180,7 @@
         [cell.iamgeView setImage:imageView.image];
         
         return cell;
-    }
+    }    
     
     else{
         
@@ -188,8 +188,6 @@
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
         [cell1 loadCellWith:model];
-        
-        
         
         return cell1;
     }

@@ -8,25 +8,27 @@
 
 #import "DonationCell.h"
 #import "UIImageView+AFNetworking.h"
-
+#import "DetailModel.h"
 @implementation DonationCell
 
--(void)update
-{
-    
-   
+-(void)loadDataWithDataArray:(NSMutableArray *)dataArray andWithIndexPath:(NSIndexPath *)indexPath{
+     _dataArr = dataArray;
+    DetailModel *model=nil;
+    if (_dataArr.count>0) {
+       model  = [_dataArr objectAtIndex:indexPath.row];
   
-    [self.donation_imgView setImageWithURL:[NSURL URLWithString:self.cellData[@"donation_imgView"]] placeholderImage:nil];
+    }
     
-    self.donation_titleLab.text = self.cellData[@"donation_titleLab"];
-  
-    self.donation_unitlab.text=[NSString stringWithFormat:@"发起人单位：%@",self.cellData[@"donation_unitlab"]];
-    self.donation_contentlab.text=self.cellData[@"donation_contentlab"];
+    _donation_contentlab.text=model.pname;
+    _donation_unitlab.text=[NSString stringWithFormat:@"发起人单位:%@",model.pfaqidanwei];
+
+    _donation_contentlab.text=model.pshiyingzheng;
+    _donation_contentlab.numberOfLines = 0;
     
-//    NSString *lab = [NSString stringWithFormat:@"%@",self.cellData[@"donation_contentlab"]];
-//    NSString *donation_contentlab =  [lab stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
-//    self.donation_contentlab.text = donation_contentlab;
-//    NSLog(@"%@",self.cellData[@"donation_contentlab"]);
+   _donation_contentlab.height = model.contentSize.height;
+    [_donation_imgView sd_setImageWithURL:[NSURL URLWithString:model.pimage] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
+
+
 
 }
 -(CGFloat)getCellHeight;
