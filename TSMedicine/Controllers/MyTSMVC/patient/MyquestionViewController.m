@@ -54,7 +54,7 @@
 {
     __weak MyquestionViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
-        _pagesize = 10;
+       _pagesize = 10;
         [_dataArr removeAllObjects];
         [ctl Staload];
     }];
@@ -77,7 +77,9 @@
     }
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-               
+        
+//         NSLog(@"responseObj333 = %@",responseObj);
+        
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
@@ -102,11 +104,10 @@
 }
 -(void)setTableView
 {
-    _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _mytableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-44) style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
     [self.view addSubview:_mytableView];
-    
   [_mytableView registerNib:[UINib nibWithNibName:@"myquerstionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
 }
@@ -169,9 +170,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QuestionViewController *nav=[[QuestionViewController alloc]init];
     
-    nav.model = _dataArr[indexPath.row];
+    MyPatQuestModel *model = _dataArr[indexPath.row];
+    nav.model = model;
     
-    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld%@",indexPath.row,model.uqid]];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.navigationController pushViewController:nav animated:YES];

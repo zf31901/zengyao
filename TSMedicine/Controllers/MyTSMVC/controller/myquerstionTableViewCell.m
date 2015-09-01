@@ -11,7 +11,10 @@
 @implementation myquerstionTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+   
+    _countBtn.hidden = YES;
+    _countBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
 }
 -(void)setModel:(MyPatQuestModel *)model
 {
@@ -27,35 +30,47 @@
     
     _uqstats.text=[NSString stringWithFormat:@"%@人回答",model.uqcount];
     
-    _upqcount.textAlignment = NSTextAlignmentCenter;
-    _upqcount.adjustsFontSizeToFitWidth = YES;
-    _upqcount.textColor=[UIColor whiteColor];
-    _upqcount.backgroundColor=[UIColor redColor];
-    _upqcount.font=[UIFont systemFontOfSize:10.0f];
-    _upqcount.layer.cornerRadius = 10.0f;
-    _upqcount.layer.masksToBounds = YES;
     
+    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uqid]];
     
-    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld",_indexPath.row]];
-    
-    
-    [[GlobalMethod sharedInstance] getDoctorAnswerCountWithQuestionModel:model newResponseCount:^(NSInteger count) {
+    if ([model.uqunreadcount integerValue] > 0) {
         
-        if (count > 0) {
+        
+        if (row == _indexPath.row) {
             
-            _upqcount.hidden = NO;
-            _upqcount.text = [NSString stringWithFormat:@"%ld",count];
-            
+            _countBtn.hidden = YES;
         }else{
             
-            if (row == _indexPath.row) {
-                
-                _upqcount.hidden = YES;
-            }
+            _countBtn.hidden = NO;
+            [_countBtn setTitle:[NSString stringWithFormat:@"%ld",[model.uqunreadcount integerValue]] forState:UIControlStateNormal];
+            [_countBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
             
         }
-        
-    }];
+       
+    }else{
+        _countBtn.hidden = YES;
+    }
+    
+    
+//    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uqid]];
+//    [[GlobalMethod sharedInstance] getDoctorAnswerCountWithQuestionModel:model newResponseCount:^(NSInteger count) {
+//        
+//        if (count > 0) {
+//            
+//            _countBtn.hidden = NO;
+//            [_countBtn setTitle:[NSString stringWithFormat:@"%ld",count] forState:UIControlStateNormal];
+//            [_countBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
+//          
+//        }else{
+//            
+//            if (row == _indexPath.row) {
+//                
+//                _countBtn.hidden = YES;
+//            }
+//            
+//        }
+//        
+//    }];
     
 }
 

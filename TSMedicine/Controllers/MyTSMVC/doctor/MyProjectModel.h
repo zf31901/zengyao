@@ -27,4 +27,8 @@
 @property (nonatomic,copy) NSString *upuserphone;
 @property (nonatomic,copy) NSString *upusersex;
 
+@property (nonatomic,copy) NSString *upqaunreandcount;
+
+
+
 @end

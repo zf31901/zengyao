@@ -16,7 +16,7 @@
 #import "MJRefresh.h"
 
 #import "Helper.h"
-#import "UIView+Extension.h"
+//#import "UIView+Extension.h"
 
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"

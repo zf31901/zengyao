@@ -13,7 +13,7 @@
 
 //base
 #import "YYTabBarViewController.h"
-#import "UIView+YYFrameEasy.h"
+//#import "UIView+YYFrameEasy.h"
 #import "BaseViewController.h"
 #import "X_TableView.h"
 #import "YYHttpRequest.h"

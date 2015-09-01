@@ -296,45 +296,78 @@
     }];
 }
 
-- (void)getDoctorAnswerCountWithQuestionModel:(MyPatQuestModel *)model newResponseCount:(ResponseCount)responseCount
+-(void)getDoctorAnswerCountWithProjectModel:(MyProjectModel *)model newResponseCount:(ResponseCount)responseCount
 {
-    
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *parameters = @{@"pid":model.uppid,@"Duserid":@(0),@"Suserid":UserInfoData.im};
     
-    NSDictionary *dic = @{@"uqid":model.uqid,@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":@"20"};
-    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/Count2" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+//        NSLog(@"responseObj22222 === %@",responseObj);
         
-        NSMutableArray *arr2 = [NSMutableArray array];
-        for (NSDictionary *dic in responseObj[@"data"]) {
-            
-            MyAnswerModel *model = [[MyAnswerModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
-            [arr2 addObject:model];
+        NSInteger count = 0;
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            count = [responseObj[@"data"] integerValue];
         }
         
+        NSInteger lastCount = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%@",model.uppid]];
         
-         NSInteger lastCount = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%@",model.uqid]];
+        NSInteger newCount = count - lastCount;
         
-        NSInteger newCount = arr2.count - lastCount;
-        
-        if (newCount > 0) {
+        if (newCount > 0 ) {
             
             responseCount(newCount);
         }else{
             responseCount(0);
         }
         
-        [[NSUserDefaults standardUserDefaults] setInteger:arr2.count forKey:[NSString stringWithFormat:@"%@",model.uqid]];
+        [[NSUserDefaults standardUserDefaults] setInteger:[responseObj[@"data"] integerValue] forKey:[NSString stringWithFormat:@"%@",model.uppid]];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error == %@",error);
+    }];
+    
+}
+
+- (void)getDoctorAnswerCountWithQuestionModel:(MyPatQuestModel *)model newResponseCount:(ResponseCount)responseCount
+{
+    
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    
+    NSDictionary *dic = @{@"uqid":model.uqid,@"userid":UserInfoData.im};
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/Count" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+//        NSLog(@"responseObj22222 === %@",responseObj);
+        
+        NSInteger count = 0;
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            count = [responseObj[@"data"] integerValue];
+        }
+        
+        NSInteger lastCount = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%@",model.uqid]];
+        
+        NSInteger newCount = count - lastCount;
+        
+        if (newCount > 0 ) {
+            
+            responseCount(newCount);
+        }else{
+            responseCount(0);
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:[responseObj[@"data"] integerValue] forKey:[NSString stringWithFormat:@"%@",model.uqid]];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error===%@",error);
     }];
-    
-
-
-
 }
+
+
+
+
 
 
 + (NSString *)getJsonDateString:(NSString *)JsonString

@@ -10,6 +10,8 @@
 
 @interface MyPatQuestModel : BaseModel
 
+
+@property (nonatomic,copy) NSString *uqanswertime;
 @property (nonatomic,copy) NSString *uqcontent;
 @property (nonatomic,copy) NSString *uqcount;
 @property (nonatomic,copy) NSString *uqcreatedate;
@@ -21,6 +23,9 @@
 @property (nonatomic,copy) NSString *uquserid;
 @property (nonatomic,copy) NSString *uquserimage;
 @property (nonatomic,copy) NSString *uqusername;
+
+@property (nonatomic,copy) NSString *uqunreadcount;
+
 
 @property (nonatomic,assign) CGSize contentSize;
 
