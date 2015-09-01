@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *uqcreatedate;
 
 @property (weak, nonatomic) IBOutlet UILabel *uqstats;
-@property (weak, nonatomic) IBOutlet UILabel *upqcount;
+
+@property (weak, nonatomic) IBOutlet UIButton *countBtn;
 
 @property (nonatomic,strong) NSIndexPath *indexPath;
 

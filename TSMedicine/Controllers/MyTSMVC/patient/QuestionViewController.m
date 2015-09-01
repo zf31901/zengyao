@@ -43,6 +43,7 @@
 }
 
 -(void)settabView{
+    
     _mytableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
@@ -50,9 +51,6 @@
     [self.view addSubview:_mytableView];
     
     [_mytableView registerNib:[UINib nibWithNibName:@"QuestPersoNTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
-    
-    
 }
 -(void)Staload{
     
@@ -65,7 +63,7 @@
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
      NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
     
-    NSDictionary *dic = @{@"uqid":_model.uqid,@"userid":_model.uquserid,@"pageid":@"1",@"pagesize":pageStr};
+    NSDictionary *dic = @{@"uqid":_model.uqid,@"userid":@"0",@"pageid":@"1",@"pagesize":pageStr};
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         NSMutableArray *arr2 = [NSMutableArray array];
         for (NSDictionary *dic in responseObj[@"data"]) {
@@ -117,8 +115,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
  

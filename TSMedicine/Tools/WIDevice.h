@@ -38,6 +38,9 @@
 //唯一标示符
 #define UUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
 
+#define SCREEN_H [WIDevice getScreenHeight]
+#define SCREEN_W [WIDevice getScreenWidth]
+
 
 
 

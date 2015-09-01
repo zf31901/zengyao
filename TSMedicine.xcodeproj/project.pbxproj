@@ -59,7 +59,8 @@
 		163FE6E61B79EE0A00A45019 /* DocMyTrainDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 163FE6E41B79EE0A00A45019 /* DocMyTrainDetailViewController.xib */; };
 		16415CD71B6A1E0C00466A03 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16415CD51B6A1E0C00466A03 /* RegisterViewController.m */; };
 		16415CD81B6A1E0C00466A03 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16415CD61B6A1E0C00466A03 /* RegisterViewController.xib */; };
-		1648C8C61B281CB0003DB57A /* UIView+YYFrameEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1648C8C51B281CB0003DB57A /* UIView+YYFrameEasy.m */; };
+		164B66D51B94354D00A55AE8 /* PatProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164B66D31B94354D00A55AE8 /* PatProjectTableViewCell.m */; };
+		164B66D61B94354D00A55AE8 /* PatProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 164B66D41B94354D00A55AE8 /* PatProjectTableViewCell.xib */; };
 		164C0F421B6F72610040321E /* MyProModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 164C0F411B6F72610040321E /* MyProModel.m */; };
 		164C0F461B6F77D00040321E /* MyProTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164C0F441B6F77D00040321E /* MyProTableViewCell.m */; };
 		164C0F471B6F77D00040321E /* MyProTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 164C0F451B6F77D00040321E /* MyProTableViewCell.xib */; };
@@ -373,8 +374,9 @@
 		16415CD41B6A1E0C00466A03 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		16415CD51B6A1E0C00466A03 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		16415CD61B6A1E0C00466A03 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
-		1648C8C41B281CB0003DB57A /* UIView+YYFrameEasy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYFrameEasy.h"; sourceTree = "<group>"; };
-		1648C8C51B281CB0003DB57A /* UIView+YYFrameEasy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYFrameEasy.m"; sourceTree = "<group>"; };
+		164B66D21B94354D00A55AE8 /* PatProjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatProjectTableViewCell.h; sourceTree = "<group>"; };
+		164B66D31B94354D00A55AE8 /* PatProjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatProjectTableViewCell.m; sourceTree = "<group>"; };
+		164B66D41B94354D00A55AE8 /* PatProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatProjectTableViewCell.xib; sourceTree = "<group>"; };
 		164C0F401B6F72610040321E /* MyProModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProModel.h; sourceTree = "<group>"; };
 		164C0F411B6F72610040321E /* MyProModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProModel.m; sourceTree = "<group>"; };
 		164C0F431B6F77D00040321E /* MyProTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProTableViewCell.h; sourceTree = "<group>"; };
@@ -737,6 +739,9 @@
 		16034ABC1B6F43DB0063EFD7 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				164B66D21B94354D00A55AE8 /* PatProjectTableViewCell.h */,
+				164B66D31B94354D00A55AE8 /* PatProjectTableViewCell.m */,
+				164B66D41B94354D00A55AE8 /* PatProjectTableViewCell.xib */,
 				9D0C8D781B7AE780001B4A8E /* myquerstionTableViewCell.h */,
 				9D0C8D791B7AE780001B4A8E /* myquerstionTableViewCell.m */,
 				9D0C8D7A1B7AE780001B4A8E /* myquerstionTableViewCell.xib */,
@@ -958,8 +963,6 @@
 		1648C8C31B281C9E003DB57A /* Unity */ = {
 			isa = PBXGroup;
 			children = (
-				1648C8C41B281CB0003DB57A /* UIView+YYFrameEasy.h */,
-				1648C8C51B281CB0003DB57A /* UIView+YYFrameEasy.m */,
 				1683693E1B2AAD2100A78898 /* YYPhotoPicker */,
 			);
 			path = Unity;
@@ -1735,6 +1738,7 @@
 				1612635C1B3CFB3500EAEDE6 /* MyShenqingCell.xib in Resources */,
 				1612636E1B3D5B8200EAEDE6 /* TrainViewController.xib in Resources */,
 				16C3F98E1B25711C0040D80C /* arrow-left26x42_white@1x.png in Resources */,
+				164B66D61B94354D00A55AE8 /* PatProjectTableViewCell.xib in Resources */,
 				16776BEB1B466BC100767F94 /* Default-568h@2x.png in Resources */,
 				16C3F9901B25711C0040D80C /* choose40_nomal.png in Resources */,
 				16C3F9B11B25711C0040D80C /* successful50.png in Resources */,
@@ -1888,7 +1892,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1648C8C61B281CB0003DB57A /* UIView+YYFrameEasy.m in Sources */,
 				10694DA81B71FE7400CE2504 /* YYHttpRequest.m in Sources */,
 				16FAB2791B78AFD600AE4566 /* UIImage+Rotation.m in Sources */,
 				1653CE511B6A05AE001D21FF /* WITool.m in Sources */,
@@ -1938,6 +1941,7 @@
 				164C0F421B6F72610040321E /* MyProModel.m in Sources */,
 				16034AD31B6F4AF80063EFD7 /* UIView+ModifyFrame.m in Sources */,
 				162597CE1B68E31000E3FA95 /* SetTSMCell.m in Sources */,
+				164B66D51B94354D00A55AE8 /* PatProjectTableViewCell.m in Sources */,
 				16034AC61B6F463B0063EFD7 /* WIBaseImageView.m in Sources */,
 				169071541B34243800A4CD21 /* CommitAskForViewController.m in Sources */,
 				169909E81B8480000085BDE4 /* MJRefreshFooterView.m in Sources */,

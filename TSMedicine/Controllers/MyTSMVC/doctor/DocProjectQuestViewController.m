@@ -75,6 +75,8 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MyPatQuestModel *model = _dataArr[indexPath.row];
+//    NSLog(@"model.contentSize.height = %f",model.contentSize.height);
+    
     return 40.0 + model.contentSize.height;
 }
 
@@ -90,6 +92,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
     NSDictionary *dic = @{@"pid":_model.pid,@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
 //        NSLog(@"responseObj == %@",responseObj);
         
         for (NSDictionary *dic in responseObj[@"data"]) {

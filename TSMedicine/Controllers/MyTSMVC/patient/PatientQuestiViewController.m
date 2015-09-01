@@ -7,12 +7,15 @@
 //
 
 #import "PatientQuestiViewController.h"
+#import "PatProjectTableViewCell.h"
 
 #import "MyProjectModel.h"
 #import "MyquestionViewController.h"
 
 #define URL @"http://app.aixinland.cn/api/projects/List"
 
+
+NSString *const ProjectTableViewCell = @"PatProjectTableViewCell";
 @interface PatientQuestiViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_myTableView;
@@ -47,16 +50,19 @@
     _myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
-    
     [self.view addSubview:_myTableView];
+    
+    [_myTableView registerNib:[UINib nibWithNibName:ProjectTableViewCell bundle:nil] forCellReuseIdentifier:ProjectTableViewCell];
 }
 -(void)setNavlable{
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
-    NSDictionary *dic = @{@"userid":UserInfoData.im,@"pageid":@"1",@"pagesize":pageStr};
+    NSDictionary *dic = @{@"userid":UserInfoData.im,@"order":@"1",@"pageid":@"1",@"pagesize":pageStr};
     
-    [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userproject/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+//        NSLog(@"responseObj6666666 = %@",responseObj);
     
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyProjectModel *model = [[MyProjectModel alloc] init];
@@ -97,36 +103,38 @@
     return _dataArr.count;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 50;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.1f;
-}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    PatProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ProjectTableViewCell];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[PatProjectTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ProjectTableViewCell];
     }
     MyProjectModel *model = _dataArr[indexPath.row];
-    cell.textLabel.text = model.upname;
-    //cell.textLabel.text=model.upqcount;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.model = model;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MyquestionViewController *VC = [[MyquestionViewController alloc] init];
-    VC.goodIndex = _dataArr[indexPath.row];
+    MyProjectModel *model = _dataArr[indexPath.row];
+    VC.goodIndex = model;
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld%@",indexPath.row,model.uppid]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self.navigationController pushViewController:VC animated:YES];
     
+    
+    
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+
 
 
 

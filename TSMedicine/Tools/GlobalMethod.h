@@ -10,7 +10,9 @@
 #import <UIKit/UIKit.h>
 #import "UserObj.h"
 
+#import "MyProjectModel.h"
 #import "MyPatQuestModel.h"
+
 
 #define UserInfoData [GlobalMethod getUserObj]
 
@@ -58,6 +60,8 @@ typedef void(^ResponseCount)(NSInteger count);
 - (void)getDoctorWaitTrainNumber:(TrainNumber)trainNumber;
 
 - (void)getDoctorAnswerCountWithQuestionModel:(MyPatQuestModel *)model newResponseCount:(ResponseCount)responseCount;
+
+- (void)getDoctorAnswerCountWithProjectModel:(MyProjectModel *)model newResponseCount:(ResponseCount)responseCount;
 
 
 //处理时间戳和时间
