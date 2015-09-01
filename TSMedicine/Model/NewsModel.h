@@ -20,7 +20,7 @@
 @property(nonatomic,strong)               NSString  *a_SmallImg;
 
 
-@property(nonatomic,assign)               CGRect a_ContentF;
+
 
 @property(nonatomic,assign)               CGRect a_TitleF;
 @property(nonatomic,assign)               CGRect a_FromF;
@@ -31,5 +31,4 @@
 
 
 -(void)loadModel:(NSDictionary *)dict;
-
 @end

@@ -15,8 +15,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
 
-#import "Helper.h"
-#import "UIView+Extension.h"
+//#import "UIView+Extension.h"
 
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
@@ -42,7 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArr=[[NSMutableArray alloc]init];
-      _page=10;
+    _page=10;
     _mytableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-44-64) style:UITableViewStyleGrouped];
     _mytableView.delegate =self;
     _mytableView.dataSource =self;
@@ -53,10 +52,10 @@
     
     [self.view addSubview:_mytableView];
     [self addRefresh];
-
+    
     
     self.title = @"新闻";
-   [self UILABLE];
+    [self UILABLE];
     
 }
 - (NSMutableArray *)dataArr
@@ -80,14 +79,14 @@
         [_dataArr removeAllObjects];
         [ctl UILABLE];
     }];
-[_mytableView addLegendFooterWithRefreshingBlock:^{
-       _pageID++;
+    [_mytableView addLegendFooterWithRefreshingBlock:^{
+        _pageID++;
         [ctl UILABLE];
     }];
 }
 -(void)UILABLE{
     
-
+    
     
     arr = [[NSMutableArray alloc] init];
     brr=[[NSMutableArray alloc]init];
@@ -97,7 +96,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
     [dic setObject:pageID       forKey:@"pageid"];
     [dic setObject:pageStr      forKey:@"pagesize"];
-
+    
     YYHttpRequest *hq = [[YYHttpRequest alloc] init];
     
     [hq POSTURLString:@"http://app.aixinland.cn/api/news/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -108,20 +107,22 @@
             if (dataArr.count == 0) {
                 state = YES;
             }
+            
             for (int i = 0; i < dataArr.count; i ++)
             {
                 NewsModel *newModel = [[NewsModel alloc] init];
                 NSDictionary *dataDic = (NSDictionary *)[dataArr objectAtIndex:i];
-               [newModel loadModel:dataDic];
+                [newModel loadModel:dataDic];
+                
                 [_dataArr addObject:newModel];
             }
-
+            
             [_mytableView reloadData];
         }
         
         [_mytableView.header endRefreshing];
         [_mytableView.footer endRefreshing];
-       
+        
         if (state)
         {
             _mytableView.footer.state = MJRefreshFooterStateNoMoreData;
@@ -186,23 +187,7 @@
         NewsTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
-        cell1.dataTimelab.text = model.a_time;
-        cell1.dataTimelab.frame = model.a_timeF;
-        cell1.dataTimelab. textColor = RGB(147, 139, 148);
-        
-        cell1.fromLab.text = model.a_From;
-        cell1.fromLab.frame = model.a_FromF;
-        cell1.fromLab.textColor = RGB(147, 139, 148);
-        
-        cell1.newlab.text = model.a_Title;
-        cell1.newlab.frame = model.a_TitleF;
-        cell1.newlab.textColor = [UIColor blackColor];
-        
-        
-        [cell1.iamge sd_setImageWithURL:[NSURL URLWithString:model.a_SmallImg] placeholderImage:nil];
-        cell1.iamge.frame = model.a_SmallImgF;
-        
-        //  [cell1 loadCellWith:model];
+        [cell1 loadCellWith:model];
         
         
         
@@ -210,7 +195,6 @@
     }
     
 }
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.row ) {
@@ -227,13 +211,12 @@
         NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
         
         return model.CellH;
-
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailsViewController *ctl2=[[DetailsViewController alloc]init];
-
+    
     NewsModel *arr=_dataArr[indexPath.row];
     
     ctl2.model=arr.a_ID;
@@ -246,7 +229,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.1f;
-
+    
 }
 
 @end

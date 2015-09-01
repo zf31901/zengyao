@@ -7,6 +7,9 @@
 //
 #import "UIImageView+AFNetworking.h"
 
+
+#import "NewsModel.h"
+
 #define kCellBorder 20
 #define kCellCenterX self.frame.size.width/2
 #define kNameFont [UIFont systemFontOfSize:16]
@@ -25,31 +28,31 @@
     
 @implementation NewsTableViewCell
     
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-    {
-        self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-        if (self) {
-//     CGSize rtSize;
-//            
-//rtSize=[string sizeWithFont:font constrainedToSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-            
-            
-            
-        }
-        return self;
-    }
+-(void)loadCellWith:(NewsModel*)newsModel
+{
+    self.dataTimelab.text = newsModel.a_time;
+    self.dataTimelab.frame = newsModel.a_timeF;
+    self.dataTimelab. textColor = RGB(147, 139, 148);
     
-- (void)awakeFromNib
-    {
-        // Initialization code
-    }
+    self.fromLab.text = newsModel.a_From;
+    self.fromLab.frame = newsModel.a_FromF;
+    self.fromLab.textColor = RGB(147, 139, 148);
     
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-    {
-        [super setSelected:selected animated:animated];
-        
-        // Configure the view for the selected state
+    self.newlab.text = newsModel.a_Title;
+    self.newlab.frame = newsModel.a_TitleF;
+    self.newlab.textColor = [UIColor blackColor];
+    
+    if ([newsModel.a_SmallImg isEqualToString:@""]) {
+        self.iamge.hidden=YES;
     }
+    else{
+         self.iamge.hidden=NO;
+    [self.iamge sd_setImageWithURL:[NSURL URLWithString:newsModel.a_SmallImg] placeholderImage:nil];
+
+    }
+        self.iamge.frame = newsModel.a_SmallImgF;
+}
+
     
 
     

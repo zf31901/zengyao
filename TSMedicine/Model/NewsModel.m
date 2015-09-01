@@ -16,6 +16,9 @@
 
 -(void)loadModel:(NSDictionary *)dict
 {
+    
+    self.title =[dict objectForKey:@"title"];
+    
     self.a_Title = [dict objectForKey:@"a_Title"];
     self.a_From = [dict objectForKey:@"a_From"];
     self.a_time = [dict objectForKey:@"time"];
@@ -23,11 +26,11 @@
     self.a_SmallImg=[dict objectForKey:@"a_SmallImg"];
     self.a_ID=[dict objectForKey:@"a_ID"];
     
-    //    self.a_Content = @"新华社快讯：牙买加队夺得北京田径世锦赛男子4乘100米接力冠军，美国队在世锦赛男子4乘100米接力决赛中犯规，中国队获得银牌，加拿大队铜牌";//[dict objectForKey:@"a_Content"];
+    
     
     
     //图片frame
-    CGFloat a_SmallImgWH = 85;
+    CGFloat a_SmallImgWH = 80;
     CGFloat a_SmallImgY = Margin;
     CGFloat a_SmallImgX = ScreenW - a_SmallImgWH-a_SmallImgY;
     
@@ -58,15 +61,15 @@
         a_timeX = a_SmallImgX - a_timeW - Margin;
     }
     
-    CGFloat a_ContenH = [Helper heightOfString:self.a_Title font:[UIFont systemFontOfSize:15] width:a_ContenW];
+    CGFloat a_ContenH = [Helper heightOfString:self.a_Title font:[UIFont systemFontOfSize:18] width:a_ContenW];
     
-    self.a_ContentF = CGRectMake(a_ContentX, a_ContenY, a_ContenW, a_ContenH);
+    self.a_TitleF = CGRectMake(a_ContentX, a_ContenY, a_ContenW, a_ContenH);
     
     //来源frame
     CGFloat a_FromX = Margin;
-    CGFloat a_FromY = CGRectGetMaxY(self.a_ContentF)+Margin;
+    CGFloat a_FromY = CGRectGetMaxY(self.a_TitleF)+Margin;
     CGFloat a_FromH = 21;
-    CGFloat a_FromW = [Helper widthOfString:self.a_From font:[UIFont systemFontOfSize:13] height:a_FromH];
+    CGFloat a_FromW = [Helper widthOfString:self.a_From font:[UIFont systemFontOfSize:15] height:a_FromH];
     self.a_FromF = CGRectMake(a_FromX, a_FromY, a_FromW, a_FromH);
     
     
@@ -76,14 +79,9 @@
     
     //cell的高度
     
-    if (self.a_SmallImg) {
-        self.CellH = CGRectGetMaxY(self.a_timeF)+Margin+a_SmallImgWH;
-    }else{
-        self.CellH = CGRectGetMaxY(self.a_timeF)+Margin - a_SmallImgWH;
-    }
-    
-    
-    
+    CGFloat ImageMaxY = CGRectGetMaxY(self.a_SmallImgF);
+    CGFloat timeMaxY = CGRectGetMaxY(self.a_timeF);
+    self.CellH = (timeMaxY >=ImageMaxY ? timeMaxY :ImageMaxY) + Margin;
     
 }
 

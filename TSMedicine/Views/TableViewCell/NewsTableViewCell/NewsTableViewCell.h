@@ -21,6 +21,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *iamge;
-
+-(void)loadCellWith:(NewsModel*)newsModel;
 
 @end
