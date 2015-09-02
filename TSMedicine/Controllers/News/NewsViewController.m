@@ -17,6 +17,7 @@
 
 
 
+#define AutoWidth 320.0*[UIScreen mainScreen].bounds.size.width
 
 #define URLisr @"http://app.aixinland.cn//page/news_detail.html?dataId=%@"
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
@@ -152,7 +153,13 @@
         {
             cell = [[newCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
-        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
+     
+        
+        NewsModel *model=nil;
+        if (_dataArr.count>0) {
+            model = [_dataArr objectAtIndex:indexPath.row];
+        }
+       
         
         cell.fromeLable.text=model.a_Title;
         cell.fromeLable.numberOfLines=0;
@@ -185,7 +192,16 @@
     else{
         
         NewsTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
+        UIView *view=[[UIView alloc]init];
+        view.frame=CGRectMake(0, 42/AutoWidth, SCREEN_W, -1);
+        view.backgroundColor=RGB(221, 221, 221);
+        [cell1 addSubview:view];
+       
+        NewsModel *model=nil;
+        if (_dataArr.count>0) {
+            model= [_dataArr objectAtIndex:indexPath.row];
+        }
+       
         
         [cell1 loadCellWith:model];
         
@@ -213,12 +229,13 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailsViewController *ctl2=[[DetailsViewController alloc]init];
+    DetailsViewController *askVC=[[DetailsViewController alloc]init];
     
-    NewsModel *arr=_dataArr[indexPath.row];
+    NewsModel *model=_dataArr[indexPath.row];
     
-    ctl2.model=arr.a_ID;
-    [self.navigationController pushViewController:ctl2 animated:YES];
+    askVC.NewsModel=model.a_ID;
+    [self.navigationController pushViewController:askVC animated:YES];
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

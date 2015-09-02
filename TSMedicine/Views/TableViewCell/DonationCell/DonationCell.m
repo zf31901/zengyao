@@ -19,7 +19,8 @@
   
     }
     
-    _donation_contentlab.text=model.pname;
+    _donation_titleLab.text=model.pname;
+
     _donation_unitlab.text=[NSString stringWithFormat:@"发起人单位:%@",model.pfaqidanwei];
 
     _donation_contentlab.text=model.pshiyingzheng;

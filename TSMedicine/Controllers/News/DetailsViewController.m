@@ -56,7 +56,7 @@
     _webView.scrollView.delegate = self;
     _webView.backgroundColor=[UIColor clearColor];
     _webView.dataDetectorTypes=UIDataDetectorTypeLink;
-    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_model];
+    NSString *url=[NSString stringWithFormat:@"%@%@",URLisr,_NewsModel];
     NSLog(@"url1234------%@",url);
    
    [_webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];

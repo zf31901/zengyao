@@ -163,7 +163,7 @@
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         else if ([model.upstate boolValue]== 1) {
-             Audcell.upstate.text=@"未审核";
+             Audcell.upstate.text=@"待审核";
              Audcell.upstate.textColor=UIColorFromRGB(0x20A456);
         }
         else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
