@@ -23,28 +23,28 @@
     _projectNameLab.text = model.upname;
     
     
-    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uppid]];
+//    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uppid]];
     
     if ([model.upqaunreandcount integerValue] > 0) {
         
+//        if (row == _indexPath.row) {
+//            
+//            _countBtn.hidden = YES;
+//        }else{
         
-        if (row == _indexPath.row) {
-            
-            _countBtn.hidden = YES;
-        }else{
-            
             _countBtn.hidden = NO;
             [_countBtn setTitle:[NSString stringWithFormat:@"%ld",[model.upqaunreandcount integerValue]] forState:UIControlStateNormal];
             [_countBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
             
-        }
+//        }
         
     }else{
+        
         _countBtn.hidden = YES;
     }
     
-    
 //    [self loadCountWithProjectModel:model];
+    
 }
 
 

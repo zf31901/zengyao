@@ -38,8 +38,6 @@
     [self Staload];
     self.navigationController.navigationBarHidden = NO;
     self.title = @"问题详情";
-  
-
 }
 
 -(void)settabView{
@@ -64,7 +62,10 @@
      NSString *pageStr = [NSString stringWithFormat:@"%ld",_pagesize];
     
     NSDictionary *dic = @{@"uqid":_model.uqid,@"userid":@"0",@"pageid":@"1",@"pagesize":pageStr};
-    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [rq GETURLString:@"http://app.aixinland.cn/api/userquestionanswer/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+//        NSLog(@"responseObj777 == %@",responseObj);
+        
         NSMutableArray *arr2 = [NSMutableArray array];
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyAnswerModel *model = [[MyAnswerModel alloc] init];

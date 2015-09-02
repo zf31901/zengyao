@@ -56,7 +56,6 @@
         return;
     }
     
-    
     YYHttpRequest *http = [[YYHttpRequest alloc] init];
     
     NSString *currentTime = [WITool getCurrentTime];

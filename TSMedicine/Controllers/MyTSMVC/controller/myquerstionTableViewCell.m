@@ -32,21 +32,21 @@
     _uqstats.text=[NSString stringWithFormat:@"%@人回答",model.uqcount];
     
     
-    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uqid]];
+//    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uqid]];
     
     if ([model.uqunreadcount integerValue] > 0) {
         
         
-        if (row == _indexPath.row) {
-            
-            _countBtn.hidden = YES;
-        }else{
-            
+//        if (row == _indexPath.row) {
+//            
+//            _countBtn.hidden = YES;
+//        }else{
+        
             _countBtn.hidden = NO;
             [_countBtn setTitle:[NSString stringWithFormat:@"%ld",[model.uqunreadcount integerValue]] forState:UIControlStateNormal];
             [_countBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
             
-        }
+//        }
        
     }else{
         _countBtn.hidden = YES;

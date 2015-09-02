@@ -82,8 +82,6 @@
         dic = @{@"uqid":@(0),@"uqpid":_appModel.uppid,@"uqpname":UserInfoData.trueName,@"uqname":UserInfoData.nickName,@"uqcontent":_textView.text,@"uquserid":_appModel.upuserid,@"uqcreatedate":currentTime,@"uqusername":UserInfoData.userName,@"uqstate":@(0)};
     }
     
-    
-    
     [rq POSTURLString:@"http://app.aixinland.cn/api/userquestion/Add" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject ==== %@",responseObject);
         

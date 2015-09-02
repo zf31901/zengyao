@@ -26,14 +26,21 @@ NSString *const ProjectTableViewCell = @"PatProjectTableViewCell";
 
 @implementation PatientQuestiViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self loadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-     _pagesize=6;
+    
+     _pagesize=10;
     _dataArr=[[NSMutableArray alloc]init];
     
-    [self loadData];
+    [self createTableView];
     [self setNavView];
-    [self setNavlable];
+//    [self loadData];
     
 }
 -(void)setlableview{
@@ -45,7 +52,7 @@ NSString *const ProjectTableViewCell = @"PatProjectTableViewCell";
     
 
 }
--(void)loadData{
+-(void)createTableView{
   
     _myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _myTableView.delegate = self;
@@ -54,7 +61,7 @@ NSString *const ProjectTableViewCell = @"PatProjectTableViewCell";
     
     [_myTableView registerNib:[UINib nibWithNibName:ProjectTableViewCell bundle:nil] forCellReuseIdentifier:ProjectTableViewCell];
 }
--(void)setNavlable{
+-(void)loadData{
     _dataArr = [NSMutableArray array];
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
@@ -122,21 +129,16 @@ NSString *const ProjectTableViewCell = @"PatProjectTableViewCell";
     MyProjectModel *model = _dataArr[indexPath.row];
     VC.goodIndex = model;
     
-    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld%@",indexPath.row,model.uppid]];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld%@",indexPath.row,model.uppid]];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.navigationController pushViewController:VC animated:YES];
-    
-    
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 0.1f;
 }
-
-
-
 
 
 @end
