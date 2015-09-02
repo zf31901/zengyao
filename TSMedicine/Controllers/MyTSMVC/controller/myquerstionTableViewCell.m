@@ -22,9 +22,10 @@
     
     _uqcontent1.text = model.uqcontent;
     _uqcontent1.numberOfLines=0;
-//    CGRect rect = [_uqcontent1.text boundingRectWithSize:CGSizeMake(320, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:_uqcontent1.font} context:nil];
-//    _uqcontent1.frame = CGRectMake(0, 0, 320, rect.size.height);
+
     _uqcontent1.height=model.contentSize.height;
+    NSLog(@"model.contentSize.height1--%f",model.contentSize.height);
+    
     NSString *dateStr = [model.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
     _uqcreatedate.text = dateStr;
     
