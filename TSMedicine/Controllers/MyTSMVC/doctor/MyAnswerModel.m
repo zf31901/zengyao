@@ -15,7 +15,8 @@
 {
     _uqacontent = uqacontent;
     
-    _contentSize = [uqacontent sizeWithWidth:ScreenWidth - 20 withFont:17];
+    NSString *str = [NSString stringWithFormat:@"答: %@",uqacontent];
+    _contentSize = [str sizeWithWidth:ScreenWidth - 20 withFont:17];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key

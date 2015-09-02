@@ -52,7 +52,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataArr.count;
+    if (_dataArr.count > 0) {
+        return _dataArr.count;
+    }else{
+        return 0;
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
