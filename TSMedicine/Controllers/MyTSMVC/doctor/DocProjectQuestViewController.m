@@ -10,11 +10,17 @@
 #import "DocProjectAnswerViewController.h"
 #import "MyPatQuestModel.h"
 
+#import "MJRefresh.h"
+
 #import "MyQuestTableViewCell.h"
 
 NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 
 @interface DocProjectQuestViewController ()<UITableViewDataSource,UITabBarDelegate>
+{
+    NSInteger _pageSize;
+    NSInteger _pageid;
+}
 
 @property (nonatomic,strong) NSMutableArray *dataArr;
 
@@ -25,10 +31,16 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _dataArr = [NSMutableArray array];
+    
+     _pageSize = 10;
+    
     [self setNavView];
     [self loadData];
     
     [self setTabView];
+    
+    [self addRefresh];
     
 }
 
@@ -87,14 +99,23 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
 
 -(void)loadData
 {
-    _dataArr = [NSMutableArray array];
+  
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
-    NSDictionary *dic = @{@"pid":_model.pid,@"userid":@(0),@"pageid":@"1",@"pagesize":@"10"};
+    
+    _pageid = _pageid!=0?_pageid:1;
+    NSString *pageid = [NSString stringWithFormat:@"%ld",(long)_pageid];
+    NSString *pageSize = [NSString stringWithFormat:@"%ld",(long)_pageSize];
+    
+    NSDictionary *dic = @{@"pid":_model.pid,@"userid":@(0),@"pageid":pageid,@"pagesize":pageSize};
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List2" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
-        
 //        NSLog(@"responseObj == %@",responseObj);
-        
+        BOOL state = NO;
+        NSArray *dataArr =[responseObj objectForKey:@"data"];
+        if (dataArr.count == 0) {
+            state = YES;
+        }
+
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
@@ -109,10 +130,35 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
             [self loadAlertUI];
         }
         
+        [_tableView.header endRefreshing];
+        [_tableView.footer endRefreshing];
+        
+        if (state)
+        {
+            _tableView.footer.state = MJRefreshFooterStateNoMoreData;
+            
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
     }];
     
+}
+
+#pragma mark - 上下啦刷新
+- (void)addRefresh
+{
+    __weak DocProjectQuestViewController * weakSelf = self;
+    [_tableView addLegendHeaderWithRefreshingBlock:^{
+        _pageSize = 10;
+        _pageid = 1;
+        [_dataArr removeAllObjects];
+        [weakSelf loadData];
+    }];
+    [_tableView addLegendFooterWithRefreshingBlock:^{
+        _pageid++;
+        [weakSelf loadData];
+    }];
 }
 
 -(void)loadAlertUI
