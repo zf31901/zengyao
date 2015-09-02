@@ -120,6 +120,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
     WIBaseLabel *label = [WIBaseLabel createClassWithTitle:@"您暂无提问" andWithFrame:CGRectMake(0, 0, 120, 20) andWithFont:17];
     label.center = self.view.center;
     label.midY = label.center.y - 50;
+    label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:label];
 }
 
