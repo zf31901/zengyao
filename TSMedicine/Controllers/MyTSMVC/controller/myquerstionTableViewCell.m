@@ -22,7 +22,7 @@
     
     _uqcontent1.text = model.uqcontent;
     _uqcontent1.numberOfLines=0;
-
+    _uqcontent1.font=[UIFont systemFontOfSize:17.0f];
     _uqcontent1.height=model.contentSize.height;
     NSLog(@"model.contentSize.height1--%f",model.contentSize.height);
     

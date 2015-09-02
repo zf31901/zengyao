@@ -175,12 +175,12 @@
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
     else if ([model.upstate boolValue] == 1) {
-        cell.upstate.text=@"待审核";
-        cell.upstate.textColor=UIColorFromRGB(0x20A456);
+        cell.upstate.text=@"等待审核";
+        cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
     else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
         cell.upstate.text=@"审核通过";
-        cell.upstate.textColor=UIColorFromRGB(0xFF6600);
+        cell.upstate.textColor=UIColorFromRGB(0x20A456);
     }else{
         cell.upstate.text=@"用户正提交申请";
         cell.upstate.textColor=UIColorFromRGB(0x20A456);

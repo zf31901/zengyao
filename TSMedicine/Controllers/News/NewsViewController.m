@@ -153,8 +153,6 @@
         {
             cell = [[newCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
-     
-        
         NewsModel *model=nil;
         if (_dataArr.count>0) {
             model = [_dataArr objectAtIndex:indexPath.row];
@@ -215,8 +213,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (0 == indexPath.row ) {
-        
-        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
+        NewsModel *model=nil;
+        if (_dataArr.count>0) {
+            model = [_dataArr objectAtIndex:indexPath.row];
+        }
+
         
         CGRect rect = [model.a_Title boundingRectWithSize:CGSizeMake(304, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil];
         
@@ -225,7 +226,11 @@
         return 40 + rect.size.height + image.size.height ;
         
     }else{
-        NewsModel *model = [_dataArr objectAtIndex:indexPath.row];
+        NewsModel *model=nil;
+        if (_dataArr.count>0) {
+             model = [_dataArr objectAtIndex:indexPath.row];
+        }
+      
         
         return model.CellH;
     }

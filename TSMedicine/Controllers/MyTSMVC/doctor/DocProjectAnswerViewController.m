@@ -68,6 +68,7 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
     _textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, _textBgView.width - 20*2, 30)];
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.backgroundColor = [UIColor clearColor];
+    _textField.font=[UIFont systemFontOfSize:17.0f];
     _textField.placeholder = @"输入回答";
     _textField.delegate = self;
     [_textBgView addSubview:_textField];

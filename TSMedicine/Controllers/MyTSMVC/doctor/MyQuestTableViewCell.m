@@ -21,6 +21,7 @@
     
     _questLab.text = model.uqcontent;
     _questLab.numberOfLines = 0;
+    _questLab.font=[UIFont systemFontOfSize:17.0f];
     _questLab.height = model.contentSize.height;
     
 //    NSLog(@"model.contentSize.height = %f",model.contentSize.height)
