@@ -192,10 +192,13 @@
     else{
         
         NewsTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-        UIView *view=[[UIView alloc]init];
-        view.frame=CGRectMake(0, 42/AutoWidth, SCREEN_W, -1);
-        view.backgroundColor=RGB(221, 221, 221);
-        [cell1 addSubview:view];
+        
+        
+        
+//        UIView *view=[[UIView alloc]init];
+//        view.frame=CGRectMake(0, 106/AutoWidth, SCREEN_W, -1);
+//        view.backgroundColor=RGB(221, 221, 221);
+//        [cell1 addSubview:view];
        
         NewsModel *model=nil;
         if (_dataArr.count>0) {
