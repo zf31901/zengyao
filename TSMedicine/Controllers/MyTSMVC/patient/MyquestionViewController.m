@@ -31,17 +31,24 @@
 
 @implementation MyquestionViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self loadData];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        [self setNavView];
-    _pagesize=30;
-     _dataArr = [NSMutableArray array];
-    [self setTableView];
-    [self buidRightBtn:@"提问"];
-    [self addRefresh];
-
     
+    [self setNavView];
+    
+    _pagesize=30;
+    _dataArr = [NSMutableArray array];
+    
+    [self setTableView];
+    
+    [self addRefresh];
     
 }
 - (NSMutableArray *)dataArr
@@ -51,24 +58,24 @@
     }
     return _dataArr;
 }
-#pragma mark - 上下啦刷新
+#pragma mark ---------------- 上下啦刷新-------------
 - (void)addRefresh
 {
     __weak MyquestionViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
        _pagesize = 10;
         [_dataArr removeAllObjects];
-        [ctl Staload];
+        [ctl loadData];
     }];
 //    [_mytableView addLegendFooterWithRefreshingBlock:^{
 //        _pageID++;
 //        
-//       [ctl Staload];
+//       [ctl loadData];
 //    }];
 
 
 }
--(void)Staload{
+-(void)loadData{
     [_dataArr removeAllObjects];
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
@@ -87,7 +94,7 @@
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
-
+//        NSLog(@"responseObj555 == %@",responseObj);
         
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
@@ -104,12 +111,6 @@
     }];
 
 
-}
--(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    [self Staload];
-  
 }
 -(void)setTableView
 {
@@ -131,13 +132,13 @@
     }
     [self.navigationController pushViewController:commitVC animated:YES];
     
-    
 }
 -(void)setNavView
 {
     self.navigationController.navigationBarHidden = NO;
     self.title = @"我的提问";
-   
+    [self buidRightBtn:@"提问"];
+    
 }
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -182,8 +183,8 @@
     MyPatQuestModel *model = _dataArr[indexPath.row];
     nav.model = model;
     
-    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld%@",indexPath.row,model.uqid]];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:[NSString stringWithFormat:@"%ld%@",indexPath.row,model.uqid]];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.navigationController pushViewController:nav animated:YES];
 
