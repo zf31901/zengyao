@@ -185,8 +185,8 @@
         
         [rq GET:prm parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            NSLog(@"responseObject1234已登陆--%@",responseObject);
-            NSLog(@"message == %@",responseObject[@"message"]);
+//            NSLog(@"responseObject1234已登陆--%@",responseObject);
+//            NSLog(@"message == %@",responseObject[@"message"]);
             
             if ([responseObject[@"data"] boolValue]) {
                 

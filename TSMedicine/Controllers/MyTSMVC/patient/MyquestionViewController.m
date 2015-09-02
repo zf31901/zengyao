@@ -22,6 +22,8 @@
     UITableView *_mytableView;
     NSMutableArray *_dataArr;
     NSInteger _pagesize;
+    NSInteger _pagID;
+    
     
 }
 
@@ -58,6 +60,12 @@
         [_dataArr removeAllObjects];
         [ctl Staload];
     }];
+//    [_mytableView addLegendFooterWithRefreshingBlock:^{
+//        _pageID++;
+//        
+//       [ctl Staload];
+//    }];
+
 
 }
 -(void)Staload{
@@ -65,6 +73,7 @@
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
+    //NSString *pageID=[NSString stringWithFormat:@"@%ld",(long)_pagID];
     
     NSDictionary *dic = nil;
     if (_goodIndex) {
@@ -78,7 +87,7 @@
     
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
-//         NSLog(@"responseObj333 = %@",responseObj);
+
         
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyPatQuestModel *model = [[MyPatQuestModel alloc] init];

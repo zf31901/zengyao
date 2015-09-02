@@ -53,9 +53,9 @@
         self.iamge.frame = newsModel.a_SmallImgF;
 }
 
-    
 
-    
+
+
     @end
 
 

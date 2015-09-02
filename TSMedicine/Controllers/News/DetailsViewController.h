@@ -14,7 +14,7 @@
 @property(nonatomic,strong)NSString *dataTime;
 @property(nonatomic,strong)NSString *caseLable;
 
-@property(nonatomic,strong)NewsModel  *model;//记录ID的值
+@property(nonatomic,strong)NewsModel  *NewsModel;//记录ID的值
 
 
 @end

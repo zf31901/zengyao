@@ -33,6 +33,8 @@
 -(void)setUI
 {
     
+    
+    
     [_loginBtn makeCorner:5];
     [_loginBtn setBackgroundColor:Common_Btn_BgColor];
     [_loginBtn setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];

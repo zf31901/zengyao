@@ -37,9 +37,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _dataArr=[[NSMutableArray alloc]init];
     [self setNavView];
-    _pagesize=6;
+    _pagesize=10;
     [super viewDidLoad];
     
     [self setNavView];
@@ -64,6 +64,7 @@
     [hq GETURLString:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
          BOOL state = NO;
         if ([responseObj objectForKey:@"data"] !=nil) {
+           
             NSArray *dataArr =[responseObj objectForKey:@"data"];
             if (dataArr.count == 0) {
                 state = YES;
@@ -110,10 +111,16 @@
 {
     __weak PatientApplyViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
-        _pagesize = 6;
+        _pagesize = 10;
+        _pageID=1;
         [_dataArr removeAllObjects];
         [ctl loadData];
     }];
+//    [_mytableView addLegendFooterWithRefreshingBlock:^{
+//        _pageID++;
+//        
+//       [ctl loadData];
+//    }];
 
 }
 -(void)setTableView
@@ -168,7 +175,7 @@
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
     else if ([model.upstate boolValue] == 1) {
-        cell.upstate.text=@"未审核";
+        cell.upstate.text=@"待审核";
         cell.upstate.textColor=UIColorFromRGB(0x20A456);
     }
     else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
@@ -186,7 +193,7 @@
       [cell.upimage sd_setImageWithURL:[NSURL URLWithString:model.upimage] placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
     }
 
-    NSLog(@"upimage1--%@",model.upimage);
+  
     return cell;
     
     
