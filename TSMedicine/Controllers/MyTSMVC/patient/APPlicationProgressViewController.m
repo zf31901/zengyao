@@ -163,8 +163,8 @@
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         else if ([model.upstate boolValue]== 1) {
-             Audcell.upstate.text=@"待审核";
-             Audcell.upstate.textColor=UIColorFromRGB(0x20A456);
+             Audcell.upstate.text=@"等待审核";
+             Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
              Audcell.upstate.text=@"审核通过";
@@ -209,8 +209,6 @@
 -(void)commit{
     xqingViewController *VC = [[xqingViewController  alloc] init];
     if (_Goodmodel) {
-        
-       // NSLog(@"%@---%@",_Goodmodel.uppid,_Goodmodel.upuserid);
         
         VC.model=_Goodmodel;
     }

@@ -70,6 +70,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
     if (!cell) {
         cell = [[MyQuestTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QuestTableViewCell];
     }
+  
     MyPatQuestModel *model = _dataArr[indexPath.row];
     cell.model = model;
     return cell;
