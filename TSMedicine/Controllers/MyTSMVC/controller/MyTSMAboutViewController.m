@@ -23,7 +23,8 @@
     [super viewDidLoad];
     
     [self setNavView];
-    [self creatUI];
+    
+    [self loadData];
     
 }
 
@@ -32,26 +33,51 @@
     self.title = @"关于我们";
 }
 
--(void)creatUI
+-(void)creatUIWithDataDic:(NSDictionary *)dataDic
 {
-    _iconImageView = [WIBaseImageView createClassWithFrame:CGRectMake((ScreenWidth - 60)/2, 50, 60, 60) andWithImg:@"icon180.png" andWithTag:0 andWithEnable:YES];
+//    _iconImageView = [WIBaseImageView createClassWithFrame:CGRectMake((ScreenWidth - 60)/2, 50, 60, 60) andWithImg:@"icon180.png" andWithTag:0 andWithEnable:YES];
+    
+    _iconImageView = [WIBaseImageView createClassNetWorkWithFrame:CGRectMake((ScreenWidth - 60)/2, 50, 60, 60) andWithUrlImg:dataDic[@"logo"] andPlaceholderImage:@"icon180.png" andWithTag:0 andWithEnable:YES];
     [_iconImageView makeCorner:5];
     [self.view addSubview:_iconImageView];
     
-    _versionLab = [WIBaseLabel createClassWithTitle:[NSString stringWithFormat:@"手机捐助 V%@",current_version] andWithFrame:CGRectMake((ScreenWidth - 200)/2, _iconImageView.maxY + 10, 200, 20) andWithFont:17.0];
+    _versionLab = [WIBaseLabel createClassWithTitle:[NSString stringWithFormat:@"%@ V%@",dataDic[@"packageName"],dataDic[@"versionName"]] andWithFrame:CGRectMake((ScreenWidth - 280)/2, _iconImageView.maxY + 10, 280, 20) andWithFont:17.0];
     _versionLab.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_versionLab];
     
-    _phoneLab = [WIBaseLabel createClassWithTitle:[NSString stringWithFormat:@"客服热线：400 4000 4000"] andWithFrame:CGRectMake((ScreenWidth - 300)/2, ScreenHeight - 150, 300, 20) andWithFont:17.0];
+    _phoneLab = [WIBaseLabel createClassWithTitle:[NSString stringWithFormat:@"客服热线：%@",dataDic[@"phone"]] andWithFrame:CGRectMake((ScreenWidth - 300)/2, ScreenHeight - 150, 300, 20) andWithFont:17.0];
     _phoneLab.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_phoneLab];
     
-    _companyLab = [WIBaseLabel createClassWithTitle:[NSString stringWithFormat:@"北京健胜医药有限公司版权所有"] andWithFrame:CGRectMake((ScreenWidth - 300)/2, _phoneLab.maxY + 10, 300, 20) andWithFont:17.0];
+    _companyLab = [WIBaseLabel createClassWithTitle:[NSString stringWithFormat:@"%@",dataDic[@"company"]] andWithFrame:CGRectMake((ScreenWidth - 300)/2, _phoneLab.maxY + 10, 300, 20) andWithFont:17.0];
     _companyLab.textAlignment = NSTextAlignmentCenter;
     _companyLab.textColor = Commom_TextColor_Gray;
     [self.view addSubview:_companyLab];
     
 
+}
+
+-(void)loadData
+{
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *parameters = @{@"appid":@"2",@"type":@"1"};
+    
+    [rq GETURLString:@"http://app.aixinland.cn/api/version/Get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        
+//        NSLog(@"responseObj === %@",responseObj);
+        
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            
+            NSDictionary *dataDic = responseObj[@"data"];
+            
+            [self creatUIWithDataDic:dataDic];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error == %@",error);
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
