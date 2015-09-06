@@ -42,7 +42,7 @@
     _TextViewLab.numberOfLines=0;
     _TextViewLab.textColor=Commom_TextColor_Gray;
     _TextViewLab.enabled=NO;
-    _TextViewLab.text=@"Hi,您遇到什么问题,或者有什么建议吗?欢迎给我们提宝贵的意见,谢谢！";
+    _TextViewLab.text=@"Hi,请简要描叙您的问题或者建议！";
     _TextViewLab.backgroundColor=[UIColor clearColor];
     _TextViewLab.font=[UIFont systemFontOfSize:14];
     _TextViewLab.textColor=[UIColor lightGrayColor];
@@ -69,6 +69,9 @@
 -(void)commit{
     
     NSLog(@"发表");
+    if (![self cheakText]) {
+        return;
+    }
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     //UserInfoData.im
@@ -90,7 +93,7 @@
             
             NSLog(@"responseObject-123123%@",responseObject[@"message"]);
             [self.navigationController popViewControllerAnimated:YES];
-            
+           [self showHUDInView:KEY_WINDOW WithText:@"发表成功" andDelay:LOADING_TIME];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
@@ -108,17 +111,32 @@
 {
     if ([textView.text length] == 0) {
         _TextViewLab.hidden = NO;
-    }else{
-       _TextViewLab.hidden = YES;
+        
+        
+        
+    }else if([_textView.text length]>120){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"字符个数不能大于120个" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        _textView.text = [textView.text substringToIndex:120];
+
+    }
+    else{
+    _TextViewLab.hidden = YES;
+    
     }
 }
 
 -(BOOL)cheakText
 {
     if (_textView.text.length == 0) {
-        [self showAlertViewWithTitle:@"意见不能为空" andDelay:1.0];
+        [self showAlertViewWithTitle:@"发表提问不能为空" andDelay:1.0];
         return NO;
     }
+    if (_textView.text.length < 8) {
+        [self showAlertViewWithTitle:@"发表内容不能小于8个字符！" andDelay:1.0];
+        return NO;
+    }
+   
     return YES;
 }
 -(void)showAlertViewWithTitle:(NSString *)title andDelay:(CGFloat)time
@@ -126,4 +144,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
 }
+
+
+
 @end

@@ -34,6 +34,7 @@
     self.navigationController.navigationBarHidden=YES;
 
     _dataArr=[[NSMutableArray alloc]init];
+
     
     [self setNavView];
    
@@ -127,18 +128,18 @@
     if (indexPath.section == 0 && 0 == indexPath.row)
     {
         return 143;
-    }else if(indexPath.section == 1 &&1 == indexPath.row)
+    }else if(indexPath.section == 1 &&0 == indexPath.row)
     {
-        return 50;
+        return 130;
     }
-    else if(indexPath.section == 2 &&2 == indexPath.row)
+    else if(indexPath.section == 2 &&0 == indexPath.row)
     {
     
-        return 154;
+        return 200;
     }
     else{
     
-        return 153;
+        return 203;
     }
     
 }
@@ -163,7 +164,7 @@
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         else if ([model.upstate boolValue]== 1) {
-             Audcell.upstate.text=@"等待审核";
+             Audcell.upstate.text=@"未审核";
              Audcell.upstate.textColor=UIColorFromRGB(0xFF6600);
         }
         else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){

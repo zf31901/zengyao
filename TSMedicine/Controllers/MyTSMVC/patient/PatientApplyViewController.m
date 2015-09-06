@@ -175,7 +175,7 @@
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
     else if ([model.upstate boolValue] == 1) {
-        cell.upstate.text=@"等待审核";
+        cell.upstate.text=@"未审核";
         cell.upstate.textColor=UIColorFromRGB(0xFF6600);
     }
     else if ([[NSString stringWithFormat:@"%@",model.upstate] isEqualToString:@"2"]){
@@ -210,6 +210,7 @@
     return 0.1f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     APPlicationProgressViewController *nav=[[APPlicationProgressViewController alloc]init];
     MyAppModel *model = _dataArr[indexPath.row];
     nav.Goodmodel = model;

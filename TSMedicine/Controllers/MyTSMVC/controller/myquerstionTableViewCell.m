@@ -25,10 +25,10 @@
     _uqcontent1.font=[UIFont systemFontOfSize:17.0f];
     _uqcontent1.height=model.contentSize.height;
     NSLog(@"model.contentSize.height1--%f",model.contentSize.height);
-    
+    _uqcreatedate.y=_uqcontent1.height+10;
     NSString *dateStr = [model.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
     _uqcreatedate.text = dateStr;
-    
+    _uqstats.y=_uqcontent1.height;
     _uqstats.text=[NSString stringWithFormat:@"%@人回答",model.uqcount];
     
     

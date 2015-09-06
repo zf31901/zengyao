@@ -237,6 +237,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DetailsViewController *askVC=[[DetailsViewController alloc]init];
     
     NewsModel *model=_dataArr[indexPath.row];

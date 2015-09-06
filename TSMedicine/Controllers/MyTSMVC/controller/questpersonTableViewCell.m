@@ -42,7 +42,7 @@
         _answerLab.text = [NSString stringWithFormat:@"问: %@",model.uqcontent];
         _answerLab.numberOfLines = 0;
         _answerLab.font=[UIFont systemFontOfSize:17.0f];
-        _answerLab.height = model.contentSize.height;
+        _answerLab.height = model.contentSize.height+10;
         NSLog(@"123---%f",model.contentSize.height);
         
     }else{
@@ -68,7 +68,7 @@
     _answerLab.text = [NSString stringWithFormat:@"答: %@",model.uqacontent];
     _answerLab.numberOfLines = 0;
     _answerLab.font=[UIFont systemFontOfSize:17.0f];
-    _answerLab.height = model.contentSize.height;
+    _answerLab.height = model.contentSize.height+10;
     
 }
 
