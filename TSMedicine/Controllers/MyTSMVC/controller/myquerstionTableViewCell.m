@@ -18,7 +18,10 @@
 }
 -(void)setModel:(MyPatQuestModel *)model
 {
-    _model = model;
+    if (model) {
+        _model = model;
+    }
+    
     
     _uqcontent1.text = model.uqcontent;
     _uqcontent1.numberOfLines=0;

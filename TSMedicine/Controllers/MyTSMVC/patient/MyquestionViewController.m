@@ -20,13 +20,13 @@
 
 {
     UITableView *_mytableView;
-    NSMutableArray *_dataArr;
+
     NSInteger _pagesize;
     NSInteger _pagID;
     
     
 }
-
+@property (nonatomic,strong) NSMutableArray *dataArr;
 @end
 
 @implementation MyquestionViewController
@@ -40,47 +40,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setNavView];
-    
-    _pagesize=30;
     _dataArr = [NSMutableArray array];
-    
+    _pagesize=30;
+    [self setNavView];
+ 
     [self setTableView];
-    
     [self addRefresh];
     
 }
-- (NSMutableArray *)dataArr
-{
-    if (_dataArr == nil) {
-        _dataArr = [NSMutableArray array];
-    }
-    return _dataArr;
-}
+
 #pragma mark ---------------- 上下啦刷新-------------
 - (void)addRefresh
 {
     __weak MyquestionViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
        _pagesize = 10;
+        _pagID=1;
         [_dataArr removeAllObjects];
         [ctl loadData];
     }];
 //    [_mytableView addLegendFooterWithRefreshingBlock:^{
-//        _pageID++;
+//        _pagID++;
 //        
 //       [ctl loadData];
 //    }];
 
 
 }
+-(void)loadAlertUI
+{
+    UILabel *label = [WIBaseLabel createClassWithTitle:@"您暂无提问" andWithFrame:CGRectMake(0, 0, 120, 20) andWithFont:17];
+    label.center = self.view.center;
+    label.midY = label.center.y - 50;
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+}
 -(void)loadData{
-    [_dataArr removeAllObjects];
+   
     
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    _pagID =_pagID!=0?_pagID:1;
     NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
-    //NSString *pageID=[NSString stringWithFormat:@"@%ld",(long)_pagID];
+    NSString *pageID=[NSString stringWithFormat:@"@%ld",(long)_pagID];
     
     NSDictionary *dic = nil;
     if (_goodIndex) {
@@ -95,15 +96,33 @@
     [rq GETURLString:@"http://app.aixinland.cn/api/userquestion/List" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
 //        NSLog(@"responseObj555 == %@",responseObj);
-        
+//        BOOL state = NO;
+//        NSArray *dataArr =[responseObj objectForKey:@"data"];
+//        if (dataArr.count == 0) {
+//            state = YES;
+       // }
         for (NSDictionary *dic in responseObj[@"data"]) {
             MyPatQuestModel *model = [[MyPatQuestModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
             [_dataArr addObject:model];
         }
-        [_mytableView reloadData];
+       // if (_dataArr.count>0) {
+            [_mytableView reloadData];
+      //  }
+      //  else{
+//            [_mytableView removeFromSuperview];
+//            _mytableView=nil;
+//            [self loadAlertUI];
+//            
+//        }
+    
         [_mytableView.header endRefreshing];
         [_mytableView.footer endRefreshing];
+//        if (state)
+//        {
+//            _mytableView.footer.state = MJRefreshFooterStateNoMoreData;
+//            
+//        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
@@ -146,8 +165,13 @@
     return 1;
 }
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{   if (_dataArr.count > 0)
 {
     return _dataArr.count;
+}
+else{
+    return 0;
+}
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -159,8 +183,11 @@
     }
     
     cell.indexPath = indexPath;
-    
-    MyPatQuestModel *model1 = _dataArr[indexPath.row];
+    MyPatQuestModel *model1=nil;
+    if (_dataArr.count>0) {
+       model1 = _dataArr[indexPath.row];
+    }
+
     cell.model = model1;
     
     
@@ -171,9 +198,11 @@
     return 0.1f;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //return 70.0f;
-    MyPatQuestModel *model = _dataArr[indexPath.row];
+{ MyPatQuestModel *model=nil;
+    if (_dataArr.count>0) {
+       model = _dataArr[indexPath.row];
+    }
+    
     return 40.0 + model.contentSize.height;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
