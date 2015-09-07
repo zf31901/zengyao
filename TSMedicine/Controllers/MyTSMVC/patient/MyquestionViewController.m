@@ -198,12 +198,12 @@ else{
     return 0.1f;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{ MyPatQuestModel *model=nil;
+{    MyPatQuestModel *model=nil;
     if (_dataArr.count>0) {
        model = _dataArr[indexPath.row];
     }
     
-    return 40.0 + model.contentSize.height;
+    return  80.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
