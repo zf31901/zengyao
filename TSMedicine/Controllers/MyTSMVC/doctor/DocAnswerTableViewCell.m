@@ -42,8 +42,9 @@
         
         _answerLab.text = [NSString stringWithFormat:@"问: %@",model.uqcontent];
         _answerLab.numberOfLines = 0;
-         _answerLab.font=[UIFont systemFontOfSize:17.0f];
-        _answerLab.height = model.contentSize.height + 10;
+        _answerLab.font = [UIFont systemFontOfSize:17.0f];
+        CGSize size = [_answerLab.text sizeWithWidth:ScreenWidth - 20 withFont:17];
+        _answerLab.height = size.height + 10.0;
         
 //        NSLog(@"height == %f",model.contentSize.height);
         

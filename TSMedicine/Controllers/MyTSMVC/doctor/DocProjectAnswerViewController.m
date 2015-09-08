@@ -109,8 +109,11 @@ NSString *const AnswerTableViewCell = @"DocAnswerTableViewCell";
 {
     if (indexPath.section == 0) {
         MyPatQuestModel *model = _dataArr[indexPath.section][indexPath.row];
-//         NSLog(@"%f",model.contentSize.height);
-        return 80.0 + model.contentSize.height + 10;
+
+        NSString *str = [NSString stringWithFormat:@"问: %@",model.uqcontent];
+        CGSize size = [str sizeWithWidth:ScreenWidth - 20 withFont:17];
+        
+        return 80.0 + size.height + 10;
         
     }else{
         MyAnswerModel *model = _dataArr[indexPath.section][indexPath.row];

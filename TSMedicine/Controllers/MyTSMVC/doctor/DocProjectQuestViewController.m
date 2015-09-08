@@ -95,7 +95,7 @@ NSString *const QuestTableViewCell = @"MyQuestTableViewCell";
     MyPatQuestModel *model = _dataArr[indexPath.row];
 //    NSLog(@"model.contentSize.height = %f",model.contentSize.height);
     
-    return 40.0 + model.contentSize.height;
+    return 40.0 + model.contentSize.height + 10.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

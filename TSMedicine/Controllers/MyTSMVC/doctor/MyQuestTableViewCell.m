@@ -22,11 +22,11 @@
     _questLab.text = model.uqcontent;
     _questLab.numberOfLines = 0;
     _questLab.font=[UIFont systemFontOfSize:17.0f];
-    _questLab.height = model.contentSize.height;
+    _questLab.height = model.contentSize.height + 20;
     
 //    NSLog(@"model.contentSize.height = %f",model.contentSize.height)
     
-    _dateLab.y = _questLab.height + 10;
+    _dateLab.y = _questLab.height;
     NSString *dateStr = [model.uqcreatedate substringWithRange:NSMakeRange(0, 10)];
     NSString *timeStr = [model.uqcreatedate substringWithRange:NSMakeRange(11, 5)];
     _dateLab.text = [NSString stringWithFormat:@"%@ %@",dateStr,timeStr];
