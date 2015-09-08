@@ -31,19 +31,19 @@
 
 @implementation MyquestionViewController
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    [self loadData];
-    
-}
+//-(void)viewWillAppear:(BOOL)animated{
+//    
+//    [super viewWillAppear:animated];
+//    [self loadData];
+//    
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArr = [NSMutableArray array];
     _pagesize=30;
     [self setNavView];
- 
+    [self loadData];
     [self setTableView];
     [self addRefresh];
     
@@ -54,7 +54,7 @@
 {
     __weak MyquestionViewController * ctl = self;
     [_mytableView addLegendHeaderWithRefreshingBlock:^{
-       _pagesize = 10;
+       _pagesize = 30;
         _pagID=1;
         [_dataArr removeAllObjects];
         [ctl loadData];
@@ -81,7 +81,7 @@
     YYHttpRequest *rq = [[YYHttpRequest alloc] init];
     _pagID =_pagID!=0?_pagID:1;
     NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)_pagesize];
-    NSString *pageID=[NSString stringWithFormat:@"@%ld",(long)_pagID];
+    //NSString *pageID=[NSString stringWithFormat:@"@%ld",(long)_pagID];
     
     NSDictionary *dic = nil;
     if (_goodIndex) {

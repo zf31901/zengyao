@@ -92,8 +92,8 @@
            _textView.text = @"";
             
             NSLog(@"responseObject-123123%@",responseObject[@"message"]);
-            [self.navigationController popViewControllerAnimated:YES];
-           [self showHUDInView:KEY_WINDOW WithText:@"发表成功" andDelay:LOADING_TIME];
+        [self.navigationController popViewControllerAnimated:YES];
+        [self showHUDInView:KEY_WINDOW WithText:@"发表成功" andDelay:LOADING_TIME];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error == %@",error);
@@ -111,9 +111,6 @@
 {
     if ([textView.text length] == 0) {
         _TextViewLab.hidden = NO;
-        
-        
-        
     }else if([_textView.text length]>120){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"字符个数不能大于120个" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];

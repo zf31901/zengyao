@@ -36,7 +36,7 @@
     _uqstats.y=_uqcontent1.height-5;
     
     _uqstats.text=[NSString stringWithFormat:@"%@人回答",model.uqcount];
-    
+       //_countBtn.y=_uqcontent1.height-5;
     
 //    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"%ld%@",_indexPath.row,model.uqid]];
     
@@ -49,6 +49,7 @@
 //        }else{
         
             _countBtn.hidden = NO;
+     
             [_countBtn setTitle:[NSString stringWithFormat:@"%ld",[model.uqunreadcount integerValue]] forState:UIControlStateNormal];
             [_countBtn setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
             
