@@ -64,7 +64,7 @@
     
     [rq GETURLString:@"http://app.aixinland.cn/api/version/Get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
         
-//        NSLog(@"responseObj === %@",responseObj);
+        NSLog(@"responseObj === %@",responseObj);
         
         if ([responseObj[@"status"] isEqualToString:@"Success"]) {
             

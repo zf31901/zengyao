@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UIAlertViewDelegate>
 
 @end
 
@@ -22,9 +22,62 @@
     [self.window makeKeyAndVisible];
     
     self.window.rootViewController = [YYTabBarViewController initIalizeTab];
+    
+    
+    [self checkVersion];
    
     return YES;
 }
+
+-(void)checkVersion
+{
+    NSString *currentVersion = current_version;
+    
+    NSString *URL = @"http://itunes.apple.com/lookup?id=825481902";
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URL]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSHTTPURLResponse *urlResponse = nil;
+    NSError *error = nil;
+    NSData *receveData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+    
+    NSString *results = [[NSString alloc] initWithBytes:[receveData bytes] length:[receveData length] encoding:NSUTF8StringEncoding];
+    NSDictionary *dataDic = [results objectFromJSONString];
+    
+//    NSLog(@"dataDic == %@",dataDic);
+    
+    NSArray *infoArr = [dataDic objectForKey:@"results"];
+    
+    if ([infoArr count]) {
+        
+        NSDictionary *releaseInfo = [infoArr objectAtIndex:0];
+        
+//        NSLog(@"releaseInfo == %@",releaseInfo);
+        
+        NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+        NSLog(@"lastVersion == %@",lastVersion);
+        
+        if (![lastVersion isEqualToString:currentVersion]) {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:@"检测到有新的版本可以更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+            [alert show];
+            
+        }
+    }
+
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+//    NSLog(@"buttonIndex == %d",buttonIndex);
+    if (buttonIndex == 1) {
+        NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/app/id825481902"];
+        [[UIApplication sharedApplication] openURL:url];
+        
+    }
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
