@@ -25,13 +25,14 @@
     
     
     [self checkVersion];
+    
+    
    
     return YES;
 }
 
 -(void)checkVersion
 {
-    NSString *currentVersion = current_version;
     
     NSString *URL = @"http://itunes.apple.com/lookup?id=825481902";
     
@@ -59,7 +60,7 @@
         NSString *lastVersion = [releaseInfo objectForKey:@"version"];
         NSLog(@"lastVersion == %@",lastVersion);
         
-        if (![lastVersion isEqualToString:currentVersion]) {
+        if (![lastVersion isEqualToString:current_version]) {
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:@"检测到有新的版本可以更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
             [alert show];
