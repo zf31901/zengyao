@@ -10,6 +10,8 @@
 
 @interface AppDelegate ()<UIAlertViewDelegate>
 
+@property (nonatomic,copy) NSString *trackViewURL;
+
 @end
 
 @implementation AppDelegate
@@ -23,19 +25,42 @@
     
     self.window.rootViewController = [YYTabBarViewController initIalizeTab];
     
+    [self loadVersionData];
     
-    [self checkVersion];
-    
-    
-   
     return YES;
 }
 
--(void)checkVersion
+-(void)loadVersionData
 {
+    YYHttpRequest *rq = [[YYHttpRequest alloc] init];
+    NSDictionary *parameters = @{@"appid":@"2",@"type":@"1"};
     
-    NSString *URL = @"http://itunes.apple.com/lookup?id=825481902";
+    [rq GETURLString:@"http://app.aixinland.cn/api/version/Get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObj) {
+//         NSLog(@"responseObj === %@",responseObj);
+        
+        if ([responseObj[@"status"] isEqualToString:@"Success"]) {
+            
+            NSDictionary *dataDic = responseObj[@"data"];
+            
+            _trackViewURL = [[NSString alloc] initWithString:[dataDic objectForKey:@"fileUrl"]];
+            
+            NSArray *arr = [_trackViewURL componentsSeparatedByString:@"id"];
+//            NSLog(@"arr == %@",arr);
+            
+            NSString *appleId = [NSString stringWithFormat:@"%@",[arr lastObject]];
+            [self checkVersionWithAppleId:appleId];
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error == %@",error);
+    }];
     
+}
+-(void)checkVersionWithAppleId:(NSString *)appleId
+{
+    NSString *URL = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",appleId];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request setHTTPMethod:@"POST"];
@@ -47,18 +72,17 @@
     NSString *results = [[NSString alloc] initWithBytes:[receveData bytes] length:[receveData length] encoding:NSUTF8StringEncoding];
     NSDictionary *dataDic = [results objectFromJSONString];
     
-//    NSLog(@"dataDic == %@",dataDic);
-    
     NSArray *infoArr = [dataDic objectForKey:@"results"];
     
     if ([infoArr count]) {
         
         NSDictionary *releaseInfo = [infoArr objectAtIndex:0];
         
-//        NSLog(@"releaseInfo == %@",releaseInfo);
-        
         NSString *lastVersion = [releaseInfo objectForKey:@"version"];
         NSLog(@"lastVersion == %@",lastVersion);
+        
+//        _trackViewURL = [[NSString alloc] initWithString:[releaseInfo objectForKey:@"trackViewUrl"]];
+//        NSLog(@"trackViewURL == %@",_trackViewURL);
         
         if (![lastVersion isEqualToString:current_version]) {
             
@@ -71,12 +95,15 @@
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-//    NSLog(@"buttonIndex == %d",buttonIndex);
+
     if (buttonIndex == 1) {
-        NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/app/id825481902"];
-        [[UIApplication sharedApplication] openURL:url];
         
+        if (_trackViewURL) {
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_trackViewURL]];
+        }
     }
+    
 }
 
 
